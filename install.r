@@ -1,6 +1,6 @@
 install.packages("devtools")
 library(devtools)
-install_github("jmp75/rClr")
+install_github("SoftFx/rClr")
 library(rClr)
 install_github("SoftFx/FdkRLib")
 library(FdkRLib)
