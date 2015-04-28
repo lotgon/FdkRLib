@@ -1,0 +1,6 @@
+install.packages("devtools")
+library(devtools)
+install_github("jmp75/rClr")
+library(rClr)
+install_github("ciplogic/FdkRLib")
+library(FdkRLib)
