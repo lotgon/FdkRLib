@@ -35,7 +35,6 @@ namespace SharedFdkFunctionality
 
         public void SetupPathsAndConnect(string rootPath)
         {
-
             // create and specify log directory
             string root;
             if (string.IsNullOrEmpty(rootPath))

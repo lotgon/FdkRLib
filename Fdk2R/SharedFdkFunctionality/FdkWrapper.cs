@@ -16,6 +16,7 @@ namespace SharedFdkFunctionality
             {
                 RootPath = rootPath
             };
+            ConnectLogic.SetupPathsAndConnect(rootPath);
             ConnectLogic.Feed.SessionInfo += OnSessionInfo;
             ConnectLogic.Feed.SymbolInfo += OnSymbolInfo;
             ConnectLogic.Feed.Logon += OnLogon;
