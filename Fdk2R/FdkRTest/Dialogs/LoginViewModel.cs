@@ -1,5 +1,5 @@
 using System.Globalization;
-using R2Cs;
+using SharedFdkFunctionality;
 
 namespace FdkRTest.Dialogs
 {
@@ -54,7 +54,7 @@ namespace FdkRTest.Dialogs
             Wrapper.Address = Address;
             Wrapper.Login = Login.ToString(CultureInfo.InvariantCulture);
             Wrapper.Password = Password;
-            return Wrapper.Connect();
+            return Wrapper.Connect("");
 
         }
     }

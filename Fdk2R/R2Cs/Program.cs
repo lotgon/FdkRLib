@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RDotNet;
+using SharedFdkFunctionality;
 using SoftFX.Extended;
 
 namespace R2Cs
@@ -24,7 +25,7 @@ namespace R2Cs
             // There are several options to initialize the engine, but by default the following suffice:
             REngine engine = REngine.GetInstance();
             
-            wrapper.Connect();
+            wrapper.Connect("");
             var bars = wrapper.ConnectLogic.Storage.Online.GetBars("EURUSD", PriceType.Ask, BarPeriod.M1, DateTime.Now, -1000000).ToArray();
             WriteCsv(bars, "process.csv");
 

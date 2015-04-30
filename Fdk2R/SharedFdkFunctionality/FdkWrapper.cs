@@ -1,20 +1,21 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using log4net;
 using SoftFX.Extended;
 using SoftFX.Extended.Events;
-using TickTrader.DeveloperConsole.Connectors;
 
-namespace R2Cs
+namespace SharedFdkFunctionality
 {
     public class FdkWrapper
     {
-        public bool Connect()
+        public bool Connect(string rootPath)
         {
-            ConnectLogic = new FdkConnectLogic(Address, Login, Password);
+            ConnectLogic = new FdkConnectLogic(Address, Login, Password)
+            {
+                RootPath = rootPath
+            };
             ConnectLogic.Feed.SessionInfo += OnSessionInfo;
             ConnectLogic.Feed.SymbolInfo += OnSymbolInfo;
             ConnectLogic.Feed.Logon += OnLogon;

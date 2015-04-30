@@ -15,7 +15,7 @@ namespace TestRClrHost
         [Test]
         public void TestApp()
         {
-            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", ""));
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
             var bars = FdkBars.ComputeBars("EURUSD", "Ask", "M1");
             var highs = FdkBars.BarHighs(bars);
             var lows = FdkBars.BarHighs(bars);

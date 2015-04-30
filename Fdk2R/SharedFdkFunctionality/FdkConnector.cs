@@ -6,7 +6,7 @@ using log4net;
 using SoftFX.Extended;
 using SoftFX.Extended.Events;
 
-namespace TickTrader.DeveloperConsole.Connectors
+namespace SharedFdkFunctionality
 {
     public class FdkConnector
     {

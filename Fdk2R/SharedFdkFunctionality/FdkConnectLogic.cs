@@ -8,7 +8,7 @@ using SoftFX.Extended.Storage;
 
 #endregion
 
-namespace TickTrader.DeveloperConsole.Connectors
+namespace SharedFdkFunctionality
 {
     public class FdkConnectLogic : IDisposable
     {
@@ -16,6 +16,7 @@ namespace TickTrader.DeveloperConsole.Connectors
         public DataFeed Feed { get; private set; }
 		//protected DataFeedStorage Storage { get; private set; }
         public DataFeedStorage Storage { get; set; }
+        public string RootPath { get; set; }
 
         public FdkConnectLogic()
         {
@@ -30,23 +31,35 @@ namespace TickTrader.DeveloperConsole.Connectors
             };
             //this.Builder.ExcludeMessagesFromLogs = "W";
 
+        }
+
+        public void SetupPathsAndConnect(string rootPath)
+        {
+
             // create and specify log directory
-            var assembly = Assembly.GetEntryAssembly();
             string root;
-            root = assembly == null ? Directory.GetCurrentDirectory() : assembly.Location;
-            root = Path.GetDirectoryName(root);
-            if (root == null)
-                throw new InvalidDataException("FDK assembly's directory seems to be invalid");
+            if (string.IsNullOrEmpty(rootPath))
+            {
+                var assembly = Assembly.GetEntryAssembly();
+                root = assembly == null ? Directory.GetCurrentDirectory() : assembly.Location;
+                root = Path.GetDirectoryName(root);
+                if (root == null)
+                    throw new InvalidDataException("FDK assembly's directory seems to be invalid");
+            }
+            else
+            {
+                root = rootPath;
+            }
             var logsPath = Path.Combine(root, "Logs\\Fix");
             Directory.CreateDirectory(logsPath);
 
             Builder.FixLogDirectory = logsPath;
-            
+
             Feed = new DataFeed {SynchOperationTimeout = 60000};
 
-			var storagePath = Path.Combine(root, "Storage");
-			Directory.CreateDirectory(storagePath);
-			Storage = new DataFeedStorage(storagePath, StorageProvider.Ntfs, Feed, true);
+            var storagePath = Path.Combine(root, "Storage");
+            Directory.CreateDirectory(storagePath);
+            Storage = new DataFeedStorage(storagePath, StorageProvider.Ntfs, Feed, true);
         }
 
 
@@ -60,6 +73,7 @@ namespace TickTrader.DeveloperConsole.Connectors
 
         public bool DoConnect()
         {
+            SetupPathsAndConnect(RootPath);
             var connectionString = Builder.ToString();
             Feed.Initialize(connectionString);
 

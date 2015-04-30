@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Windows.Forms;
-using R2Cs;
+using SharedFdkFunctionality;
 
 namespace RHost
 {
@@ -11,7 +11,7 @@ namespace RHost
             MessageBox.Show("SoftFX integration is working");
         }
 
-        public static int ConnectToFdk(string address, string login, string password)
+        public static int ConnectToFdk(string address, string login, string password, string path)
         {
             var addr = string.IsNullOrEmpty(address)
                 ? "tpdemo.fxopen.com"
@@ -26,12 +26,13 @@ namespace RHost
             {
                 Address = addr,
                 Login = loginStr,
-                Password = passwordString
+                Password = passwordString,
+                
             }; 
             Wrapper = wrapper;
             FdkBars.Wrapper = Wrapper;
 
-            if (wrapper.Connect())
+            if (wrapper.Connect(path))
             {
                 return 0;
             }
