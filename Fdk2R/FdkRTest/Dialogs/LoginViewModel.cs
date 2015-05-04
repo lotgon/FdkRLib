@@ -11,9 +11,9 @@ namespace FdkRTest.Dialogs
 
         public LoginViewModel()
         {
-            Address = "tpdemo.fxopen.com";
-            Login = 59932;
-            Password = "8mEx7zZ2";
+            Address = "tp.dev.soft-fx.eu";
+            Login = 100106;
+            Password = "123qwe123";
             Wrapper = new FdkWrapper();
         }
 

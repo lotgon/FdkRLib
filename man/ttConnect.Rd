@@ -4,7 +4,8 @@
 \alias{ttConnect}
 \title{Connects to a TT server}
 \usage{
-ttConnect(address = "", login = "", password = "")
+ttConnect(address = "", login = "", password = "", path = "",
+  fdkPath = "")
 }
 \arguments{
 \item{address}{Url of the running server}

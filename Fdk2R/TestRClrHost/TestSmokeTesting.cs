@@ -13,6 +13,12 @@ namespace TestRClrHost
     public class TestSmokeTesting
     {
         [Test]
+        public void ConnectToFdk()
+        {
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
+        }
+
+        [Test]
         public void TestApp()
         {
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));

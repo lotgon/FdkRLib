@@ -6,3 +6,5 @@ Fdk2R/SharedFdkFunctionality/bin/*
 Fdk2R/R2Cs/bin/*
 Fdk2R/TestRClrHost/bin/*
 *.suo
+*.DotSettings.user
+*.suo

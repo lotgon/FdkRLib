@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using log4net;
@@ -12,11 +13,13 @@ namespace SharedFdkFunctionality
     {
         public bool Connect(string rootPath)
         {
+            Debugger.Launch();
             ConnectLogic = new FdkConnectLogic(Address, Login, Password)
             {
                 RootPath = rootPath
             };
             ConnectLogic.SetupPathsAndConnect(rootPath);
+            ConnectLogic.Feed.CacheInitialized += OnCacheInitialize;
             ConnectLogic.Feed.SessionInfo += OnSessionInfo;
             ConnectLogic.Feed.SymbolInfo += OnSymbolInfo;
             ConnectLogic.Feed.Logon += OnLogon;
@@ -28,12 +31,17 @@ namespace SharedFdkFunctionality
                 return false;
             }
             var start = DateTime.Now;
-            while (!IsConnected && (DateTime.Now - start).Seconds < 5)
+            while (!IsConnected && (DateTime.Now - start).Seconds < 35)
             {
                 Thread.Sleep(100);
             }
 
             return IsConnected;
+        }
+
+        private void OnCacheInitialize(object sender, CacheEventArgs e)
+        {
+            IsConnected = true;
         }
 
         public void Disconnect()
