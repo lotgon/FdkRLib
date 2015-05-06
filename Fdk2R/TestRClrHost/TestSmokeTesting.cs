@@ -15,13 +15,13 @@ namespace TestRClrHost
         [Test]
         public void ConnectToFdk()
         {
-            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
         }
 
         [Test]
         public void TestApp()
         {
-            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
             var bars = FdkBars.ComputeBars("EURUSD", "Ask", "M1");
             var highs = FdkBars.BarHighs(bars);
             var lows = FdkBars.BarHighs(bars);

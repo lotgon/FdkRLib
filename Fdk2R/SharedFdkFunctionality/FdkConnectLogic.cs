@@ -52,9 +52,9 @@ namespace SharedFdkFunctionality
             var logsPath = Path.Combine(root, "Logs\\Fix");
             Directory.CreateDirectory(logsPath);
 
-            Builder.FixLogDirectory = logsPath;
+                Builder.FixLogDirectory = logsPath;
 
-            Feed = new DataFeed {SynchOperationTimeout = 60000};
+            Feed = new DataFeed(Builder.ToString()) {SynchOperationTimeout = 60000};
 
             var storagePath = Path.Combine(root, "Storage");
             Directory.CreateDirectory(storagePath);
