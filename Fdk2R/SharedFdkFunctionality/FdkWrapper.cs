@@ -13,7 +13,6 @@ namespace SharedFdkFunctionality
     {
         public bool Connect(string rootPath)
         {
-            Debugger.Launch();
             ConnectLogic = new FdkConnectLogic(Address, Login, Password)
             {
                 RootPath = rootPath

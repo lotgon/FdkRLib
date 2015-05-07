@@ -35,6 +35,11 @@ namespace SharedFdkFunctionality
 
         public void SetupPathsAndConnect(string rootPath)
         {
+            if (Initialized)
+            {
+                throw new InvalidOperationException("Fdk seems to be initialized for second time");
+            }
+            Initialized = true;
             // create and specify log directory
             string root;
             if (string.IsNullOrEmpty(rootPath))
@@ -61,6 +66,8 @@ namespace SharedFdkFunctionality
             Storage = new DataFeedStorage(storagePath, StorageProvider.Ntfs, Feed, true);
         }
 
+        public bool Initialized { get; set; }
+
 
         public FdkConnectLogic(string address, string username, string password)
             : this()
@@ -72,7 +79,6 @@ namespace SharedFdkFunctionality
 
         public bool DoConnect()
         {
-            SetupPathsAndConnect(RootPath);
             var connectionString = Builder.ToString();
             Feed.Initialize(connectionString);
 
