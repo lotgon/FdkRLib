@@ -22,7 +22,6 @@ namespace TestRClrHost
             var opens = FdkBars.BarHighs(bars);
             var volumes = FdkBars.BarHighs(bars);
             FdkVars.Unregister(bars);
-
         }
 
         [Test]
@@ -37,7 +36,6 @@ namespace TestRClrHost
             var hasBid = FdkQuotes.QuotesHasBid(quotes);
             var spread = FdkQuotes.QuotesSpread(quotes);
             FdkVars.Unregister(quotes);
-
         }
     }
 }
