@@ -90,26 +90,59 @@ ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
 ComputeQuoteHistory <- function(symbol,priceTypeStr, barPeriodStr) {
   clrCallStatic('RHost.FdkQuotes', 'ComputeQuoteHistory', symbol,priceTypeStr, barPeriodStr)
 }
-#' Gets the bars' volume as requested
+
+#' Gets the bars' ask as requested
 #' 
-#' @param barsVar RHost variable that stores bar array
-BarVolumes <- function(barsVar) {
-  clrCallStatic('RHost.FdkQuotes', 'QuotesAsk', barsVar)
+#' @param quotesVar RHost variable that stores quotes array
+QuotesAsk <- function(quotesVar) {
+  clrCallStatic('RHost.FdkQuotes', 'QuotesAsk', quotesVar)
+}
+#' Gets the bars' ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+QuotesBid <- function(quotesVar) {
+  clrCallStatic('RHost.FdkQuotes', 'QuotesBid', quotesVar)
+}
+#' Gets the bars' ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+QuotesCreatingTime <- function(quotesVar) {
+  clrCallStatic('RHost.FdkQuotes', 'QuotesCreatingTime', quotesVar)
+}
+#' Gets the bars' ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+QuotesSpread <- function(quotesVar) {
+  clrCallStatic('RHost.FdkQuotes', 'QuotesSpread', quotesVar)
+}
+#' Gets the bars' ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+QuotesHasAsk <- function(quotesVar) {
+  clrCallStatic('RHost.FdkQuotes', 'QuotesHasAsk', quotesVar)
+}
+#' Gets the bars' ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+QuotesHasBid <- function(quotesVar) {
+  clrCallStatic('RHost.FdkQuotes', 'QuotesHasBid', quotesVar)
 }
 
-#' Gets the bars' low as requested
+#' Gets the quotes history
 #' 
 #' @param symbol Symbol looked
 #' @param priceTypeStr Ask
 #' @param barPeriodStr Values like: M1, H1
 #' @export
 
-ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
-  symbolBars <- ComputeBars(symbol,priceTypeStr, barPeriodStr)
-  highs <- BarHighs(symbolBars)
-  lows <- BarLows(symbolBars)
-  opens <- BarOpens(symbolBars)
-  volumes <- BarVolumes(symbolBars)
+ttGetQuotes <- function(symbol,priceTypeStr, barPeriodStr){
+  symbolBars <- ComputeQuoteHistory(symbol,priceTypeStr, barPeriodStr)
+  ask <- QuotesAsk(symbolBars)
+  bid <- QuotesBid(symbolBars)
+  createTime <- QuotesCreatingTime(symbolBars)
+  hasAsk <- QuotesHasAsk(symbolBars)
+  hasBid <- QuotesHasBid(symbolBars)
+  spread <- QuotesSpread(symbolBars)  
   UnregisterVar(symbolBars)
-  df = data.frame(highs, lows, opens, volumes)       
+  df = data.frame(ask, bid, createTime, hasAsk, hasBid, spread)       
 }

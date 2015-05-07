@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using RHost;
 
 namespace TestRClrHost
@@ -28,7 +29,9 @@ namespace TestRClrHost
         public void TestQuotes()
         {
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
-            var quotes = FdkQuotes.ComputeQuoteHistory("EURUSD", "05/12/2014", "05/12/2015", 3);
+            var time = DateTime.Now;
+            var prevHour = time.AddDays(-1);
+            var quotes = FdkQuotes.ComputeQuoteHistory("EURUSD", prevHour.ToString(), time.ToString(), 3);
             var asks = FdkQuotes.QuotesAsk(quotes);
             var bids = FdkQuotes.QuotesBid(quotes);
             var opens = FdkQuotes.QuotesCreatingTime(quotes);
