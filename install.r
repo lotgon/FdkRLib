@@ -12,8 +12,12 @@ library(rClr)
 
 install_github("SoftFx/FdkRLib")
 library(FdkRLib)
+
 if( !require("quantmod"))
 {
   install_github("joshuaulrich/quantmod")
 }
 library(quantmod)
+
+
+

@@ -86,9 +86,10 @@ ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
 #' @param symbol Symbol looked
 #' @param priceTypeStr Ask
 #' @param barPeriodStr Values like: M1, H1
+#' @param barPeriodStr Values like: M1, H1
 #' @export
-ComputeQuoteHistory <- function(symbol,priceTypeStr, barPeriodStr) {
-  clrCallStatic('RHost.FdkQuotes', 'ComputeQuoteHistory', symbol,priceTypeStr, barPeriodStr)
+ComputeQuoteHistory <- function(symbol,priceTypeStr, barPeriodStr, depth) {
+  clrCallStatic('RHost.FdkQuotes', 'ComputeQuoteHistory', symbol,priceTypeStr, barPeriodStr, depth)
 }
 
 #' Gets the bars' ask as requested
@@ -135,8 +136,8 @@ QuotesHasBid <- function(quotesVar) {
 #' @param barPeriodStr Values like: M1, H1
 #' @export
 
-ttGetQuotes <- function(symbol,priceTypeStr, barPeriodStr){
-  symbolBars <- ComputeQuoteHistory(symbol,priceTypeStr, barPeriodStr)
+ttGetQuotes <- function(symbol,priceTypeStr, barPeriodStr, depth){
+  symbolBars <- ComputeQuoteHistory(symbol,priceTypeStr, barPeriodStr, depth)
   ask <- QuotesAsk(symbolBars)
   bid <- QuotesBid(symbolBars)
   createTime <- QuotesCreatingTime(symbolBars)

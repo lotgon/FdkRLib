@@ -5,17 +5,11 @@
 \title{Gets the bars' volume as requested}
 \usage{
 BarVolumes(barsVar)
-
-BarVolumes(barsVar)
 }
 \arguments{
 \item{barsVar}{RHost variable that stores bar array}
-
-\item{barsVar}{RHost variable that stores bar array}
 }
 \description{
-Gets the bars' volume as requested
-
 Gets the bars' volume as requested
 }
 

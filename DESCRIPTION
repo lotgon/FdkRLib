@@ -7,6 +7,6 @@ Author: Ciprian Khlud (of SoftFX)
 Maintainer: Ciprian Khlud <ciprian.khlud@soft-fx.lv>
 Description: It exposes TickTrader's FDK API to 
 Depends:
-    R (>= 2.15)
+    R (>= 3.2)
 License: MIT
 Imports: rClr
