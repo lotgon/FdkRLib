@@ -78,3 +78,38 @@ ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
   UnregisterVar(symbolBars)
   df = data.frame(highs, lows, opens, volumes)       
 }
+
+# ****
+
+#' Gets the bars as requested
+#' 
+#' @param symbol Symbol looked
+#' @param priceTypeStr Ask
+#' @param barPeriodStr Values like: M1, H1
+#' @export
+ComputeQuoteHistory <- function(symbol,priceTypeStr, barPeriodStr) {
+  clrCallStatic('RHost.FdkQuotes', 'ComputeQuoteHistory', symbol,priceTypeStr, barPeriodStr)
+}
+#' Gets the bars' volume as requested
+#' 
+#' @param barsVar RHost variable that stores bar array
+BarVolumes <- function(barsVar) {
+  clrCallStatic('RHost.FdkQuotes', 'QuotesAsk', barsVar)
+}
+
+#' Gets the bars' low as requested
+#' 
+#' @param symbol Symbol looked
+#' @param priceTypeStr Ask
+#' @param barPeriodStr Values like: M1, H1
+#' @export
+
+ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
+  symbolBars <- ComputeBars(symbol,priceTypeStr, barPeriodStr)
+  highs <- BarHighs(symbolBars)
+  lows <- BarLows(symbolBars)
+  opens <- BarOpens(symbolBars)
+  volumes <- BarVolumes(symbolBars)
+  UnregisterVar(symbolBars)
+  df = data.frame(highs, lows, opens, volumes)       
+}
