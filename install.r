@@ -1,8 +1,10 @@
 if(!require("devtools") )
 {
   install.packages("devtools")
+  
 }
-
+# Use this command if you want to build package yourself
+# install_github("hadley/devtools")
 library(devtools)
 if( !require("rClr") )
 {
