@@ -9,6 +9,16 @@ namespace RHost
 {
     public static class FdkBars
     {
+     
+      
+        #region Bars 
+        
+        private static Bar[] CalculateBarsForSymbolArray(
+            string symbol, PriceType priceType, DateTime startTime, BarPeriod barPeriod, int barCount)
+        {
+            return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, -barCount).ToArray();
+        }
+
         public static string ComputeBars(string symbol, string priceTypeStr, string barPeriodStr)
         {
             var barPeriodField = typeof(BarPeriod).GetField(barPeriodStr);
@@ -19,28 +29,11 @@ namespace RHost
             PriceType priceType;
             if (!PriceType.TryParse(priceTypeStr, out priceType))
                 return string.Empty;
-            
+
             var barsData = CalculateBarsForSymbolArray(symbol, priceType, DateTime.Now, barPeriod, 1000000);
             var bars = FdkVars.RegisterVariable(barsData, "bars");
             return bars;
         }
-        public static string ComputeQuoteHistory(string symbol, string startTimeStr, string endTimeStr, int depth)
-        {
-            DateTime startTime;
-            if (!DateTime.TryParse(startTimeStr, out startTime))
-            {
-                return String.Empty;
-            }
-            DateTime endTime;
-            if (!DateTime.TryParse(endTimeStr, out endTime))
-            {
-                return String.Empty;
-            }
-            var barsData = CalculateHistoryForSymbolArray(symbol, startTime, endTime, depth);
-            var bars = FdkVars.RegisterVariable(barsData, "bars");
-            return bars;
-        }
-
         public static double[] BarHighs(string bars)
         {
             var barData = FdkVars.GetValue<Bar[]>(bars);
@@ -66,17 +59,7 @@ namespace RHost
 
             return barData.Select(b => b.Open).ToArray();
         }
-        private static Bar[] CalculateBarsForSymbolArray(
-            string symbol, PriceType priceType, DateTime startTime, BarPeriod barPeriod, int barCount)
-        {
-            return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, -barCount).ToArray();
-        }
-
-        private static Quote[] CalculateHistoryForSymbolArray(string symbol, DateTime startTime, DateTime endTime, int depth)
-        {
-            return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetQuotes(symbol,startTime,endTime, depth);
-        }
-
+        #endregion
 
         public static string GetTimeStamp()
         {

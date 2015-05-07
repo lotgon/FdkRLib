@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="FdkBars.cs" />
     <Compile Include="FdkHelper.cs" />
+    <Compile Include="FdkQuotes.cs" />
     <Compile Include="FdkVars.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
