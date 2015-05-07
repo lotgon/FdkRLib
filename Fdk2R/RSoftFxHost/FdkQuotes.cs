@@ -4,9 +4,9 @@ using SoftFX.Extended;
 
 namespace RHost
 {
-    public static class FdkQuotes
+    public class FdkQuotes
     {
-        public static string ComputeQuoteHistory(string symbol, string startTimeStr, string endTimeStr, int depth)
+        public static string ComputeQuoteHistory(string symbol, string startTimeStr, string endTimeStr, double depthDbl)
         {
             DateTime startTime;
             if (!DateTime.TryParse(startTimeStr, out startTime))
@@ -18,6 +18,8 @@ namespace RHost
             {
                 return String.Empty;
             }
+            int depth = (int)depthDbl;
+
             var quotesData = CalculateHistoryForSymbolArray(symbol, startTime, endTime, depth);
             var quoteHistory = FdkVars.RegisterVariable(quotesData, "quotes");
             return quoteHistory;
