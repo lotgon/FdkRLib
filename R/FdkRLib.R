@@ -49,6 +49,13 @@ BarOpens <- function(barsVar) {
   clrCallStatic('RHost.FdkBars', 'BarOpens', barsVar)
 }
 
+#' Gets the bars' closed as requested
+#' 
+#' @param barsVar RHost variable that stores bar array
+BarCloses <- function(barsVar) {
+  clrCallStatic('RHost.FdkBars', 'BarCloses', barsVar)
+}
+
 #' Gets the bars' volume as requested
 #' 
 #' @param barsVar RHost variable that stores bar array
@@ -81,10 +88,10 @@ ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
   highs <- BarHighs(symbolBars)
   lows <- BarLows(symbolBars)
   opens <- BarOpens(symbolBars)
+  closes <- BarCloses(symbolBars)
   volumes <- BarVolumes(symbolBars)
-  splitData <-GetBarsIntervals(symbolBars)
   UnregisterVar(symbolBars)
-  df = data.frame(highs, lows, opens, volumes, splitData)
+  df = data.frame(highs, lows, opens, closes, volumes, splitData)
 }
 
 # ****

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using SharedFdkFunctionality;
 using SoftFX.Extended;
@@ -67,30 +68,13 @@ namespace RHost
             return barData.Select(b => b.Open).ToArray();
         }
 
-        public static string[] SplitIterations<T>(IList<T> items, int splitIntervals)
-        {
-            var list = new List<string>();
-            for (var i = 0; i < splitIntervals; i++)
-            {
-                list.Add(i.ToString());
-            }
-            var resultList = new List<string>();
-            var count = items.Count;
-            for (var pos = 0; pos<count;pos++)
-            {
-                var index = pos*splitIntervals / count;
-                resultList.Add(list[index]);
-                pos++;
-            }
-            return resultList.ToArray();
-        }
-
-        public static string[] GetBarsIntervals(string bars)
+        public static double[] BarCloses(string bars)
         {
             var barData = FdkVars.GetValue<Bar[]>(bars);
-            return SplitIterations(barData, SplitIntervals);
-        }
 
+            return barData.Select(b => b.Close).ToArray();
+        }
+        
         #endregion
 
         public static string GetTimeStamp()

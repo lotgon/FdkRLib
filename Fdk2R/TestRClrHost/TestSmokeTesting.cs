@@ -16,19 +16,22 @@ namespace TestRClrHost
         [Test]
         public void TestApp()
         {
-            Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
+            //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
             var bars = FdkBars.ComputeBars("EURUSD", "Ask", "M1");
             var highs = FdkBars.BarHighs(bars);
-            var lows = FdkBars.BarHighs(bars);
-            var opens = FdkBars.BarHighs(bars);
-            var volumes = FdkBars.BarHighs(bars);
+            var lows = FdkBars.BarLows(bars);
+            var opens = FdkBars.BarOpens(bars);
+            var volumes = FdkBars.BarVolumes(bars);
+            var closes = FdkBars.BarCloses(bars);
             FdkVars.Unregister(bars);
         }
 
         [Test]
         public void TestQuotes()
         {
-            Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
+            //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
             var time = DateTime.Now;
             var prevHour = time.AddDays(-1);
             var quotes = FdkQuotes.ComputeQuoteHistory("EURUSD", prevHour.ToString(), time.ToString(), 3);
