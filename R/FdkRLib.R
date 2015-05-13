@@ -91,7 +91,7 @@ ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
   closes <- BarCloses(symbolBars)
   volumes <- BarVolumes(symbolBars)
   UnregisterVar(symbolBars)
-  df = data.frame(highs, lows, opens, closes, volumes, splitData)
+  data.frame(highs, lows, opens, closes, volumes, splitData)
 }
 
 # ****
