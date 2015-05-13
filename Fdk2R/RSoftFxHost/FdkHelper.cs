@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System.IO;
 using System.Windows.Forms;
 using SharedFdkFunctionality;
 
@@ -32,7 +32,10 @@ namespace RHost
             Wrapper = wrapper;
             FdkBars.Wrapper = Wrapper;
 
-            if (wrapper.Connect(path))
+            var localPathInfo = new DirectoryInfo(path);
+            var localPath = localPathInfo.FullName;
+
+            if (wrapper.Connect(localPath))
             {
                 return 0;
             }

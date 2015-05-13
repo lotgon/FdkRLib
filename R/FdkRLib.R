@@ -15,7 +15,7 @@ ttInit <- function() {
 #' @param login Account number you login
 #' @param password Password for the account you login
 #' @export
-ttConnect <- function(address = "", login= "", password= "", path= "", fdkPath = "") {
+ttConnect <- function(address = "", login= "", password= "", fdkPath = "") {
   ttInit()
   clrCallStatic('RHost.FdkHelper', 'ConnectToFdk', address, login, password, fdkPath)
 }
