@@ -24,6 +24,8 @@ namespace TestRClrHost
             var opens = FdkBars.BarOpens(bars);
             var volumes = FdkBars.BarVolumes(bars);
             var closes = FdkBars.BarCloses(bars);
+            var froms = FdkBars.BarFroms(bars);
+            var tos = FdkBars.BarTos(bars);
             FdkVars.Unregister(bars);
         }
 

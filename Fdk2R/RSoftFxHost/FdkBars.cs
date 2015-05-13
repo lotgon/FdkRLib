@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using SharedFdkFunctionality;
 using SoftFX.Extended;
@@ -74,6 +75,18 @@ namespace RHost
 
             return barData.Select(b => b.Close).ToArray();
         }
+        public static string[] BarFroms(string bars)
+        {
+            var barData = FdkVars.GetValue<Bar[]>(bars);
+
+            return barData.Select(b => b.From.ToString(CultureInfo.InvariantCulture)).ToArray();
+        }
+        public static string[] BarTos(string bars)
+        {
+            var barData = FdkVars.GetValue<Bar[]>(bars);
+
+            return barData.Select(b => b.To.ToString(CultureInfo.InvariantCulture)).ToArray();
+        }
         
         #endregion
 
@@ -84,5 +97,6 @@ namespace RHost
         }
 
         public static FdkWrapper Wrapper { get; set; }
+
     }
 }
