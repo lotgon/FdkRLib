@@ -1,6 +1,5 @@
 using System;
-using System.Diagnostics;
-using System.Diagnostics.SymbolStore;
+using System.Collections.Generic;
 using System.Linq;
 using SharedFdkFunctionality;
 using SoftFX.Extended;
@@ -9,7 +8,12 @@ namespace RHost
 {
     public static class FdkBars
     {
-     
+        public static int SplitIntervals { get; set; }
+
+        static FdkBars()
+        {
+            SplitIntervals = 10;
+        }
       
         #region Bars 
         
@@ -34,18 +38,21 @@ namespace RHost
             var bars = FdkVars.RegisterVariable(barsData, "bars");
             return bars;
         }
+       
         public static double[] BarHighs(string bars)
         {
             var barData = FdkVars.GetValue<Bar[]>(bars);
 
             return barData.Select(b => b.High).ToArray();
         }
+        
         public static double[] BarLows(string bars)
         {
             var barData = FdkVars.GetValue<Bar[]>(bars);
 
             return barData.Select(b => b.Low).ToArray();
         }
+        
         public static double[] BarVolumes(string bars)
         {
             var barData = FdkVars.GetValue<Bar[]>(bars);
@@ -59,6 +66,31 @@ namespace RHost
 
             return barData.Select(b => b.Open).ToArray();
         }
+
+        public static string[] SplitIterations<T>(IList<T> items, int splitIntervals)
+        {
+            var list = new List<string>();
+            for (var i = 0; i < splitIntervals; i++)
+            {
+                list.Add(i.ToString());
+            }
+            var resultList = new List<string>();
+            var count = items.Count;
+            for (var pos = 0; pos<count;pos++)
+            {
+                var index = pos*splitIntervals / count;
+                resultList.Add(list[index]);
+                pos++;
+            }
+            return resultList.ToArray();
+        }
+
+        public static string[] GetBarsIntervals(string bars)
+        {
+            var barData = FdkVars.GetValue<Bar[]>(bars);
+            return SplitIterations(barData, SplitIntervals);
+        }
+
         #endregion
 
         public static string GetTimeStamp()

@@ -48,6 +48,7 @@ BarLows <- function(barsVar) {
 BarOpens <- function(barsVar) {
   clrCallStatic('RHost.FdkBars', 'BarOpens', barsVar)
 }
+
 #' Gets the bars' volume as requested
 #' 
 #' @param barsVar RHost variable that stores bar array
@@ -55,6 +56,12 @@ BarVolumes <- function(barsVar) {
   clrCallStatic('RHost.FdkBars', 'BarVolumes', barsVar)
 }
 
+#' Gets the bars' split intervals
+#' 
+#' @param barsVar RHost variable that stores bar array
+GetBarsIntervals <- function(barsVar) {
+  clrCallStatic('RHost.FdkBars', 'GetBarsIntervals', barsVar)
+}
 #' unregister a variable
 #' 
 #' @param varName .Net variable to be removed
@@ -75,8 +82,9 @@ ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
   lows <- BarLows(symbolBars)
   opens <- BarOpens(symbolBars)
   volumes <- BarVolumes(symbolBars)
+  splitData <-GetBarsIntervals(symbolBars)
   UnregisterVar(symbolBars)
-  df = data.frame(highs, lows, opens, volumes)       
+  df = data.frame(highs, lows, opens, volumes, splitData)
 }
 
 # ****
@@ -110,19 +118,19 @@ QuotesBid <- function(quotesVar) {
 QuotesCreatingTime <- function(quotesVar) {
   clrCallStatic('RHost.FdkQuotes', 'QuotesCreatingTime', quotesVar)
 }
-#' Gets the bars' ask as requested
+#' Gets the quotes' spread as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesSpread <- function(quotesVar) {
   clrCallStatic('RHost.FdkQuotes', 'QuotesSpread', quotesVar)
 }
-#' Gets the bars' ask as requested
+#' Gets the quotes' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesHasAsk <- function(quotesVar) {
   clrCallStatic('RHost.FdkQuotes', 'QuotesHasAsk', quotesVar)
 }
-#' Gets the bars' ask as requested
+#' Gets the quotes' bid as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesHasBid <- function(quotesVar) {
@@ -132,7 +140,7 @@ QuotesHasBid <- function(quotesVar) {
 #' Gets the quotes history
 #' 
 #' @param symbol Symbol looked
-#' @param priceTypeStr Ask
+#' @param priceTypeStr Ask or Bid
 #' @param barPeriodStr Values like: M1, H1
 #' @export
 
