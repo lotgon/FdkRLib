@@ -179,7 +179,6 @@ ttGetQuotes <- function(symbol,priceTypeStr, barPeriodStr, depth){
   createTime <- QuotesCreatingTime(symbolBars)
   hasAsk <- QuotesHasAsk(symbolBars)
   hasBid <- QuotesHasBid(symbolBars)
-  spread <- QuotesSpread(symbolBars)  
   UnregisterVar(symbolBars)
-  df = data.frame(ask, bid, createTime, hasAsk, hasBid, spread)       
+  df = data.frame(ask, bid, createTime, hasAsk, hasBid)       
 }
