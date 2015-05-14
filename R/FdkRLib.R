@@ -3,6 +3,11 @@
 #' @export 
 ttInit <- function() {
   library(rClr)
+
+  if (!require("jsonlite")) 
+    install.packages("jsonlite", repos="http://cran.rstudio.com/")
+  library(jsonlite)
+  
   fileName <-system.file("data","RHost.dll", package="FdkRLib")
   clrLoadAssembly(fileName)
 }

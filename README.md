@@ -1,5 +1,5 @@
 # FdkRLib
-Added the SoftFX R wrapper package over FDK (Financinal Development Kit)
+Added the SoftFX R wrapper package over FDK (Financial Development Kit)
 
 # How to install it?
 Look inside install.r file (you can copy/paste the content into your R environment).
