@@ -12,8 +12,6 @@ ttInit <- function() {
   clrLoadAssembly(fileName)
 }
 
-
-
 #' Connects to a TT server
 #' 
 #' @param address Url of the running server
@@ -181,4 +179,11 @@ ttGetQuotes <- function(symbol,priceTypeStr, barPeriodStr, depth){
   hasBid <- QuotesHasBid(symbolBars)
   UnregisterVar(symbolBars)
   df = data.frame(ask, bid, createTime, hasAsk, hasBid)       
+}
+
+#' Gets a proper formatted time
+#' 
+#' @export
+ttChooseTime <- function(){
+  clrCallStatic('RHost.FdkQuotes', 'ChooseTime')     
 }
