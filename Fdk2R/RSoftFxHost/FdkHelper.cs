@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using SharedFdkFunctionality;
+using SoftFX.Extended;
 
 namespace RHost
 {
@@ -15,6 +16,9 @@ namespace RHost
 
         public static int ConnectToFdk(string address, string login, string password, string path)
         {
+#if DEBUG
+            //Library.Path = @"C:\Users\ciprian.khlud\Documents\R\win-library\3.2\FdkRLib\data";
+#endif
             var addr = string.IsNullOrEmpty(address)
                 ? "tpdemo.fxopen.com"
                 : address;

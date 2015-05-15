@@ -1,6 +1,7 @@
 #region Uses
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using SoftFX.Extended;
@@ -63,7 +64,6 @@ namespace SharedFdkFunctionality
 
             var storagePath = Path.Combine(root, "Storage");
             Directory.CreateDirectory(storagePath);
-            var is64Bit = Environment.Is64BitOperatingSystem;
             var intPtrSize = IntPtr.Size;
             Storage = new DataFeedStorage(storagePath, StorageProvider.Ntfs, Feed, true);
         }
