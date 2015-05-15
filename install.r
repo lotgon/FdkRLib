@@ -5,15 +5,10 @@ installBinary <- function(fdkRLibPackage){
   download.file(fullUrl, fdkRLibPackage)
   install.packages(fdkRLibPackage, repos = NULL, type = "source")
   file.remove(fdkRLibPackage)
-  
 }
-
 
 installBinary("rClr_0.7-4.zip")
 library(rClr)
 
-install_github("SoftFx/FdkRLib")
+installBinary("FdkRLib_1.0.20150513.zip")
 library(FdkRLib)
-
-
-
