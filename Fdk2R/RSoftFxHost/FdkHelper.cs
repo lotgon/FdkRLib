@@ -23,15 +23,18 @@ namespace RHost
             var passwordString = string.IsNullOrEmpty(login)
                 ? "8mEx7zZ2"
                 : password;
-            var wrapper = new FdkWrapper()
+            if (Wrapper == null)
             {
-                Address = addr,
-                Login = loginStr,
-                Password = passwordString,
-                
-            }; 
-            Wrapper = wrapper;
-            FdkBars.Wrapper = Wrapper;
+                var wrapper = new FdkWrapper()
+                {
+                    Address = addr,
+                    Login = loginStr,
+                    Password = passwordString,
+
+                };
+                Wrapper = wrapper;
+                FdkBars.Wrapper = Wrapper;
+            }
 
             string localPath = string.Empty;
 
@@ -40,7 +43,7 @@ namespace RHost
                 var localPathInfo = new DirectoryInfo(path);
                 localPath = localPathInfo.FullName;
             }
-            if (wrapper.Connect(localPath))
+            if (Wrapper.Connect(localPath))
             {
                 return 0;
             }

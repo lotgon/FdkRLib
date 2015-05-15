@@ -95,11 +95,16 @@ namespace SharedFdkFunctionality
                 Feed = null;
             }
 
-			//if (null != Storage)
-			//{
-			//	Storage.Dispose();
-			//	Storage = null;
-			//}
+			if (null != Storage)
+			{
+				Storage.Dispose();
+				Storage = null;
+			}
+        }
+
+        public void Disconnect()
+        {
+            Dispose();
         }
     }
 }

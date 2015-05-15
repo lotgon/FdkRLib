@@ -1,7 +1,5 @@
 using System;
-using System.Globalization;
 using System.Linq;
-using RHost.Views;
 using SoftFX.Extended;
 
 namespace RHost
@@ -25,15 +23,6 @@ namespace RHost
             var quotesData = CalculateHistoryForSymbolArray(symbol, startTime, endTime, depth);
             var quoteHistory = FdkVars.RegisterVariable(quotesData, "quotes");
             return quoteHistory;
-        }
-
-        public static string ChooseTime()
-        {
-            DateTimeChooserForm form = new DateTimeChooserForm();
-            form.ShowDialog();
-            return !form.ViewModel.Accepted 
-                ? string.Empty
-                : form.ViewModel.ChosenTime.ToString(CultureInfo.InvariantCulture);
         }
 
         private static Quote[] CalculateHistoryForSymbolArray(string symbol, DateTime startTime, DateTime endTime, int depth)

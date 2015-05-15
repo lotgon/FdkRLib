@@ -13,6 +13,10 @@ namespace SharedFdkFunctionality
     {
         public bool Connect(string rootPath)
         {
+            if (IsConnected)
+            {
+                ConnectLogic.Disconnect();
+            }
             ConnectLogic = new FdkConnectLogic(Address, Login, Password)
             {
                 RootPath = rootPath

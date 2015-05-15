@@ -180,10 +180,3 @@ ttGetQuotes <- function(symbol,priceTypeStr, barPeriodStr, depth){
   UnregisterVar(symbolBars)
   df = data.frame(ask, bid, createTime, hasAsk, hasBid)       
 }
-
-#' Gets a proper formatted time
-#' 
-#' @export
-ttChooseTime <- function(){
-  clrCallStatic('RHost.FdkQuotes', 'ChooseTime')     
-}

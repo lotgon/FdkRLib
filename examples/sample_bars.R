@@ -1,5 +1,3 @@
-
-
 source("R/FdkRLib.R")
 
 library(FdkRLib)
