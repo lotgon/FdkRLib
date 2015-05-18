@@ -4,17 +4,9 @@
 \alias{ttConnect}
 \title{Connects to a TT server}
 \usage{
-ttConnect()
-
-ttConnect()
+ttConnect(address = "", login = "", password = "", fdkPath = "")
 }
 \arguments{
-\item{address}{Url of the running server}
-
-\item{login}{Account number you login}
-
-\item{password}{Password for the account you login}
-
 \item{address}{Url of the running server}
 
 \item{login}{Account number you login}
@@ -23,7 +15,5 @@ ttConnect()
 }
 \description{
 Connects to a TT server
-
-Disconnect from a TT server
 }
 

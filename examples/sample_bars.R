@@ -1,7 +1,7 @@
 source("R/FdkRLib.R")
 
 library(FdkRLib)
-ttConnect("", "", "")
+ttConnect()
 
 bars = ttGetBars("EURUSD", "Bid", "H1")
 
