@@ -9,4 +9,5 @@ boxplot(bars$highs)
 
 plot(highs, data = bars)
 
-quotes = ttGetQuotes("EURUSD", "2051-05-05", "2015-05-06", 1)
+quotes <- ttGetQuotes("EURUSD", "05/05/2015", "05/07/2015", 1)
+plot(quotes$ask, type="o")
