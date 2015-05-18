@@ -1,7 +1,7 @@
 Package: FdkRLib
 Type: Package
 Title: Soft FX integration of R with FDK
-Version: 1.0.20150513
+Version: 1.0.20150518
 Date: 2015-04-17
 Author: Ciprian Khlud (of SoftFX)
 Maintainer: Ciprian Khlud <ciprian.khlud@soft-fx.lv>
