@@ -56,6 +56,11 @@ namespace RHost
         }
 
         public static FdkWrapper Wrapper { get; set; }
+
+        public static void Disconnect()
+        {
+            Wrapper.Disconnect();
+        }
     }
 }
  

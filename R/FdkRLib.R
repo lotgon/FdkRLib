@@ -23,6 +23,17 @@ ttConnect <- function(address = "", login= "", password= "", fdkPath = "") {
   clrCallStatic('RHost.FdkHelper', 'ConnectToFdk', address, login, password, fdkPath)
 }
 
+#' Disconnect from a TT server
+#' 
+#' @param address Url of the running server
+#' @param login Account number you login
+#' @param password Password for the account you login
+#' @export
+ttConnect <- function() {
+  ttInit()
+  clrCallStatic('RHost.FdkHelper', 'Disconnect')
+}
+
 #' Gets the bars as requested
 #' 
 #' @param symbol Symbol looked
