@@ -197,6 +197,6 @@ ttGetQuotes <- function(symbol,priceTypeStr, barPeriodStr, depth){
 #' @param currentTime .Net invariant time 
 #' @export
 ttGetEpochFromText <- function(currentTime) {
-  clrCallStatic('RHost.FdkQuotes', 'GetCreatedEpochFromText', currentTime)
+  clrCallStatic('RHost.FdkHelper', 'GetCreatedEpochFromText', currentTime)
 }
 
