@@ -38,7 +38,9 @@ namespace TestRClrHost
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", @"c:\FdkCaches\Cache1"));
             var time = DateTime.Now;
             var prevHour = time.AddDays(-1);
-            var quotes = FdkQuotes.ComputeQuoteHistory("EURUSD", prevHour.ToString(), time.ToString(), 3);
+            var prevHourDouble = FdkHelper.GetCreatedEpoch(prevHour);
+            var timeDouble = FdkHelper.GetCreatedEpoch(time);
+            var quotes = FdkQuotes.ComputeQuoteHistory("EURUSD", prevHourDouble, timeDouble, 3);
             var asks = FdkQuotes.QuotesAsk(quotes);
             var bids = FdkQuotes.QuotesBid(quotes);
             var opens = FdkQuotes.QuotesCreatingTime(quotes);
@@ -57,7 +59,10 @@ namespace TestRClrHost
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", @"c:\FdkCaches\Cache1"));
             var time = DateTime.Now;
             var prevHour = time.AddDays(-1);
-            var quotes = FdkQuotes.ComputeQuoteHistory("EURUSD", prevHour.ToString(), time.ToString(), 3);
+
+            var prevHourDouble = FdkHelper.GetCreatedEpoch(prevHour);
+            var timeDouble = FdkHelper.GetCreatedEpoch(time);
+            var quotes = FdkQuotes.ComputeQuoteHistory("EURUSD", prevHourDouble, timeDouble, 3);
             var asks = FdkQuotes.QuotesAsk(quotes);
             var bids = FdkQuotes.QuotesBid(quotes);
             var opens = FdkQuotes.QuotesCreatingTime(quotes);
@@ -66,7 +71,7 @@ namespace TestRClrHost
             var spread = FdkQuotes.QuotesSpread(quotes);
             FdkVars.Unregister(quotes);
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", @"c:\FdkCaches\Cache1"));
-            quotes = FdkQuotes.ComputeQuoteHistory("EURUSD", prevHour.ToString(), time.ToString(), 3);
+            quotes = FdkQuotes.ComputeQuoteHistory("EURUSD", prevHourDouble, timeDouble, 3);
 
             hasBid = FdkQuotes.QuotesHasBid(quotes);
             FdkVars.Unregister(quotes);

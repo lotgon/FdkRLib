@@ -9,5 +9,8 @@ boxplot(bars$highs)
 
 plot(highs, data = bars)
 
-quotes <- ttGetQuotes("EURUSD", "05/05/2015", "05/07/2015", 1)
+startTime <- ttGetEpochFromText("05/05/2015")
+endTime <- ttGetEpochFromText("05/07/2015")
+
+quotes <- ttGetQuotes("EURUSD", startTime, endTime, 1)
 plot(quotes$ask, type="o")

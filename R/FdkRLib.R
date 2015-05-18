@@ -191,3 +191,12 @@ ttGetQuotes <- function(symbol,priceTypeStr, barPeriodStr, depth){
   UnregisterVar(symbolBars)
   df = data.frame(ask, bid, createTime, hasAsk, hasBid)       
 }
+
+#' Gets the epoch (double) time from a .Net date
+#' 
+#' @param currentTime .Net invariant time 
+#' @export
+ttGetEpochFromText <- function(currentTime) {
+  clrCallStatic('RHost.FdkQuotes', 'GetCreatedEpochFromText', currentTime)
+}
+

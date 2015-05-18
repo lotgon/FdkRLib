@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using SharedFdkFunctionality;
@@ -61,6 +62,28 @@ namespace RHost
         {
             Wrapper.Disconnect();
         }
+
+        public static Double GetCreatedEpoch(DateTime created)
+        {
+            DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime();
+            TimeSpan span = (created.ToLocalTime() - epoch);
+            return span.TotalSeconds;
+        }
+
+        public static Double GetCreatedEpochFromText(string createdTimeStr)
+        {
+            var created = DateTime.Parse(createdTimeStr, CultureInfo.InvariantCulture);
+            return GetCreatedEpoch(created);
+        }
+
+
+        public static DateTime GetCreatedEpoch(Double value)
+        {
+            DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime();
+            var created = epoch.AddSeconds(value);
+            return created;
+        }
+
     }
 }
  
