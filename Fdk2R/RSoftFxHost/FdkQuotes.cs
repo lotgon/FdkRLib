@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using SoftFX.Extended;
 
@@ -35,11 +36,12 @@ namespace RHost
 
             return barData.Select(b => b.Bid).ToArray();
         }
-        public static string[] QuotesCreatingTime(string bars)
+        public static double[] QuotesCreatingTime(string bars)
         {
             var barData = FdkVars.GetValue<Quote[]>(bars);
 
-            return barData.Select(b => b.CreatingTime.ToString()).ToArray();
+            var timesAsEpoch = barData.Select(b =>FdkHelper.GetCreatedEpochFromText(b.CreatingTime.ToString(CultureInfo.InvariantCulture))).ToArray();
+            return timesAsEpoch;
         }
         public static double[] QuotesSpread(string bars)
         {
