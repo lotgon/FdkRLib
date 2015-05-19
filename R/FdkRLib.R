@@ -125,16 +125,14 @@ ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
 }
 
 # ****
-
 #' Gets the bars as requested
 #' 
 #' @param symbol Symbol looked
-#' @param priceTypeStr Ask
-#' @param barPeriodStr Values like: M1, H1
-#' @param barPeriodStr Values like: M1, H1
-#' @export
-ComputeQuoteHistory <- function(symbol,priceTypeStr, barPeriodStr, depth) {
-  clrCallStatic('RHost.FdkQuotes', 'ComputeQuoteHistory', symbol,priceTypeStr, barPeriodStr, depth)
+#' @param startTimeEpoch Starting time. Use ttGetEpochFromText if you want to take from text a valid date.
+#' @param endTimeEpoch Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
+#' @param depth Quotes depth
+ComputeQuoteHistory <- function(symbol, startTimeEpoch, endTimeEpoch, depth) {
+  clrCallStatic('RHost.FdkQuotes', 'ComputeQuoteHistory', symbol, startTimeEpoch, endTimeEpoch, depth)
 }
 
 #' Gets the bars' ask as requested
@@ -177,12 +175,13 @@ QuotesHasBid <- function(quotesVar) {
 #' Gets the quotes history
 #' 
 #' @param symbol Symbol looked
-#' @param priceTypeStr Ask or Bid
-#' @param barPeriodStr Values like: M1, H1
+#' @param startTimeEpoch Starting time. Use ttGetEpochFromText if you want to take from text a valid date.
+#' @param endTimeEpoch Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
+#' @param depth Quotes depth
 #' @export
 
-ttGetQuotes <- function(symbol,priceTypeStr, barPeriodStr, depth){
-  symbolBars <- ComputeQuoteHistory(symbol,priceTypeStr, barPeriodStr, depth)
+ttGetQuotes <- function(symbol,startTimeEpoch, endTimeEpoch, depth){
+  symbolBars <- ComputeQuoteHistory(symbol,startTimeEpoch, endTimeEpoch, depth)
   ask <- QuotesAsk(symbolBars)
   bid <- QuotesBid(symbolBars)
   createTime <- QuotesCreatingTime(symbolBars)
