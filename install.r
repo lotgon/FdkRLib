@@ -1,10 +1,10 @@
 installBinary <- function(fdkRLibPackage){
   basicUrl = "https://github.com/SoftFx/FdkRLib/raw/master/dist/"
   fullUrl = paste(basicUrl, fdkRLibPackage, sep = "")
-  
-  download.file(fullUrl, fdkRLibPackage)
-  install.packages(fdkRLibPackage, repos = NULL, type = "source")
-  file.remove(fdkRLibPackage)
+  localTempFile <-tempfile()
+  download.file(fullUrl, localTempFile)
+  install.packages(localTempFile, repos = NULL, type = "source")
+  file.remove(localTempFile)
 }
 
 installBinary("rClr_0.7-4.zip")
