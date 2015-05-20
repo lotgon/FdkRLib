@@ -1,9 +1,0 @@
-﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:Boolean x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=37F9921206C04B8CB36432473CB17D6D/@KeyIndexDefined">True</s:Boolean>
-	<s:Int64 x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=37F9921206C04B8CB36432473CB17D6D/GroupingIndex/@EntryValue">4</s:Int64>
-	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=37F9921206C04B8CB36432473CB17D6D/Name/@EntryValue">TestApp</s:String>
-	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestSessionPersistentData/=37F9921206C04B8CB36432473CB17D6D/XmlSerializedElements/@EntryValue">&lt;Session&gt;&lt;e Id="TestRClrHost.TestSmokeTesting.TestApp" Project="E41339CA-51E0-4AC6-894B-04DD113741BA" Provider="nUnit" /&gt;&lt;e Id="TestRClrHost.TestSmokeTesting" Project="E41339CA-51E0-4AC6-894B-04DD113741BA" Provider="nUnit" /&gt;&lt;e Id="TestRClrHost.TestSmokeTesting.ConnectToFdk" Project="E41339CA-51E0-4AC6-894B-04DD113741BA" Provider="nUnit" /&gt;&lt;e Id="TestRClrHost.TestSmokeTesting.TestQuotes" Project="E41339CA-51E0-4AC6-894B-04DD113741BA" Provider="nUnit" /&gt;&lt;e Id="TestRClrHost.TestSmokeTesting.TestDuplicateConnectError" Project="E41339CA-51E0-4AC6-894B-04DD113741BA" Provider="nUnit" /&gt;&lt;/Session&gt;</s:String>
-	
-	
-	
-	</wpf:ResourceDictionary>
