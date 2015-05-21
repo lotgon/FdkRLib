@@ -81,7 +81,7 @@ ComputeGetPairBarsRange <- function(symbol, barPeriodStr, startTimeEpoch, endTim
 #' @param barPeriodStr Values like: M1, H1
 #' @param startTimeEpoch Epoch time
 #' @export
-ComputeGetQuotesInfo <- function(symbol, depth) {
+ttGetQuotesInfo <- function(symbol, depth) {
   clrCallStatic('RHost.FdkBars', 'ComputeGetQuotesInfo', symbol, depth)
 }
 
@@ -91,7 +91,7 @@ ComputeGetQuotesInfo <- function(symbol, depth) {
 #' @param priceTypeStr Ask or bid
 #' @param barPeriodStr Values like: M1, H1
 #' @export
-ComputeGetBarsInfo <- function(symbol, priceTypeStr, barPeriodStr) {
+ttGetBarsInfo <- function(symbol, priceTypeStr, barPeriodStr) {
   clrCallStatic('RHost.FdkBars', 'ComputeGetBarsInfo', symbol, priceTypeStr, barPeriodStr)
 }
 
