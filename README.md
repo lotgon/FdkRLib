@@ -17,8 +17,6 @@ You have sample code inside examples/sample_bars.r with various snippets of code
 A simple code sample code is the following:
 
 
-ttConnect("", "", "")
-
 quotes = ttGetQuotes("EURUSD", "2015-05-05", "2015-05-06", 1)
 
 bars = ttGetBars("EURUSD", "Bid", "H1")
