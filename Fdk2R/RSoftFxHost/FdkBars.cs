@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
 using System.Linq;
 using SharedFdkFunctionality;
 using SoftFX.Extended;
@@ -127,7 +125,7 @@ namespace RHost
             var bars = new[]
             {
                 FdkHelper.GetCreatedEpoch(barsData.AvailableFrom),
-                FdkHelper.GetCreatedEpoch(barsData.AvailableTo),
+                FdkHelper.GetCreatedEpoch(barsData.AvailableTo)
             };
             return bars;
         }
@@ -144,7 +142,7 @@ namespace RHost
             var bars = new[]
             {
                 FdkHelper.GetCreatedEpoch(barsData.AvailableFrom),
-                FdkHelper.GetCreatedEpoch(barsData.AvailableTo),
+                FdkHelper.GetCreatedEpoch(barsData.AvailableTo)
             };
             return bars;
         }

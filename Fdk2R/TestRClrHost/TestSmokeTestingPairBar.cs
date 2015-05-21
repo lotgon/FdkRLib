@@ -8,7 +8,7 @@ namespace TestRClrHost
     public class TestSmokeTestingPairBar
     {
         [Test]
-        public void TestBarsRange()
+        public void TestBarPairs()
         {
             //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
@@ -17,6 +17,7 @@ namespace TestRClrHost
 
             var timeDouble = FdkHelper.GetCreatedEpoch(time);
             var prevHourDouble = FdkHelper.GetCreatedEpoch(prevHour);
+
             var bars = FdkBars.ComputeGetPairBars("EURUSD", "M1", prevHourDouble);
             var askhighs = FdkBars.GetBarsAskHigh(bars);
             var asklows = FdkBars.GetBarsAskLow(bars);
@@ -34,7 +35,7 @@ namespace TestRClrHost
         }
 
         [Test]
-        public void TestBarsPairs()
+        public void TestBarsRange()
         {
             //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));

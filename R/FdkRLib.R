@@ -273,6 +273,14 @@ GetBarsBidVolume <- function(barsPairVar) {
   clrCallStatic('RHost.FdkBars', 'GetBarsBidVolume', barsPairVar)
 }
 
+#' Gets the bars' ask as requested
+#' 
+#' @param barCount Set a different bar count than the default (1 million)
+#' @export
+ttSetBarCount <- function(barCount) {
+  clrCallStatic('RHost.FdkBars', 'SetBarCount', barCount)
+}
+
 
 #' Gets the bars' low as requested
 #' 
