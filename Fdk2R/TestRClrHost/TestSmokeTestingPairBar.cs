@@ -18,8 +18,17 @@ namespace TestRClrHost
             var timeDouble = FdkHelper.GetCreatedEpoch(time);
             var prevHourDouble = FdkHelper.GetCreatedEpoch(prevHour);
             var bars = FdkBars.ComputeGetPairBars("EURUSD", "M1", prevHourDouble);
-            var highs = FdkBars.GetBarsAskHigh(bars);
-            var lows = FdkBars.GetBarsAskLow(bars);
+            var askhighs = FdkBars.GetBarsAskHigh(bars);
+            var asklows = FdkBars.GetBarsAskLow(bars);
+            var askopen = FdkBars.GetBarsAskOpen(bars);
+            var askClose = FdkBars.GetBarsAskClose(bars);
+            var askVolume = FdkBars.GetBarsAskVolume(bars);
+
+            var bidhighs = FdkBars.GetBarsBidHigh(bars);
+            var bidlows = FdkBars.GetBarsBidLow(bars);
+            var bidOpen = FdkBars.GetBarsBidOpen(bars);
+            var bidClose = FdkBars.GetBarsBidClose(bars);
+            var bidVolume = FdkBars.GetBarsBidVolume(bars);
             
             FdkVars.Unregister(bars);
         }

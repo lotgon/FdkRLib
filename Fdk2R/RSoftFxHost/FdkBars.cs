@@ -121,23 +121,31 @@ namespace RHost
             return bars;
         }
 
-        public static string ComputeGetQuotesInfo(string symbol, int depth)
+        public static double[] ComputeGetQuotesInfo(string symbol, int depth)
         {
             var barsData = GetQuotesInfo(symbol, depth);
-            var bars = FdkVars.RegisterVariable(barsData, "barPairs");
+            var bars = new[]
+            {
+                FdkHelper.GetCreatedEpoch(barsData.AvailableFrom),
+                FdkHelper.GetCreatedEpoch(barsData.AvailableTo),
+            };
             return bars;
         }
 
-        public static string ComputeGetBarsInfo(string symbol, string priceTypeStr, string barPeriodStr)
+        public static double[] ComputeGetBarsInfo(string symbol, string priceTypeStr, string barPeriodStr)
         {
             var barPeriod = GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
-                return string.Empty;
+                return new double[0];
             var priceType = ParseEnumStr<PriceType>(priceTypeStr);
             if (priceType == null)
-                return string.Empty;
+                return new double[0];
             var barsData = GetBarsInfo(symbol, priceType.Value, barPeriod);
-            var bars = FdkVars.RegisterVariable(barsData, "barPairs");
+            var bars = new[]
+            {
+                FdkHelper.GetCreatedEpoch(barsData.AvailableFrom),
+                FdkHelper.GetCreatedEpoch(barsData.AvailableTo),
+            };
             return bars;
         }
 
@@ -213,23 +221,23 @@ namespace RHost
 
         private static double[] GetBarsHigh(IEnumerable<Bar> barData)
         {
-            return barData.Select(b => b.High).ToArray();
+            return barData.Select(b => b== null? 0.0:b.High).ToArray();
         }
         private static double[] GetBarsLow(IEnumerable<Bar> barData)
         {
-            return barData.Select(b => b.Low).ToArray();
+            return barData.Select(b => b == null ? 0.0 : b.Low).ToArray();
         }
         private static double[] GetBarsVolume(IEnumerable<Bar> barData)
         {
-            return barData.Select(b => b.Volume).ToArray();
+            return barData.Select(b => b == null ? 0.0 : b.Volume).ToArray();
         }
         private static double[] GetBarsOpen(IEnumerable<Bar> barData)
         {
-            return barData.Select(b => b.Open).ToArray();
+            return barData.Select(b => b == null ? 0.0 : b.Open).ToArray();
         }
         private static double[] GetBarsClose(IEnumerable<Bar> barData)
         {
-            return barData.Select(b => b.Close).ToArray();
+            return barData.Select(b => b == null ? 0.0 : b.Close).ToArray();
         }
         private static double[] GetBarsFrom(Bar[] barData)
         {

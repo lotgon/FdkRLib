@@ -13,8 +13,6 @@ namespace TestRClrHost
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
             
             var bars = FdkBars.ComputeGetQuotesInfo("EURUSD", 3);
-            
-            FdkVars.Unregister(bars);
         }
 
         [Test]
@@ -23,8 +21,6 @@ namespace TestRClrHost
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
 
             var bars = FdkBars.ComputeGetBarsInfo("EURUSD", "Ask", "M1");
-
-            FdkVars.Unregister(bars);
         }
 
     }
