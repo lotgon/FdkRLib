@@ -30,6 +30,13 @@ ttConnect <- function(address = "", login= "", password= "", fdkPath = "") {
 #' @param password Password for the account you login
 #' @export
 ttDisconnect <- function() {
-  ttInit()
   clrCallStatic('RHost.FdkHelper', 'Disconnect')
+}
+
+#' Displays a DateTime
+#' 
+#' @param dateToShow An R datetime
+#' @export
+ttDisplayDate <- function(dateToShow) {
+  clrCallStatic('RHost.FdkHelper', 'DisplayDate', dateToShow)
 }
