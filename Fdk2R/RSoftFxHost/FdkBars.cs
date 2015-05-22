@@ -90,7 +90,7 @@ namespace RHost
             return bars;
         }
 
-        public static string ComputeBarsRangeTime(string symbol, string priceTypeStr, string barPeriodStr, double endTimeEpoch)
+        public static string ComputeBarsRangeTime(string symbol, string priceTypeStr, string barPeriodStr, DateTime endTime)
         {
             var barPeriod = GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
@@ -100,49 +100,46 @@ namespace RHost
             if (priceType == null)
                 return string.Empty;
 
-            var endTime = FdkHelper.GetCreatedEpoch(endTimeEpoch);
             var barsData = CalculateBarsForSymbolArrayRangeTime(symbol, priceType.Value, DateTime.Now, barPeriod, endTime);
             var bars = FdkVars.RegisterVariable(barsData, "bars");
             return bars;
         }
 
 
-        public static string ComputeGetPairBars(string symbol, string barPeriodStr, double startTimeEpoch)
+        public static string ComputeGetPairBars(string symbol, string barPeriodStr, DateTime startTime)
         {
             var barPeriod = GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
                 return string.Empty;
-            var startTime = FdkHelper.GetCreatedEpoch(startTimeEpoch);
-
             var barsData = GetPairBarsSymbolArray(symbol, barPeriod, startTime, BarCount);
             var bars = FdkVars.RegisterVariable(barsData, "barPairs");
             return bars;
         }
 
-        public static double[] ComputeGetQuotesInfo(string symbol, int depth)
+        public static DateTime[] ComputeGetQuotesInfo(string symbol, int depth)
         {
             var barsData = GetQuotesInfo(symbol, depth);
             var bars = new[]
             {
-                FdkHelper.GetCreatedEpoch(barsData.AvailableFrom),
-                FdkHelper.GetCreatedEpoch(barsData.AvailableTo)
+                barsData.AvailableFrom,
+                barsData.AvailableTo
             };
             return bars;
         }
 
-        public static double[] ComputeGetBarsInfo(string symbol, string priceTypeStr, string barPeriodStr)
+        public static DateTime[] ComputeGetBarsInfo(string symbol, string priceTypeStr, string barPeriodStr)
         {
             var barPeriod = GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
-                return new double[0];
+                return new DateTime[0];
             var priceType = ParseEnumStr<PriceType>(priceTypeStr);
             if (priceType == null)
-                return new double[0];
+                return new DateTime[0];
             var barsData = GetBarsInfo(symbol, priceType.Value, barPeriod);
             var bars = new[]
             {
-                FdkHelper.GetCreatedEpoch(barsData.AvailableFrom),
-                FdkHelper.GetCreatedEpoch(barsData.AvailableTo)
+                barsData.AvailableFrom,
+                barsData.AvailableTo
             };
             return bars;
         }

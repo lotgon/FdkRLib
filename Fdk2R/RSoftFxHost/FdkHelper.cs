@@ -76,6 +76,11 @@ namespace RHost
             return GetCreatedEpoch(created);
         }
 
+        public static void DisplayDate(DateTime time)
+        {
+            MessageBox.Show(time.ToString());
+        }
+
 
         public static DateTime GetCreatedEpoch(Double value)
         {

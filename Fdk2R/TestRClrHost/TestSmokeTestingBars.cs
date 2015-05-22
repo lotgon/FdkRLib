@@ -31,8 +31,7 @@ namespace TestRClrHost
             var time = DateTime.Now;
             var prevHour = time.AddDays(-1);
 
-            var prevHourDouble = FdkHelper.GetCreatedEpoch(prevHour);
-            var bars = FdkBars.ComputeBarsRangeTime("EURUSD", "Ask", "M1", prevHourDouble);
+            var bars = FdkBars.ComputeBarsRangeTime("EURUSD", "Ask", "M1", prevHour);
             var highs = FdkBars.BarHighs(bars);
             var lows = FdkBars.BarLows(bars);
             var opens = FdkBars.BarOpens(bars);

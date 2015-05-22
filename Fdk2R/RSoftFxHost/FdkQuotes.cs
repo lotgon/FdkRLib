@@ -7,11 +7,8 @@ namespace RHost
 {
     public class FdkQuotes
     {
-        public static string ComputeQuoteHistory(string symbol, double startTimeStr, double endTimeStr, double depthDbl)
-        {
-            DateTime startTime = FdkHelper.GetCreatedEpoch(startTimeStr);
-            DateTime endTime = FdkHelper.GetCreatedEpoch(endTimeStr);
-            
+        public static string ComputeQuoteHistory(string symbol, DateTime startTime, DateTime endTime, double depthDbl)
+        {   
             int depth = (int)depthDbl;
 
             var quotesData = CalculateHistoryForSymbolArray(symbol, startTime, endTime, depth);
