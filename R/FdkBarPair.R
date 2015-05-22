@@ -2,12 +2,13 @@
 #' Gets the bars' low as requested
 #' 
 #' @param symbol Symbol looked
-#' @param priceTypeStr Ask
 #' @param barPeriodStr Values like: M1, H1
+#' @param startTimeEpoch Epoch time
+#' @export
 #' @export
 
-ttGetBarPairs <- function(symbol,priceTypeStr, barPeriodStr){
-  bars = ComputeGetPairBars(symbol, priceTypeStr, barPeriodStr);
+ttGetBarPairs <- function(symbol,barPeriodStr, startTimeEpoch){
+  bars = ComputeGetPairBars(symbol, barPeriodStr, startTimeEpoch);
   
   askhighs = GetBarsAskHigh(bars);
   asklows = GetBarsAskLow(bars);
