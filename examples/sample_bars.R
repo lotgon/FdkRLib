@@ -9,7 +9,12 @@ boxplot(bars$highs)
 plot(highs, data = bars)
 
 endTime <- as.POSIXlt(Sys.time())
-startTime <- strptime("20/2/15 11:16:16.683", "%d/%m/%y %H:%M:%OS")
+startTime <- strptime("20/3/2 11:16:16.683", "%d/%m/%y %H:%M:%OS")
 
-quotes <- ttGetQuotes("EURUSD", now, endTime, 1)
+st1 <- as.POSIXct(startTime)
+et1 <- as.POSIXct(endTime)
+
+quotes <- ttGetQuotes("EURUSD", st1, et1, 1)
 plot(quotes$ask, type="o")
+
+ttGetBarPairs()

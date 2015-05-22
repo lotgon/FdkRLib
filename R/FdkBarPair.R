@@ -5,7 +5,6 @@
 #' @param barPeriodStr Values like: M1, H1
 #' @param startTimeEpoch Epoch time
 #' @export
-#' @export
 
 ttGetBarPairs <- function(symbol,barPeriodStr, startTimeEpoch){
   bars = ComputeGetPairBars(symbol, barPeriodStr, startTimeEpoch);
