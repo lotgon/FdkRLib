@@ -1,4 +1,3 @@
-source("R/FdkRLib.R")
 
 library(FdkRLib)
 ttConnect()
@@ -9,8 +8,8 @@ boxplot(bars$highs)
 
 plot(highs, data = bars)
 
-startTime <- ttGetEpochFromText("05/05/2015")
-endTime <- ttGetEpochFromText("05/07/2015")
+endTime <- as.POSIXlt(Sys.time())
+startTime <- strptime("20/2/15 11:16:16.683", "%d/%m/%y %H:%M:%OS")
 
-quotes <- ttGetQuotes("EURUSD", startTime, endTime, 1)
+quotes <- ttGetQuotes("EURUSD", now, endTime, 1)
 plot(quotes$ask, type="o")

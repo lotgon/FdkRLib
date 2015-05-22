@@ -1,7 +1,9 @@
 installBinary <- function(fdkRLibPackage){
   basicUrl = "https://github.com/SoftFx/FdkRLib/raw/master/dist/"
   fullUrl = paste(basicUrl, fdkRLibPackage, sep = "")
-  localTempFile <-tempfile()
+  # this line fails on an clean machine with weird binary internal package error.
+  # localTempFile <-tempfile()
+  localTempFile <- fdkRLibPackage
   download.file(fullUrl, localTempFile)
   install.packages(localTempFile, repos = NULL, type = "source")
   file.remove(localTempFile)
