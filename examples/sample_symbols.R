@@ -1,0 +1,2 @@
+ttConnect()
+symbolData = ttGetSymbolData()
