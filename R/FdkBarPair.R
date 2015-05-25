@@ -11,15 +11,15 @@ ttGetBarPairs <- function(symbol,barPeriodStr, startTimeEpoch){
   
   askhighs = GetBarsAskHigh(bars);
   asklows = GetBarsAskLow(bars);
-  askopen = FdkBars.GetBarsAskOpen(bars);
-  askClose = FdkBars.GetBarsAskClose(bars);
-  askVolume = FdkBars.GetBarsAskVolume(bars);
+  askopen = GetBarsAskOpen(bars);
+  askClose = GetBarsAskClose(bars);
+  askVolume = GetBarsAskVolume(bars);
   
-  bidhighs = FdkBars.GetBarsBidHigh(bars);
-  bidlows = FdkBars.GetBarsBidLow(bars);
-  bidOpen = FdkBars.GetBarsBidOpen(bars);
-  bidClose = FdkBars.GetBarsBidClose(bars);
-  bidVolume = FdkBars.GetBarsBidVolume(bars);
+  bidhighs = GetBarsBidHigh(bars);
+  bidlows = GetBarsBidLow(bars);
+  bidOpen = GetBarsBidOpen(bars);
+  bidClose = GetBarsBidClose(bars);
+  bidVolume = GetBarsBidVolume(bars);
   
   UnregisterVar(symbolBars)
   data.frame(askhighs, asklows, askopen, askClose, askVolume, 
@@ -39,15 +39,15 @@ ttGetBarPairsRange <- function(symbol, barPeriodStr, startTimeEpoch, endTimeEpoc
   
   askhighs = GetBarsAskHigh(bars);
   asklows = GetBarsAskLow(bars);
-  askopen = FdkBars.GetBarsAskOpen(bars);
-  askClose = FdkBars.GetBarsAskClose(bars);
-  askVolume = FdkBars.GetBarsAskVolume(bars);
+  askopen = GetBarsAskOpen(bars);
+  askClose = GetBarsAskClose(bars);
+  askVolume = GetBarsAskVolume(bars);
   
-  bidhighs = FdkBars.GetBarsBidHigh(bars);
-  bidlows = FdkBars.GetBarsBidLow(bars);
-  bidOpen = FdkBars.GetBarsBidOpen(bars);
-  bidClose = FdkBars.GetBarsBidClose(bars);
-  bidVolume = FdkBars.GetBarsBidVolume(bars);
+  bidhighs = GetBarsBidHigh(bars);
+  bidlows = GetBarsBidLow(bars);
+  bidOpen = GetBarsBidOpen(bars);
+  bidClose = GetBarsBidClose(bars);
+  bidVolume = GetBarsBidVolume(bars);
   
   UnregisterVar(symbolBars)
   data.frame(askhighs, asklows, askopen, askClose, askVolume, 
@@ -79,68 +79,68 @@ ComputeGetPairBarsRange <- function(symbol, barPeriodStr, startTimeEpoch, endTim
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 GetBarsAskHigh <- function(barsPairVar) {
-  clrCallStatic('RHost.FdkBars', 'GetBarsAskHigh', barsPairVar)
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsAskHigh', barsPairVar)
 }
 
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 GetBarsAskLow <- function(barsPairVar) {
-  clrCallStatic('RHost.FdkBars', 'GetBarsAskLow', barsPairVar)
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsAskLow', barsPairVar)
 }
 
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 GetBarsAskOpen <- function(barsPairVar) {
-  clrCallStatic('RHost.FdkBars', 'GetBarsAskOpen', barsPairVar)
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsAskOpen', barsPairVar)
 }
 
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 GetBarsAskClose <- function(barsPairVar) {
-  clrCallStatic('RHost.FdkBars', 'GetBarsAskClose', barsPairVar)
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsAskClose', barsPairVar)
 }
 
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 GetBarsAskVolume <- function(barsPairVar) {
-  clrCallStatic('RHost.FdkBars', 'GetBarsAskVolume', barsPairVar)
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsAskVolume', barsPairVar)
 }
 
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 GetBarsBidHigh <- function(barsPairVar) {
-  clrCallStatic('RHost.FdkBars', 'GetBarsBidHigh', barsPairVar)
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsBidHigh', barsPairVar)
 }
 
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 GetBarsBidLow <- function(barsPairVar) {
-  clrCallStatic('RHost.FdkBars', 'GetBarsBidLow', barsPairVar)
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsBidLow', barsPairVar)
 }
 
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 GetBarsBidOpen <- function(barsPairVar) {
-  clrCallStatic('RHost.FdkBars', 'GetBarsBidOpen', barsPairVar)
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsBidOpen', barsPairVar)
 }
 
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 GetBarsBidClose <- function(barsPairVar) {
-  clrCallStatic('RHost.FdkBars', 'GetBarsBidClose', barsPairVar)
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsBidClose', barsPairVar)
 }
 
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 GetBarsBidVolume <- function(barsPairVar) {
-  clrCallStatic('RHost.FdkBars', 'GetBarsBidVolume', barsPairVar)
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsBidVolume', barsPairVar)
 }

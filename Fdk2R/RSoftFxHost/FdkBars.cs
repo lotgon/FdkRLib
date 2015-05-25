@@ -214,23 +214,27 @@ namespace RHost
         }
 
 
-        private static double[] GetBarsHigh(IEnumerable<Bar> barData)
+        public static double[] GetBarsHigh(IEnumerable<Bar> barData)
         {
             return barData.Select(b => b== null? 0.0:b.High).ToArray();
         }
-        private static double[] GetBarsLow(IEnumerable<Bar> barData)
+
+        public static double[] GetBarsLow(IEnumerable<Bar> barData)
         {
             return barData.Select(b => b == null ? 0.0 : b.Low).ToArray();
         }
-        private static double[] GetBarsVolume(IEnumerable<Bar> barData)
+
+        public static double[] GetBarsVolume(IEnumerable<Bar> barData)
         {
             return barData.Select(b => b == null ? 0.0 : b.Volume).ToArray();
         }
-        private static double[] GetBarsOpen(IEnumerable<Bar> barData)
+
+        public static double[] GetBarsOpen(IEnumerable<Bar> barData)
         {
             return barData.Select(b => b == null ? 0.0 : b.Open).ToArray();
         }
-        private static double[] GetBarsClose(IEnumerable<Bar> barData)
+
+        public static double[] GetBarsClose(IEnumerable<Bar> barData)
         {
             return barData.Select(b => b == null ? 0.0 : b.Close).ToArray();
         }
@@ -246,57 +250,6 @@ namespace RHost
 
 
 
-        public static double[] GetBarsAskHigh(string pairBars)
-        {
-            var barData = FdkVars.GetValue<PairBar[]>(pairBars);
-            return GetBarsHigh(barData.Select(barPair => barPair.Ask));
-        }
-        public static double[] GetBarsBidHigh(string pairBars)
-        {
-            var barData = FdkVars.GetValue<PairBar[]>(pairBars);
-            return GetBarsHigh(barData.Select(barPair => barPair.Bid));
-        }
-
-        public static double[] GetBarsAskLow(string pairBars)
-        {
-            var barData = FdkVars.GetValue<PairBar[]>(pairBars);
-            return GetBarsLow(barData.Select(barPair => barPair.Ask));
-        }
-        public static double[] GetBarsBidLow(string pairBars)
-        {
-            var barData = FdkVars.GetValue<PairBar[]>(pairBars);
-            return GetBarsLow(barData.Select(barPair => barPair.Bid));
-        }
-        public static double[] GetBarsAskVolume(string pairBars)
-        {
-            var barData = FdkVars.GetValue<PairBar[]>(pairBars);
-            return GetBarsVolume(barData.Select(barPair => barPair.Ask));
-        }
-        public static double[] GetBarsBidVolume(string pairBars)
-        {
-            var barData = FdkVars.GetValue<PairBar[]>(pairBars);
-            return GetBarsVolume(barData.Select(barPair => barPair.Bid));
-        }
-        public static double[] GetBarsAskOpen(string pairBars)
-        {
-            var barData = FdkVars.GetValue<PairBar[]>(pairBars);
-            return GetBarsOpen(barData.Select(barPair => barPair.Ask));
-        }
-        public static double[] GetBarsBidOpen(string pairBars)
-        {
-            var barData = FdkVars.GetValue<PairBar[]>(pairBars);
-            return GetBarsOpen(barData.Select(barPair => barPair.Bid));
-        }
-        public static double[] GetBarsAskClose(string pairBars)
-        {
-            var barData = FdkVars.GetValue<PairBar[]>(pairBars);
-            return GetBarsClose(barData.Select(barPair => barPair.Ask));
-        }
-        public static double[] GetBarsBidClose(string pairBars)
-        {
-            var barData = FdkVars.GetValue<PairBar[]>(pairBars);
-            return GetBarsClose(barData.Select(barPair => barPair.Bid));
-        }
         #endregion
         public static FdkWrapper Wrapper { get; set; }
 

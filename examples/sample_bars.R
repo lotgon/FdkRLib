@@ -17,4 +17,4 @@ et1 <- as.POSIXct(endTime)
 quotes <- ttGetQuotes("EURUSD", st1, et1, 1)
 plot(quotes$ask, type="o")
 
-ttGetBarPairs(symbol = "EURUSD", barPeriodStr = "M1", startTimeEpoch = )
+barPairs = ttGetBarPairs(symbol = "EURUSD", barPeriodStr = "M1", startTimeEpoch = startTime)

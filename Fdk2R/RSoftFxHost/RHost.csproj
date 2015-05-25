@@ -85,6 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FdkBarPairs.cs" />
     <Compile Include="FdkBars.cs" />
     <Compile Include="FdkHelper.cs" />
     <Compile Include="FdkQuotes.cs" />

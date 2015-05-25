@@ -3,17 +3,17 @@
 #' @export
 ttGetSymbolData <- function(symbol,barPeriodStr, startTimeEpoch){
   comission = GetSymbolComission()
-  contractMultiplier = GetSymbolContractMultiplier
-  currency = GetSymbolCurrency
-  limitsComission = GetSymbolLimitsCommission
-  maxTradeVolume = GetSymbolMaxTradeVolume
-  minTradeVolume = GetSymbolMinTradeVolume
-  name = GetSymbolName
-  precision = GetSymbolPrecision
-  roundLog = GetRoundLot
-  settlementCurrency = GetSymbolSettlementCurrency
-  swapSizeLong = GetSymbolSwapSizeLong
-  swapSizeShort = GetSymbolSwapSizeShort
+  contractMultiplier = GetSymbolContractMultiplier()
+  currency = GetSymbolCurrency()
+  limitsComission = GetSymbolLimitsCommission()
+  maxTradeVolume = GetSymbolMaxTradeVolume()
+  minTradeVolume = GetSymbolMinTradeVolume()
+  name = GetSymbolName()
+  precision = GetSymbolPrecision()
+  roundLog = GetRoundLot()
+  settlementCurrency = GetSymbolSettlementCurrency()
+  swapSizeLong = GetSymbolSwapSizeLong()
+  swapSizeShort = GetSymbolSwapSizeShort()
   
   data.frame(
     comission, contractMultiplier, currency, limitsComission,

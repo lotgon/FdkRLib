@@ -18,17 +18,17 @@ namespace TestRClrHost
             var timeDouble = FdkHelper.GetCreatedEpoch(time);
 
             var bars = FdkBars.ComputeGetPairBars("EURUSD", "M1", prevHour);
-            var askhighs = FdkBars.GetBarsAskHigh(bars);
-            var asklows = FdkBars.GetBarsAskLow(bars);
-            var askopen = FdkBars.GetBarsAskOpen(bars);
-            var askClose = FdkBars.GetBarsAskClose(bars);
-            var askVolume = FdkBars.GetBarsAskVolume(bars);
+            var askhighs = FdkBarPairs.GetBarsAskHigh(bars);
+            var asklows = FdkBarPairs.GetBarsAskLow(bars);
+            var askopen = FdkBarPairs.GetBarsAskOpen(bars);
+            var askClose = FdkBarPairs.GetBarsAskClose(bars);
+            var askVolume = FdkBarPairs.GetBarsAskVolume(bars);
 
-            var bidhighs = FdkBars.GetBarsBidHigh(bars);
-            var bidlows = FdkBars.GetBarsBidLow(bars);
-            var bidOpen = FdkBars.GetBarsBidOpen(bars);
-            var bidClose = FdkBars.GetBarsBidClose(bars);
-            var bidVolume = FdkBars.GetBarsBidVolume(bars);
+            var bidhighs = FdkBarPairs.GetBarsBidHigh(bars);
+            var bidlows = FdkBarPairs.GetBarsBidLow(bars);
+            var bidOpen = FdkBarPairs.GetBarsBidOpen(bars);
+            var bidClose = FdkBarPairs.GetBarsBidClose(bars);
+            var bidVolume = FdkBarPairs.GetBarsBidVolume(bars);
             
             FdkVars.Unregister(bars);
         }
@@ -44,8 +44,8 @@ namespace TestRClrHost
             var timeDouble = FdkHelper.GetCreatedEpoch(time);
             var prevHourDouble = FdkHelper.GetCreatedEpoch(prevHour);
             var bars = FdkBars.ComputeGetPairBarsRange("EURUSD", "M1", prevHourDouble, timeDouble);
-            var highs = FdkBars.GetBarsAskHigh(bars);
-            var lows = FdkBars.GetBarsAskLow(bars);
+            var highs = FdkBarPairs.GetBarsAskHigh(bars);
+            var lows = FdkBarPairs.GetBarsAskLow(bars);
 
             FdkVars.Unregister(bars);
         }
