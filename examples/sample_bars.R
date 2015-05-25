@@ -1,6 +1,6 @@
 
-library(FdkRLib)
-ttConnect()
+# Connect to server before running the sample
+# ttConnect()
 
 bars = ttGetBars("EURUSD", "Bid", "H1")
 
@@ -17,4 +17,4 @@ et1 <- as.POSIXct(endTime)
 quotes <- ttGetQuotes("EURUSD", st1, et1, 1)
 plot(quotes$ask, type="o")
 
-ttGetBarPairs()
+ttGetBarPairs(symbol = "EURUSD", barPeriodStr = "M1", startTimeEpoch = )
