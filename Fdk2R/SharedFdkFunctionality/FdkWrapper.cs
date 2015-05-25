@@ -89,5 +89,11 @@ namespace SharedFdkFunctionality
 
         private static readonly ILog _logger = LogManager.GetLogger(typeof(FdkConnector));
         public bool IsConnected { get; set; }
+
+        public List<SymbolInfo> Symbols
+        {
+            get { return _symbols; }
+            set { _symbols = value; }
+        }
     }
 }
