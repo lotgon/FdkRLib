@@ -146,14 +146,11 @@ namespace RHost
 
 
 
-        public static string ComputeGetPairBarsRange(string symbol, string barPeriodStr, double startTimeEpoch, double endTimeEpoch)
+        public static string ComputeGetPairBarsRange(string symbol, string barPeriodStr, DateTime startTime, DateTime endTime)
         {
             var barPeriod = GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
                 return string.Empty;
-            var startTime = FdkHelper.GetCreatedEpoch(startTimeEpoch);
-
-            var endTime = FdkHelper.GetCreatedEpoch(endTimeEpoch);
             var barsData = GetPairBarsSymbolArrayRangeTime(symbol, barPeriod, startTime, endTime);
             var bars = FdkVars.RegisterVariable(barsData, "barPairs");
             return bars;
