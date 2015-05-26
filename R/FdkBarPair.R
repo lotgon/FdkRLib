@@ -21,7 +21,7 @@ ttGetBarPairs <- function(symbol,barPeriodStr, startTimeEpoch){
   bidClose = GetBarsBidClose(bars);
   bidVolume = GetBarsBidVolume(bars);
   
-  UnregisterVar(symbolBars)
+  UnregisterVar(bars)
   data.frame(askhighs, asklows, askopen, askClose, askVolume, 
              bidhighs, bidlows, bidOpen, bidClose, bidVolume)
 }
@@ -49,7 +49,7 @@ ttGetBarPairsRange <- function(symbol, barPeriodStr, startTimeEpoch, endTimeEpoc
   bidClose = GetBarsBidClose(bars);
   bidVolume = GetBarsBidVolume(bars);
   
-  UnregisterVar(symbolBars)
+  UnregisterVar(bars)
   data.frame(askhighs, asklows, askopen, askClose, askVolume, 
              bidhighs, bidlows, bidOpen, bidClose, bidVolume)
 }
