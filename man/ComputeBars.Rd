@@ -4,9 +4,9 @@
 \alias{ComputeBars}
 \title{Gets the bars as requested}
 \usage{
-ComputeBars(symbol, priceTypeStr, barPeriodStr, endTimeEpoch)
+ComputeBars(symbol, priceTypeStr, barPeriodStr)
 
-ComputeBars(symbol, priceTypeStr, barPeriodStr, endTimeEpoch)
+ComputeBars(symbol, priceTypeStr, barPeriodStr)
 }
 \arguments{
 \item{symbol}{Symbol looked}
@@ -15,17 +15,17 @@ ComputeBars(symbol, priceTypeStr, barPeriodStr, endTimeEpoch)
 
 \item{barPeriodStr}{Values like: M1, H1}
 
-\item{endTimeEpoch}{Epoch time}
-
 \item{symbol}{Symbol looked}
 
 \item{priceTypeStr}{Ask}
 
 \item{barPeriodStr}{Values like: M1, H1}
+
+\item{endTimeEpoch}{Epoch time}
 }
 \description{
 Gets the bars as requested
 
-Gets the bars as requested
+Gets the bars as requested range
 }
 

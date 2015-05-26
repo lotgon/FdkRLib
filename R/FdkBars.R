@@ -36,7 +36,7 @@ ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
 #' @param barPeriodStr Values like: M1, H1
 #' @export
 ttGetBarsRange <- function(symbol,priceTypeStr, barPeriodStr){
-  symbolBars <- ComputeBars(symbol,priceTypeStr, barPeriodStr)
+  symbolBars <- ComputeBarsRange(symbol,priceTypeStr, barPeriodStr)
   highs <- BarHighs(symbolBars)
   lows <- BarLows(symbolBars)
   opens <- BarOpens(symbolBars)
@@ -49,16 +49,25 @@ ttGetBarsRange <- function(symbol,priceTypeStr, barPeriodStr){
 }
 
 
+#' Gets the bars as requested range
+#' 
+#' @param symbol Symbol looked
+#' @param priceTypeStr Ask
+#' @param barPeriodStr Values like: M1, H1
+#' @param endTimeEpoch Epoch time
+ComputeBars <- function(symbol, priceTypeStr, barPeriodStr) {
+  clrCallStatic('RHost.FdkBars', 'ComputeBars', symbol, priceTypeStr, barPeriodStr)
+}
+
 #' Gets the bars as requested
 #' 
 #' @param symbol Symbol looked
 #' @param priceTypeStr Ask
 #' @param barPeriodStr Values like: M1, H1
 #' @param endTimeEpoch Epoch time
-ComputeBars <- function(symbol, priceTypeStr, barPeriodStr, endTimeEpoch) {
+ComputeBarsRange <- function(symbol, priceTypeStr, barPeriodStr, endTimeEpoch) {
   clrCallStatic('RHost.FdkBars', 'ComputeBarsRangeTime', symbol, priceTypeStr, barPeriodStr, endTimeEpoch)
 }
-
 
 #' Gets the bars' high  as requested
 #' 
