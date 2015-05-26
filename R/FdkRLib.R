@@ -91,13 +91,20 @@ QuotesHasBid <- function(quotesVar) {
   clrCallStatic('RHost.FdkQuotes', 'QuotesHasBid', quotesVar)
 }
 
-#' Gets the bars' ask as requested
+#' Sets the bar count inside calls
 #' 
 #' @param barCount Set a different bar count than the default (1 million)
 #' @export
 ttSetBarCount <- function(barCount) {
   clrCallStatic('RHost.FdkBars', 'SetBarCount', barCount)
 }
+#' Gets the bar count used in calls
+#' 
+#' @export
+ttGetBarCount <- function() {
+  clrCallStatic('RHost.FdkBars', 'GetBarCount')
+}
+
 
 
 #' Gets the quotes history

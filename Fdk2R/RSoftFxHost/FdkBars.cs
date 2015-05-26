@@ -21,9 +21,13 @@ namespace RHost
       
         #region Bars 
 
-        public static void SetBarCount(int barCount)
+        public static void SetBarCount(double barCount)
         {
-            BarCount = barCount;
+            BarCount = (int) barCount;
+        }
+        public static double GetBarCount()
+        {
+            return BarCount;
         }
 #region Fdk direct wrapper
         private static Bar[] CalculateBarsForSymbolArray(

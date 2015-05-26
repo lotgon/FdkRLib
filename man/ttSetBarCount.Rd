@@ -2,7 +2,7 @@
 % Please edit documentation in R/FdkRLib.R
 \name{ttSetBarCount}
 \alias{ttSetBarCount}
-\title{Gets the bars' ask as requested}
+\title{Sets the bar count inside calls}
 \usage{
 ttSetBarCount(barCount)
 }
@@ -10,6 +10,6 @@ ttSetBarCount(barCount)
 \item{barCount}{Set a different bar count than the default (1 million)}
 }
 \description{
-Gets the bars' ask as requested
+Sets the bar count inside calls
 }
 
