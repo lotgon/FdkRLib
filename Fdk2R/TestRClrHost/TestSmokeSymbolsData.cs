@@ -26,5 +26,19 @@ namespace TestRClrHost
             FdkSymbolInfo.GetSymbolSwapSizeShort(symbolInfos);
             FdkVars.Unregister(symbolInfos);
         }
+
+        [Test]
+        public void TestCurrency()
+        {
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
+            
+            var symbolInfos = FdkCurrencyInfo.GetCurrencyInfos();
+            FdkCurrencyInfo.GetCurrencyDescription(symbolInfos);
+            FdkCurrencyInfo.GetCurrencyCurrency(symbolInfos);
+            FdkCurrencyInfo.GetCurrencyContractMultiplier(symbolInfos);
+            FdkCurrencyInfo.GetCurrencyLimitsCommission(symbolInfos);
+
+            FdkVars.Unregister(symbolInfos);
+        }
     }
 }

@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="FdkBarPairs.cs" />
     <Compile Include="FdkBars.cs" />
+    <Compile Include="FdkCurrencyInfo.cs" />
     <Compile Include="FdkHelper.cs" />
     <Compile Include="FdkQuotes.cs" />
     <Compile Include="FdkSymbolInfo.cs" />

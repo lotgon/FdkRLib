@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using SoftFX.Extended;
 
 namespace RHost
@@ -8,7 +7,7 @@ namespace RHost
     {
         public static string GetSymbolInfos()
         {
-            var symbolInfos = FdkHelper.Wrapper.Symbols.ToArray();
+            var symbolInfos = FdkHelper.Wrapper.ConnectLogic.Feed.Cache.Symbols;
             var varName = FdkVars.RegisterVariable(symbolInfos, "symbolsInfo");
             return varName;
         }
@@ -22,59 +21,60 @@ namespace RHost
         public static double[] GetSymbolContractMultiplier(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
-            return FdkHelper.Wrapper.Symbols.Select(b => b.ContractMultiplier).ToArray();
+            return symbolInfos.Select(b => b.ContractMultiplier).ToArray();
         }
 
         public static string[] GetSymbolCurrency(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
-            return FdkHelper.Wrapper.Symbols.Select(b => b.Currency).ToArray();
+            return symbolInfos.Select(b => b.Currency).ToArray();
         }
         public static double[] GetSymbolLimitsCommission(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
-            return FdkHelper.Wrapper.Symbols.Select(b => b.LimitsCommission).ToArray();
+            return symbolInfos.Select(b => b.LimitsCommission).ToArray();
         }
         public static double[] GetSymbolMaxTradeVolume(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
-            return FdkHelper.Wrapper.Symbols.Select(b => b.MaxTradeVolume).ToArray();
+            return symbolInfos.Select(b => b.MaxTradeVolume).ToArray();
         }
         public static double[] GetSymbolMinTradeVolume(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
-            return FdkHelper.Wrapper.Symbols.Select(b => b.MinTradeVolume).ToArray();
+            return symbolInfos.Select(b => b.MinTradeVolume).ToArray();
         }
         public static string[] GetSymbolName(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
-            return FdkHelper.Wrapper.Symbols.Select(b => b.Name).ToArray();
+            return symbolInfos.Select(b => b.Name).ToArray();
         }
         public static double[] GetSymbolPrecision(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
-            return FdkHelper.Wrapper.Symbols.Select(b => (double)b.Precision).ToArray();
+            return symbolInfos.Select(b => (double)b.Precision).ToArray();
         }
         public static double[] GetRoundLot(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
-            return FdkHelper.Wrapper.Symbols.Select(b => b.RoundLot).ToArray();
+            return symbolInfos.Select(b => b.RoundLot).ToArray();
         }
         public static string[] GetSymbolSettlementCurrency(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
-            return FdkHelper.Wrapper.Symbols.Select(b => b.SettlementCurrency).ToArray();
+            return symbolInfos.Select(b => b.SettlementCurrency).ToArray();
         }
         public static double[] GetSymbolSwapSizeLong(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
-            return FdkHelper.Wrapper.Symbols.Select(b => b.SwapSizeLong ?? 0.0).ToArray();
+            return symbolInfos.Select(b => b.SwapSizeLong ?? 0.0).ToArray();
         }
 
         public static double[] GetSymbolSwapSizeShort(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
-            return FdkHelper.Wrapper.Symbols.Select(b => b.SwapSizeShort ?? 0.0).ToArray();
+            return symbolInfos.Select(b => b.SwapSizeShort ?? 0.0).ToArray();
         }
     }
 }
+

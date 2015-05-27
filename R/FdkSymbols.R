@@ -16,7 +16,7 @@ ttGetSymbolData <- function(symbol,barPeriodStr, startTimeEpoch){
   swapSizeLong = GetSymbolSwapSizeLong(symInfo)
   swapSizeShort = GetSymbolSwapSizeShort(symInfo)
   
-  UnregisterVar(symbolBars)
+  UnregisterVar(symInfo)
   
   data.frame(
     comission, contractMultiplier, currency, limitsComission,
