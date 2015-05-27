@@ -49,7 +49,7 @@ GetSymbolMaxTradeVolume <- function(symInfo) {
   clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolMaxTradeVolume', symInfo)
 }
 #' Get symbol field
-GetSymbolMinTradeVolume <- function() {
+GetSymbolMinTradeVolume <- function(symInfo) {
   clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolMinTradeVolume', symInfo)
 }
 #' Get symbol field

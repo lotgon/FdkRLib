@@ -4,7 +4,7 @@
 \alias{GetSymbolMinTradeVolume}
 \title{Get symbol field}
 \usage{
-GetSymbolMinTradeVolume()
+GetSymbolMinTradeVolume(symInfo)
 }
 \description{
 Get symbol field
