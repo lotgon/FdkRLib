@@ -6,12 +6,12 @@ ttGetCurrencyData <- function(){
   
   currency = GetCurrencyName(symInfo)
   description = GetCurrencyDescription(symInfo)
-  contractMultiplier = GetCurrencyPrecision(symInfo)
-  limitsCommission = GetCurrencySortOrder(symInfo)
+  precision = GetCurrencyPrecision(symInfo)
+  sortOrder = GetCurrencySortOrder(symInfo)
   
   UnregisterVar(symInfo)
   
-  data.frame(currency, description, contractMultiplier, limitsCommission)
+  data.frame(currency, description, precision, sortOrder)
 }
 #' Get symbol field
 GetCurrencyInfos <- function() {
