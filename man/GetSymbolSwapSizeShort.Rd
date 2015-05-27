@@ -4,7 +4,7 @@
 \alias{GetSymbolSwapSizeShort}
 \title{Get symbol field}
 \usage{
-GetSymbolSwapSizeShort()
+GetSymbolSwapSizeShort(symInfo)
 }
 \description{
 Get symbol field

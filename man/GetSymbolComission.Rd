@@ -4,7 +4,7 @@
 \alias{GetSymbolComission}
 \title{Get symbol field}
 \usage{
-GetSymbolComission()
+GetSymbolComission(symInfo)
 }
 \description{
 Get symbol field

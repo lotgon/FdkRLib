@@ -4,7 +4,7 @@
 \alias{GetSymbolPrecision}
 \title{Get symbol field}
 \usage{
-GetSymbolPrecision()
+GetSymbolPrecision(symInfo)
 }
 \description{
 Get symbol field

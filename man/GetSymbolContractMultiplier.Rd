@@ -4,7 +4,7 @@
 \alias{GetSymbolContractMultiplier}
 \title{Get symbol field}
 \usage{
-GetSymbolContractMultiplier()
+GetSymbolContractMultiplier(symInfo)
 }
 \description{
 Get symbol field

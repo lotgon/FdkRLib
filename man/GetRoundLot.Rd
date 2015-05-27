@@ -4,7 +4,7 @@
 \alias{GetRoundLot}
 \title{Get symbol field}
 \usage{
-GetRoundLot()
+GetRoundLot(symInfo)
 }
 \description{
 Get symbol field

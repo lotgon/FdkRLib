@@ -4,7 +4,7 @@
 \alias{GetSymbolMaxTradeVolume}
 \title{Get symbol field}
 \usage{
-GetSymbolMaxTradeVolume()
+GetSymbolMaxTradeVolume(symInfo)
 }
 \description{
 Get symbol field

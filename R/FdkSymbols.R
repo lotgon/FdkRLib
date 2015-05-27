@@ -29,50 +29,50 @@ GetSymbolInfos <- function() {
   clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolInfos')
 }
 #' Get symbol field
-GetSymbolComission <- function() {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolComission')
+GetSymbolComission <- function(symInfo) {
+  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolComission', symInfo)
 }
 #' Get symbol field
-GetSymbolContractMultiplier <- function() {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolContractMultiplier')
+GetSymbolContractMultiplier <- function(symInfo) {
+  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolContractMultiplier', symInfo)
 }
 #' Get symbol field
-GetSymbolCurrency <- function() {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolCurrency')
+GetSymbolCurrency <- function(symInfo) {
+  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolCurrency', symInfo)
 }
 #' Get symbol field
-GetSymbolLimitsCommission <- function() {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolLimitsCommission')
+GetSymbolLimitsCommission <- function(symInfo) {
+  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolLimitsCommission', symInfo)
 }
 #' Get symbol field
-GetSymbolMaxTradeVolume <- function() {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolMaxTradeVolume')
+GetSymbolMaxTradeVolume <- function(symInfo) {
+  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolMaxTradeVolume', symInfo)
 }
 #' Get symbol field
 GetSymbolMinTradeVolume <- function() {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolMinTradeVolume')
+  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolMinTradeVolume', symInfo)
 }
 #' Get symbol field
-GetSymbolName <- function() {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolName')
+GetSymbolName <- function(symInfo) {
+  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolName', symInfo)
 }
 #' Get symbol field
-GetSymbolPrecision <- function() {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolPrecision')
+GetSymbolPrecision <- function(symInfo) {
+  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolPrecision', symInfo)
 }
 #' Get symbol field
-GetRoundLot <- function() {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetRoundLot')
+GetRoundLot <- function(symInfo) {
+  clrCallStatic('RHost.FdkSymbolInfo', 'GetRoundLot', symInfo)
 }
 #' Get symbol field
-GetSymbolSettlementCurrency <- function() {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolSettlementCurrency')
+GetSymbolSettlementCurrency <- function(symInfo) {
+  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolSettlementCurrency', symInfo)
 }
 #' Get symbol field
-GetSymbolSwapSizeLong <- function() {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolSwapSizeLong')
+GetSymbolSwapSizeLong <- function(symInfo) {
+  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolSwapSizeLong', symInfo)
 }
 #' Get symbol field
-GetSymbolSwapSizeShort <- function() {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolSwapSizeShort')
+GetSymbolSwapSizeShort <- function(symInfo) {
+  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolSwapSizeShort', symInfo)
 }

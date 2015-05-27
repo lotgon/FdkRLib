@@ -4,7 +4,7 @@
 \alias{GetSymbolSettlementCurrency}
 \title{Get symbol field}
 \usage{
-GetSymbolSettlementCurrency()
+GetSymbolSettlementCurrency(symInfo)
 }
 \description{
 Get symbol field

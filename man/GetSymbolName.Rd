@@ -4,7 +4,7 @@
 \alias{GetSymbolName}
 \title{Get symbol field}
 \usage{
-GetSymbolName()
+GetSymbolName(symInfo)
 }
 \description{
 Get symbol field

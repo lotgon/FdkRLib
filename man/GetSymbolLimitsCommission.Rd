@@ -4,7 +4,7 @@
 \alias{GetSymbolLimitsCommission}
 \title{Get symbol field}
 \usage{
-GetSymbolLimitsCommission()
+GetSymbolLimitsCommission(symInfo)
 }
 \description{
 Get symbol field
