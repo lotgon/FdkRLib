@@ -14,8 +14,8 @@ ttGetCurrencyData <- function(){
   data.frame(currency, description, contractMultiplier, limitsCommission)
 }
 #' Get symbol field
-GetCurrencyInfos <- function(symInfo) {
-  clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyInfos', symInfo)
+GetCurrencyInfos <- function() {
+  clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyInfos')
 }
 #' Get symbol field
 GetCurrencyDescription <- function(symInfo) {
