@@ -2,18 +2,21 @@
 #' 
 #' @export
 ttGetSymbolData <- function(symbol,barPeriodStr, startTimeEpoch){
-  comission = GetSymbolComission()
-  contractMultiplier = GetSymbolContractMultiplier()
-  currency = GetSymbolCurrency()
-  limitsComission = GetSymbolLimitsCommission()
-  maxTradeVolume = GetSymbolMaxTradeVolume()
-  minTradeVolume = GetSymbolMinTradeVolume()
-  name = GetSymbolName()
-  precision = GetSymbolPrecision()
-  roundLog = GetRoundLot()
-  settlementCurrency = GetSymbolSettlementCurrency()
-  swapSizeLong = GetSymbolSwapSizeLong()
-  swapSizeShort = GetSymbolSwapSizeShort()
+  symInfo = GetSymbolInfos()
+  comission = GetSymbolComission(symInfo)
+  contractMultiplier = GetSymbolContractMultiplier(symInfo)
+  currency = GetSymbolCurrency(symInfo)
+  limitsComission = GetSymbolLimitsCommission(symInfo)
+  maxTradeVolume = GetSymbolMaxTradeVolume(symInfo)
+  minTradeVolume = GetSymbolMinTradeVolume(symInfo)
+  name = GetSymbolName(symInfo)
+  precision = GetSymbolPrecision(symInfo)
+  roundLog = GetRoundLot(symInfo)
+  settlementCurrency = GetSymbolSettlementCurrency(symInfo)
+  swapSizeLong = GetSymbolSwapSizeLong(symInfo)
+  swapSizeShort = GetSymbolSwapSizeShort(symInfo)
+  
+  UnregisterVar(symbolBars)
   
   data.frame(
     comission, contractMultiplier, currency, limitsComission,
@@ -21,7 +24,10 @@ ttGetSymbolData <- function(symbol,barPeriodStr, startTimeEpoch){
     roundLog, settlementCurrency, swapSizeLong, swapSizeShort
              )
 }
-
+#' Get symbol field
+GetSymbolInfos <- function() {
+  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolInfos')
+}
 #' Get symbol field
 GetSymbolComission <- function() {
   clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolComission')
