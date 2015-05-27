@@ -4,10 +4,10 @@
 ttGetCurrencyData <- function(){
   symInfo = GetCurrencyInfos()
   
-  currency = GetCurrencyCurrency(symInfo)
+  currency = GetCurrencyName(symInfo)
   description = GetCurrencyDescription(symInfo)
-  contractMultiplier = GetCurrencyContractMultiplier(symInfo)
-  limitsCommission = GetCurrencyLimitsCommission(symInfo)
+  contractMultiplier = GetCurrencyPrecision(symInfo)
+  limitsCommission = GetCurrencySortOrder(symInfo)
   
   UnregisterVar(symInfo)
   
@@ -18,18 +18,19 @@ GetCurrencyInfos <- function() {
   clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyInfos')
 }
 #' Get symbol field
+GetCurrencyName <- function(symInfo) {
+  clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyName', symInfo)
+}
+#' Get symbol field
 GetCurrencyDescription <- function(symInfo) {
   clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyDescription', symInfo)
 }
+
 #' Get symbol field
-GetCurrencyCurrency <- function(symInfo) {
-  clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyCurrency', symInfo)
+GetCurrencyPrecision <- function(symInfo) {
+  clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyPrecision', symInfo)
 }
 #' Get symbol field
-GetCurrencyContractMultiplier <- function(symInfo) {
-  clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyContractMultiplier', symInfo)
-}
-#' Get symbol field
-GetCurrencyLimitsCommission <- function(symInfo) {
-  clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyLimitsCommission', symInfo)
+GetCurrencySortOrder <- function(symInfo) {
+  clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencySortOrder', symInfo)
 }

@@ -18,18 +18,18 @@ namespace RHost
             return symbolInfos.Select(b => b.Description).ToArray();
         }
 
-        public static string[] GetCurrencyContractMultiplier(string symbolsInfo)
+        public static string[] GetCurrencyName(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<CurrencyInfo[]>(symbolsInfo);
             return symbolInfos.Select(b => b.Name).ToArray();
         }
 
-        public static double[] GetCurrencyCurrency(string symbolsInfo)
+        public static double[] GetCurrencyPrecision(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<CurrencyInfo[]>(symbolsInfo);
             return symbolInfos.Select(b => (double)b.Precision).ToArray();
         }
-        public static double[] GetCurrencyLimitsCommission(string symbolsInfo)
+        public static double[] GetCurrencySortOrder(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<CurrencyInfo[]>(symbolsInfo);
             return symbolInfos.Select(b => (double)b.SortOrder).ToArray();

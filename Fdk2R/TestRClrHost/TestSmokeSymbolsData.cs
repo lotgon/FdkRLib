@@ -33,10 +33,10 @@ namespace TestRClrHost
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
             
             var symbolInfos = FdkCurrencyInfo.GetCurrencyInfos();
+            FdkCurrencyInfo.GetCurrencyName(symbolInfos);
             FdkCurrencyInfo.GetCurrencyDescription(symbolInfos);
-            FdkCurrencyInfo.GetCurrencyCurrency(symbolInfos);
-            FdkCurrencyInfo.GetCurrencyContractMultiplier(symbolInfos);
-            FdkCurrencyInfo.GetCurrencyLimitsCommission(symbolInfos);
+            FdkCurrencyInfo.GetCurrencyPrecision(symbolInfos);
+            FdkCurrencyInfo.GetCurrencySortOrder(symbolInfos);
 
             FdkVars.Unregister(symbolInfos);
         }
