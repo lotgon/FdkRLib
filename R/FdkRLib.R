@@ -43,6 +43,15 @@ UnregisterVar <- function(varName) {
   clrCallStatic('RHost.FdkVars', 'Unregister', varName)
 }
 
+#' Clear the environment variables
+#' 
+#' @param varName .Net variable to be removed
+#' @export
+ttUnregisterAllVariables <- function(varName) {
+  clrCallStatic('RHost.FdkVars', 'ClearAll', varName)
+}
+
+
 # ****
 #' Gets the bars as requested
 #' 

@@ -10,7 +10,6 @@ namespace TestRClrHost
         public void TestSymbols()
         {
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
-            var symbols = FdkHelper.Wrapper.Symbols;
             var symbolInfos = FdkSymbolInfo.GetSymbolInfos();
             FdkSymbolInfo.GetRoundLot(symbolInfos);
             FdkSymbolInfo.GetSymbolComission(symbolInfos);

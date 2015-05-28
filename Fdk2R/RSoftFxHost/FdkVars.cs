@@ -24,6 +24,11 @@ namespace RHost
             Vars.Remove(varName);
         }
 
+        public static void ClearAll()
+        {
+            Vars.Clear();
+        }
+
         public static T GetValue<T>(string varName)
         {
             object result;
