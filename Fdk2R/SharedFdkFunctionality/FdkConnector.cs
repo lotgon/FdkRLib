@@ -14,24 +14,20 @@ namespace SharedFdkFunctionality
         public string Address { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        private FdkConnectLogic _connectLogic;
+        public FdkConnectLogic ConnectLogic { get; private set; }
 
         public bool IsConnected { get; set; }
-
-        public static FdkConnector Instance {get { return StaticInstance; }}
         
-        private static readonly FdkConnector StaticInstance = new FdkConnector();
-
 		private List<SymbolInfo> _symbols = new List<SymbolInfo>();
 
         public bool Connect()
         {
-            _connectLogic = new FdkConnectLogic(Address, Login, Password);
-            _connectLogic.Feed.SessionInfo += OnSessionInfo;
-            _connectLogic.Feed.SymbolInfo += OnSymbolInfo;
-            _connectLogic.Feed.Logon += OnLogon;
-            _connectLogic.Feed.Logout += OnLogout;
-            var connectionSuccessful = _connectLogic.DoConnect();
+            ConnectLogic = new FdkConnectLogic(Address, Login, Password);
+            ConnectLogic.Feed.SessionInfo += OnSessionInfo;
+            ConnectLogic.Feed.SymbolInfo += OnSymbolInfo;
+            ConnectLogic.Feed.Logon += OnLogon;
+            ConnectLogic.Feed.Logout += OnLogout;
+            var connectionSuccessful = ConnectLogic.DoConnect();
             if (!connectionSuccessful)
 	        {
                 _logger.Warn("");
@@ -51,7 +47,7 @@ namespace SharedFdkFunctionality
             if (!IsConnected)
                 return;
 			//_logger.Warn("FdkConnector.Disconnecting");
-			_connectLogic.Dispose();
+			ConnectLogic.Dispose();
             IsConnected = false;
         }
 
@@ -80,7 +76,7 @@ namespace SharedFdkFunctionality
 
         public Bar GetClosestBar(string symbol, DateTime startTime)
         {
-            var bars = new Bars(_connectLogic.Feed, symbol, PriceType.Bid, BarPeriod.S1, startTime, 1);
+            var bars = new Bars(ConnectLogic.Feed, symbol, PriceType.Bid, BarPeriod.S1, startTime, 1);
 			var bar = bars.FirstOrDefault();
             return bar;
 		}
@@ -92,7 +88,7 @@ namespace SharedFdkFunctionality
 
         public Bar GetHistorical(string symbol)
         {
-            var bars = _connectLogic.Storage.Online.GetBars(symbol, PriceType.Ask, BarPeriod.M1, DateTime.Now, -1000).ToArray();
+            var bars = ConnectLogic.Storage.Online.GetBars(symbol, PriceType.Ask, BarPeriod.M1, DateTime.Now, -1000).ToArray();
             /*
             var bars = new Bars(_connectLogic.Storage.Online, symbol,
                 PriceType.Bid, BarPeriod.S1, DateTime.Now, -1000);

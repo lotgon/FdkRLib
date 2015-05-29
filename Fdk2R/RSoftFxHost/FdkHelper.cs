@@ -12,19 +12,18 @@ namespace RHost
         {
             MessageBox.Show("SoftFX integration is working");
         }
-
         public static int ConnectToFdk(string address, string login, string password, string path)
         {
 #if DEBUG
             //Library.Path = @"C:\Users\ciprian.khlud\Documents\R\win-library\3.2\FdkRLib\data";
 #endif
-            var addr = string.IsNullOrEmpty(address)
+            var addr = String.IsNullOrEmpty(address)
                 ? "tpdemo.fxopen.com"
                 : address;
-            var loginStr = string.IsNullOrEmpty(login)
+            var loginStr = String.IsNullOrEmpty(login)
                 ? "59932"
                 : login;
-            var passwordString = string.IsNullOrEmpty(login)
+            var passwordString = String.IsNullOrEmpty(login)
                 ? "8mEx7zZ2"
                 : password;
             if (Wrapper == null)
@@ -37,10 +36,9 @@ namespace RHost
 
                 };
                 Wrapper = wrapper;
-                FdkBars.Wrapper = Wrapper;
             }
 
-            string localPath = string.Empty;
+            string localPath = String.Empty;
 
             if (!String.IsNullOrEmpty(path))
             {
@@ -86,6 +84,29 @@ namespace RHost
             var created = epoch.AddSeconds(value);
             return created;
         }
+
+        #region Accessors
+
+        public static T? ParseEnumStr<T>(string text) where T : struct
+        {
+            T result;
+            if (!Enum.TryParse(text, out result))
+                return null;
+            return result;
+        }
+
+        public static T GetFieldByName<T>(string fieldName)
+        {
+            var barPeriodField = typeof(T).GetField(fieldName);
+            if (barPeriodField == null)
+                return default(T);
+
+            var result = (T)barPeriodField.GetValue(null);
+
+            return result;
+        }
+
+        #endregion
 
     }
 }

@@ -59,33 +59,14 @@ namespace RHost
         }
 #endregion
 
-        #region Accessors
-        static T? ParseEnumStr<T>(string text) where T:struct 
-        {
-            T result;
-            if (!Enum.TryParse(text, out result))
-                return null;
-            return result;
-        }
-        static T GetFieldByName<T>(string fieldName) 
-        {
-            var barPeriodField = typeof(T).GetField(fieldName);
-            if (barPeriodField == null)
-                return default(T);
-            
-            var result = (T) barPeriodField.GetValue(null);
-
-            return result;
-        }
-        #endregion
 
         public static string ComputeBars(string symbol, string priceTypeStr, string barPeriodStr)
         {
-            var barPeriod = GetFieldByName<BarPeriod>(barPeriodStr);
+            var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
                 return string.Empty;
 
-            var priceType = ParseEnumStr<PriceType>(priceTypeStr);
+            var priceType = FdkHelper.ParseEnumStr<PriceType>(priceTypeStr);
             if (priceType== null)
                 return string.Empty;
 
@@ -96,11 +77,11 @@ namespace RHost
 
         public static string ComputeBarsRangeTime(string symbol, string priceTypeStr, string barPeriodStr, DateTime endTime)
         {
-            var barPeriod = GetFieldByName<BarPeriod>(barPeriodStr);
+            var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
                 return string.Empty;
 
-            var priceType = ParseEnumStr<PriceType>(priceTypeStr);
+            var priceType = FdkHelper.ParseEnumStr<PriceType>(priceTypeStr);
             if (priceType == null)
                 return string.Empty;
 
@@ -112,7 +93,7 @@ namespace RHost
 
         public static string ComputeGetPairBars(string symbol, string barPeriodStr, DateTime startTime)
         {
-            var barPeriod = GetFieldByName<BarPeriod>(barPeriodStr);
+            var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
                 return string.Empty;
             var barsData = GetPairBarsSymbolArray(symbol, barPeriod, startTime, BarCount);
@@ -133,10 +114,10 @@ namespace RHost
 
         public static DateTime[] ComputeGetBarsInfo(string symbol, string priceTypeStr, string barPeriodStr)
         {
-            var barPeriod = GetFieldByName<BarPeriod>(barPeriodStr);
+            var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
                 return new DateTime[0];
-            var priceType = ParseEnumStr<PriceType>(priceTypeStr);
+            var priceType = FdkHelper.ParseEnumStr<PriceType>(priceTypeStr);
             if (priceType == null)
                 return new DateTime[0];
             var barsData = GetBarsInfo(symbol, priceType.Value, barPeriod);
@@ -152,7 +133,7 @@ namespace RHost
 
         public static string ComputeGetPairBarsRange(string symbol, string barPeriodStr, DateTime startTime, DateTime endTime)
         {
-            var barPeriod = GetFieldByName<BarPeriod>(barPeriodStr);
+            var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
                 return string.Empty;
             var barsData = GetPairBarsSymbolArrayRangeTime(symbol, barPeriod, startTime, endTime);
@@ -247,12 +228,6 @@ namespace RHost
         {
             return barData.Select(b => FdkHelper.GetCreatedEpoch(b.To)).ToArray();
         }
-
-
-
-
         #endregion
-        public static FdkWrapper Wrapper { get; set; }
-
     }
 }

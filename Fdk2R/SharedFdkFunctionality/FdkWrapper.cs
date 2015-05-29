@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using log4net;
@@ -9,6 +10,62 @@ using SoftFX.Extended.Events;
 
 namespace SharedFdkFunctionality
 {
+    public class FdkTradeWrapper
+    {
+        public void Connect(string address, string username, string password, string LogPath)
+        {
+            EnsureDirectoriesCreated(LogPath);
+
+            // Create builder
+            var builder = new FixConnectionStringBuilder
+            {
+                TargetCompId = "EXECUTOR",
+                ProtocolVersion = FixProtocolVersion.TheLatestVersion.ToString(),
+                SecureConnection = true,
+                Port = 5004,
+                //ExcludeMessagesFromLogs = "W",
+                DecodeLogFixMessages = true,
+
+                Address = address,
+                Username = username,
+                Password = password,
+
+                FixLogDirectory = LogPath,
+                FixEventsFileName = string.Format("{0}.trade.events.log", username),
+                FixMessagesFileName = string.Format("{0}.trade.messages.log", username)
+            };
+            Trade = new DataTrade
+            {
+                SynchOperationTimeout = 30000
+            };
+            var connectionString = builder.ToString();
+            Trade.Initialize(connectionString);
+            Trade.Logon += OnLogon;
+            Trade.Start();
+            var timeoutInMilliseconds = Trade.SynchOperationTimeout;
+            if (!syncEvent.WaitOne(timeoutInMilliseconds))
+            {
+                throw new TimeoutException("Timeout of logon waiting has been reached");
+            }
+
+        }
+
+        public DataTrade Trade { get; set; }
+
+        readonly AutoResetEvent syncEvent = new AutoResetEvent(false);
+
+        private void OnLogon(object sender, LogonEventArgs e)
+        {
+            syncEvent.Set();
+        }
+
+        static void EnsureDirectoriesCreated(string logPath)
+        {
+            if (!Directory.Exists(logPath))
+                Directory.CreateDirectory(logPath);
+        }
+
+    }
     public class FdkWrapper
     {
         public bool Connect(string rootPath)

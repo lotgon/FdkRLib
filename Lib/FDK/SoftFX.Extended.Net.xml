@@ -43,6 +43,31 @@
             Gets or sets asset's trade amount.
             </summary>
         </member>
+        <member name="T:SoftFX.Extended.CurrencyInfo">
+            <summary>
+            Currency information.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.CurrencyInfo.Name">
+            <summary>
+            Gets currency name.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.CurrencyInfo.Description">
+            <summary>
+            Gets currency description.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.CurrencyInfo.SortOrder">
+            <summary>
+            Gets currency priority.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.CurrencyInfo.Precision">
+            <summary>
+            Gets currency precision.
+            </summary>
+        </member>
         <member name="T:SoftFX.Extended.CommissionChargeType">
             <summary>
             Commission charge type.
@@ -93,6 +118,242 @@
             Points per bond or or contract 
             </summary>
         </member>
+        <member name="T:SoftFX.Extended.Events.CurrencyInfoEventArgs">
+            <summary>
+            Contains data for currency info event.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Events.CurrencyInfoEventArgs.Information">
+            <summary>
+            Gets currencies information; can not be null.
+            </summary>
+        </member>
+        <member name="T:SoftFX.Extended.Resources.EmbeddedModules">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.AlphaFS">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.ICSharpCode_SharpZipLib">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.libeay32">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.libeay64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.Microsoft_Practices_EnterpriseLibrary_Caching">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.Microsoft_Practices_EnterpriseLibrary_Common">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.Microsoft_Practices_ServiceLocation">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.Microsoft_Practices_Unity">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.Microsoft_Practices_Unity_Interception">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.msvcp110_64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.msvcp110_86">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.msvcr110_64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.msvcr110_86">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.procdump_exe">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_Core_x64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_Core_x86">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_FixProvider_x64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_FixProvider_x86">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_LlApi_x64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_LlApi_x86">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_LlCommon_x64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_LlCommon_x86">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_Lrp_x64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_Lrp_x86">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_LrpProvider_x64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_LrpProvider_x86">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_Sal_x64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.SoftFX_Sal_x86">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.ssleay32">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.ssleay64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.System_CoreEx">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.System_Data_SQLite_64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.System_Data_SQLite_86">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.System_Interactive">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.System_Reactive">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.TickTrader_BusinessLogic">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.TickTrader_BusinessObjects">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.TickTrader_Common">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.TickTrader_Server_Monitoring">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.TickTrader_Server_QuoteHistory">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.TickTrader_Server_QuoteHistory_Store_Ntfs">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Resources.EmbeddedModules.TickTrader_Server_QuoteHistory_Store_SQLite">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
         <member name="T:SoftFX.Extended.Errors.HistoryNotFoundException">
             <summary>
             This exception wraps related exception from TickTrader libraries.
@@ -102,6 +363,20 @@
             <summary>
             Provides extended data for errors; generated by API.
             </summary>
+        </member>
+        <member name="M:SoftFX.Extended.Errors.RuntimeException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:SoftFX.Extended.Errors.RuntimeException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
         </member>
         <member name="P:SoftFX.Extended.Errors.RuntimeException.Status">
             <summary>
@@ -114,6 +389,13 @@
             </summary>
             <param name="message"></param>
             <param name="innerException"></param>
+        </member>
+        <member name="M:SoftFX.Extended.Errors.HistoryNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
         </member>
         <member name="T:SoftFX.Extended.Events.ExceptionEventArgs">
             <summary>
@@ -140,7 +422,7 @@
             <summary>
              Calculates asset cross rate.
             </summary>
-            <param name="this">Financial calculator.</param>
+            <param name="calculator">Financial calculator.</param>
             <param name="asset">Asset volume.</param>
             <param name="assetCurrency">Asset currency.</param>
             <param name="currency">Deposit currency.</param>
@@ -155,8 +437,15 @@
             <summary>
             Returns whether swap is enabled for symbol.
             </summary>
-            <param name="this"></param>
+            <param name="symbolInfo"></param>
             <returns>True if swap is enabled.</returns>
+        </member>
+        <member name="M:SoftFX.Extended.Extensions.SymbolInfoExtensions.GetMarginFactor(SoftFX.Extended.SymbolInfo)">
+            <summary>
+            Returns margin factor.
+            </summary>
+            <param name="symbolInfo"></param>
+            <returns>Margin factor.</returns>
         </member>
         <member name="T:SoftFX.Extended.Financial.AccountEntryStatus">
             <summary>
@@ -165,136 +454,49 @@
         </member>
         <member name="F:SoftFX.Extended.Financial.AccountEntryStatus.NotCalculated">
             <summary>
-            Property of account entry are not calculated.
+            Property of account entry is not calculated.
             </summary>
         </member>
         <member name="F:SoftFX.Extended.Financial.AccountEntryStatus.Calculated">
             <summary>
-            Property of account entry are calculated successfully.
+            Property of account entry is calculated successfully.
             </summary>
         </member>
         <member name="F:SoftFX.Extended.Financial.AccountEntryStatus.CalculatedWithErrors">
             <summary>
-            Property of account entry are calculated with errors.
+            Property of account entry is calculated with errors.
             </summary>
         </member>
         <member name="F:SoftFX.Extended.Financial.AccountEntryStatus.UnknownAccountCurrency">
             <summary>
-            Property of account entry are not calculated due to unknown account currency.
+            Property of account entry is not calculated due to unknown account currency.
             </summary>
         </member>
         <member name="T:SoftFX.Extended.Financial.CurrencyEntries">
             <summary>
-            Represents list of the most quoted currencies
+            Represents list of the most quoted currencies.
             </summary>
         </member>
-        <member name="M:SoftFX.Extended.Financial.CurrencyEntries.#ctor">
+        <member name="M:SoftFX.Extended.Financial.CurrencyEntries.InsertItem(System.Int32,System.String)">
             <summary>
-            Creates a new instance of currency entires.
+            Inserts a currency at the specified index.
             </summary>
+            <param name="index">The zero-based index at which currency should be inserted.</param>
+            <param name="currency">The currency to insert. The value cannot be null.</param>
         </member>
-        <member name="M:SoftFX.Extended.Financial.CurrencyEntries.Add(System.String)">
+        <member name="M:SoftFX.Extended.Financial.CurrencyEntries.SetItem(System.Int32,System.String)">
             <summary>
-            Adds a new currency to container.
+            Replaces the currency at the specified index.
             </summary>
-            <param name="currency">a new valid currency</param>
-            <exception cref="T:System.ArgumentNullException">if currency is null</exception>
-        </member>
-        <member name="M:SoftFX.Extended.Financial.CurrencyEntries.Remove(System.String)">
-            <summary>
-            Removes an existing currency from the container.
-            </summary>
-            <param name="currency">removing currency</param>
-            <returns>
-            true, if the currency exist and has been removed.
-            false, if the currency does not exist.
-            </returns>
+            <param name="index">The zero-based index of the element to replace.</param>
+            <param name="currency">The new value for the currency at the specified index. The value cannot be null.</param>
         </member>
         <member name="M:SoftFX.Extended.Financial.CurrencyEntries.Exchange(System.Int32,System.Int32)">
             <summary>
             Exchanges two currencies.
             </summary>
-            <param name="first">a zero based index of a currency</param>
-            <param name="second">a zero based index of a currency</param>
-        </member>
-        <member name="M:SoftFX.Extended.Financial.CurrencyEntries.Clear">
-            <summary>
-            Removes all currencies from the container.
-            </summary>
-        </member>
-        <member name="M:SoftFX.Extended.Financial.CurrencyEntries.Contains(System.String)">
-            <summary>
-            Determines whether a currency is in the container.
-            </summary>
-            <param name="currency">can not be null</param>
-            <returns></returns>
-        </member>
-        <member name="M:SoftFX.Extended.Financial.CurrencyEntries.GetEnumerator">
-            <summary>
-            Implementation of IEnumerable interface
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:SoftFX.Extended.Financial.CurrencyEntries.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Implementation of IEnumerable interface
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:SoftFX.Extended.Financial.CurrencyEntries.Item(System.Int32)">
-            <summary>
-            Gets an existing currency by index.
-            </summary>
-            <param name="index"></param>
-            <returns></returns>
-        </member>
-        <member name="P:SoftFX.Extended.Financial.CurrencyEntries.Count">
-            <summary>
-            Gets number of currencies.
-            </summary>
-        </member>
-        <member name="M:SoftFX.Extended.Financial.RatesCalculator.#ctor(SoftFX.Extended.Financial.Rates)">
-            <summary>
-            
-            </summary>
-            <param name="rates"></param>
-        </member>
-        <member name="M:SoftFX.Extended.Financial.RatesCalculator.TryGetRate(SoftFX.Extended.Financial.SymbolEntry)">
-            <summary>
-            
-            </summary>
-            <param name="symbol"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SoftFX.Extended.Financial.RatesCalculator.CalculateProfitRate(System.Double,SoftFX.Extended.Financial.SymbolEntry,System.Int32)">
-            <summary>
-            xxx/yyy - currency pair
-            zzz - account currency
-            </summary>
-            <param name="profit"></param>
-            <param name="symbol"></param>
-            <param name="zzz"></param>
-            <returns></returns>
-        </member>
-        <member name="M:SoftFX.Extended.Financial.RatesCalculator.CalculateMarginRate(SoftFX.Extended.TradeRecordSide,SoftFX.Extended.Financial.SymbolEntry,System.Int32)">
-            <summary>
-            xxx/yyy - currency pair
-            zzz - account currency
-            </summary>
-            <param name="side"></param>
-            <param name="symbol"></param>
-            <param name="zzz">account currency</param>
-            <returns></returns>
-        </member>
-        <member name="M:SoftFX.Extended.Financial.RatesCalculator.CalculateAssetRate(System.Double,System.Int32,System.Int32)">
-            <summary>
-             Currently I have no correct algorithm of asset rate calculation;
-             Temporary I use modified profit rate calculation algorithm.
-            </summary>
-            <param name="asset"></param>
-            <param name="currency"></param>
-            <param name="zzz"></param>
-            <returns></returns>
+            <param name="first">A zero based index of a currency</param>
+            <param name="second">A zero based index of a currency</param>
         </member>
         <member name="T:SoftFX.Extended.Financial.ResolvePriceHandler">
             <summary>
@@ -577,7 +779,7 @@
         </member>
         <member name="M:SoftFX.Extended.Financial.StateCalculator.GetState">
             <summary>
-            
+            Returns StateInfo representation of current state.
             </summary>
             <returns></returns>
         </member>
@@ -764,7 +966,7 @@
             <summary>
             Represents container for 
             </summary>
-            <typeparam name="T"></typeparam>
+            <typeparam name="TEntry"></typeparam>
         </member>
         <member name="M:SoftFX.Extended.Financial.FinancialEntries`1.#ctor(System.Object)">
             <summary>
@@ -776,18 +978,32 @@
             <summary>
             
             </summary>
-            <param name="entry"></param>
+            <param name="entry">Financial entry.</param>
         </member>
         <member name="M:SoftFX.Extended.Financial.FinancialEntries`1.Remove(`0)">
             <summary>
             
             </summary>
-            <param name="entry"></param>
+            <param name="entry">Financial entry.</param>
         </member>
         <member name="M:SoftFX.Extended.Financial.FinancialEntries`1.Clear">
             <summary>
+            Clears collection.
+            </summary>
+        </member>
+        <member name="M:SoftFX.Extended.Financial.FinancialEntries`1.Contains(`0)">
+            <summary>
             
             </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Extended.Financial.FinancialEntries`1.System#Collections#Generic#ICollection{TEntry}#CopyTo(`0[],System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
         </member>
         <member name="M:SoftFX.Extended.Financial.FinancialEntries`1.GetEnumerator">
             <summary>
@@ -811,6 +1027,11 @@
         <member name="P:SoftFX.Extended.Financial.FinancialEntries`1.Count">
             <summary>
             Returns number of symbol entries.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Financial.FinancialEntries`1.System#Collections#Generic#ICollection{TEntry}#IsReadOnly">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:SoftFX.Extended.Financial.FinancialEntry">
@@ -838,6 +1059,23 @@
         <member name="P:SoftFX.Extended.Financial.FinancialEntry.Tag">
             <summary>
             Gets or sets user defined data.
+            </summary>
+        </member>
+        <member name="T:SoftFX.Extended.Financial.FinancialEntry`1">
+            <summary>
+            Represents financial entry.
+            </summary>
+            <typeparam name="TOwner">Owner type.</typeparam>
+        </member>
+        <member name="M:SoftFX.Extended.Financial.FinancialEntry`1.#ctor(`0)">
+            <summary>
+            Creates new instance of financial entry.
+            </summary>
+            <param name="owner">valid instance of owner</param>
+        </member>
+        <member name="P:SoftFX.Extended.Financial.FinancialEntry`1.Owner">
+            <summary>
+            Gets or owner of the financial entry instance.
             </summary>
         </member>
         <member name="T:SoftFX.Extended.Financial.PriceEntry">
@@ -928,7 +1166,7 @@
             <summary>
             Creates a new financial calculator instance.
             </summary>
-            <param name="handler">a price handler or null</param>
+            <param name="handler">Price resolution handler.</param>
         </member>
         <member name="M:SoftFX.Extended.Financial.FinancialCalculator.Load(System.String)">
             <summary>
@@ -1165,21 +1403,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SoftFX.Extended.Financial.Rates.TryGetRate(System.Int32,System.Int32)">
-            <summary>
-            Returns cross-rate for two currencies.
-            </summary>
-            <param name="to">To currency.</param>
-            <param name="from">From currency.</param>
-            <returns></returns>
-        </member>
-        <member name="P:SoftFX.Extended.Financial.Rates.Item(SoftFX.Extended.Financial.SymbolEntry)">
-            <summary>
-            Gets price entry for specified symbol.
-            </summary>
-            <param name="symbol"></param>
-            <returns></returns>
-        </member>
         <member name="T:SoftFX.Extended.Financial.SymbolEntries">
             <summary>
             Provides access to symbol entries collection.
@@ -1253,6 +1476,11 @@
         <member name="P:SoftFX.Extended.Financial.SymbolEntry.ContractSize">
             <summary>
             Gets or sets optional contract size
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.Financial.SymbolEntry.MarginCalcMode">
+            <summary>
+            Gets margin calculation mode of the symbol.
             </summary>
         </member>
         <member name="P:SoftFX.Extended.Financial.SymbolEntry.Hedging">
@@ -1350,7 +1578,7 @@
         </member>
         <member name="P:SoftFX.Extended.Financial.TradeEntry.Swap">
             <summary>
-            ets and sets trade swap.
+            Gets and sets trade swap.
             </summary>
         </member>
         <member name="P:SoftFX.Extended.Financial.TradeEntry.ProfitStatus">
@@ -1525,6 +1753,11 @@
             Enables or disables quotes logging in message log.
             Anyway quotes logging does not write in log raw message information,
             because for quotes transmitting LRP uses special codecs.
+            </summary>
+        </member>
+        <member name="P:SoftFX.Extended.LrpConnectionStringBuilder.EnableNetworkStatistics">
+            <summary>
+            Gets or sets whether network usage statistics should be enabled.
             </summary>
         </member>
         <member name="P:SoftFX.Extended.LrpConnectionStringBuilder.ProtocolType">
@@ -1859,38 +2092,38 @@
             </summary>
             <returns>Can not be null.</returns>
         </member>
-        <member name="T:SoftFX.Extended.Containers.Range`1">
+        <member name="T:SoftFX.Extended.Storage.Sequences.Range`1">
             <summary>
             
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="P:SoftFX.Extended.Containers.Range`1.LowerBound">
+        <member name="P:SoftFX.Extended.Storage.Sequences.Range`1.LowerBound">
             <summary>
             Gets index, which points to the first element.
             </summary>
         </member>
-        <member name="P:SoftFX.Extended.Containers.Range`1.UpperBound">
+        <member name="P:SoftFX.Extended.Storage.Sequences.Range`1.UpperBound">
             <summary>
             Gets index, which points the position after last element.
             </summary>
         </member>
-        <member name="P:SoftFX.Extended.Containers.Range`1.Count">
+        <member name="P:SoftFX.Extended.Storage.Sequences.Range`1.Count">
             <summary>
             Gets total elements number.
             </summary>
         </member>
-        <member name="P:SoftFX.Extended.Containers.Range`1.Front">
+        <member name="P:SoftFX.Extended.Storage.Sequences.Range`1.Front">
             <summary>
             Gets the first element.
             </summary>
         </member>
-        <member name="P:SoftFX.Extended.Containers.Range`1.Back">
+        <member name="P:SoftFX.Extended.Storage.Sequences.Range`1.Back">
             <summary>
             Gets the last element.
             </summary>
         </member>
-        <member name="P:SoftFX.Extended.Containers.Range`1.Item(System.Int32)">
+        <member name="P:SoftFX.Extended.Storage.Sequences.Range`1.Item(System.Int32)">
             <summary>
             Gets element by index.
             </summary>
@@ -1974,39 +2207,39 @@
             Gets notification argument.
             </summary>
         </member>
-        <member name="T:SoftFX.Extended.Asset">
+        <member name="T:SoftFX.Extended.Financial.Asset">
             <summary>
             Represents real asset for cash account or exposure for net / gross account.
             </summary>
         </member>
-        <member name="M:SoftFX.Extended.Asset.ToString">
+        <member name="M:SoftFX.Extended.Financial.Asset.ToString">
             <summary>
             Returns formatted string for the class instance.
             </summary>
             <returns>Can not be null.</returns>
         </member>
-        <member name="P:SoftFX.Extended.Asset.Currency">
+        <member name="P:SoftFX.Extended.Financial.Asset.Currency">
             <summary>
             The asset currency.
             </summary>
         </member>
-        <member name="P:SoftFX.Extended.Asset.Volume">
+        <member name="P:SoftFX.Extended.Financial.Asset.Volume">
             <summary>
             The asset volume.
             </summary>
         </member>
-        <member name="P:SoftFX.Extended.Asset.LockedVolume">
+        <member name="P:SoftFX.Extended.Financial.Asset.LockedVolume">
             <summary>
             The asset locked volume. For cash accounts only.
             </summary>
         </member>
-        <member name="P:SoftFX.Extended.Asset.Rate">
+        <member name="P:SoftFX.Extended.Financial.Asset.Rate">
             <summary>
             Price rate, which used for converting from volume to deposit currency.
             Will be 1 for cash account asset.
             </summary>
         </member>
-        <member name="P:SoftFX.Extended.Asset.DepositCurrency">
+        <member name="P:SoftFX.Extended.Financial.Asset.DepositCurrency">
             <summary>
             Amount of actually spent deposit currency = Volume * Rate / Leverage.
             Equals to Volume for cash account asset.
@@ -2014,7 +2247,7 @@
         </member>
         <member name="T:SoftFX.Extended.ClosePositionResult">
             <summary>
-            Close position result.
+            Close position info.
             </summary>
         </member>
         <member name="M:SoftFX.Extended.ClosePositionResult.ToString">
@@ -2091,10 +2324,12 @@
             It can be, if your code destroying data feed/trade object and use it at the same time.
             </summary>
         </member>
-        <member name="P:SoftFX.Extended.Errors.InvalidHandleException.Handle">
+        <member name="M:SoftFX.Extended.Errors.InvalidHandleException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
             <summary>
-            string representation of invalid handle, which has been passed to FDK.
+            
             </summary>
+            <param name="info"></param>
+            <param name="context"></param>
         </member>
         <member name="T:SoftFX.Extended.Events.TradeTransactionReportEventArgs">
             <summary>
@@ -2252,6 +2487,11 @@
             Gets agent commission.
             </summary>
         </member>
+        <member name="P:SoftFX.Extended.Position.Swap">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:SoftFX.Extended.Position.Profit">
             <summary>
             It's used by FinancialCalculator.
@@ -2325,232 +2565,6 @@
         <member name="F:SoftFX.Extended.RejectReason.Other">
             <summary>
             Unknown error.
-            </summary>
-        </member>
-        <member name="T:SoftFX.Extended.Resources.Libs">
-            <summary>
-              A strongly-typed resource class, for looking up localized strings, etc.
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.ResourceManager">
-            <summary>
-              Returns the cached ResourceManager instance used by this class.
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.Culture">
-            <summary>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.AlphaFS">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.ICSharpCode_SharpZipLib">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.libeay32">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.libeay64">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.Microsoft_Practices_EnterpriseLibrary_Caching">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.Microsoft_Practices_EnterpriseLibrary_Common">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.Microsoft_Practices_ServiceLocation">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.Microsoft_Practices_Unity">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.Microsoft_Practices_Unity_Interception">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.msvcp110_64">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.msvcp110_86">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.msvcr110_64">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.msvcr110_86">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.procdump_exe">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_Core_x64">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_Core_x86">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_FixProvider_x64">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_FixProvider_x86">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_LlApi_x64">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_LlApi_x86">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_LlCommon_x64">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_LlCommon_x86">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_Lrp_x64">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_Lrp_x86">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_LrpProvider_x64">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_LrpProvider_x86">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_Sal_x64">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.SoftFX_Sal_x86">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.ssleay32">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.ssleay64">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.System_CoreEx">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.System_Data_SQLite_64">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.System_Data_SQLite_86">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.System_Interactive">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.System_Reactive">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.TickTrader_BusinessLogic">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.TickTrader_BusinessObjects">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.TickTrader_Common">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.TickTrader_Server_Monitoring">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.TickTrader_Server_QuoteHistory">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.TickTrader_Server_QuoteHistory_Store_Ntfs">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
-        <member name="P:SoftFX.Extended.Resources.Libs.TickTrader_Server_QuoteHistory_Store_SQLite">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
             </summary>
         </member>
         <member name="T:SoftFX.Extended.Reports.TradeTransactionReason">
@@ -2680,7 +2694,7 @@
             Error message.
             </summary>
         </member>
-        <member name="M:SoftFX.Extended.Storage.DataFeedHistoryProvider.GetBarMetadataFile(System.String,System.String,TickTrader.Common.Business.FxPriceType)">
+        <member name="M:SoftFX.Extended.Storage.DataFeedHistorySource.GetBarMetadataFile(System.String,System.String,TickTrader.Common.Business.FxPriceType)">
             <summary>
             Reads data chunk for a specified symbol.
             </summary>
@@ -2703,7 +2717,18 @@
             <param name="storageVersion">Storage version.</param>
             <param name="dataFeed">Can be null, in this case you can use storage in offline mode only.</param>
             <param name="flushOnDispose">If true, then quotes cache in memory will be flushed to hard drive.</param>
-            <param name="saveTickLevel2History">save incomning ticks as level2 history or not</param>
+            <param name="saveTickLevel2History">Save incomning ticks as level2 history or not</param>
+            <exception cref="T:System.ArgumentNullException">If location is null.</exception>
+        </member>
+        <member name="M:SoftFX.Extended.Storage.DataFeedStorage.#ctor(System.String,System.Type,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Creates and initializes a new data feed offline storage.
+            </summary>
+            <param name="location">Specified location for data feed history local cache.</param>
+            <param name="storageProviderType">Type of storage provider.</param>
+            <param name="storageVersion">Storage version.</param>
+            <param name="flushOnDispose">If true, then quotes cache in memory will be flushed to hard drive.</param>
+            <param name="saveTickLevel2History">Save incomning ticks as level2 history or not</param>
             <exception cref="T:System.ArgumentNullException">If location is null.</exception>
         </member>
         <member name="M:SoftFX.Extended.Storage.DataFeedStorage.#ctor(System.String,System.Type,System.Int32,SoftFX.Extended.DataFeed,System.Boolean)">
@@ -2717,13 +2742,32 @@
             <param name="flushOnDispose">If true, then quotes cache in memory will be flushed to hard drive.</param>
             <exception cref="T:System.ArgumentNullException">If location is null.</exception>
         </member>
+        <member name="M:SoftFX.Extended.Storage.DataFeedStorage.#ctor(System.String,System.Type,System.Int32,System.Boolean)">
+            <summary>
+            Creates and initializes a new data feed offline storage.
+            </summary>
+            <param name="location">Specified location for data feed history local cache.</param>
+            <param name="storageProviderType">Type of storage provider.</param>
+            <param name="storageVersion">Storage version.</param>
+            <param name="flushOnDispose">If true, then quotes cache in memory will be flushed to hard drive.</param>
+            <exception cref="T:System.ArgumentNullException">If location is null.</exception>
+        </member>
         <member name="M:SoftFX.Extended.Storage.DataFeedStorage.#ctor(System.String,System.Type,SoftFX.Extended.DataFeed,System.Boolean)">
             <summary>
-            Creates and initializes a new data feed storage Ver.0.
+            Creates and initializes a new data feed storage Ver.1.
             </summary>
             <param name="location">Specified location for data feed history local cache.</param>
             <param name="storageProviderType">Type of storage provider.</param>
             <param name="dataFeed">Can be null, in this case you can use storage in offline mode only.</param>
+            <param name="flushOnDispose">If true, then quotes cache in memory will be flushed to hard drive.</param>
+            <exception cref="T:System.ArgumentNullException">If location is null.</exception>
+        </member>
+        <member name="M:SoftFX.Extended.Storage.DataFeedStorage.#ctor(System.String,System.Type,System.Boolean)">
+            <summary>
+            Creates and initializes a new data feed offline storage Ver.1.
+            </summary>
+            <param name="location">Specified location for data feed history local cache.</param>
+            <param name="storageProviderType">Type of storage provider.</param>
             <param name="flushOnDispose">If true, then quotes cache in memory will be flushed to hard drive.</param>
             <exception cref="T:System.ArgumentNullException">If location is null.</exception>
         </member>
@@ -2740,7 +2784,7 @@
             Storage uses tick events, if newDataFeed is not null
             Storage does not use tick events, if newDataFeed is null
             </summary>
-            <param name="newDataFeed">a data feed instance or null</param>
+            <param name="newDataFeed">A data feed instance or null</param>
         </member>
         <member name="M:SoftFX.Extended.Storage.DataFeedStorage.RebuildBarsFromBars(System.String,System.String,System.String)">
             <summary>
@@ -2766,19 +2810,19 @@
             <summary>
             Imports quotes to storage.
             </summary>
-            <param name="ticks">ticks, which should be imported.</param>
-            <param name="level2">ignore depth of level2, if false.</param>
+            <param name="ticks">Ticks, which should be imported.</param>
+            <param name="level2">Ignore depth of level2, if false.</param>
             <param name="overwriteTickChainsWithEqualTime"></param>
-            <param name="rebuild">the method rebuilds all bars, if true.</param>
+            <param name="rebuild">The method rebuilds all bars, if true.</param>
         </member>
         <member name="M:SoftFX.Extended.Storage.DataFeedStorage.Import(System.String,SoftFX.Extended.BarPeriod,System.Collections.Generic.IEnumerable{SoftFX.Extended.Bar},SoftFX.Extended.PriceType,System.Boolean)">
             <summary>
             Imports bars to storage.
             </summary>
-            <param name="symbol">symbol of importing bars</param>
-            <param name="period">period of importing bars</param>
-            <param name="bars">importing bars</param>
-            <param name="priceType">price type of importing bars</param>
+            <param name="symbol">Symbol of importing bars</param>
+            <param name="period">Period of importing bars</param>
+            <param name="bars">Importing bars</param>
+            <param name="priceType">Price type of importing bars</param>
             <param name="overwriteBarChainsWithEqualTime"></param>
         </member>
         <member name="M:SoftFX.Extended.Storage.DataFeedStorage.Dispose">
@@ -2991,7 +3035,7 @@
         </member>
         <member name="M:SoftFX.Extended.Storage.Sequences.QuotesRangeSingleSequence.#ctor(SoftFX.Extended.Storage.IStorage,System.String,System.DateTime,System.DateTime,System.Int32,System.Int32,System.Int32)">
             <summary>
-            Creates a new single quotes sequence.
+            Creates a new quotes ranges sequence.
             </summary>
             <param name="storage">specifies storage, which will be used for quotes requesting.</param>
             <param name="symbol">specifies symbol of quotes enumeration.</param>
@@ -3005,7 +3049,7 @@
         </member>
         <member name="M:SoftFX.Extended.Storage.Sequences.QuotesRangeSingleSequence.#ctor(SoftFX.Extended.Storage.IStorage,System.String,System.DateTime,System.DateTime,System.Int32,System.Int32)">
             <summary>
-            Creates a new single quotes sequence.
+            Creates a new quotes ranges sequence.
             </summary>
             <param name="storage">specifies storage, which will be used for quotes requesting.</param>
             <param name="symbol">specifies symbol of quotes enumeration.</param>
@@ -3190,6 +3234,22 @@
             Gets list of all possible storage providers.
             </summary>
         </member>
+        <member name="M:SoftFX.Extended.Storage.StorageConvert.BidComparator(SoftFX.Extended.QuoteEntry,SoftFX.Extended.QuoteEntry)">
+            <summary>
+            Comparator two bid quote entries.
+            </summary>
+            <param name="first">A first quote entry.</param>
+            <param name="second">A second quote entry.</param>
+            <returns>0, -1, 1</returns>
+        </member>
+        <member name="M:SoftFX.Extended.Storage.StorageConvert.AskComparator(SoftFX.Extended.QuoteEntry,SoftFX.Extended.QuoteEntry)">
+            <summary>
+            Comparator for two ask quote entries.
+            </summary>
+            <param name="first">A first quote entry.</param>
+            <param name="second">A second quote entry.</param>
+            <returns>0, -1, 1</returns>
+        </member>
         <member name="T:SoftFX.Extended.StreamIterator`1">
             <summary>
             Contains common part of all streams.
@@ -3251,6 +3311,13 @@
             <summary>
             This exception indicates that a synchronous call has been interrupted by logout event.
             </summary>
+        </member>
+        <member name="M:SoftFX.Extended.Errors.LogoutException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
         </member>
         <member name="T:SoftFX.Extended.Bars">
             <summary>
@@ -3477,7 +3544,7 @@
         </member>
         <member name="E:SoftFX.Extended.DataClient.CacheInitialized">
             <summary>
-            Occurs when local cache updated.
+            Occurs when local cache initialized.
             </summary>
         </member>
         <member name="T:SoftFX.Extended.DataFeed">
@@ -3514,6 +3581,11 @@
         <member name="E:SoftFX.Extended.DataFeed.Tick">
             <summary>
             Occurs when a new quote is received.
+            </summary>
+        </member>
+        <member name="E:SoftFX.Extended.DataFeed.CurrencyInfo">
+            <summary>
+            Occurs when currencies information is initialized.
             </summary>
         </member>
         <member name="E:SoftFX.Extended.DataFeed.SymbolInfo">
@@ -3617,6 +3689,11 @@
             Gets symbols information. Returned value can not be null.
             </summary>
         </member>
+        <member name="P:SoftFX.Extended.DataFeedCache.Currencies">
+            <summary>
+            Gets currencies information. Returned value can not be null.
+            </summary>
+        </member>
         <member name="T:SoftFX.Extended.DataFeedServer">
             <summary>
             The class contains methods, which are executed in server side.
@@ -3672,6 +3749,19 @@
             <summary>
             Data client.
             </summary>
+        </member>
+        <member name="M:SoftFX.Extended.DataFeedServer.GetCurrencies">
+            <summary>
+            The method returns list of currencies supported by server.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Extended.DataFeedServer.GetCurrencies(System.Int32)">
+            <summary>
+            The method returns list of currencies supported by server.
+            </summary>
+            <param name="timeoutInMilliseconds">timeout of the operation</param>
+            <returns></returns>
         </member>
         <member name="M:SoftFX.Extended.DataFeedServer.GetSymbols">
             <summary>
@@ -3790,6 +3880,16 @@
             <param name="symbol"></param>
             <param name="includeLevel2"></param>
             <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SoftFX.Extended.DataFeedServer.GetQuotesHistoryFilesEx(System.String,System.Boolean,System.DateTime,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="symbol"></param>
+            <param name="includeLevel2"></param>
+            <param name="time"></param>
+            <param name="timeoutInMilliseconds"></param>
             <returns></returns>
         </member>
         <member name="M:SoftFX.Extended.DataFeedServer.GetBarsHistoryMetaInfoFile(System.String,SoftFX.Extended.PriceType,System.String)">
@@ -4248,7 +4348,7 @@
             The method closes an existing market order.
             The method is supported by Gross account only.
             </summary>
-            <param name="orderID">Order ID; can not be null.</param>
+            <param name="orderId">Order ID; can not be null.</param>
             <param name="volume">closing volume</param>
             <returns></returns>
         </member>
@@ -4280,7 +4380,7 @@
             The method closes an existing market order.
             The method is supported by Gross account only.
             </summary>
-            <param name="orderID">Order ID; can not be null.</param>
+            <param name="orderId">Order ID; can not be null.</param>
             <param name="volume">closing volume</param>
             <param name="operationId">
             Can be null, in this case FDK generates a new unique operation ID automatically.
@@ -4556,7 +4656,7 @@
         </member>
         <member name="T:SoftFX.Extended.Events.SymbolInfoEventArgs">
             <summary>
-            Contains data for execution report event.
+            Contains data for symbol info event.
             </summary>
         </member>
         <member name="P:SoftFX.Extended.Events.SymbolInfoEventArgs.Information">
@@ -4838,12 +4938,34 @@
             <param name="protocolVersion">Can not be null.</param>
             <exception cref="T:System.ArgumentNullException">If 'protocolVersion' is null.</exception>
         </member>
-        <member name="M:SoftFX.Extended.FeaturesInfo`2.ThrowIfFeatureIsNotSupported(System.String,System.Boolean)">
+        <member name="M:SoftFX.Extended.FeaturesInfo`2.ThrowIfFeatureNotSupported(System.String,System.Boolean)">
             <summary>
             The method throws exception, if a feature is not supported.
             </summary>
             <param name="message">Exception message; can not be null.</param>
             <param name="status">True, if a feature is supported, otherwise false</param>
+        </member>
+        <member name="M:SoftFX.Extended.FeaturesInfo`2.ThrowIfFeatureNotSupported(System.String,System.String,System.Boolean)">
+            <summary>
+            The method throws exception, if a feature is not supported.
+            </summary>
+            <param name="message">Exception message; can not be null.</param>
+            <param name="feature">Unsupported feature name message; can not be null.</param>/// 
+            <param name="status">True, if a feature is supported, otherwise false</param>
+        </member>
+        <member name="M:SoftFX.Extended.FeaturesInfo`2.ThrowIfPropertyNotSupported(System.String,System.Boolean)">
+            <summary>
+            The method throws exception, if a property is not supported.
+            </summary>
+            <param name="property">Property name; can not be null.</param>
+            <param name="status">True, if a feature is supported, otherwise false</param>
+        </member>
+        <member name="M:SoftFX.Extended.FeaturesInfo`2.ThrowIfPropertyNotSupported``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            The method throws exception, if a property is not supported.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="propertyExpression"></param>
         </member>
         <member name="P:SoftFX.Extended.FeaturesInfo`2.FeaturesProvider">
             <summary>
@@ -4877,11 +4999,6 @@
             </summary>
             <param name="protocolVersion"></param>
             <returns></returns>
-        </member>
-        <member name="F:SoftFX.Extended.Features.SymbolInfoFeaturesProvider.Instance">
-            <summary>
-            Gets instance of SymbolInfoFeaturesEx class.
-            </summary>
         </member>
         <member name="M:SoftFX.Extended.Features.SymbolInfoFeaturesProvider.GetInfo(SoftFX.Extended.FixProtocolVersion)">
             <summary>
@@ -4987,6 +5104,14 @@
             <exception cref="T:System.ArgumentException">If an input protocol version is unknown.</exception>
             <returns>True, if the corresponding property or method is supported for a protocol version, otherwise false.</returns>
         </member>
+        <member name="M:SoftFX.Extended.Features.SymbolInfoFeaturesProvider.IsMarginFactorFractionalSupported(SoftFX.Extended.FixProtocolVersion)">
+            <summary>
+            Returns true, if a protocol version of symbol info supports 'MarginFactorFractional' property, otherwise false.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">If protocol version is null.</exception>
+            <exception cref="T:System.ArgumentException">If an input protocol version is unknown.</exception>
+            <returns>True, if the corresponding property or method is supported for a protocol version, otherwise false.</returns>
+        </member>
         <member name="M:SoftFX.Extended.Features.SymbolInfoFeaturesProvider.IsContractMultiplierSupported(SoftFX.Extended.FixProtocolVersion)">
             <summary>
             Returns true, if a protocol version of symbol info supports 'ContractMultiplier' property, otherwise false.
@@ -5035,23 +5160,15 @@
             <exception cref="T:System.ArgumentException">If an input protocol version is unknown.</exception>
             <returns>True, if the corresponding property or method is supported for a protocol version, otherwise false.</returns>
         </member>
-        <member name="M:SoftFX.Extended.Features.SymbolInfoFeaturesProvider.IsSwapSizeShortSupported(SoftFX.Extended.FixProtocolVersion)">
+        <member name="M:SoftFX.Extended.Features.SymbolInfoFeaturesProvider.IsSwapSizeSupported(SoftFX.Extended.FixProtocolVersion)">
             <summary>
-            Returns true, if a protocol version of symbol info supports 'SwapSizeShort' property, otherwise false.
+            Returns true, if a protocol version of symbol info supports 'SwapSizeShort' and 'SwapSizeLong' properties, otherwise false.
             </summary>
             <exception cref="T:System.ArgumentNullException">If protocol version is null.</exception>
             <exception cref="T:System.ArgumentException">If an input protocol version is unknown.</exception>
             <returns>True, if the corresponding property or method is supported for a protocol version, otherwise false.</returns>
         </member>
-        <member name="M:SoftFX.Extended.Features.SymbolInfoFeaturesProvider.IsSwapSizeLongSupported(SoftFX.Extended.FixProtocolVersion)">
-            <summary>
-            Returns true, if a protocol version of symbol info supports 'SwapSizeLong' property, otherwise false.
-            </summary>
-            <exception cref="T:System.ArgumentNullException">If protocol version is null.</exception>
-            <exception cref="T:System.ArgumentException">If an input protocol version is unknown.</exception>
-            <returns>True, if the corresponding property or method is supported for a protocol version, otherwise false.</returns>
-        </member>
-        <member name="M:SoftFX.Extended.Features.SymbolInfoFeaturesProvider.IsTradeEnabledSupported(SoftFX.Extended.FixProtocolVersion)">
+        <member name="M:SoftFX.Extended.Features.SymbolInfoFeaturesProvider.IsIsTradeEnabledSupported(SoftFX.Extended.FixProtocolVersion)">
             <summary>
             Returns true, if a protocol version of symbol info supports 'TradeEnabled' property, otherwise false.
             </summary>
@@ -5192,6 +5309,11 @@
             "W|y|0" means to skip the following messages: security list, market data snapshot and heartbeat.
             </summary>
         </member>
+        <member name="P:SoftFX.Extended.FixConnectionStringBuilder.EnableNetworkStatistics">
+            <summary>
+            Gets or sets whether network usage statistics should be enabled.
+            </summary>
+        </member>
         <member name="P:SoftFX.Extended.FixConnectionStringBuilder.ProtocolType">
             <summary>
             Gets protocol type name = "Fix".
@@ -5201,6 +5323,20 @@
             <summary>
             This exception indicates that user's request has been rejected by server.
             </summary>
+        </member>
+        <member name="M:SoftFX.Extended.Errors.RejectException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:SoftFX.Extended.Errors.RejectException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
         </member>
         <member name="P:SoftFX.Extended.Errors.RejectException.Code">
             <summary>
@@ -5212,20 +5348,36 @@
             Returns of reject reason.
             </summary>
         </member>
-        <member name="T:SoftFX.Extended.Errors.ReceiveException">
-            <summary>
-            This exception indicates that a server response incorrect.
-            </summary>
-        </member>
         <member name="T:SoftFX.Extended.Errors.SendException">
             <summary>
             This exception indicates that outgoing request has not been sent.
             </summary>
         </member>
+        <member name="M:SoftFX.Extended.Errors.SendException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
         <member name="T:SoftFX.Extended.Errors.TimeoutException">
             <summary>
             This is exception indicates that timeout of a synchronous operation has been reached.
             </summary>
+        </member>
+        <member name="M:SoftFX.Extended.Errors.TimeoutException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:SoftFX.Extended.Errors.TimeoutException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
         </member>
         <member name="P:SoftFX.Extended.Errors.TimeoutException.WaitingInterval">
             <summary>
@@ -5363,6 +5515,21 @@
         <member name="F:SoftFX.Extended.LogoutReason.ServerError">
             <summary>
             Server error.
+            </summary>
+        </member>
+        <member name="F:SoftFX.Extended.LogoutReason.LoginTimeout">
+            <summary>
+            Your account is temporarily blocked.
+            </summary>
+        </member>
+        <member name="F:SoftFX.Extended.LogoutReason.LoginDeleted">
+            <summary>
+            Account was deleted.
+            </summary>
+        </member>
+        <member name="F:SoftFX.Extended.LogoutReason.ServerLogout">
+            <summary>
+            Session dropped by a server.
             </summary>
         </member>
         <member name="T:SoftFX.Extended.MarginCalcMode">
@@ -5973,22 +6140,6 @@
             <param name="volume">Volume should be positive or zero.</param>
             <exception cref="T:System.ArgumentOutOfRangeException">If price/volume are negative or NAN.</exception>
         </member>
-        <member name="M:SoftFX.Extended.QuoteEntry.BidComparator(SoftFX.Extended.QuoteEntry,SoftFX.Extended.QuoteEntry)">
-            <summary>
-            The predicate compares two bid quote entries.
-            </summary>
-            <param name="first">A first quote entry.</param>
-            <param name="second">A second quote entry.</param>
-            <returns>0, -1, 1</returns>
-        </member>
-        <member name="M:SoftFX.Extended.QuoteEntry.AskComparator(SoftFX.Extended.QuoteEntry,SoftFX.Extended.QuoteEntry)">
-            <summary>
-            The predicate compares two ask quote entries.
-            </summary>
-            <param name="first">A first quote entry.</param>
-            <param name="second">A second quote entry.</param>
-            <returns>0, -1, 1</returns>
-        </member>
         <member name="M:SoftFX.Extended.QuoteEntry.ToString">
             <summary>
             Returns formatted string for the class instance.
@@ -6083,6 +6234,12 @@
             <exception cref="T:SoftFX.Extended.Errors.UnsupportedFeatureException">If the feature is not supported by used protocol version.</exception>
         </member>
         <member name="P:SoftFX.Extended.SymbolInfo.MarginFactor">
+            <summary>
+            Gets margin factor of the symbol.
+            </summary>
+            <exception cref="T:SoftFX.Extended.Errors.UnsupportedFeatureException">If the feature is not supported by used protocol version.</exception>
+        </member>
+        <member name="P:SoftFX.Extended.SymbolInfo.MarginFactorFractional">
             <summary>
             Gets margin factor of the symbol.
             </summary>
@@ -6246,6 +6403,13 @@
             <param name="sender">The source of the event; can be data trade instance.</param>
             <param name="e">Contains trade report information.</param>
         </member>
+        <member name="T:SoftFX.Extended.Events.CurrencyInfoHandler">
+            <summary>
+            Represents the method that will handle: initialization of currency information.
+            </summary>
+            <param name="sender">The source of the event; can be data trade instance.</param>
+            <param name="e">Contains symbols information.</param>
+        </member>
         <member name="T:SoftFX.Extended.Events.SymbolInfoHandler">
             <summary>
             Represents the method that will handle: initialization of symbols information.
@@ -6322,7 +6486,7 @@
         </member>
         <member name="M:SoftFX.Extended.Quote.Equals(SoftFX.Extended.Quote,SoftFX.Extended.Quote)">
             <summary>
-            The operator compares two quotes.
+            Compares to quotes for equality.
             </summary>
             <param name="first">the first quote to compare.</param>
             <param name="second">the second quote to compare.</param>
@@ -6391,11 +6555,12 @@
             The class provides properties, which indicate supported properties and methods of a corresponding symbol info.
             </summary>
         </member>
-        <member name="M:SoftFX.Extended.Features.SymbolInfoFeatures.#ctor(SoftFX.Extended.FixProtocolVersion)">
+        <member name="M:SoftFX.Extended.Features.SymbolInfoFeatures.#ctor(SoftFX.Extended.FixProtocolVersion,SoftFX.Extended.Features.SymbolInfoFeaturesProvider)">
             <summary>
             Creates a new instance of SymbolInfoFeatures
             </summary>
             <param name="protocolVersion">A protocol version; can not be null.</param>
+            <param name="provider"></param>
             <exception cref="T:System.ArgumentNullException">If protocol version is null.</exception>
             <exception cref="T:System.ArgumentException">If an input protocol version is unknown.</exception>
         </member>
@@ -6459,6 +6624,11 @@
             Returns true, if a corresponding symbol info supports 'MarginFactor' property, otherwise false.
             </summary>
         </member>
+        <member name="P:SoftFX.Extended.Features.SymbolInfoFeatures.IsMarginFactorFractionalSupported">
+            <summary>
+            Returns true, if a corresponding symbol info supports 'MarginFactorFractional' property, otherwise false.
+            </summary>
+        </member>
         <member name="P:SoftFX.Extended.Features.SymbolInfoFeatures.IsContractMultiplierSupported">
             <summary>
             Returns true, if a corresponding symbol info supports 'ContractMultiplier' property, otherwise false.
@@ -6499,7 +6669,7 @@
             Returns true, if a corresponding symbol info supports 'LimitsCommission' property, otherwise false.
             </summary>
         </member>
-        <member name="P:SoftFX.Extended.Features.SymbolInfoFeatures.IsTradeEnabledSupported">
+        <member name="P:SoftFX.Extended.Features.SymbolInfoFeatures.IsIsTradeEnabledSupported">
             <summary>
             Returns true, if a corresponding symbol info supports 'IsTradeEnabled' property, otherwise false.
             </summary>
@@ -6760,12 +6930,38 @@
             </summary>
             <param name="message">Exception message; can not be null.</param>
         </member>
+        <member name="M:SoftFX.Extended.Errors.UnsupportedFeatureException.#ctor(System.String,System.String)">
+            <summary>
+            Constructs a new exception instance.
+            </summary>
+            <param name="message">Exception message; can not be null.</param>
+            <param name="feature">Feature name.</param>
+        </member>
         <member name="M:SoftFX.Extended.Errors.UnsupportedFeatureException.#ctor(System.String,System.Exception)">
             <summary>
             Constructs a new exception instance.
             </summary>
             <param name="message">Exception message; can not be null.</param>
             <param name="innerException">Inner exception.</param>
+        </member>
+        <member name="M:SoftFX.Extended.Errors.UnsupportedFeatureException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:SoftFX.Extended.Errors.UnsupportedFeatureException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="P:SoftFX.Extended.Errors.UnsupportedFeatureException.Feature">
+            <summary>
+            Gets unsupported feature name.
+            </summary>
         </member>
         <member name="T:SoftFX.Extended.TradeType">
             <summary>
