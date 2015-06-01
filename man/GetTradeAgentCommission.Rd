@@ -2,11 +2,19 @@
 % Please edit documentation in R/FdkTrades.R
 \name{GetTradeAgentCommission}
 \alias{GetTradeAgentCommission}
-\title{Get symbol field}
+\title{Get trade comission}
 \usage{
+GetTradeAgentCommission(symInfo)
+
+GetTradeAgentCommission(symInfo)
+
 GetTradeAgentCommission(symInfo)
 }
 \description{
-Get symbol field
+Get trade comission
+
+Get trade comission
+
+Get trade comission
 }
 
