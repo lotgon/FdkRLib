@@ -19,7 +19,6 @@ ttTrades <- function(){
   orderId = GetTradeOrderId(symInfo)
   price = GetTradePrice(symInfo)
   profit = GetTradeProfit(symInfo)
-  records = GetTradeRecords(symInfo)
   side = GetTradeSide(symInfo)
   stopLoss = GetTradeStopLoss(symInfo)
   swap = GetTradeSwap(symInfo)
