@@ -30,7 +30,7 @@ ttTrades <- function(){
   
   data.frame(agentComission, tradeClientOrderId, tradeComment, created,
 	tradeData, expiration, initialVolume, isLimitOrder, isPendingOrder,
-	isPosition, isStopOrder, modified, orderId, price, profit, records,
+	isPosition, isStopOrder, modified, orderId, price, profit, 
 	side, stopLoss, swap, takeProfit, type, volume)
 }
 #' Get symbol field
