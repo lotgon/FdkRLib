@@ -28,12 +28,10 @@ ttTrades <- function(){
   
   UnregisterVar(symInfo)
   
-  data.frame(agentComission, tradeClientOrderId, tradeComment, created)
-  
-  # data.frame(agentComission, tradeClientOrderId, tradeComment, created,
-	# tradeData, expiration, initialVolume, isLimitOrder, isPendingOrder,
-  # isPosition, isStopOrder, modified, orderId, price, profit, 
-  # side, stopLoss, swap, takeProfit, type, volume)
+  data.frame(agentComission, tradeClientOrderId, tradeComment, created,
+	 tradeData, expiration, initialVolume, isLimitOrder, isPendingOrder,
+   isPosition, isStopOrder, modified, orderId, price, profit, 
+   side, stopLoss, swap, takeProfit, type, volume)
 }
 #' Get symbol field
 GetTradeRecords <- function() {

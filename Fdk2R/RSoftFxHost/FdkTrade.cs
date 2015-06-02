@@ -4,7 +4,7 @@ using SoftFX.Extended;
 
 namespace RHost
 {
-    public class FdkTrade
+    public static class FdkTrade
     {
         private static DataTrade Trade
         {
@@ -73,28 +73,28 @@ namespace RHost
             return tradeData.Select(it => it.InitialVolume).ToArray();
         }
 
-        public static bool[] GetTradeIsLimitOrder(string varName)
+        public static string[] GetTradeIsLimitOrder(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.IsLimitOrder).ToArray();
+            return tradeData.Select(it => it.IsLimitOrder.ToText()).ToArray();
         }
 
-        public static bool[] GetTradeIsPendingOrder(string varName)
+        public static string[] GetTradeIsPendingOrder(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.IsPendingOrder).ToArray();
+            return tradeData.Select(it => it.IsPendingOrder.ToText()).ToArray();
         }
 
 
-        public static bool[] GetTradeIsPosition(string varName)
+        public static string[] GetTradeIsPosition(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.IsPosition).ToArray();
+            return tradeData.Select(it => it.IsPosition.ToText()).ToArray();
         }
-        public static bool[] GetTradeIsStopOrder(string varName)
+        public static string[] GetTradeIsStopOrder(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.IsStopOrder).ToArray();
+            return tradeData.Select(it => it.IsStopOrder.ToText()).ToArray();
         }
 
         public static DateTime[] GetTradeModified(string varName)
@@ -150,5 +150,9 @@ namespace RHost
             return tradeData.Select(it => it.Volume).ToArray();
         }
 
+        public static string ToText(this bool val)
+        {
+            return val ? "True" : "False";
+        }
     }
 }
