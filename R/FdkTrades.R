@@ -8,7 +8,6 @@ ttTrades <- function(){
   tradeClientOrderId = GetTradeClientOrderId(symInfo)
   tradeComment = GetTradeComment(symInfo)
   created = GetTradeCreated(symInfo)
-  tradeData = GetTradeData(symInfo)
   expiration = GetTradeExpiration(symInfo)
   initialVolume = GetTradeInitialVolume(symInfo)
   isLimitOrder = GetTradeIsLimitOrder(symInfo)
@@ -29,7 +28,7 @@ ttTrades <- function(){
   UnregisterVar(symInfo)
   
   data.frame(agentComission, tradeClientOrderId, tradeComment, created,
-	 tradeData, expiration, initialVolume, isLimitOrder, isPendingOrder,
+	 expiration, initialVolume, isLimitOrder, isPendingOrder,
    isPosition, isStopOrder, modified, orderId, price, profit, 
    side, stopLoss, swap, takeProfit, type, volume)
 }
@@ -58,10 +57,6 @@ GetTradeCreated <- function(symInfo) {
   clrCallStatic('RHost.FdkTrade', 'GetTradeCreated', symInfo)
 }
 
-#' Get trade comission
-GetTradeData <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeData', symInfo)
-}
 #' Get trade comission
 GetTradeExpiration <- function(symInfo) {
   clrCallStatic('RHost.FdkTrade', 'GetTradeExpiration', symInfo)

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using SoftFX.Extended;
 
@@ -49,22 +51,17 @@ namespace RHost
             return tradeData.Select(it => it.Comment).ToArray();
         }
 
-        public static DateTime[] GetTradeCreated(string varName)
+        public static string[] GetTradeCreated(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.Created??new DateTime()).ToArray();
+            return tradeData.Select(it => it.Created).ExposeDatesNull();
         }
 
-        public static DataTrade[] GetTradeData(string varName)
-        {
-            var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.DataTrade).ToArray();
-        }
 
-        public static DateTime[] GetTradeExpiration(string varName)
+        public static string[] GetTradeExpiration(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.Expiration ?? new DateTime()).ToArray();
+            return tradeData.Select(it => it.Expiration).ExposeDatesNull();
         }
 
         public static double[] GetTradeInitialVolume(string varName)
@@ -153,6 +150,19 @@ namespace RHost
         public static string ToText(this bool val)
         {
             return val ? "True" : "False";
+        }
+
+        public static string ToEpochDouble(this DateTime val)
+        {
+            return val.ToString(CultureInfo.InvariantCulture);
+        }
+        public static string[] ExposeDates(this IEnumerable<DateTime> values)
+        {
+            return values.Select(val=>val.ToEpochDouble()).ToArray();
+        }
+        public static string[] ExposeDatesNull(this IEnumerable<DateTime?> values)
+        {
+            return values.Select(val => (val??new DateTime())).ExposeDates();
         }
     }
 }
