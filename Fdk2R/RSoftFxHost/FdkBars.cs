@@ -181,14 +181,14 @@ namespace RHost
             return GetBarsClose(barData);
         }
 
-        public static double[] BarFroms(string bars)
+        public static DateTime[] BarFroms(string bars)
         {
             var barData = FdkVars.GetValue<Bar[]>(bars);
 
             return GetBarsFrom(barData);
         }
 
-        public static double[] BarTos(string bars)
+        public static DateTime[] BarTos(string bars)
         {
             var barData = FdkVars.GetValue<Bar[]>(bars);
 
@@ -220,13 +220,13 @@ namespace RHost
         {
             return barData.Select(b => b == null ? 0.0 : b.Close).ToArray();
         }
-        private static double[] GetBarsFrom(Bar[] barData)
+        private static DateTime[] GetBarsFrom(Bar[] barData)
         {
-            return barData.Select(b => FdkHelper.GetCreatedEpoch(b.From)).ToArray();
+            return barData.Select(b => b.From).ToArray();
         }
-        private static double[] GetBarsTo(Bar[] barData)
+        private static DateTime[] GetBarsTo(Bar[] barData)
         {
-            return barData.Select(b => FdkHelper.GetCreatedEpoch(b.To)).ToArray();
+            return barData.Select(b => b.To).ToArray();
         }
         #endregion
     }

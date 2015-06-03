@@ -1,0 +1,55 @@
+<project name="Fdk2R" default="build">
+	<target name="Defaults">
+		<property name="FrameworkDir"				value="C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\"		unless="${property::exists('FrameworkDir')}" />
+		<property name="NSISDir"					value="C:\Program Files (x86)\NSIS\"						unless="${property::exists('NSISDir')}" />
+		<tstamp property="Date"					pattern="yyyy-MM-dd"										unless="${property::exists('Date')}" />
+		<property name="Build"					value="NO_VERSION"											unless="${property::exists('Build')}" />
+		<property name="Configuration"			value="Release"												unless="${property::exists('Configuration')}" />
+		<property name="Platform"					value="Any CPU"												unless="${property::exists('Platform')}" />
+		<property name="SourcesDir"				value=".\"													unless="${property::exists('SourcesDir')}" />
+		<property name="SolutionFile"				value="BuildMachineFtpClient.sln"	unless="${property::exists('SolutionFile')}" />
+		<property name="VS2012Dir"				value="C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE" />
+		<property name="R_Exe" value="c:\R\R-3.1.3\bin\R.exe" />
+		
+	</target>
+	<target name="RunMSBuild">
+		<exec program="${FrameworkDir}msbuild.exe" >
+			<arg value="/target:${MSBuild.Target}" />
+			<arg value="/maxcpucount" />
+			<arg value="/fl" />
+			<arg value="/flp:Verbosity=Normal;LogFile=${MSBuild.Output}" />
+			<arg value="/clp:NoItemAndPropertyList" />
+			<arg value="/verbosity:n" />
+			<arg value="/nologo" />
+			<arg value="/p:Configuration=${MSBuild.Configuration}" />
+			<arg value="/p:Platform=${MSBuild.Platform}" />
+			<arg value="/p:SolutionDir=${MSBuild.SourcesDir}" />
+			<arg value="${MSBuild.SolutionFile}" />
+		</exec>
+	</target>
+	<target name="build_package">
+		<exec program="${R_Exe}" >
+			<arg value="CMD" />
+			<arg value="BATCH" />		
+			<arg value="build_r.r" />
+		</exec>
+
+	</target>
+  
+	<target name="build">
+		<call target="Defaults" />
+		<property name="MSBuild.Configuration" value="Debug" />
+		<property name="MSBuild.Platform" value="Any CPU" />
+		<property name="MSBuild.Target" value="Rebuild"/>
+		<property name="MSBuild.SourcesDir" value=".\" />
+		<property name="SrcDir" value=".\" />
+		<property name="Fdk2RVersion" value="1.0.20150601" />
+		<move file="../FdkRLib_${Fdk2RVersion}.zip" todir="./dist"/>
+		<delete file="../FdkRLib_${Fdk2RVersion}.zip" />
+		<delete file="build_r.r.Rout" />
+
+		<property name="MSBuild.SolutionFile" value="${SrcDir}\Fdk2R\R2Fdk.sln"/>
+		<property name="MSBuild.Output" value=".\OrdersCleaner.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
+		<call target="RunMSBuild" />
+	</target>
+</project>
