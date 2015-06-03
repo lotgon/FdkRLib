@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using SharedFdkFunctionality;
 using SoftFX.Extended;
 using SoftFX.Extended.Storage;
 

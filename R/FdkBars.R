@@ -18,15 +18,15 @@ ComputeBars <- function(symbol,priceTypeStr, barPeriodStr) {
 
 ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
   symbolBars <- ComputeBars(symbol,priceTypeStr, barPeriodStr)
-  highs <- BarHighs(symbolBars)
-  lows <- BarLows(symbolBars)
-  opens <- BarOpens(symbolBars)
-  closes <- BarCloses(symbolBars)
-  volumes <- BarVolumes(symbolBars)
-  froms <- BarFroms(symbolBars)
-  tos <- BarTos(symbolBars)
+  high <- BarHighs(symbolBars)
+  low <- BarLows(symbolBars)
+  open <- BarOpens(symbolBars)
+  close <- BarCloses(symbolBars)
+  volume <- BarVolumes(symbolBars)
+  from <- BarFroms(symbolBars)
+  to <- BarTos(symbolBars)
   UnregisterVar(symbolBars)
-  data.frame(highs, lows, opens, closes, volumes, froms, tos)
+  data.frame(high, low, open, close, volume, from, to)
 }
 
 #' Gets the bars as requested
@@ -38,15 +38,15 @@ ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
 #' @export
 ttGetBarsRange <- function(symbol, priceTypeStr, barPeriodStr, endTimeEpoch){
   symbolBars <- ComputeBarsRange(symbol, priceTypeStr, barPeriodStr, endTimeEpoch)
-  highs <- BarHighs(symbolBars)
-  lows <- BarLows(symbolBars)
-  opens <- BarOpens(symbolBars)
-  closes <- BarCloses(symbolBars)
-  volumes <- BarVolumes(symbolBars)
-  froms <- BarFroms(symbolBars)
-  tos <- BarTos(symbolBars)
+  high <- BarHighs(symbolBars)
+  low <- BarLows(symbolBars)
+  open <- BarOpens(symbolBars)
+  close <- BarCloses(symbolBars)
+  volume <- BarVolumes(symbolBars)
+  from <- BarFroms(symbolBars)
+  to <- BarTos(symbolBars)
   UnregisterVar(symbolBars)
-  data.frame(highs, lows, opens, closes, volumes, froms, tos)
+  data.frame(high, low, open, close, volume, from, to)
 }
 
 
