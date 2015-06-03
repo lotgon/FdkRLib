@@ -29,14 +29,15 @@ ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
   data.frame(highs, lows, opens, closes, volumes, froms, tos)
 }
 
-#' Gets the bars' low as requested
+#' Gets the bars as requested
 #' 
 #' @param symbol Symbol looked
 #' @param priceTypeStr Ask
 #' @param barPeriodStr Values like: M1, H1
+#' @param endTimeEpoch Epoch time
 #' @export
-ttGetBarsRange <- function(symbol,priceTypeStr, barPeriodStr){
-  symbolBars <- ComputeBarsRange(symbol,priceTypeStr, barPeriodStr)
+ttGetBarsRange <- function(symbol, priceTypeStr, barPeriodStr, endTimeEpoch){
+  symbolBars <- ComputeBarsRange(symbol, priceTypeStr, barPeriodStr, endTimeEpoch)
   highs <- BarHighs(symbolBars)
   lows <- BarLows(symbolBars)
   opens <- BarOpens(symbolBars)

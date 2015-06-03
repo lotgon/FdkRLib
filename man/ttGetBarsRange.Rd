@@ -2,9 +2,9 @@
 % Please edit documentation in R/FdkBars.R
 \name{ttGetBarsRange}
 \alias{ttGetBarsRange}
-\title{Gets the bars' low as requested}
+\title{Gets the bars as requested}
 \usage{
-ttGetBarsRange(symbol, priceTypeStr, barPeriodStr)
+ttGetBarsRange(symbol, priceTypeStr, barPeriodStr, endTimeEpoch)
 }
 \arguments{
 \item{symbol}{Symbol looked}
@@ -12,8 +12,10 @@ ttGetBarsRange(symbol, priceTypeStr, barPeriodStr)
 \item{priceTypeStr}{Ask}
 
 \item{barPeriodStr}{Values like: M1, H1}
+
+\item{endTimeEpoch}{Epoch time}
 }
 \description{
-Gets the bars' low as requested
+Gets the bars as requested
 }
 
