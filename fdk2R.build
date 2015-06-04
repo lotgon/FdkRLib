@@ -58,7 +58,7 @@
     
     <echo message="${MSBuild.SourcesDir}" />
     <echo message="${MSBuild.SolutionFile}" />
-
+	
     <property name="MSBuild.Output" value=".\OrdersCleaner.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
     <call target="RunMSBuild" />
 
@@ -70,6 +70,13 @@
     <property name="MSBuild.Output" value=".\OrdersCleaner.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
     <call target="RunMSBuild" />
 
+    <delete 
+		file="${SrcDir}\data\SoftFX.Extended.Net.dll" />
+    <copy 
+		file="${SrcDir}..\..\..\..\FRE\SoftFX.Extended.Net.dll" 
+		todir="./data" 
+		overwrite="true"
+		/>
 
 
   </target>
