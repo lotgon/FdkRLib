@@ -36,6 +36,12 @@
 
 	</target>
   
+	<target name="build_all">
+		<call target="Defaults" />
+		
+		
+		<call target="build" />
+	</target>
 	<target name="build">
 		<call target="Defaults" />
 		<property name="MSBuild.Configuration" value="Debug" />
@@ -44,12 +50,13 @@
 		<property name="MSBuild.SourcesDir" value=".\" />
 		<property name="SrcDir" value=".\" />
 		<property name="Fdk2RVersion" value="1.0.20150601" />
-		<move file="../FdkRLib_${Fdk2RVersion}.zip" todir="./dist"/>
-		<delete file="../FdkRLib_${Fdk2RVersion}.zip" />
-		<delete file="build_r.r.Rout" />
-
+		
 		<property name="MSBuild.SolutionFile" value="${SrcDir}\Fdk2R\R2Fdk.sln"/>
 		<property name="MSBuild.Output" value=".\OrdersCleaner.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
 		<call target="RunMSBuild" />
+		
+		<move file="../FdkRLib_${Fdk2RVersion}.zip" todir="./dist"/>
+		<delete file="build_r.r.Rout" />
+
 	</target>
 </project>
