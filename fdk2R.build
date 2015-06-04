@@ -59,7 +59,7 @@
     <echo message="${MSBuild.SourcesDir}" />
     <echo message="${MSBuild.SolutionFile}" />
 	
-    <property name="MSBuild.Output" value=".\OrdersCleaner.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
+    <property name="MSBuild.Output" value=".\Fdk2R.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
     <call target="RunMSBuild" />
 
 
@@ -67,14 +67,14 @@
     <property name="MSBuild.Platform" value="x64" />
     <property name="MSBuild.Target" value="Rebuild"/>
 
-    <property name="MSBuild.Output" value=".\OrdersCleaner.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
+    <property name="MSBuild.Output" value=".\Fdk2R.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
     <call target="RunMSBuild" />
 
     <delete 
-		file="${SrcDir}\data\SoftFX.Extended.Net.dll" />
+		file="${SrcDir}\Lib\Fdk\SoftFX.Extended.Net.dll" />
     <copy 
 		file="${SrcDir}..\..\..\..\FRE\SoftFX.Extended.Net.dll" 
-		todir="./data" 
+		todir="${SrcDir}\Lib\Fdk" 
 		overwrite="true"
 		/>
 
@@ -88,8 +88,11 @@
 		
 		<call target="build" />
 	</target>
+  
 	<target name="build">
 		<call target="Defaults" />
+		<call target="ProjectDefaults" />
+
 		<property name="MSBuild.Configuration" value="Debug" />
 		<property name="MSBuild.Platform" value="Any CPU" />
 		<property name="MSBuild.Target" value="Rebuild"/>
@@ -99,6 +102,8 @@
 		<property name="MSBuild.SolutionFile" value="${SrcDir}\Fdk2R\R2Fdk.sln"/>
 		<property name="MSBuild.Output" value=".\OrdersCleaner.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
 		<call target="RunMSBuild" />
+    
+    <call target="build_package" />
 		
 		<move file="../FdkRLib_${Fdk2RVersion}.zip" todir="./dist"/>
 		<delete file="build_r.r.Rout" />
