@@ -12,8 +12,12 @@
 		<property name="R_Exe" value="c:\R\R-3.1.3\bin\R.exe" />
 		
 	</target>
+	<target name="ProjectDefaults" >
+		<property name="MSBuild.SourcesDir" value=".\" />
+		<property name="SrcDir" value=".\" />
+	</target>
 	<target name="RunMSBuild">
-		<exec program="${FrameworkDir}msbuild.exe" >
+		<exec program="${FrameworkDir}msbuild.exe" basedir="${MSBuild.SourcesDir}" >
 			<arg value="/target:${MSBuild.Target}" />
 			<arg value="/maxcpucount" />
 			<arg value="/fl" />
@@ -23,7 +27,6 @@
 			<arg value="/nologo" />
 			<arg value="/p:Configuration=${MSBuild.Configuration}" />
 			<arg value="/p:Platform=${MSBuild.Platform}" />
-			<arg value="/p:SolutionDir=${MSBuild.SourcesDir}" />
 			<arg value="${MSBuild.SolutionFile}" />
 		</exec>
 	</target>
@@ -35,10 +38,46 @@
 		</exec>
 
 	</target>
+	
+	<target name="build_fdk">
+		<call target="Defaults" />
+		<call target="ProjectDefaults" />
+
+    <!-- nant target="BuildSolution">
+			<buildfiles>
+				<include name="${SrcDir}\..\..\..\..\FDK.build" />
+			</buildfiles>
+		</nant -->
+
+    <property name="MSBuild.Configuration" value="Release" />
+    <property name="MSBuild.Platform" value="x86" />
+    <property name="MSBuild.Target" value="Rebuild"/>
+    
+    <property name="MSBuild.SourcesDir" value="${SrcDir}..\..\..\..\Fdk\" />
+    <property name="MSBuild.SolutionFile" value="${SrcDir}..\..\..\..\Fdk\Fdk.sln"/>
+    
+    <echo message="${MSBuild.SourcesDir}" />
+    <echo message="${MSBuild.SolutionFile}" />
+
+    <property name="MSBuild.Output" value=".\OrdersCleaner.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
+    <call target="RunMSBuild" />
+
+
+    <property name="MSBuild.Configuration" value="Release" />
+    <property name="MSBuild.Platform" value="x64" />
+    <property name="MSBuild.Target" value="Rebuild"/>
+
+    <property name="MSBuild.Output" value=".\OrdersCleaner.build-${MSBuild.Configuration}-${MSBuild.Platform}.log"/>
+    <call target="RunMSBuild" />
+
+
+
+  </target>
   
 	<target name="build_all">
 		<call target="Defaults" />
 		
+		<call target="build_fdk" />
 		
 		<call target="build" />
 	</target>
@@ -47,8 +86,7 @@
 		<property name="MSBuild.Configuration" value="Debug" />
 		<property name="MSBuild.Platform" value="Any CPU" />
 		<property name="MSBuild.Target" value="Rebuild"/>
-		<property name="MSBuild.SourcesDir" value=".\" />
-		<property name="SrcDir" value=".\" />
+
 		<property name="Fdk2RVersion" value="1.0.20150601" />
 		
 		<property name="MSBuild.SolutionFile" value="${SrcDir}\Fdk2R\R2Fdk.sln"/>
