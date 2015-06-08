@@ -4,16 +4,20 @@
 \alias{ttGetBars}
 \title{Gets the bars' low as requested}
 \usage{
-ttGetBars(symbol, priceTypeStr, barPeriodStr, endTime, barCount = 1e+06)
+ttGetBars(symbol, priceTypeStr, barPeriodStr, endTime = 0, barCount = 1e+06)
 
-ttGetBars(symbol, priceTypeStr, barPeriodStr, endTime, barCount = 1e+06)
+ttGetBars(symbol, priceTypeStr, barPeriodStr, endTime = 0, barCount = 1e+06)
 }
 \arguments{
-\item{symbol}{Symbol looked}
+\item{symbol}{Symbol looked ('EURUSD')}
 
-\item{priceTypeStr}{Ask}
+\item{priceTypeStr}{Ask, Bid}
 
-\item{barPeriodStr}{Values like: M1, H1}
+\item{barPeriodStr}{Values like: M1, M5, H1}
+
+\item{barCount}{Count of bars. Default: 10000000}
+
+\item{mode}{"range" is default. Mode "list" allows just to get a range of items}
 
 \item{symbol}{Symbol looked}
 

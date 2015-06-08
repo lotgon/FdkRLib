@@ -90,8 +90,8 @@ namespace RHost
             return bars;
         }
 
-        public static string GetBars(string symbol, string priceTypeStr, string barPeriodStr, DateTime endTime, 
-            double barCountDbl=1000000)
+        public static string GetBars(string symbol, string priceTypeStr, string barPeriodStr, DateTime endTime,
+            long barCountDbl, string mode)
         {
             Debugger.Launch();
             var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
@@ -105,14 +105,20 @@ namespace RHost
 
             Bar[] barsData;
 
-            if (endTime.Year == 1970)
+            if (mode == "range")
             {
                 int barCount = (int) barCountDbl;
                 barsData = CalculateBarsForSymbolArray(symbol, priceType.Value, DateTime.Now, barPeriod, barCount);
             }
+            else if (mode == "last")
+            {
+                barsData = CalculateBarsForSymbolArrayRangeTime(symbol, priceType.Value, DateTime.Now, barPeriod,
+                    endTime);
+            }
             else
             {
-                barsData = CalculateBarsForSymbolArrayRangeTime(symbol, priceType.Value, DateTime.Now, barPeriod, endTime);
+                Console.WriteLine("Use 'range' or 'last' ");
+                return String.Empty;
             }
             var bars = FdkVars.RegisterVariable(barsData, "bars");
             return bars;

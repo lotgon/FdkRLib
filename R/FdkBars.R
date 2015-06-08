@@ -8,16 +8,34 @@ ComputeBars <- function(symbol,priceTypeStr, barPeriodStr) {
   clrCallStatic('RHost.FdkBars', 'ComputeBars', symbol,priceTypeStr, barPeriodStr)
 }
 
-
-#' Gets the bars' low as requested
+#' Gets the bars as requested
 #' 
 #' @param symbol Symbol looked
 #' @param priceTypeStr Ask
 #' @param barPeriodStr Values like: M1, H1
-#' @export
+GetBars <- function(symbol, priceTypeStr, barPeriodStr, endTime=NA, 
+                    barCount, mode="range") {
+  clrCallStatic('RHost.FdkBars', 'GetBars', symbol, priceTypeStr, barPeriodStr, endTime, 
+                barCount, mode)
+}
 
-ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
-  symbolBars <- ComputeBars(symbol,priceTypeStr, barPeriodStr)
+ttTimeZero <- function(){
+  tm <- as.POSIXct(0, origin = "1970-01-01")
+}
+
+#' Gets the bars' low as requested
+#' 
+#' @param symbol Symbol looked ('EURUSD')
+#' @param priceTypeStr Ask, Bid
+#' @param barPeriodStr Values like: M1, M5, H1
+#' @param barCount Count of bars. Default: 10000000
+#' @param mode "range" is default. Mode "list" allows just to get a range of items 
+#' @export
+ttGetBars <- function(symbol, priceTypeStr, barPeriodStr, endTime, 
+                      barCount=10000, mode="range")
+{
+  symbolBars <- GetBars(symbol, priceTypeStr, barPeriodStr, endTime, 
+                        barCount, mode)
   high <- BarHighs(symbolBars)
   low <- BarLows(symbolBars)
   open <- BarOpens(symbolBars)
@@ -38,7 +56,7 @@ ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
 #' @param barPeriodStr Values like: M1, H1
 #' @export
 
-ttGetBars <- function(symbol,priceTypeStr, barPeriodStr, endTime, barCount=1000000){
+ttGetBars <- function(symbol,priceTypeStr, barPeriodStr, endTime=0, barCount=1000000){
   symbolBars <- GetBars(symbol,priceTypeStr, barPeriodStr, endTime, barCount)
   high <- BarHighs(symbolBars)
   low <- BarLows(symbolBars)
