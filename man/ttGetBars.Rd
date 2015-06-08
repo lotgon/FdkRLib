@@ -4,7 +4,9 @@
 \alias{ttGetBars}
 \title{Gets the bars' low as requested}
 \usage{
-ttGetBars(symbol, priceTypeStr, barPeriodStr)
+ttGetBars(symbol, priceTypeStr, barPeriodStr, endTime, barCount = 1e+06)
+
+ttGetBars(symbol, priceTypeStr, barPeriodStr, endTime, barCount = 1e+06)
 }
 \arguments{
 \item{symbol}{Symbol looked}
@@ -12,8 +14,16 @@ ttGetBars(symbol, priceTypeStr, barPeriodStr)
 \item{priceTypeStr}{Ask}
 
 \item{barPeriodStr}{Values like: M1, H1}
+
+\item{symbol}{Symbol looked}
+
+\item{priceTypeStr}{Ask}
+
+\item{barPeriodStr}{Values like: M1, H1}
 }
 \description{
+Gets the bars' low as requested
+
 Gets the bars' low as requested
 }
 

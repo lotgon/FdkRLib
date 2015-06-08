@@ -29,6 +29,28 @@ ttGetBars <- function(symbol,priceTypeStr, barPeriodStr){
   data.frame(high, low, open, close, volume, from, to)
 }
 
+
+
+#' Gets the bars' low as requested
+#' 
+#' @param symbol Symbol looked
+#' @param priceTypeStr Ask
+#' @param barPeriodStr Values like: M1, H1
+#' @export
+
+ttGetBars <- function(symbol,priceTypeStr, barPeriodStr, endTime, barCount=1000000){
+  symbolBars <- GetBars(symbol,priceTypeStr, barPeriodStr, endTime, barCount)
+  high <- BarHighs(symbolBars)
+  low <- BarLows(symbolBars)
+  open <- BarOpens(symbolBars)
+  close <- BarCloses(symbolBars)
+  volume <- BarVolumes(symbolBars)
+  from <- BarFroms(symbolBars)
+  to <- BarTos(symbolBars)
+  UnregisterVar(symbolBars)
+  data.frame(high, low, open, close, volume, from, to)
+}
+
 #' Gets the bars as requested
 #' 
 #' @param symbol Symbol looked

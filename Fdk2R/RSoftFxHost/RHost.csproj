@@ -93,6 +93,7 @@
     <Compile Include="FdkSymbolInfo.cs" />
     <Compile Include="FdkTrade.cs" />
     <Compile Include="FdkVars.cs" />
+    <Compile Include="PartitionerUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

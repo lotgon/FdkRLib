@@ -1,7 +1,7 @@
 
 # Connect to server before running the sample
 # ttConnect()
-
+ttConnect()
 bars = ttGetBars("EURUSD", "Bid", "H1")
 
 boxplot(bars$highs)
