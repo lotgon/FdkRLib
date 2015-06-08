@@ -12,5 +12,5 @@ installBinary <- function(fdkRLibPackage){
 installBinary("rClr_0.7-4.zip")
 library(rClr)
 
-installBinary("FdkRLib_1.0.20150601.zip")
+installBinary("FdkRLib_1.0.20150608.zip")
 library(FdkRLib)
