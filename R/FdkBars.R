@@ -1,10 +1,3 @@
-ttTimeZero <- function(){
-  tm <- as.POSIXct(0, origin = "1970-01-01")
-}
-
-ttNow <- function(){
-  tm <- Sys.time()
-}
 
 #' Gets the bars as requested
 #' 

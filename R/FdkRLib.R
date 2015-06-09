@@ -136,6 +136,15 @@ ttGetQuotes <- function(symbol,startTimeEpoch, endTimeEpoch, depth){
   df = data.frame(ask, bid, createTime, hasAsk, hasBid)       
 }
 
+
+ttTimeZero <- function(){
+  tm <- as.POSIXct(0, origin = "1970-01-01")
+}
+
+ttNow <- function(){
+  tm <- Sys.time()
+}
+
 #' Gets the epoch (double) time from a .Net date
 #' 
 #' @param currentTime .Net invariant time 
