@@ -30,23 +30,21 @@ ttBarPairs <- function(symbol, barPeriodStr, startTimeEpoch, endTimeEpoch){
 #' 
 #' @param bars Bars array variable
 getBarPairFrame <- function (bars){
+  askHigh = GetBarsAskHigh(bars)
+  askLow = GetBarsAskLow(bars)
+  askopen = GetBarsAskOpen(bars)
+  askClose = GetBarsAskClose(bars)
+  askVolume = GetBarsAskVolume(bars)
+  askFrom = GetBarsAskFrom(bars)
+  askTo = GetBarsAskTo(bars)
   
-  askHigh = GetBarsAskHigh(bars);
-  askLow = GetBarsAskLow(bars);
-  askopen = GetBarsAskOpen(bars);
-  askClose = GetBarsAskClose(bars);
-  askVolume = GetBarsAskVolume(bars);
-  askFrom = GetBarsAskFrom(bars);
-  askTo = GetBarsAskTo(bars);
-  
-  bidHigh = GetBarsBidHigh(bars);
-  bidLow = GetBarsBidLow(bars);
-  bidOpen = GetBarsBidOpen(bars);
-  bidClose = GetBarsBidClose(bars);
-  bidVolume = GetBarsBidVolume(bars);
-  bidFrom = GetBarsBidFrom(bars);
-  bidTo = GetBarsBidTo(bars);
-  
+  bidHigh = GetBarsBidHigh(bars)
+  bidLow = GetBarsBidLow(bars)
+  bidOpen = GetBarsBidOpen(bars)
+  bidClose = GetBarsBidClose(bars)
+  bidVolume = GetBarsBidVolume(bars)
+  bidFrom = GetBarsBidFrom(bars)
+  bidTo = GetBarsBidTo(bars)
   
   UnregisterVar(bars)
   data.frame(askHigh, askLow, askopen, askClose, askVolume, askFrom, askTo,
@@ -58,7 +56,7 @@ getBarPairFrame <- function (bars){
 #' @param symbol Symbol looked
 #' @param barPeriodStr Values like: M1, H1
 #' @param startTimeEpoch Epoch time
-#' @export
+#' @param barCountDbl Bar count
 ComputeGetPairBars <- function( symbol, barPeriodStr, startTime, barCountDbl) {
   clrCallStatic('RHost.FdkBars', 'ComputeGetPairBars', symbol, barPeriodStr, startTime, barCountDbl)
 }

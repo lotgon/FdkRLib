@@ -11,6 +11,8 @@ ComputeGetPairBars(symbol, barPeriodStr, startTime, barCountDbl)
 
 \item{barPeriodStr}{Values like: M1, H1}
 
+\item{barCountDbl}{Bar count}
+
 \item{startTimeEpoch}{Epoch time}
 }
 \description{
