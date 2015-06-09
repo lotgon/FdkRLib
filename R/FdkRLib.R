@@ -126,6 +126,7 @@ ttGetBarCount <- function() {
 
 ttGetQuotes <- function(symbol,startTimeEpoch, endTimeEpoch, depth){
   symbolBars <- ComputeQuoteHistory(symbol,startTimeEpoch, endTimeEpoch, depth)
+  
   ask <- QuotesAsk(symbolBars)
   bid <- QuotesBid(symbolBars)
   createTime <- QuotesCreatingTime(symbolBars)

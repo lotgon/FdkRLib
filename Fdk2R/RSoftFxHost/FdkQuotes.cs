@@ -33,11 +33,11 @@ namespace RHost
 
             return barData.Select(b => b.Bid).ToArray();
         }
-        public static double[] QuotesCreatingTime(string bars)
+        public static DateTime[] QuotesCreatingTime(string bars)
         {
             var barData = FdkVars.GetValue<Quote[]>(bars);
 
-            var timesAsEpoch = barData.Select(b =>FdkHelper.GetCreatedEpochFromText(b.CreatingTime.ToString(CultureInfo.InvariantCulture))).ToArray();
+            var timesAsEpoch = barData.Select(b =>b.CreatingTime).ToArray();
             return timesAsEpoch;
         }
         public static double[] QuotesSpread(string bars)
