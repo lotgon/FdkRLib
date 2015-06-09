@@ -37,10 +37,15 @@ ttUnregisterAllVariables <- function(varName) {
   clrCallStatic('RHost.FdkVars', 'ClearAll', varName)
 }
 
+#' Gives a default time (equivalent with NULL/NA/null)
+#' 
+#' @export
 ttTimeZero <- function(){
   tm <- as.POSIXct(0, origin = "1970-01-01")
 }
-
+#' Gives current time
+#' 
+#' @export
 ttNow <- function(){
   tm <- Sys.time()
 }
