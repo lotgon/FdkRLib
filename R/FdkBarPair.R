@@ -4,26 +4,13 @@
 #' @param symbol Symbol looked
 #' @param barPeriodStr Values like: M1, H1
 #' @param startTimeEpoch Epoch time
+#' @param barCount Bar count
 #' @export
 
-ttGetBarPairs <- function(symbol,barPeriodStr, startTimeEpoch){
-  bars = ComputeGetPairBars(symbol, barPeriodStr, startTimeEpoch);
+ttGetBarPairs <- function(symbol, barPeriodStr, startTime, barCountDbl = 10000){
+  bars = ComputeGetPairBars(symbol, barPeriodStr, startTime, barCountDbl)
   
-  askhighs = GetBarsAskHigh(bars);
-  asklows = GetBarsAskLow(bars);
-  askopen = GetBarsAskOpen(bars);
-  askClose = GetBarsAskClose(bars);
-  askVolume = GetBarsAskVolume(bars);
-  
-  bidhighs = GetBarsBidHigh(bars);
-  bidlows = GetBarsBidLow(bars);
-  bidOpen = GetBarsBidOpen(bars);
-  bidClose = GetBarsBidClose(bars);
-  bidVolume = GetBarsBidVolume(bars);
-  
-  UnregisterVar(bars)
-  data.frame(askhighs, asklows, askopen, askClose, askVolume, 
-             bidhighs, bidlows, bidOpen, bidClose, bidVolume)
+  getBarPairFrame(bars)
 }
 
 #' Gets the bars' low as requested
@@ -33,25 +20,37 @@ ttGetBarPairs <- function(symbol,barPeriodStr, startTimeEpoch){
 #' @param startTimeEpoch Epoch time
 #' @param endTimeEpoch Epoch time
 #' @export
-
-ttGetBarPairsRange <- function(symbol, barPeriodStr, startTimeEpoch, endTimeEpoch){
-  bars = ComputeGetPairBarsRange(symbol, barPeriodStr, startTimeEpoch, endTimeEpoch);
+ttBarPairsRange <- function(symbol, barPeriodStr, startTimeEpoch, endTimeEpoch){
+  bars = ComputeGetPairBarsRange(symbol, barPeriodStr, startTimeEpoch, endTimeEpoch)
   
-  askhighs = GetBarsAskHigh(bars);
-  asklows = GetBarsAskLow(bars);
+  getBarPairFrame(bars)
+}
+
+#' Extracts bar pair array data as a full data frame
+#' 
+#' @param bars Bars array variable
+getBarPairFrame <- function (bars){
+  
+  askHigh = GetBarsAskHigh(bars);
+  askLow = GetBarsAskLow(bars);
   askopen = GetBarsAskOpen(bars);
   askClose = GetBarsAskClose(bars);
   askVolume = GetBarsAskVolume(bars);
+  askFrom = GetBarsAskFrom(bars);
+  askTo = GetBarsAskTo(bars);
   
-  bidhighs = GetBarsBidHigh(bars);
-  bidlows = GetBarsBidLow(bars);
+  bidHigh = GetBarsBidHigh(bars);
+  bidLow = GetBarsBidLow(bars);
   bidOpen = GetBarsBidOpen(bars);
   bidClose = GetBarsBidClose(bars);
   bidVolume = GetBarsBidVolume(bars);
+  bidFrom = GetBarsBidFrom(bars);
+  bidTo = GetBarsBidTo(bars);
+  
   
   UnregisterVar(bars)
-  data.frame(askhighs, asklows, askopen, askClose, askVolume, 
-             bidhighs, bidlows, bidOpen, bidClose, bidVolume)
+  data.frame(askHigh, askLow, askopen, askClose, askVolume, askFrom, askTo,
+             bidHigh, bidLow, bidOpen, bidClose, bidVolume, bidFrom, bidTo)
 }
 
 #' Gets the bars pairs as requested
@@ -113,6 +112,20 @@ GetBarsAskVolume <- function(barsPairVar) {
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
+GetBarsAskFrom <- function(barsPairVar) {
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsAskFrom', barsPairVar)
+}
+
+#' Gets the bars' ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+GetBarsAskTo <- function(barsPairVar) {
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsAskTo', barsPairVar)
+}
+
+#' Gets the bars' ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
 GetBarsBidHigh <- function(barsPairVar) {
   clrCallStatic('RHost.FdkBarPairs', 'GetBarsBidHigh', barsPairVar)
 }
@@ -143,4 +156,18 @@ GetBarsBidClose <- function(barsPairVar) {
 #' @param quotesVar RHost variable that stores quotes array
 GetBarsBidVolume <- function(barsPairVar) {
   clrCallStatic('RHost.FdkBarPairs', 'GetBarsBidVolume', barsPairVar)
+}
+
+#' Gets the bars' ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+GetBarsBidFrom <- function(barsPairVar) {
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsBidFrom', barsPairVar)
+}
+
+#' Gets the bars' ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+GetBarsBidTo <- function(barsPairVar) {
+  clrCallStatic('RHost.FdkBarPairs', 'GetBarsBidTo', barsPairVar)
 }

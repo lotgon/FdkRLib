@@ -1,26 +1,6 @@
-#' Gets the bars as requested
-#' 
-#' @param symbol Symbol looked
-#' @param priceTypeStr Ask
-#' @param barPeriodStr Values like: M1, H1
-#' @export
-ComputeBars <- function(symbol,priceTypeStr, barPeriodStr) {
-  clrCallStatic('RHost.FdkBars', 'ComputeBars', symbol,priceTypeStr, barPeriodStr)
-}
-
 ttTimeZero <- function(){
   tm <- as.POSIXct(0, origin = "1970-01-01")
 }
-
-ttStartTime <- function(dateTime){
-  tt_EndTime <<- dateTime
-}
-
-
-ttEndTime <- function(dateTime){
-  tt_EndTime <<- dateTime
-}
-
 
 #' Gets the bars as requested
 #' 
@@ -37,31 +17,21 @@ ttBars <- function(symbol, priceTypeStr, barPeriodStr, startTime, endTime){
 #' Gets the bars' low as requested
 #' 
 #' @param symbol Symbol looked
-#' @param priceTypeStr Ask
+#' @param priceTypeStr Ask or Bid
 #' @param barPeriodStr Values like: M1, H1
+#' @param startTime Time to start
+#' @param barCount (defaults to 10 000)
 #' @export
 
-ttBarsByCount <- function(symbol,priceTypeStr, barPeriodStr, endTime, barCount=10000){
-  symbolBars <- GetBars(symbol,priceTypeStr, barPeriodStr, endTime, barCount)
+ttBarsByCount <- function(symbol, priceTypeStr, barPeriodStr, startTime, barCount=10000){
+  symbolBars <- ComputeBars(symbol,priceTypeStr, barPeriodStr, startTime, barCount)
   
   getBarsFrame(symbolBars)
 }
 
-#' Gets the bars' low as requested
+#' Extracts bar array data as a full data frame
 #' 
-#' @param symbol Symbol looked ('EURUSD')
-#' @param priceTypeStr Ask, Bid
-#' @param barPeriodStr Values like: M1, M5, H1
-#' @param barCount Count of bars. Default: 10000000
-#' @param mode "range" is default. Mode "list" allows just to get a range of items 
-#' @export
-ttGetBars <- function(symbol, priceTypeStr, barPeriodStr, endTime, 
-                      barCount=10000, mode="range")
-{
-  symbolBars <- GetBars(symbol, priceTypeStr, barPeriodStr, tt_EndTime, 
-                        barCount, mode)
-  getBarsFrame(symbolBars)
-}
+#' @param symbolBars Bars array variable
 
 getBarsFrame <- function(symbolBars){
   
@@ -84,7 +54,7 @@ getBarsFrame <- function(symbolBars){
 #' @param priceTypeStr Ask
 #' @param barPeriodStr Values like: M1, H1
 #' @param endTimeEpoch Epoch time
-ComputeBars <- function(symbol, priceTypeStr, barPeriodStr) {
+ComputeBars <- function(symbol, priceTypeStr, barPeriodStr, startTime, barCountDbl) {
   clrCallStatic('RHost.FdkBars', 'ComputeBars', symbol, priceTypeStr, barPeriodStr)
 }
 

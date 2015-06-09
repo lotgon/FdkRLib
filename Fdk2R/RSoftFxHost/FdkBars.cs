@@ -92,12 +92,13 @@ namespace RHost
             return bars;
         }
 
-        public static string ComputeGetPairBars(string symbol, string barPeriodStr, DateTime startTime)
+        public static string ComputeGetPairBars(string symbol, string barPeriodStr, DateTime startTime, double barCountDbl)
         {
             var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
                 return string.Empty;
-            var barsData = GetPairBarsSymbolArray(symbol, barPeriod, startTime, BarCount);
+            int barCount = (int) barCountDbl;
+            var barsData = GetPairBarsSymbolArray(symbol, barPeriod, startTime, barCount);
             var bars = FdkVars.RegisterVariable(barsData, "barPairs");
             return bars;
         }
@@ -223,12 +224,13 @@ namespace RHost
         }
 
 
-        private static DateTime[] GetBarsFrom(Bar[] barData)
+        internal static DateTime[] GetBarsFrom(Bar[] barData)
         {
             return barData.ParititionProcess(b => b.From).ToArray();
             //return barData.Select(b => b.From).ToArray();
         }
-        private static DateTime[] GetBarsTo(Bar[] barData)
+
+        internal static DateTime[] GetBarsTo(Bar[] barData)
         {
             return barData.ParititionProcess(b => b.To).ToArray();
             //return barData.Select(b => b.To).ToArray();

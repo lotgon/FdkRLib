@@ -2,19 +2,11 @@
 % Please edit documentation in R/FdkBars.R
 \name{ComputeBars}
 \alias{ComputeBars}
-\title{Gets the bars as requested}
+\title{Gets the bars as requested range}
 \usage{
-ComputeBars(symbol, priceTypeStr, barPeriodStr)
-
-ComputeBars(symbol, priceTypeStr, barPeriodStr)
+ComputeBars(symbol, priceTypeStr, barPeriodStr, startTime, barCountDbl)
 }
 \arguments{
-\item{symbol}{Symbol looked}
-
-\item{priceTypeStr}{Ask}
-
-\item{barPeriodStr}{Values like: M1, H1}
-
 \item{symbol}{Symbol looked}
 
 \item{priceTypeStr}{Ask}
@@ -24,8 +16,6 @@ ComputeBars(symbol, priceTypeStr, barPeriodStr)
 \item{endTimeEpoch}{Epoch time}
 }
 \description{
-Gets the bars as requested
-
 Gets the bars as requested range
 }
 

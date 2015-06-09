@@ -4,7 +4,7 @@
 \alias{ttGetBarPairs}
 \title{Gets the bars' low as requested}
 \usage{
-ttGetBarPairs(symbol, barPeriodStr, startTimeEpoch)
+ttGetBarPairs(symbol, barPeriodStr, startTime, barCountDbl = 10000)
 }
 \arguments{
 \item{symbol}{Symbol looked}
@@ -12,6 +12,8 @@ ttGetBarPairs(symbol, barPeriodStr, startTimeEpoch)
 \item{barPeriodStr}{Values like: M1, H1}
 
 \item{startTimeEpoch}{Epoch time}
+
+\item{barCount}{Bar count}
 }
 \description{
 Gets the bars' low as requested
