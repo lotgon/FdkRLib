@@ -4,7 +4,7 @@
 \alias{ComputeGetPairBars}
 \title{Gets the bars pairs as requested}
 \usage{
-ComputeGetPairBars(symbol, barPeriodStr, startTimeEpoch)
+ComputeGetPairBars(symbol, barPeriodStr, startTime, barCountDbl)
 }
 \arguments{
 \item{symbol}{Symbol looked}
