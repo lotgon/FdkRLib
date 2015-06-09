@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using SoftFX.Extended;
 using SoftFX.Extended.Storage;
@@ -75,7 +74,8 @@ namespace RHost
             return bars;
         }
 
-        public static string ComputeBarsRangeTime(string symbol, string priceTypeStr, string barPeriodStr, DateTime endTime)
+        public static string ComputeBarsRangeTime(string symbol, string priceTypeStr, string barPeriodStr,
+            DateTime startTime, DateTime endTime)
         {
             var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
@@ -85,41 +85,7 @@ namespace RHost
             if (priceType == null)
                 return string.Empty;
 
-            var barsData = CalculateBarsForSymbolArrayRangeTime(symbol, priceType.Value, DateTime.Now, barPeriod, endTime);
-            var bars = FdkVars.RegisterVariable(barsData, "bars");
-            return bars;
-        }
-
-        public static string GetBars(string symbol, string priceTypeStr, string barPeriodStr, DateTime endTime,
-            long barCountDbl, string mode)
-        {
-            Debugger.Launch();
-            var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
-            if (barPeriod == null)
-                return string.Empty;
-
-            var priceType = FdkHelper.ParseEnumStr<PriceType>(priceTypeStr);
-            if (priceType == null)
-                return string.Empty;
-
-
-            Bar[] barsData;
-
-            if (mode == "range")
-            {
-                int barCount = (int) barCountDbl;
-                barsData = CalculateBarsForSymbolArray(symbol, priceType.Value, DateTime.Now, barPeriod, barCount);
-            }
-            else if (mode == "last")
-            {
-                barsData = CalculateBarsForSymbolArrayRangeTime(symbol, priceType.Value, DateTime.Now, barPeriod,
-                    endTime);
-            }
-            else
-            {
-                Console.WriteLine("Use 'range' or 'last' ");
-                return String.Empty;
-            }
+            var barsData = CalculateBarsForSymbolArrayRangeTime(symbol, priceType.Value, startTime, barPeriod, endTime);
             var bars = FdkVars.RegisterVariable(barsData, "bars");
             return bars;
         }

@@ -13,14 +13,60 @@ ComputeBars <- function(symbol,priceTypeStr, barPeriodStr) {
 #' @param symbol Symbol looked
 #' @param priceTypeStr Ask
 #' @param barPeriodStr Values like: M1, H1
-GetBars <- function(symbol, priceTypeStr, barPeriodStr, endTime=NA, 
+ttBars <- function(symbol, priceTypeStr, barPeriodStr, endTime, 
                     barCount, mode="range") {
+  clrCallStatic('RHost.FdkBars', 'GetBars', symbol, priceTypeStr, barPeriodStr, endTime, 
+                barCount, mode)
+}
+
+#' Gets the bars as requested
+#' 
+#' @param symbol Symbol looked
+#' @param priceTypeStr Ask
+#' @param barPeriodStr Values like: M1, H1
+ttBars <- function(symbol, priceTypeStr, barPeriodStr, endTime, 
+                   barCount, mode="range") {
   clrCallStatic('RHost.FdkBars', 'GetBars', symbol, priceTypeStr, barPeriodStr, endTime, 
                 barCount, mode)
 }
 
 ttTimeZero <- function(){
   tm <- as.POSIXct(0, origin = "1970-01-01")
+}
+
+ttStartTime <- function(dateTime){
+  tt_EndTime <<- dateTime
+}
+
+
+ttEndTime <- function(dateTime){
+  tt_EndTime <<- dateTime
+}
+
+
+#' Gets the bars as requested
+#' 
+#' @param symbol Symbol looked
+#' @param priceTypeStr Ask
+#' @param barPeriodStr Values like: M1, H1
+#' @param endTimeEpoch Epoch time
+#' @export
+ttBars <- function(symbol, priceTypeStr, barPeriodStr, endTimeEpoch){
+  symbolBars <- ComputeBarsRange(symbol, priceTypeStr, barPeriodStr, endTimeEpoch)
+  getBarsFrame(symbolBars)
+}
+
+#' Gets the bars' low as requested
+#' 
+#' @param symbol Symbol looked
+#' @param priceTypeStr Ask
+#' @param barPeriodStr Values like: M1, H1
+#' @export
+
+ttBarsByCount <- function(symbol,priceTypeStr, barPeriodStr, endTime, barCount=10000){
+  symbolBars <- GetBars(symbol,priceTypeStr, barPeriodStr, endTime, barCount)
+  
+  getBarsFrame(symbolBars)
 }
 
 #' Gets the bars' low as requested
@@ -34,8 +80,13 @@ ttTimeZero <- function(){
 ttGetBars <- function(symbol, priceTypeStr, barPeriodStr, endTime, 
                       barCount=10000, mode="range")
 {
-  symbolBars <- GetBars(symbol, priceTypeStr, barPeriodStr, endTime, 
+  symbolBars <- GetBars(symbol, priceTypeStr, barPeriodStr, tt_EndTime, 
                         barCount, mode)
+  getBarsFrame(symbolBars)
+}
+
+getBarsFrame <- function(symbolBars){
+  
   high <- BarHighs(symbolBars)
   low <- BarLows(symbolBars)
   open <- BarOpens(symbolBars)
@@ -47,47 +98,6 @@ ttGetBars <- function(symbol, priceTypeStr, barPeriodStr, endTime,
   data.frame(high, low, open, close, volume, from, to)
 }
 
-
-
-#' Gets the bars' low as requested
-#' 
-#' @param symbol Symbol looked
-#' @param priceTypeStr Ask
-#' @param barPeriodStr Values like: M1, H1
-#' @export
-
-ttGetBars <- function(symbol,priceTypeStr, barPeriodStr, endTime=0, barCount=1000000){
-  symbolBars <- GetBars(symbol,priceTypeStr, barPeriodStr, endTime, barCount)
-  high <- BarHighs(symbolBars)
-  low <- BarLows(symbolBars)
-  open <- BarOpens(symbolBars)
-  close <- BarCloses(symbolBars)
-  volume <- BarVolumes(symbolBars)
-  from <- BarFroms(symbolBars)
-  to <- BarTos(symbolBars)
-  UnregisterVar(symbolBars)
-  data.frame(high, low, open, close, volume, from, to)
-}
-
-#' Gets the bars as requested
-#' 
-#' @param symbol Symbol looked
-#' @param priceTypeStr Ask
-#' @param barPeriodStr Values like: M1, H1
-#' @param endTimeEpoch Epoch time
-#' @export
-ttGetBarsRange <- function(symbol, priceTypeStr, barPeriodStr, endTimeEpoch){
-  symbolBars <- ComputeBarsRange(symbol, priceTypeStr, barPeriodStr, endTimeEpoch)
-  high <- BarHighs(symbolBars)
-  low <- BarLows(symbolBars)
-  open <- BarOpens(symbolBars)
-  close <- BarCloses(symbolBars)
-  volume <- BarVolumes(symbolBars)
-  from <- BarFroms(symbolBars)
-  to <- BarTos(symbolBars)
-  UnregisterVar(symbolBars)
-  data.frame(high, low, open, close, volume, from, to)
-}
 
 
 #' Gets the bars as requested range
@@ -105,9 +115,12 @@ ComputeBars <- function(symbol, priceTypeStr, barPeriodStr) {
 #' @param symbol Symbol looked
 #' @param priceTypeStr Ask
 #' @param barPeriodStr Values like: M1, H1
-#' @param endTimeEpoch Epoch time
-ComputeBarsRange <- function(symbol, priceTypeStr, barPeriodStr, endTimeEpoch) {
-  clrCallStatic('RHost.FdkBars', 'ComputeBarsRangeTime', symbol, priceTypeStr, barPeriodStr, endTimeEpoch)
+#' @param startTime Start of the time range
+#' @param endTime End of the time range
+ComputeBarsRange <- function(symbol, 
+      priceTypeStr, barPeriodStr, startTune, endTime) {
+  clrCallStatic('RHost.FdkBars', 'ComputeBarsRangeTime', symbol, 
+                priceTypeStr, barPeriodStr, startTime, endTime)
 }
 
 #' Gets the bars' high  as requested

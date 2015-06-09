@@ -4,7 +4,7 @@
 \alias{ComputeBarsRange}
 \title{Gets the bars as requested}
 \usage{
-ComputeBarsRange(symbol, priceTypeStr, barPeriodStr, endTimeEpoch)
+ComputeBarsRange(symbol, priceTypeStr, barPeriodStr, startTune, endTime)
 }
 \arguments{
 \item{symbol}{Symbol looked}
@@ -13,7 +13,9 @@ ComputeBarsRange(symbol, priceTypeStr, barPeriodStr, endTimeEpoch)
 
 \item{barPeriodStr}{Values like: M1, H1}
 
-\item{endTimeEpoch}{Epoch time}
+\item{endTime}{End of the time range}
+
+\item{startTime}{Start of the time range}
 }
 \description{
 Gets the bars as requested
