@@ -59,7 +59,7 @@ namespace RHost
 #endregion
 
 
-        public static string ComputeBars(string symbol, string priceTypeStr, string barPeriodStr)
+        public static string ComputeBars(string symbol, string priceTypeStr, string barPeriodStr, DateTime startTime, double barCountDbl)
         {
             var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
@@ -69,7 +69,9 @@ namespace RHost
             if (priceType== null)
                 return string.Empty;
 
-            var barsData = CalculateBarsForSymbolArray(symbol, priceType.Value, DateTime.Now, barPeriod, BarCount);
+            int barCount = (int) barCountDbl;
+
+            var barsData = CalculateBarsForSymbolArray(symbol, priceType.Value, startTime, barPeriod, barCount);
             var bars = FdkVars.RegisterVariable(barsData, "bars");
             return bars;
         }

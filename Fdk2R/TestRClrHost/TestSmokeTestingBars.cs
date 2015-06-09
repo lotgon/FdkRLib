@@ -12,7 +12,7 @@ namespace TestRClrHost
         {
             //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
-            var bars = FdkBars.ComputeBars("EURUSD", "Ask", "M1");
+            var bars = FdkBars.ComputeBars("EURUSD", "Ask", "M1", DateTime.Now, 10000);
             var highs = FdkBars.BarHighs(bars);
             var lows = FdkBars.BarLows(bars);
             var opens = FdkBars.BarOpens(bars);
