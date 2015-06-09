@@ -1,4 +1,23 @@
 
+#' Gets the quotes history
+#' 
+#' @param symbol Symbol looked
+#' @param startTime Starting time. Use ttGetEpochFromText if you want to take from text a valid date.
+#' @param endTime Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
+#' @param depth Quotes depth
+#' @export
+ttQuotes <- function(symbol,startTime= ttTimeZero() , endTime = ttNow(), depth){
+  symbolBars <- ComputeQuoteHistory(symbol,startTimeEpoch, endTimeEpoch, depth)
+  
+  ask <- QuotesAsk(symbolBars)
+  bid <- QuotesBid(symbolBars)
+  createTime <- QuotesCreatingTime(symbolBars)
+  hasAsk <- QuotesHasAsk(symbolBars)
+  hasBid <- QuotesHasBid(symbolBars)
+  UnregisterVar(symbolBars)
+  df = data.frame(ask, bid, createTime, hasAsk, hasBid)       
+}
+
 # ****
 #' Gets the bars as requested
 #' 
@@ -62,22 +81,3 @@ ttGetBarCount <- function() {
 }
 
 
-
-#' Gets the quotes history
-#' 
-#' @param symbol Symbol looked
-#' @param startTimeEpoch Starting time. Use ttGetEpochFromText if you want to take from text a valid date.
-#' @param endTimeEpoch Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
-#' @param depth Quotes depth
-#' @export
-ttQuotes <- function(symbol,startTimeEpoch, endTimeEpoch, depth){
-  symbolBars <- ComputeQuoteHistory(symbol,startTimeEpoch, endTimeEpoch, depth)
-  
-  ask <- QuotesAsk(symbolBars)
-  bid <- QuotesBid(symbolBars)
-  createTime <- QuotesCreatingTime(symbolBars)
-  hasAsk <- QuotesHasAsk(symbolBars)
-  hasBid <- QuotesHasBid(symbolBars)
-  UnregisterVar(symbolBars)
-  df = data.frame(ask, bid, createTime, hasAsk, hasBid)       
-}
