@@ -4,7 +4,8 @@
 \alias{ComputeBarsRange}
 \title{Gets the bars as requested}
 \usage{
-ComputeBarsRange(symbol, priceTypeStr, barPeriodStr, startTime, endTime)
+ComputeBarsRange(symbol, priceTypeStr, barPeriodStr, startTime, endTime,
+  barCount)
 }
 \arguments{
 \item{symbol}{Symbol looked}
@@ -16,6 +17,8 @@ ComputeBarsRange(symbol, priceTypeStr, barPeriodStr, startTime, endTime)
 \item{startTime}{Start of the time range}
 
 \item{endTime}{End of the time range}
+
+\item{barCount}{Items used}
 }
 \description{
 Gets the bars as requested

@@ -77,7 +77,7 @@ namespace RHost
         }
 
         public static string ComputeBarsRangeTime(string symbol, string priceTypeStr, string barPeriodStr,
-            DateTime startTime, DateTime endTime)
+            DateTime startTime, DateTime endTime, double barCountDbl)
         {
             var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
@@ -87,7 +87,16 @@ namespace RHost
             if (priceType == null)
                 return string.Empty;
 
-            var barsData = CalculateBarsForSymbolArrayRangeTime(symbol, priceType.Value, startTime, barPeriod, endTime);
+            Bar[] barsData;
+            if (startTime.Year == 1970 && startTime.Month == 1 && startTime.Day == 1)
+            {
+                var barCount = (int) barCountDbl;
+                barsData = CalculateBarsForSymbolArray(symbol, priceType.Value, startTime, barPeriod, barCount);
+                
+            }else
+            {
+                barsData = CalculateBarsForSymbolArrayRangeTime(symbol, priceType.Value, startTime, barPeriod, endTime);
+            }
             var bars = FdkVars.RegisterVariable(barsData, "bars");
             return bars;
         }

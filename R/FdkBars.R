@@ -2,6 +2,10 @@ ttTimeZero <- function(){
   tm <- as.POSIXct(0, origin = "1970-01-01")
 }
 
+ttNow <- function(){
+  tm <- Sys.time()
+}
+
 #' Gets the bars as requested
 #' 
 #' @param symbol Symbol looked
@@ -9,8 +13,12 @@ ttTimeZero <- function(){
 #' @param barPeriodStr Values like: M1, H1
 #' @param endTimeEpoch Epoch time
 #' @export
-ttBars <- function(symbol, priceTypeStr, barPeriodStr, startTime, endTime){
-  symbolBars <- ComputeBarsRange(symbol, priceTypeStr, barPeriodStr, startTime, endTime)
+ttBars <- function(symbol, 
+     priceTypeStr="Bid", barPeriodStr = "M1", 
+     startTime= ttTimeZero() , endTime = ttNow(),
+     barCount = 10000
+     ){
+  symbolBars <- ComputeBarsRange(symbol, priceTypeStr, barPeriodStr, startTime, endTime, barCount)
   getBarsFrame(symbolBars)
 }
 
@@ -23,7 +31,7 @@ ttBars <- function(symbol, priceTypeStr, barPeriodStr, startTime, endTime){
 #' @param barCount (defaults to 10 000)
 #' @export
 
-ttBarsByCount <- function(symbol, priceTypeStr, barPeriodStr, startTime, barCount=10000){
+ttBarsByCount <- function(symbol, priceTypeStr = 'Bid', barPeriodStr="M1", startTime, barCount=10000){
   symbolBars <- ComputeBars(symbol,priceTypeStr, barPeriodStr, startTime, barCount)
   
   getBarsFrame(symbolBars)
@@ -65,8 +73,9 @@ ComputeBars <- function(symbol, priceTypeStr, barPeriodStr, startTime, barCountD
 #' @param barPeriodStr Values like: M1, H1
 #' @param startTime Start of the time range
 #' @param endTime End of the time range
+#' @param barCount Items used
 ComputeBarsRange <- function(symbol, 
-      priceTypeStr, barPeriodStr, startTime, endTime) {
+      priceTypeStr, barPeriodStr, startTime, endTime, barCount) {
   clrCallStatic('RHost.FdkBars', 'ComputeBarsRangeTime', symbol, 
                 priceTypeStr, barPeriodStr, startTime, endTime)
 }

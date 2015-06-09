@@ -4,7 +4,8 @@
 \alias{ttBarsByCount}
 \title{Gets the bars' low as requested}
 \usage{
-ttBarsByCount(symbol, priceTypeStr, barPeriodStr, startTime, barCount = 10000)
+ttBarsByCount(symbol, priceTypeStr = "Bid", barPeriodStr = "M1", startTime,
+  barCount = 10000)
 }
 \arguments{
 \item{symbol}{Symbol looked}

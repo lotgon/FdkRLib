@@ -9,3 +9,8 @@ Fdk2R/TestRClrHost/bin/*
 *.DotSettings.user
 *.suo
 Fdk2R/RSoftFxHost/bin/*
+
+.RData
+*.Rout
+.Rhistory
+*.log

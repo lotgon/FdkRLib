@@ -4,7 +4,8 @@
 \alias{ttBars}
 \title{Gets the bars as requested}
 \usage{
-ttBars(symbol, priceTypeStr, barPeriodStr, startTime, endTime)
+ttBars(symbol, priceTypeStr = "Bid", barPeriodStr = "M1",
+  startTime = ttTimeZero(), endTime = ttNow(), barCount = 10000)
 }
 \arguments{
 \item{symbol}{Symbol looked}
