@@ -70,8 +70,7 @@ ttGetBarCount <- function() {
 #' @param endTimeEpoch Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
 #' @param depth Quotes depth
 #' @export
-
-ttGetQuotes <- function(symbol,startTimeEpoch, endTimeEpoch, depth){
+ttQuotes <- function(symbol,startTimeEpoch, endTimeEpoch, depth){
   symbolBars <- ComputeQuoteHistory(symbol,startTimeEpoch, endTimeEpoch, depth)
   
   ask <- QuotesAsk(symbolBars)

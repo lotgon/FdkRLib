@@ -15,25 +15,9 @@ ttBars <- function(symbol,
   getBarsFrame(symbolBars)
 }
 
-#' Gets the bars' low as requested
-#' 
-#' @param symbol Symbol looked
-#' @param priceTypeStr Ask or Bid
-#' @param barPeriodStr Values like: M1, H1
-#' @param startTime Time to start
-#' @param barCount (defaults to 10 000)
-#' @export
-
-ttBarsByCount <- function(symbol, priceTypeStr = 'Bid', barPeriodStr="M1", startTime, barCount=10000){
-  symbolBars <- ComputeBars(symbol,priceTypeStr, barPeriodStr, startTime, barCount)
-  
-  getBarsFrame(symbolBars)
-}
-
 #' Extracts bar array data as a full data frame
 #' 
 #' @param symbolBars Bars array variable
-
 getBarsFrame <- function(symbolBars){
   
   high <- BarHighs(symbolBars)
@@ -48,17 +32,6 @@ getBarsFrame <- function(symbolBars){
 }
 
 
-
-#' Gets the bars as requested range
-#' 
-#' @param symbol Symbol looked
-#' @param priceTypeStr Ask
-#' @param barPeriodStr Values like: M1, H1
-#' @param endTimeEpoch Epoch time
-ComputeBars <- function(symbol, priceTypeStr, barPeriodStr, startTime, barCountDbl) {
-  clrCallStatic('RHost.FdkBars', 'ComputeBars', symbol, priceTypeStr, barPeriodStr)
-}
-
 #' Gets the bars as requested
 #' 
 #' @param symbol Symbol looked
@@ -69,8 +42,8 @@ ComputeBars <- function(symbol, priceTypeStr, barPeriodStr, startTime, barCountD
 #' @param barCount Items used
 ComputeBarsRange <- function(symbol, 
       priceTypeStr, barPeriodStr, startTime, endTime, barCount) {
-  clrCallStatic('RHost.FdkBars', 'ComputeBarsRangeTime', symbol, 
-                priceTypeStr, barPeriodStr, startTime, endTime)
+  clrCallStatic('RHost.FdkBars', 'ComputeBarsRangeTime',
+	symbol, priceTypeStr, barPeriodStr, startTime, endTime)
 }
 
 #' Gets the bars' high  as requested
@@ -104,4 +77,18 @@ BarCloses <- function(barsVar) {
 #' @param barsVar RHost variable that stores bar array
 BarVolumes <- function(barsVar) {
   clrCallStatic('RHost.FdkBars', 'BarVolumes', barsVar)
+}
+
+#' Gets the bars' volume as requested
+#' 
+#' @param barsVar RHost variable that stores bar array
+BarFroms <- function(barsVar) {
+  clrCallStatic('RHost.FdkBars', 'BarFroms', barsVar)
+}
+
+#' Gets the bars' volume as requested
+#' 
+#' @param barsVar RHost variable that stores bar array
+BarTos <- function(barsVar) {
+  clrCallStatic('RHost.FdkBars', 'BarTos', barsVar)
 }
