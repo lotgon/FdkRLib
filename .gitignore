@@ -14,3 +14,4 @@ Fdk2R/RSoftFxHost/bin/*
 *.Rout
 .Rhistory
 *.log
+man/*

@@ -43,7 +43,7 @@ getBarsFrame <- function(symbolBars){
 ComputeBarsRange <- function(symbol, 
       priceTypeStr, barPeriodStr, startTime, endTime, barCount) {
   clrCallStatic('RHost.FdkBars', 'ComputeBarsRangeTime',
-	symbol, priceTypeStr, barPeriodStr, startTime, endTime)
+	symbol, priceTypeStr, barPeriodStr, startTime, endTime, barCount)
 }
 
 #' Gets the bars' high  as requested
