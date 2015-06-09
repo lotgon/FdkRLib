@@ -51,14 +51,14 @@ namespace RHost
             return tradeData.Select(it => it.Comment).ToArray();
         }
 
-        public static string[] GetTradeCreated(string varName)
+        public static DateTime[] GetTradeCreated(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
             return tradeData.Select(it => it.Created).ExposeDatesNull();
         }
 
 
-        public static string[] GetTradeExpiration(string varName)
+        public static DateTime[] GetTradeExpiration(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
             return tradeData.Select(it => it.Expiration).ExposeDatesNull();
@@ -160,9 +160,9 @@ namespace RHost
         {
             return values.Select(val=>val.ToEpochDouble()).ToArray();
         }
-        public static string[] ExposeDatesNull(this IEnumerable<DateTime?> values)
+        public static DateTime[] ExposeDatesNull(this IEnumerable<DateTime?> values)
         {
-            return values.Select(val => (val??new DateTime())).ExposeDates();
+            return values.Select(val => (val??new DateTime(1970,1,1))).ToArray();
         }
     }
 }
