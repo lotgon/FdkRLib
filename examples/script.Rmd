@@ -22,7 +22,15 @@ bars = ttBars("EURUSD")
 
 ```{r}
 bars = ttBars("EURUSD")
-View(trades)
+View(bars)
+```
+
+<p>Get 10000 bar pairs of EURUSD symbol:</p>
+bars = ttBarPairs("EURUSD")
+
+```{r}
+barPairs = ttBarPairs("EURUSD")
+View(barPairs)
 ```
 
 Get trades of current account
