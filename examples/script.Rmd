@@ -6,14 +6,26 @@ output:
     theme: united
 ---
 
-<p>Bars:</p>
+Connect to TT Demo server:
+ttConnect()
 
 ```{r}
 require(rClr)
 require(FdkRLib)
 ttConnect()
-bars = ttBars("EURUSD")
+```
 
 
+
+<p>Get 10000 bars of EURUSD symbol:</p>
 bars = ttBars("EURUSD")
+
+```{r}
+bars = ttBars("EURUSD")
+```
+
+Get trades of current account
+```{r}
+trades = ttTrades()
+View(trades)
 ```
