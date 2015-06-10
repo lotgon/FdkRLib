@@ -1,0 +1,16 @@
+---
+title: "Sample Document"
+output:
+  html_document:
+    toc: true
+    theme: united
+---
+
+<p>Bars:</p>
+
+```{r}
+require(rClr)
+require(FdkRLib)
+ttConnect()
+ttBars("EURUSD")
+```
