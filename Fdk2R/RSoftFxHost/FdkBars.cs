@@ -58,24 +58,6 @@ namespace RHost
         }
 #endregion
 
-
-        public static string ComputeBars(string symbol, string priceTypeStr, string barPeriodStr, DateTime startTime, double barCountDbl)
-        {
-            var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
-            if (barPeriod == null)
-                return string.Empty;
-
-            var priceType = FdkHelper.ParseEnumStr<PriceType>(priceTypeStr);
-            if (priceType== null)
-                return string.Empty;
-
-            int barCount = (int) barCountDbl;
-
-            var barsData = CalculateBarsForSymbolArray(symbol, priceType.Value, startTime, barPeriod, barCount);
-            var bars = FdkVars.RegisterVariable(barsData, "bars");
-            return bars;
-        }
-
         public static string ComputeBarsRangeTime(string symbol, string priceTypeStr, string barPeriodStr,
             DateTime startTime, DateTime endTime, double barCountDbl)
         {
@@ -88,7 +70,7 @@ namespace RHost
                 return string.Empty;
 
             Bar[] barsData;
-            if (IsTimeZero(startTime))
+            if (FdkHelper.IsTimeZero(startTime))
             {
                 var barCount = (int) barCountDbl;
                 barsData = CalculateBarsForSymbolArray(symbol, priceType.Value, endTime, barPeriod, barCount);
@@ -101,18 +83,13 @@ namespace RHost
             return bars;
         }
 
-        private static bool IsTimeZero(DateTime startTime)
-        {
-            return startTime.Year == 1970 && startTime.Month == 1 && startTime.Day == 1;
-        }
-
         public static string ComputeGetPairBars(string symbol, string barPeriodStr, DateTime startTime, DateTime endTime, double barCountDbl)
         {
             var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
                 return string.Empty;
             PairBar[] barsData;
-            if (IsTimeZero(startTime))
+            if (FdkHelper.IsTimeZero(startTime))
             {
                 int barCount = (int) barCountDbl;
                 barsData = GetPairBarsSymbolArray(symbol, barPeriod, startTime, barCount);

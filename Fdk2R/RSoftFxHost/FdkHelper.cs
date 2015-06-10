@@ -85,6 +85,12 @@ namespace RHost
             return created;
         }
 
+
+        public static bool IsTimeZero(DateTime startTime)
+        {
+            return startTime.Year == 1970 && startTime.Month == 1 && startTime.Day == 1;
+        }
+
         #region Accessors
 
         public static T? ParseEnumStr<T>(string text) where T : struct
