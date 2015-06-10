@@ -6,9 +6,10 @@
 #' @param startTimeEpoch Epoch time
 #' @param barCount Bar count
 #' @export
-
-ttBarPairs <- function(symbol, barPeriodStr = "M1", startTime = ttTimeZero(),  endTime = ttNow(), barCountDbl = 10000){
-  bars = ComputeGetPairBars(symbol, barPeriodStr, startTime, barCountDbl)
+ttBarPairs <- function(symbol, barPeriodStr = "M1",
+     startTime = ttTimeZero(),  endTime = ttNow(),
+     barCountDbl = 10000){
+  bars = ComputeGetPairBars(symbol, barPeriodStr, startTime, endTime, barCountDbl)
   
   getBarPairFrame(bars)
 }
@@ -44,9 +45,9 @@ getBarPairFrame <- function (bars){
 #' @param barPeriodStr Values like: M1, H1
 #' @param startTime Epoch time
 #' @param endTime Epoch time
-#' @param barCountDbl Bar count
-ComputeGetPairBars <- function(symbol, barPeriodStr, startTime, endTime, barCountDbl) {
-  clrCallStatic('RHost.FdkBars', 'ComputeGetPairBars', symbol, barPeriodStr, startTime, endTime, barCountDbl)
+#' @param barCount Bar count
+ComputeGetPairBars <- function(symbol, barPeriodStr, startTime, endTime, barCount) {
+  clrCallStatic('RHost.FdkBars', 'ComputeGetPairBars', symbol, barPeriodStr, startTime, endTime, barCount)
 }
 
 #' Gets the bars' ask as requested
