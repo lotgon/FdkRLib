@@ -35,7 +35,7 @@ namespace RHost
             return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, -barCount).ToArray();
         }
         private static Bar[] CalculateBarsForSymbolArrayRangeTime(
-         string symbol, PriceType priceType, DateTime startTime, BarPeriod barPeriod, DateTime endTime)
+         string symbol, PriceType priceType, DateTime startTime, DateTime endTime, BarPeriod barPeriod)
         {
             return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, endTime).ToArray();
         }
@@ -91,11 +91,11 @@ namespace RHost
             if (startTime.Year == 1970 && startTime.Month == 1 && startTime.Day == 1)
             {
                 var barCount = (int) barCountDbl;
-                barsData = CalculateBarsForSymbolArray(symbol, priceType.Value, startTime, barPeriod, barCount);
+                barsData = CalculateBarsForSymbolArray(symbol, priceType.Value, endTime, barPeriod, barCount);
                 
             }else
             {
-                barsData = CalculateBarsForSymbolArrayRangeTime(symbol, priceType.Value, startTime, barPeriod, endTime);
+                barsData = CalculateBarsForSymbolArrayRangeTime(symbol, priceType.Value, startTime, endTime, barPeriod);
             }
             var bars = FdkVars.RegisterVariable(barsData, "bars");
             return bars;
