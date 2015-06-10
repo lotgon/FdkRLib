@@ -12,5 +12,8 @@ output:
 require(rClr)
 require(FdkRLib)
 ttConnect()
-ttBars("EURUSD")
+bars = ttBars("EURUSD")
+
+
+bars = ttBars("EURUSD")
 ```

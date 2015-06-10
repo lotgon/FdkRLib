@@ -3,7 +3,6 @@
 export(ComputeGetPairBarsRange)
 export(UnregisterVar)
 export(ttBarPairs)
-export(ttBarPairsByCount)
 export(ttBars)
 export(ttConnect)
 export(ttDisconnect)

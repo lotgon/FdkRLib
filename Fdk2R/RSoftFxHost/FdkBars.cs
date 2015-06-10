@@ -88,7 +88,7 @@ namespace RHost
                 return string.Empty;
 
             Bar[] barsData;
-            if (startTime.Year == 1970 && startTime.Month == 1 && startTime.Day == 1)
+            if (IsTimeZero(startTime))
             {
                 var barCount = (int) barCountDbl;
                 barsData = CalculateBarsForSymbolArray(symbol, priceType.Value, endTime, barPeriod, barCount);
@@ -101,13 +101,26 @@ namespace RHost
             return bars;
         }
 
-        public static string ComputeGetPairBars(string symbol, string barPeriodStr, DateTime startTime, double barCountDbl)
+        private static bool IsTimeZero(DateTime startTime)
+        {
+            return startTime.Year == 1970 && startTime.Month == 1 && startTime.Day == 1;
+        }
+
+        public static string ComputeGetPairBars(string symbol, string barPeriodStr, DateTime startTime, DateTime endTime, double barCountDbl)
         {
             var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
                 return string.Empty;
-            int barCount = (int) barCountDbl;
-            var barsData = GetPairBarsSymbolArray(symbol, barPeriod, startTime, barCount);
+            PairBar[] barsData;
+            if (IsTimeZero(startTime))
+            {
+                int barCount = (int) barCountDbl;
+                barsData = GetPairBarsSymbolArray(symbol, barPeriod, startTime, barCount);
+            }
+            else
+            {
+                barsData = GetPairBarsSymbolArrayRangeTime(symbol, barPeriod, startTime, endTime);
+            }
             var bars = FdkVars.RegisterVariable(barsData, "barPairs");
             return bars;
         }

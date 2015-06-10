@@ -8,31 +8,31 @@ namespace RHost
         public static string GetCurrencyInfos()
         {
             CurrencyInfo[] symbolInfos = FdkHelper.Wrapper.ConnectLogic.Feed.Cache.Currencies;
-            var varName = FdkVars.RegisterVariable(symbolInfos, "symbolsInfo");
+            var varName = FdkVars.RegisterVariable(symbolInfos, "currencyInfo");
             return varName;
         }
 
-        public static string[] GetCurrencyDescription(string symbolsInfo)
+        public static string[] GetCurrencyDescription(string currencyInfo)
         {
-            var symbolInfos = FdkVars.GetValue<CurrencyInfo[]>(symbolsInfo);
-            return symbolInfos.Select(b => b.Description).ToArray();
+            var currencyInfos = FdkVars.GetValue<CurrencyInfo[]>(currencyInfo);
+            return currencyInfos.Select(b => b.Description).ToArray();
         }
 
-        public static string[] GetCurrencyName(string symbolsInfo)
+        public static string[] GetCurrencyName(string currencyInfo)
         {
-            var symbolInfos = FdkVars.GetValue<CurrencyInfo[]>(symbolsInfo);
-            return symbolInfos.Select(b => b.Name).ToArray();
+            var currencyInfos = FdkVars.GetValue<CurrencyInfo[]>(currencyInfo);
+            return currencyInfos.Select(b => b.Name).ToArray();
         }
 
-        public static double[] GetCurrencyPrecision(string symbolsInfo)
+        public static double[] GetCurrencyPrecision(string currencyInfo)
         {
-            var symbolInfos = FdkVars.GetValue<CurrencyInfo[]>(symbolsInfo);
-            return symbolInfos.Select(b => (double)b.Precision).ToArray();
+            var currencyInfos = FdkVars.GetValue<CurrencyInfo[]>(currencyInfo);
+            return currencyInfos.Select(b => (double)b.Precision).ToArray();
         }
-        public static double[] GetCurrencySortOrder(string symbolsInfo)
+        public static double[] GetCurrencySortOrder(string currencyInfo)
         {
-            var symbolInfos = FdkVars.GetValue<CurrencyInfo[]>(symbolsInfo);
-            return symbolInfos.Select(b => (double)b.SortOrder).ToArray();
+            var currencyInfos = FdkVars.GetValue<CurrencyInfo[]>(currencyInfo);
+            return currencyInfos.Select(b => (double)b.SortOrder).ToArray();
         }
     }
 }

@@ -7,21 +7,8 @@
 #' @param barCount Bar count
 #' @export
 
-ttBarPairsByCount <- function(symbol, barPeriodStr, startTime, barCountDbl = 10000){
+ttBarPairs <- function(symbol, barPeriodStr = "M1", startTime = ttTimeZero(),  endTime = ttNow(), barCountDbl = 10000){
   bars = ComputeGetPairBars(symbol, barPeriodStr, startTime, barCountDbl)
-  
-  getBarPairFrame(bars)
-}
-
-#' Gets the bars' low as requested
-#' 
-#' @param symbol Symbol looked
-#' @param barPeriodStr Values like: M1, H1
-#' @param startTimeEpoch Epoch time
-#' @param endTimeEpoch Epoch time
-#' @export
-ttBarPairs <- function(symbol, barPeriodStr, startTimeEpoch, endTimeEpoch){
-  bars = ComputeGetPairBarsRange(symbol, barPeriodStr, startTimeEpoch, endTimeEpoch)
   
   getBarPairFrame(bars)
 }
