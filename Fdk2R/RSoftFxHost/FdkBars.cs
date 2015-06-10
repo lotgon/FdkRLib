@@ -29,15 +29,6 @@ namespace RHost
         {
             return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, endTime).ToArray();
         }
-        private static PairBar[] GetPairBarsSymbolArray(string symbol, BarPeriod period, DateTime startTime, int barsNumber)
-        {
-            return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetPairBars(symbol, period, startTime, barsNumber).ToArray();
-        }
-        private static PairBar[] GetPairBarsSymbolArrayRangeTime(string symbol, BarPeriod period, DateTime startTime, DateTime endTime)
-        {
-            return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetPairBars(symbol, period, startTime, endTime).ToArray();
-        }
-
         private static HistoryInfo GetQuotesInfo(string symbol, int depth)
         {
             return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetQuotesInfo(symbol, depth);
@@ -72,26 +63,6 @@ namespace RHost
             var bars = FdkVars.RegisterVariable(barsData, "bars");
             return bars;
         }
-
-        public static string ComputeGetPairBars(string symbol, string barPeriodStr, DateTime startTime, DateTime endTime, double barCountDbl)
-        {
-            var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
-            if (barPeriod == null)
-                return string.Empty;
-            PairBar[] barsData;
-            if (FdkHelper.IsTimeZero(startTime))
-            {
-                int barCount = (int) barCountDbl;
-                barsData = GetPairBarsSymbolArray(symbol, barPeriod, startTime, barCount);
-            }
-            else
-            {
-                barsData = GetPairBarsSymbolArrayRangeTime(symbol, barPeriod, startTime, endTime);
-            }
-            var bars = FdkVars.RegisterVariable(barsData, "barPairs");
-            return bars;
-        }
-
         public static DateTime[] ComputeGetQuotesInfo(string symbol, int depth)
         {
             var barsData = GetQuotesInfo(symbol, depth);
@@ -127,7 +98,7 @@ namespace RHost
             var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
             if (barPeriod == null)
                 return string.Empty;
-            var barsData = GetPairBarsSymbolArrayRangeTime(symbol, barPeriod, startTime, endTime);
+            var barsData = FdkBarPairs.GetPairBarsSymbolArrayRangeTime(symbol, barPeriod, startTime, endTime);
             var bars = FdkVars.RegisterVariable(barsData, "barPairs");
             return bars;
         }

@@ -47,7 +47,7 @@ getBarPairFrame <- function (bars){
 #' @param endTime Epoch time
 #' @param barCount Bar count
 ComputeGetPairBars <- function(symbol, barPeriodStr, startTime, endTime, barCount) {
-  clrCallStatic('RHost.FdkBars', 'ComputeGetPairBars', symbol, barPeriodStr, startTime, endTime, barCount)
+  clrCallStatic('RHost.FdkBarPairs', 'ComputeGetPairBars', symbol, barPeriodStr, startTime, endTime, barCount)
 }
 
 #' Gets the bars' ask as requested

@@ -1,10 +1,40 @@
 using System;
+using System.Linq;
 using SoftFX.Extended;
 
 namespace RHost
 {
     public class FdkBarPairs
     {
+       
+        public static string ComputeGetPairBars(string symbol, string barPeriodStr, DateTime startTime, DateTime endTime, double barCountDbl)
+        {
+            var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
+            if (barPeriod == null)
+                return String.Empty;
+            PairBar[] barsData;
+            if (FdkHelper.IsTimeZero(startTime))
+            {
+                int barCount = (int)barCountDbl;
+                barsData = GetPairBarsSymbolArray(symbol, barPeriod, endTime, barCount);
+            }
+            else
+            {
+                barsData = GetPairBarsSymbolArrayRangeTime(symbol, barPeriod, startTime, endTime);
+            }
+            var bars = FdkVars.RegisterVariable(barsData, "barPairs");
+            return bars;
+        }
+        private static PairBar[] GetPairBarsSymbolArray(string symbol, BarPeriod period, DateTime startTime, int barsNumber)
+        {
+            return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetPairBars(symbol, period, startTime, barsNumber).ToArray();
+        }
+
+        internal static PairBar[] GetPairBarsSymbolArrayRangeTime(string symbol, BarPeriod period, DateTime startTime, DateTime endTime)
+        {
+            return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetPairBars(symbol, period, startTime, endTime).ToArray();
+        }
+
         public static double[] GetBarsAskHigh(string pairBars)
         {
             var barData = FdkVars.GetValue<PairBar[]>(pairBars);
@@ -79,6 +109,6 @@ namespace RHost
         {
             var barData = FdkVars.GetValue<PairBar[]>(pairBars);
             return FdkBars.GetBarsTo(barData.SelectToArray(barPair => barPair.Bid));
-        }   
+        }
     }
 }
