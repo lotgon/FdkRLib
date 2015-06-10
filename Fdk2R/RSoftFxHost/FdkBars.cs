@@ -13,21 +13,11 @@ namespace RHost
         static FdkBars()
         {
             SplitIntervals = 10;
-            BarCount = 1000000;
         }
 
-        public static int BarCount { get; set; }
       
         #region Bars 
 
-        public static void SetBarCount(double barCount)
-        {
-            BarCount = (int) barCount;
-        }
-        public static double GetBarCount()
-        {
-            return BarCount;
-        }
 #region Fdk direct wrapper
         private static Bar[] CalculateBarsForSymbolArray(
             string symbol, PriceType priceType, DateTime startTime, BarPeriod barPeriod, int barCount)

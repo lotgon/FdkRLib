@@ -7,14 +7,14 @@
 #' @param depth Quotes depth
 #' @export
 ttQuotes <- function(symbol,startTime= ttTimeZero() , endTime = ttNow(), depth){
-  symbolBars <- ComputeQuoteHistory(symbol,startTimeEpoch, endTimeEpoch, depth)
+  quotesHistory <- ComputeQuoteHistory(symbol,startTime, endTime, depth)
   
-  ask <- QuotesAsk(symbolBars)
-  bid <- QuotesBid(symbolBars)
-  createTime <- QuotesCreatingTime(symbolBars)
-  hasAsk <- QuotesHasAsk(symbolBars)
-  hasBid <- QuotesHasBid(symbolBars)
-  UnregisterVar(symbolBars)
+  ask <- QuotesAsk(quotesHistory)
+  bid <- QuotesBid(quotesHistory)
+  createTime <- QuotesCreatingTime(quotesHistory)
+  hasAsk <- QuotesHasAsk(quotesHistory)
+  hasBid <- QuotesHasBid(quotesHistory)
+  UnregisterVar(quotesHistory)
   df = data.frame(ask, bid, createTime, hasAsk, hasBid)       
 }
 
