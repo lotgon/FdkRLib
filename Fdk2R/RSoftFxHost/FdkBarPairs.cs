@@ -16,7 +16,7 @@ namespace RHost
             if (FdkHelper.IsTimeZero(startTime))
             {
                 int barCount = (int)barCountDbl;
-                barsData = GetPairBarsSymbolArray(symbol, barPeriod, endTime, barCount);
+                barsData = GetPairBarsSymbolArray(symbol, barPeriod, endTime, -barCount);
             }
             else
             {

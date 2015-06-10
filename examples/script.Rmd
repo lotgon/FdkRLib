@@ -22,6 +22,7 @@ bars = ttBars("EURUSD")
 
 ```{r}
 bars = ttBars("EURUSD")
+View(trades)
 ```
 
 Get trades of current account
