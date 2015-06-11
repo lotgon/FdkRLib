@@ -6,7 +6,7 @@
 #' @param endTime Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
 #' @param depth Quotes depth
 #' @export
-ttQuotes <- function(symbol,startTime= ttTimeZero() , endTime = ttNow(), depth){
+ttQuotes <- function(symbol,startTime= ttTimeZero() , endTime = ttNow(), depth=1){
   quotesHistory <- ComputeQuoteHistory(symbol,startTime, endTime, depth)
   
   ask <- QuotesAsk(quotesHistory)
@@ -25,8 +25,8 @@ ttQuotes <- function(symbol,startTime= ttTimeZero() , endTime = ttNow(), depth){
 #' @param startTimeEpoch Starting time. Use ttGetEpochFromText if you want to take from text a valid date.
 #' @param endTimeEpoch Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
 #' @param depth Quotes depth
-ComputeQuoteHistory <- function(symbol, startTimeEpoch, endTimeEpoch, depth) {
-  clrCallStatic('RHost.FdkQuotes', 'ComputeQuoteHistory', symbol, startTimeEpoch, endTimeEpoch, depth)
+ComputeQuoteHistory <- function(symbol, startTime, endTime, depth) {
+  clrCallStatic('RHost.FdkQuotes', 'ComputeQuoteHistory', symbol, startTime, endTime, depth)
 }
 
 #' Gets the bars' ask as requested

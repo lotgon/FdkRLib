@@ -1,5 +1,5 @@
 ---
-title: "Sample Document"
+title: "Sa"
 output:
   html_document:
     toc: true
@@ -10,6 +10,7 @@ Connect to TT Demo server:
 ttConnect()
 
 ```{r}
+options(warn=-1)
 require(rClr)
 require(FdkRLib)
 ttConnect()
@@ -18,23 +19,26 @@ ttConnect()
 
 
 <p>Get 10000 bars of EURUSD symbol:</p>
-bars = ttBars("EURUSD")
+head(ttBars("EURUSD"))
 
 ```{r}
-bars = ttBars("EURUSD")
-View(bars)
+head(ttBars("EURUSD"))
 ```
 
 <p>Get 10000 bar pairs of EURUSD symbol:</p>
 bars = ttBarPairs("EURUSD")
 
 ```{r}
-barPairs = ttBarPairs("EURUSD")
-View(barPairs)
+head(ttBarPairs("EURUSD"))
+```
+
+
+Get quotes
+```{r}
+head(ttTrades())
 ```
 
 Get trades of current account
 ```{r}
-trades = ttTrades()
-View(trades)
+head(ttTrades())
 ```
