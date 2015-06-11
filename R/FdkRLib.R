@@ -41,13 +41,13 @@ ttUnregisterAllVariables <- function(varName) {
 #' 
 #' @export
 ttTimeZero <- function(){
-  tm <- as.POSIXct(0, origin = "1970-01-01")
+  tm <- as.POSIXct(0, origin = "1970-01-01", tz = "UTC")
 }
 #' Gives current time
 #' 
 #' @export
 ttNow <- function(){
-  tm <- Sys.time()
+  tm <- Sys.time(tz="GMT")
 }
 
 #' Gets the epoch (double) time from a .Net date

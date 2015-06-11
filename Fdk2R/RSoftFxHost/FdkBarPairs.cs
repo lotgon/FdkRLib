@@ -64,12 +64,22 @@ namespace RHost
         public static DateTime[] GetBarsAskFrom(string pairBars)
         {
             var barData = FdkVars.GetValue<PairBar[]>(pairBars);
-            return FdkBars.GetBarsFrom(barData.SelectToArray(barPair => barPair.Ask));
+            return barData
+                .Select(barPair => ValidTimeFromTwoTimes(barPair.Bid.To, barPair.Ask.To))
+                .ToArray();
         }
+
+        static DateTime ValidTimeFromTwoTimes(DateTime bidTime, DateTime askTime)
+        {
+            return FdkHelper.IsTimeZero(bidTime) ? askTime : bidTime;
+        }
+
         public static DateTime[] GetBarsAskTo(string pairBars)
         {
             var barData = FdkVars.GetValue<PairBar[]>(pairBars);
-            return FdkBars.GetBarsTo(barData.SelectToArray(barPair => barPair.Ask));
+            return barData
+                .Select(barPair => ValidTimeFromTwoTimes(barPair.Bid.To, barPair.Ask.To))
+                .ToArray();
         }
 
 
