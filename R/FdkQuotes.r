@@ -12,9 +12,8 @@ ttQuotes <- function(symbol,startTime= ttTimeZero() , endTime, depth=1){
   ask <- QuotesAsk(quotesHistory)
   bid <- QuotesBid(quotesHistory)
   createTime <- QuotesCreatingTime(quotesHistory)
-  volume <- QuotesVolume(quotesHistory)
   UnregisterVar(quotesHistory)
-  df = data.frame(ask=ask, bid=bid, createTime=createTime, volume=volume)       
+  df = data.frame(ask=ask, bid=bid, createTime=createTime)       
 }
 
 # ****
@@ -65,12 +64,3 @@ ttGetBarCount <- function() {
 QuotesVolume <- function(quotesVar) {
   clrCallStatic('RHost.FdkQuotes', 'QuotesVolume', quotesVar)
 }
-
-#' Sets the bar count inside calls
-#' 
-#' @param barCount Set a different bar count than the default (1 million)
-#' @export
-ttSetBarCount <- function(barCount) {
-  clrCallStatic('RHost.FdkBars', 'SetBarCount', barCount)
-}
-

@@ -84,6 +84,7 @@
     <Compile Include="FdkBars.cs" />
     <Compile Include="FdkCurrencyInfo.cs" />
     <Compile Include="FdkHelper.cs" />
+    <Compile Include="FdkLevel2.cs" />
     <Compile Include="FdkQuotes.cs" />
     <Compile Include="FdkSymbolInfo.cs" />
     <Compile Include="FdkTrade.cs" />

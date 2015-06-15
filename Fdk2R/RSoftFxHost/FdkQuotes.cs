@@ -14,7 +14,7 @@ namespace RHost
             return quoteHistory;
         }
 
-        private static Quote[] CalculateHistoryForSymbolArray(string symbol, DateTime startTime, DateTime endTime, int depth)
+        internal static Quote[] CalculateHistoryForSymbolArray(string symbol, DateTime startTime, DateTime endTime, int depth)
         {
             return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetQuotes(symbol, startTime, endTime, depth);
         }
@@ -42,28 +42,5 @@ namespace RHost
             return quotes.Select(b => b.Spread).ToArray();
         }
 
-        public static int[] QuotesHasAsk(string bars)
-        {
-            var quotes = FdkVars.GetValue<Quote[]>(bars);
-            return quotes.Select(b => b.HasAsk?1:0).ToArray();
-        }
-
-
-        public static double[] QuotesVolume(string bars)
-        {
-            var quotes = FdkVars.GetValue<Quote[]>(bars);
-            return quotes.Select(CalculateVolume).ToArray();
-        }
-
-        private static double CalculateVolume(Quote b)
-        {
-            return b.Bids.Sum(bid=>bid.Volume)+b.Asks.Sum(ask=>ask.Volume);
-        }
-
-        public static int[] QuotesHasBid(string bars)
-        {
-            var quotes = FdkVars.GetValue<Quote[]>(bars);
-            return quotes.Select(b => b.HasBid ? 1 : 0).ToArray();
-        }
     }
 }
