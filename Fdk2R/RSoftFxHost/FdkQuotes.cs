@@ -19,15 +19,15 @@ namespace RHost
             return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetQuotes(symbol, startTime, endTime, depth);
         }
 
-        public static double?[] QuotesAsk(string bars)
+        public static double[] QuotesAsk(string bars)
         {
             var quotes = FdkVars.GetValue<Quote[]>(bars);
-            return quotes.Select(b => b.HasAsk? (double?)b.Ask : null).ToArray();
+            return quotes.Select(b => b.HasAsk? b.Ask : -1).ToArray();
         }
-        public static double?[] QuotesBid(string bars)
+        public static double[] QuotesBid(string bars)
         {
             var quotes = FdkVars.GetValue<Quote[]>(bars);
-            return quotes.Select(b => b.HasBid? (double?)b.Bid:null).ToArray();
+            return quotes.Select(b => b.HasBid? b.Bid:-1).ToArray();
         }
         public static DateTime[] QuotesCreatingTime(string bars)
         {
@@ -52,7 +52,12 @@ namespace RHost
         public static double[] QuotesVolume(string bars)
         {
             var quotes = FdkVars.GetValue<Quote[]>(bars);
-            return quotes.Select(b => b.Bids.Sum(bid=>bid.Volume)+b.Asks.Sum(ask=>ask.Volume) ).ToArray();
+            return quotes.Select(CalculateVolume).ToArray();
+        }
+
+        private static double CalculateVolume(Quote b)
+        {
+            return b.Bids.Sum(bid=>bid.Volume)+b.Asks.Sum(ask=>ask.Volume);
         }
 
         public static int[] QuotesHasBid(string bars)
