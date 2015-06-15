@@ -14,7 +14,7 @@ ttQuotes <- function(symbol,startTime= ttTimeZero() , endTime, depth=1){
   createTime <- QuotesCreatingTime(quotesHistory)
   volume <- QuotesVolume(quotesHistory)
   UnregisterVar(quotesHistory)
-  df = data.frame(ask, bid, createTime, volume)       
+  df = data.frame(ask=ask, bid=bid, createTime=createTime, volume=volume)       
 }
 
 # ****

@@ -30,6 +30,7 @@ namespace TestRClrHost
             var hasAsk = FdkQuotes.QuotesHasAsk(quotes);
             var hasBid = FdkQuotes.QuotesHasBid(quotes);
             var spread = FdkQuotes.QuotesSpread(quotes);
+            var volumes = FdkQuotes.QuotesVolume(quotes);
             Assert.AreNotEqual(0, asks.Length);
             FdkVars.Unregister(quotes);
         
