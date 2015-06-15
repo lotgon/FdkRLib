@@ -23,20 +23,21 @@ getBarPairFrame <- function (bars){
   askopen = GetBarsAskOpen(bars)
   askClose = GetBarsAskClose(bars)
   askVolume = GetBarsAskVolume(bars)
-  askFrom = GetBarsAskFrom(bars)
-  askTo = GetBarsAskTo(bars)
   
   bidHigh = GetBarsBidHigh(bars)
   bidLow = GetBarsBidLow(bars)
   bidOpen = GetBarsBidOpen(bars)
   bidClose = GetBarsBidClose(bars)
   bidVolume = GetBarsBidVolume(bars)
-  bidFrom = GetBarsBidFrom(bars)
-  bidTo = GetBarsBidTo(bars)
+  
+  
+  from = GetBarsAskFrom(bars)
+  to = GetBarsAskTo(bars)
   
   UnregisterVar(bars)
-  data.frame(askHigh, askLow, askopen, askClose, askVolume, askFrom, askTo,
-             bidHigh, bidLow, bidOpen, bidClose, bidVolume, bidFrom, bidTo)
+  data.frame(askHigh, askLow, askopen, askClose, askVolume, 
+             bidHigh, bidLow, bidOpen, bidClose, bidVolume, 
+             from, to)
 }
 
 #' Gets the bars pairs as requested

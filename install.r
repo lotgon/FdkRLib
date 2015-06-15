@@ -12,7 +12,7 @@ installBinary <- function(fdkRLibPackage){
 installBinary("rClr_0.7-4.zip")
 library(rClr)
 
-installBinary("FdkRLib_1.0.20150608.zip")
+installBinary("FdkRLib_1.0.20150615.zip")
 library(FdkRLib)
 
   install.packages('d:\Work\FDK\trunk\Concepts\Fdk2R\FdkGit\FdkRLib_1.0.20150608.zip', repos = NULL, type = "source")

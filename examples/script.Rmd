@@ -35,7 +35,7 @@ head(ttBarPairs("EURUSD"))
 
 Get quotes
 ```{r}
-head(ttTrades())
+head(ttQuotes("EURUSD", startTime= as.POSIXct(x = "2015-06-10", tz="UTC")))
 ```
 
 Get trades of current account

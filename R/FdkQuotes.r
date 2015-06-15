@@ -6,16 +6,15 @@
 #' @param endTime Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
 #' @param depth Quotes depth
 #' @export
-ttQuotes <- function(symbol,startTime= ttTimeZero() , endTime = ttNow(), depth=1){
+ttQuotes <- function(symbol,startTime= ttTimeZero() , endTime, depth=1){
   quotesHistory <- ComputeQuoteHistory(symbol,startTime, endTime, depth)
   
   ask <- QuotesAsk(quotesHistory)
   bid <- QuotesBid(quotesHistory)
   createTime <- QuotesCreatingTime(quotesHistory)
-  hasAsk <- QuotesHasAsk(quotesHistory)
-  hasBid <- QuotesHasBid(quotesHistory)
+  volume <- QuotesVolume(quotesHistory)
   UnregisterVar(quotesHistory)
-  df = data.frame(ask, bid, createTime, hasAsk, hasBid)       
+  df = data.frame(ask, bid, createTime, volume)       
 }
 
 # ****
@@ -53,17 +52,18 @@ QuotesCreatingTime <- function(quotesVar) {
 QuotesSpread <- function(quotesVar) {
   clrCallStatic('RHost.FdkQuotes', 'QuotesSpread', quotesVar)
 }
-#' Gets the quotes' ask as requested
+
+#' Gets the bar count used in calls
 #' 
-#' @param quotesVar RHost variable that stores quotes array
-QuotesHasAsk <- function(quotesVar) {
-  clrCallStatic('RHost.FdkQuotes', 'QuotesHasAsk', quotesVar)
+#' @export
+ttGetBarCount <- function() {
+  clrCallStatic('RHost.FdkBars', 'GetBarCount')
 }
-#' Gets the quotes' bid as requested
+#' Gets the bars' volume as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
-QuotesHasBid <- function(quotesVar) {
-  clrCallStatic('RHost.FdkQuotes', 'QuotesHasBid', quotesVar)
+QuotesVolume <- function(quotesVar) {
+  clrCallStatic('RHost.FdkQuotes', 'QuotesVolume', quotesVar)
 }
 
 #' Sets the bar count inside calls
@@ -73,11 +73,4 @@ QuotesHasBid <- function(quotesVar) {
 ttSetBarCount <- function(barCount) {
   clrCallStatic('RHost.FdkBars', 'SetBarCount', barCount)
 }
-#' Gets the bar count used in calls
-#' 
-#' @export
-ttGetBarCount <- function() {
-  clrCallStatic('RHost.FdkBars', 'GetBarCount')
-}
-
 
