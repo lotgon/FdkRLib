@@ -10,7 +10,7 @@ ttQuotesLevel2 <- function(symbol,startTime, endTime, depth = 2){
   quotesHistory <- GetQuotePacked(symbol,startTime, endTime, depth)
   
   createTime <- QuotesL2CreatingTime(quotesHistory)
-  volumeBid <- QuotesVolummeBid(quotesHistory)
+  volumeBid <- QuotesVolumeBid(quotesHistory)
   volumeAsk <- QuotesVolumeAsk(quotesHistory)
   priceBid <- QuotesPriceBid(quotesHistory)
   priceAsk <- QuotesPriceAsk(quotesHistory)
