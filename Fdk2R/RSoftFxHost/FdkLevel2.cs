@@ -1,27 +1,46 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using SoftFX.Extended;
 
 namespace RHost
 {
     struct QuoteLevel2Data
     {
-        public QuoteEntry[] Asks { get; set; }
-        public QuoteEntry[] Bids { get; set; }
+        public double AsksPrice { get; set; }
+        public double AskVolume { get; set; }
+        public double BidPrice { get; set; }
+        public double BidVolume { get; set; }
         public DateTime CreateTime { get; set; }
     }
     public class FdkLevel2
     {
-        public static string GetQuotePacked(string symbol, DateTime startTime, DateTime endTime)
+        public static string GetQuotePacked(string symbol, DateTime startTime, DateTime endTime, double levelDbl = 2)
         {
-            var quotesData =FdkQuotes.CalculateHistoryForSymbolArray(symbol, startTime, endTime, 2);
-
-            QuoteLevel2Data[] quoteLevel2Data = quotesData.Select(quote => new QuoteLevel2Data()
+            var level = (int) levelDbl;
+            var quotesData = FdkQuotes.CalculateHistoryForSymbolArray(symbol, startTime, endTime, level);
+            var itemsToAdd = new List<QuoteLevel2Data>();
+            foreach (var quote in quotesData)
             {
-                Asks = quote.Asks,
-                Bids = quote.Bids,
-                CreateTime = quote.CreatingTime
-            }).ToArray();
+                for (int index = 0; index < quote.Asks.Length; index++)
+                {
+                    var quoteEntryAsk = quote.Asks[index];
+                    var quoteEntryBid = quote.Bids[index];
+
+                    var newQuoteL2Data = new QuoteLevel2Data()
+                    {
+                        AskVolume = quoteEntryAsk.Volume,
+                        AsksPrice = quoteEntryAsk.Price,
+                        BidVolume = quoteEntryBid.Volume,
+                        BidPrice = quoteEntryBid.Price,
+                        CreateTime = quote.CreatingTime
+                    };
+                    itemsToAdd.Add(newQuoteL2Data);
+                }
+            }
+
+            QuoteLevel2Data[] quoteLevel2Data = itemsToAdd.ToArray();
 
             var quoteHistory = FdkVars.RegisterVariable(quoteLevel2Data, "quotesL2");
             return quoteHistory;
@@ -33,34 +52,27 @@ namespace RHost
             return quotes.Select(ql2=>ql2.CreateTime).ToArray();
         }
 
-        public static double[][] QuotesVolumeAsk(string bars)
+        public static double[] QuotesVolumeAsk(string bars)
         {
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
-            return quotes.Select(CalculateVolumeAsk).ToArray();
+            return quotes.Select(q => q.AskVolume).ToArray();
         }
-        public static double[][] QuotesVolumeBid(string bars)
+        public static double[] QuotesVolumeBid(string bars)
         {
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
-            return quotes.Select(CalculateVolumeBid).ToArray();
+            return quotes.Select(q=>q.BidVolume).ToArray();
         }
 
-        private static double[] CalculateVolumeBid(QuoteLevel2Data b)
+        public static double[] QuotesPriceAsk(string bars)
         {
-            return b.Bids.Select(bid=>bid.Volume).ToArray();
+            var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars); 
+            return quotes.Select(q => q.AsksPrice).ToArray();
         }
-        private static double[] CalculateVolumeAsk(QuoteLevel2Data b)
+        public static double[] QuotesPriceBid(string bars)
         {
-            return b.Asks.Select(ask => ask.Volume).ToArray();
-        }
+            var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
 
-
-        private static double[] CalculatePriceBid(QuoteLevel2Data b)
-        {
-            return b.Bids.Select(bid => bid.Price).ToArray();
-        }
-        private static double[] CalculatePriceAsk(QuoteLevel2Data b)
-        {
-            return b.Asks.Select(ask => ask.Price).ToArray();
+            return quotes.Select(q => q.BidPrice).ToArray();
         }
     }
 }

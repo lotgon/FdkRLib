@@ -4,9 +4,10 @@
 #' @param symbol Symbol looked
 #' @param startTime Starting time. Use ttGetEpochFromText if you want to take from text a valid date.
 #' @param endTime Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
+#' @param depth The market depth. Default is 2
 #' @export
-ttQuotesLevel2 <- function(symbol,startTime, endTime){
-  quotesHistory <- GetQuotePacked(symbol,startTime, endTime)
+ttQuotesLevel2 <- function(symbol,startTime, endTime, depth = 2){
+  quotesHistory <- GetQuotePacked(symbol,startTime, endTime, depth)
   
   createTime <- QuotesL2CreatingTime(quotesHistory)
   volumeBid <- QuotesVolumme(quotesHistory)
