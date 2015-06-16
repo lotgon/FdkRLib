@@ -8,7 +8,7 @@
 ttQuotesLevel2 <- function(symbol,startTime, endTime){
   quotesHistory <- GetQuotePacked(symbol,startTime, endTime)
   
-  createTime <- QuotesCreatingTime(quotesHistory)
+  createTime <- QuotesL2CreatingTime(quotesHistory)
   volumeBid <- QuotesVolumme(quotesHistory)
   volumeAsk <- QuotesVolumeAsk(quotesHistory)
   priceBid <- QuotesPriceBid(quotesHistory)
@@ -18,15 +18,21 @@ ttQuotesLevel2 <- function(symbol,startTime, endTime){
   df = data.frame(volumeBid=volumeBid, volumeAsk=volumeAsk, priceBid=priceBid, priceAsk=priceAsk, createTime=createTime)       
 }
 
+#' Gets the bars' time
+#'
+#' @param quotesVar RHost variable that stores quotes array
+#' 
+QuotesL2CreatingTime <- function(quotesVar) {
+  clrCallStatic('RHost.FdkLevel2', 'QuotesCreateTime', quotesVar)
+}
+
 #' Gets the bars' ask as requested
 #' 
-#' @param symbol Symbol looked
-#' @param startTime Starting time. Use ttGetEpochFromText if you want to take from text a valid date.
-#' @param endTime Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
-#' 
-GetQuotePacked <- function(symbol,startTime, endTime) {
-  clrCallStatic('RHost.FdkLevel2', 'GetQuotePacked', symbol,startTime, endTime)
+#' @param quotesVar RHost variable that stores quotes array
+QuotesVolumeBid <- function(quotesVar) {
+  clrCallStatic('RHost.FdkLevel2', 'QuotesVolumeBid', quotesVar)
 }
+
 
 #' Gets the bars' ask as requested
 #' 
