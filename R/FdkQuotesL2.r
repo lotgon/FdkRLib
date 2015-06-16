@@ -9,8 +9,13 @@ ttQuotesLevel2 <- function(symbol,startTime, endTime){
   quotesHistory <- GetQuotePacked(symbol,startTime, endTime)
   
   createTime <- QuotesCreatingTime(quotesHistory)
+  volumeBid <- QuotesVolumme(quotesHistory)
+  volumeAsk <- QuotesVolumeAsk(quotesHistory)
+  priceBid <- QuotesPriceBid(quotesHistory)
+  priceAsk <- QuotesPriceAsk(quotesHistory)
+  
   UnregisterVar(quotesHistory)
-  df = data.frame(ask=ask, bid=bid, createTime=createTime, volume=volume)       
+  df = data.frame(volumeBid=volumeBid, volumeAsk=volumeAsk, priceBid=priceBid, priceAsk=priceAsk, createTime=createTime)       
 }
 
 #' Gets the bars' ask as requested
@@ -26,7 +31,7 @@ GetQuotePacked <- function(symbol,startTime, endTime) {
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
-QuotesLevel2VolumeBid <- function(quotesVar) {
+QuotesVolumeBid <- function(quotesVar) {
   clrCallStatic('RHost.FdkLevel2', 'QuotesVolumeBid', quotesVar)
 }
 
@@ -35,4 +40,17 @@ QuotesLevel2VolumeBid <- function(quotesVar) {
 #' @param quotesVar RHost variable that stores quotes array
 QuotesVolumeAsk <- function(quotesVar) {
   clrCallStatic('RHost.FdkLevel2', 'QuotesVolumeAsk', quotesVar)
+}
+#' Gets the bars' ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+QuotesPriceBid <- function(quotesVar) {
+  clrCallStatic('RHost.FdkLevel2', 'QuotesPriceBid', quotesVar)
+}
+
+#' Gets the bars' ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+QuotesPriceAsk <- function(quotesVar) {
+  clrCallStatic('RHost.FdkLevel2', 'QuotesPriceAsk', quotesVar)
 }

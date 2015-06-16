@@ -52,5 +52,15 @@ namespace RHost
         {
             return b.Asks.Select(ask => ask.Volume).ToArray();
         }
+
+
+        private static double[] CalculatePriceBid(QuoteLevel2Data b)
+        {
+            return b.Bids.Select(bid => bid.Price).ToArray();
+        }
+        private static double[] CalculatePriceAsk(QuoteLevel2Data b)
+        {
+            return b.Asks.Select(ask => ask.Price).ToArray();
+        }
     }
 }
