@@ -47,7 +47,7 @@ ttTimeZero <- function(){
 #' 
 #' @export
 ttNow <- function(){
-  tm <- Sys.time(tz="GMT")
+  tm <- Sys.time(tz="UTC")
 }
 
 #' Gets the epoch (double) time from a .Net date

@@ -42,3 +42,22 @@ Get trades of current account
 ```{r}
 head(ttTrades())
 ```
+
+More functionality tested:
+
+```{r}
+trades = ttTrades()
+
+
+bars = ttBars("EURUSD", barCount = 1000000)
+barPairs = ttBarPairs('EURUSD')
+
+now <-as.POSIXct(Sys.time())
+prevNow <-as.POSIXct(Sys.time()-1000)
+
+qt = ttQuotes('EURUSD', startTime = prevNow, endTime=now)
+quotesHistory <- ComputeQuoteHistory('EURUSD', startTime = prevNow, endTime=now, 1)
+
+qt2= ttQuotesLevel2('EURUSD', prevNow, now)
+```
+
