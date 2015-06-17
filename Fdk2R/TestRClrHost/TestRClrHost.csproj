@@ -89,6 +89,7 @@
     <Compile Include="TestSmokeTestingBars.cs" />
     <Compile Include="TestSmokeTestingHistoryInfo.cs" />
     <Compile Include="TestSmokeTestingPairBar.cs" />
+    <Compile Include="TestSmokeTradeReports.cs" />
     <Compile Include="TestSmokeTrades.cs" />
   </ItemGroup>
   <ItemGroup>

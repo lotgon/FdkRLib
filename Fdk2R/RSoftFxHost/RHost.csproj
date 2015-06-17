@@ -88,6 +88,7 @@
     <Compile Include="FdkQuotes.cs" />
     <Compile Include="FdkSymbolInfo.cs" />
     <Compile Include="FdkTrade.cs" />
+    <Compile Include="FdkTradeReports.cs" />
     <Compile Include="FdkVars.cs" />
     <Compile Include="PartitionerUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
