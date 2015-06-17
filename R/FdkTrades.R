@@ -1,8 +1,10 @@
 #' Gets the account trades
 #' 
+#' @param tradeSide '' (unfiltered) or 'Buy' or 'Sell'
+#' @param tradeType '' (unfiltered) or 'Market' 'Position' 'Limit' 'Stop'
 #' @export
-ttTrades <- function(){
-  symInfo = GetTradeRecords()
+ttTrades <- function(tradeSide = '', tradeType = ''){
+  symInfo = GetTradeRecords(tradeSide, tradeType)
   
   agentComission = GetTradeAgentCommission(symInfo)
   tradeClientOrderId = GetTradeClientOrderId(symInfo)
@@ -33,8 +35,8 @@ ttTrades <- function(){
    side, stopLoss, swap, takeProfit, type, volume)
 }
 #' Get symbol field
-GetTradeRecords <- function() {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeRecords')
+GetTradeRecords <- function(tradeSide, tradeType) {
+  clrCallStatic('RHost.FdkTrade', 'GetTradeRecords', tradeSide, tradeType)
 }
 
 #' Get trade comission

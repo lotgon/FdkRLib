@@ -13,9 +13,19 @@ namespace RHost
             get { return FdkHelper.Wrapper.ConnectLogic.TradeWrapper.Trade; }
         }
 
-        public static string GetTradeRecords()
+        public static string GetTradeRecords(string tradeSideStr, string tradeTypeStr)
         {
             var tradeRecords = Trade.Server.GetTradeRecords();
+            if (!string.IsNullOrEmpty(tradeSideStr))
+            {
+                var tradeSide = FdkHelper.ParseEnumStr<TradeRecordSide>(tradeSideStr);
+                tradeRecords = tradeRecords.Where(tr => tr.Side == tradeSide).ToArray();
+            }
+            if (!string.IsNullOrEmpty(tradeSideStr))
+            {
+                var tradeType = FdkHelper.ParseEnumStr<TradeRecordType>(tradeTypeStr);
+                tradeRecords = tradeRecords.Where(tr => tr.Type == tradeType).ToArray();
+            }
             var varName = FdkVars.RegisterVariable(tradeRecords, "trades");
             return varName;
         }
