@@ -14,9 +14,12 @@ ttQuotesLevel2 <- function(symbol,startTime, endTime, depth = 2){
   volumeAsk <- QuotesVolumeAsk(quotesHistory)
   priceBid <- QuotesPriceBid(quotesHistory)
   priceAsk <- QuotesPriceAsk(quotesHistory)
+  index <- QuotesIndex(quotesHistory)
   
   UnregisterVar(quotesHistory)
-  df = data.frame(volumeBid=volumeBid, volumeAsk=volumeAsk, priceBid=priceBid, priceAsk=priceAsk, createTime=createTime)       
+  df = data.frame(volumeBid=volumeBid, volumeAsk=volumeAsk, 
+         priceBid=priceBid, priceAsk=priceAsk, createTime=createTime,
+         quoteIndex=index)
 }
 
 
