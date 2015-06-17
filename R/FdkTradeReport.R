@@ -6,42 +6,42 @@
 ttTradeRecords <- function(fromDate, toDate){
   symInfo = GetTradeTransactionReport(fromDate, toDate)
   
-  AgentCommission = GetTradeAgentCommission(symInfo)
-  ClientId = GetTradeClientId(symInfo)
-  CloseConversionRate = GetTradeCloseConversionRate(symInfo)
-  InitialVolume = GetTradeInitialVolume(symInfo)
-  Comment = GetTradeComment(symInfo)
-  Commission = GetTradeCommission(symInfo)
-  Id = GetTradeId(symInfo)
-  LeavesQuantity = GetTradeLeavesQuantity(symInfo)
-  OpenConversionRate = GetTradeOpenConversionRate(symInfo)
-  OrderCreated = GetTradeOrderCreated(symInfo)
-  OrderFillPrice = GetTradeOrderFillPrice(symInfo)
-  OrderLastFillAmount = GetTradeOrderLastFillAmount(symInfo)
-  OrderModified = GetTradeOrderModified(symInfo)
-  PosOpenPrice = GetTradePosOpenPrice(symInfo)
-  PositionClosePrice = GetTradePositionClosePrice(symInfo)
-  PositionCloseRequestedPrice = GetTradePositionCloseRequestedPrice(symInfo)
-  PositionClosed = GetTradePositionClosed(symInfo)
-  PositionLastQuantity = GetTradePositionLastQuantity(symInfo)
-  PositionLeavesQuantity = GetTradePositionLeavesQuantity(symInfo)
-  PositionModified = GetTradePositionModified(symInfo)
-  PositionOpened = GetTradePositionOpened(symInfo)
-  PositionQuantity = GetTradePositionQuantity(symInfo)
-  Price = GetTradePrice(symInfo)
-  Quantity = GetTradeQuantity(symInfo)
-  StopLoss = GetTradeStopLoss(symInfo)
-  StopPrice = GetTradeStopPrice(symInfo)
-  Swap = GetTradeSwap(symInfo)
-  Symbol = GetTradeSymbol(symInfo)
-  TakeProfit = GetTradeTakeProfit(symInfo)
-  TradeRecordSide = GetTradeTradeRecordSide(symInfo)
-  TradeRecordType = GetTradeTradeRecordType(symInfo)
-  TradeTransactionReason = GetTradeTradeTransactionReason(symInfo)
-  TradeTransactionReportType = GetTradeTradeTransactionReportType(symInfo)
-  TransactionAmount = GetTradeTransactionAmount(symInfo)
-  TransactionCurrency = GetTradeTransactionCurrency(symInfo)
-  TransactionTime = GetTradeTransactionTime(symInfo)
+  AgentCommission = GetTradeReportAgentCommission(symInfo)
+  ClientId = GetTradeReportClientId(symInfo)
+  CloseConversionRate = GetTradeReportCloseConversionRate(symInfo)
+  InitialVolume = GetTradeReportInitialVolume(symInfo)
+  Comment = GetTradeReportComment(symInfo)
+  Commission = GetTradeReportCommission(symInfo)
+  Id = GetTradeReportId(symInfo)
+  LeavesQuantity = GetTradeReportLeavesQuantity(symInfo)
+  OpenConversionRate = GetTradeReportOpenConversionRate(symInfo)
+  OrderCreated = GetTradeReportOrderCreated(symInfo)
+  OrderFillPrice = GetTradeReportOrderFillPrice(symInfo)
+  OrderLastFillAmount = GetTradeReportOrderLastFillAmount(symInfo)
+  OrderModified = GetTradeReportOrderModified(symInfo)
+  PosOpenPrice = GetTradeReportPosOpenPrice(symInfo)
+  PositionClosePrice = GetTradeReportPositionClosePrice(symInfo)
+  PositionCloseRequestedPrice = GetTradeReportPositionCloseRequestedPrice(symInfo)
+  PositionClosed = GetTradeReportPositionClosed(symInfo)
+  PositionLastQuantity = GetTradeReportPositionLastQuantity(symInfo)
+  PositionLeavesQuantity = GetTradeReportPositionLeavesQuantity(symInfo)
+  PositionModified = GetTradeReportPositionModified(symInfo)
+  PositionOpened = GetTradeReportPositionOpened(symInfo)
+  PositionQuantity = GetTradeReportPositionQuantity(symInfo)
+  Price = GetTradeReportPrice(symInfo)
+  Quantity = GetTradeReportQuantity(symInfo)
+  StopLoss = GetTradeReportStopLoss(symInfo)
+  StopPrice = GetTradeReportStopPrice(symInfo)
+  Swap = GetTradeReportSwap(symInfo)
+  Symbol = GetTradeReportSymbol(symInfo)
+  TakeProfit = GetTradeReportTakeProfit(symInfo)
+  TradeRecordSide = GetTradeReportTradeRecordSide(symInfo)
+  TradeRecordType = GetTradeReportTradeRecordType(symInfo)
+  TradeTransactionReason = GetTradeReportTradeTransactionReason(symInfo)
+  TradeTransactionReportType = GetTradeReportTradeTransactionReportType(symInfo)
+  TransactionAmount = GetTradeReportTransactionAmount(symInfo)
+  TransactionCurrency = GetTradeReportTransactionCurrency(symInfo)
+  TransactionTime = GetTradeReportTransactionTime(symInfo)
   
   UnregisterVar(symInfo)
   
@@ -55,196 +55,196 @@ ttTradeRecords <- function(fromDate, toDate){
 }
 
 #' Get symbol field
-GetTradeTransactionReport <- function(tradeSide, tradeType) {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionReport', tradeSide, tradeType)
+GetTradeReportTransactionReport <- function(tradeSide, tradeType) {
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportTransactionReport', tradeSide, tradeType)
 }
 
-GetTradeAccountBalance <- function(varName)
+GetTradeReportAccountBalance <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeAccountBalance', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportAccountBalance', varName)
 }
 
-GetTradeAgentCommission <- function(varName)
+GetTradeReportAgentCommission <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeAgentCommission', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportAgentCommission', varName)
 }
 
-GetTradeClientId <- function(varName)
+GetTradeReportClientId <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeClientId', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportClientId', varName)
 }
 
-GetTradeCloseConversionRate <- function(varName)
+GetTradeReportCloseConversionRate <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeCloseConversionRate', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportCloseConversionRate', varName)
 }
 
-GetTradeInitialVolume <- function(varName)
+GetTradeReportInitialVolume <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeInitialVolume', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportInitialVolume', varName)
 }
 
-GetTradeComment <- function(varName)
+GetTradeReportComment <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeComment', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportComment', varName)
 }
 
-GetTradeCommission <- function(varName)
+GetTradeReportCommission <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeCommission', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportCommission', varName)
 }
 
-GetTradeId <- function(varName)
+GetTradeReportId <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeId', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportId', varName)
 }
 
-GetTradeLeavesQuantity <- function(varName)
+GetTradeReportLeavesQuantity <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeLeavesQuantity', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportLeavesQuantity', varName)
 }
 
-GetTradeOpenConversionRate <- function(varName)
+GetTradeReportOpenConversionRate <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeOpenConversionRate', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportOpenConversionRate', varName)
 }
 
-GetTradeOrderCreated <- function(varName)
+GetTradeReportOrderCreated <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeOrderCreated', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportOrderCreated', varName)
 }
 
-GetTradeOrderFillPrice <- function(varName)
+GetTradeReportOrderFillPrice <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeOrderFillPrice', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportOrderFillPrice', varName)
 }
 
-GetTradeOrderLastFillAmount <- function(varName)
+GetTradeReportOrderLastFillAmount <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeOrderLastFillAmount', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportOrderLastFillAmount', varName)
 }
 
-GetTradeOrderModified <- function(varName)
+GetTradeReportOrderModified <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeOrderModified', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportOrderModified', varName)
 }
 
-GetTradePosOpenPrice <- function(varName)
+GetTradeReportPosOpenPrice <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePosOpenPrice', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportPosOpenPrice', varName)
 }
 
-GetTradePositionClosePrice <- function(varName)
+GetTradeReportPositionClosePrice <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionClosePrice', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportPositionClosePrice', varName)
 }
 
-GetTradePositionCloseRequestedPrice <- function(varName)
+GetTradeReportPositionCloseRequestedPrice <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionCloseRequestedPrice', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportPositionCloseRequestedPrice', varName)
 }
 
-GetTradePositionClosed <- function(varName)
+GetTradeReportPositionClosed <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionClosed', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportPositionClosed', varName)
 }
 
-GetTradePositionId <- function(varName)
+GetTradeReportPositionId <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionId', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportPositionId', varName)
 }
 
-GetTradePositionLastQuantity <- function (varName)
+GetTradeReportPositionLastQuantity <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionLastQuantity', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportPositionLastQuantity', varName)
 }
 
-GetTradePositionLeavesQuantity <- function (varName)
+GetTradeReportPositionLeavesQuantity <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionLeavesQuantity', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportPositionLeavesQuantity', varName)
 }
 
-GetTradePositionModified <- function (varName)
+GetTradeReportPositionModified <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionModified', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportPositionModified', varName)
 }
 
-GetTradePositionOpened <- function (varName)
+GetTradeReportPositionOpened <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionOpened', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportPositionOpened', varName)
 }
 
-GetTradePositionQuantity <- function (varName)
+GetTradeReportPositionQuantity <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionQuantity', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportPositionQuantity', varName)
 }
 
-GetTradePrice <- function (varName)
+GetTradeReportPrice <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePrice', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportPrice', varName)
 }
 
-GetTradeQuantity <- function (varName)
+GetTradeReportQuantity <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeQuantity', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportQuantity', varName)
 }
 
-GetTradeStopLoss <- function (varName)
+GetTradeReportStopLoss <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeStopLoss', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportStopLoss', varName)
 }
 
-GetTradeStopPrice <- function (varName)
+GetTradeReportStopPrice <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeStopPrice', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportStopPrice', varName)
 }
 
-GetTradeSwap <- function (varName)
+GetTradeReportSwap <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeSwap', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportSwap', varName)
 }
 
-GetTradeSymbol <- function (varName)
+GetTradeReportSymbol <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeSymbol', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportSymbol', varName)
 }
 
-GetTradeTakeProfit <- function (varName)
+GetTradeReportTakeProfit <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTakeProfit', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportTakeProfit', varName)
 }
 
-GetTradeTradeRecordSide <- function (varName)
+GetTradeReportTradeRecordSide <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeRecordSide', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportTradeRecordSide', varName)
 }
 
-GetTradeTradeRecordType <- function (varName)
+GetTradeReportTradeRecordType <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeRecordType', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportTradeRecordType', varName)
 }
 
-GetTradeTradeTransactionReason <- function (varName)
+GetTradeReportTradeTransactionReason <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeTransactionReason', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportTradeTransactionReason', varName)
 }
 
-GetTradeTradeTransactionReportType <- function (varName)
+GetTradeReportTradeTransactionReportType <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeTransactionReportType', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportTradeTransactionReportType', varName)
 }
 
-GetTradeTransactionAmount <- function (varName)
+GetTradeReportTransactionAmount <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionAmount', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportTransactionAmount', varName)
 }
 
-GetTradeTransactionCurrency <- function (varName)
+GetTradeReportTransactionCurrency <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionCurrency', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportTransactionCurrency', varName)
 }
 
-GetTradeTransactionTime <- function (varName)
+GetTradeReportTransactionTime <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionTime', varName)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportTransactionTime', varName)
 }
