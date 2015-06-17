@@ -4,7 +4,7 @@
 #' @param toDate '' (unfiltered) or 'Market' 'Position' 'Limit' 'Stop'
 #' @export
 ttTradeRecords <- function(fromDate, toDate){
-  symInfo = GetTradeRecords(tradeSide, tradeType)
+  symInfo = GetTradeRecords(fromDate, toDate)
   
   AgentCommission = GetTradeAgentCommission(symInfo)
   ClientId = GetTradeClientId(symInfo)
