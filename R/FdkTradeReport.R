@@ -1,10 +1,10 @@
 #' Gets the account trades
 #' 
-#' @param fromDate '' (unfiltered) or 'Buy' or 'Sell'
-#' @param toDate '' (unfiltered) or 'Market' 'Position' 'Limit' 'Stop'
+#' @param fromDate Start time
+#' @param toDate End time (fromDate has to be before toDate)
 #' @export
 ttTradeRecords <- function(fromDate, toDate){
-  symInfo = GetTradeRecords(fromDate, toDate)
+  symInfo = GetTradeTransactionReport(fromDate, toDate)
   
   AgentCommission = GetTradeAgentCommission(symInfo)
   ClientId = GetTradeClientId(symInfo)
@@ -55,7 +55,7 @@ ttTradeRecords <- function(fromDate, toDate){
 }
 
 #' Get symbol field
-GetTradeRecords <- function(tradeSide, tradeType) {
+GetTradeTransactionReport <- function(tradeSide, tradeType) {
   clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionReport', tradeSide, tradeType)
 }
 
