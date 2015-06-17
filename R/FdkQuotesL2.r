@@ -42,14 +42,14 @@ QuotesL2CreatingTime <- function(quotesVar) {
   clrCallStatic('RHost.FdkLevel2', 'QuotesCreateTime', quotesVar)
 }
 
-#' Gets the bars' ask as requested
+#' Gets the quote's bid as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesVolumeBid <- function(quotesVar) {
   clrCallStatic('RHost.FdkLevel2', 'QuotesVolumeBid', quotesVar)
 }
 
-#' Gets the bars' ask as requested
+#' Gets the quote's ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesVolumeAsk <- function(quotesVar) {
@@ -58,8 +58,8 @@ QuotesVolumeAsk <- function(quotesVar) {
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
-QuotesPriceBid <- function(quotesVar) {
-  clrCallStatic('RHost.FdkLevel2', 'QuotesPriceBid', quotesVar)
+QuotesPriceAsk <- function(quotesVar) {
+  clrCallStatic('RHost.FdkLevel2', 'QuotesPriceAsk', quotesVar)
 }
 
 #' Gets the bars' ask as requested
@@ -67,4 +67,11 @@ QuotesPriceBid <- function(quotesVar) {
 #' @param quotesVar RHost variable that stores quotes array
 QuotesPriceAsk <- function(quotesVar) {
   clrCallStatic('RHost.FdkLevel2', 'QuotesPriceAsk', quotesVar)
+}
+
+#' Gets the quote's index
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+QuotesIndex <- function(quotesVar) {
+  clrCallStatic('RHost.FdkLevel2', 'QuotesIndex', quotesVar)
 }
