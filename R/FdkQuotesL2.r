@@ -58,8 +58,8 @@ QuotesVolumeAsk <- function(quotesVar) {
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
-QuotesPriceAsk <- function(quotesVar) {
-  clrCallStatic('RHost.FdkLevel2', 'QuotesPriceAsk', quotesVar)
+QuotesPriceBid <- function(quotesVar) {
+  clrCallStatic('RHost.FdkLevel2', 'QuotesPriceBid', quotesVar)
 }
 
 #' Gets the bars' ask as requested
