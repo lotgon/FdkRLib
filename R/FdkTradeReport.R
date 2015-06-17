@@ -3,7 +3,7 @@
 #' @param fromDate '' (unfiltered) or 'Buy' or 'Sell'
 #' @param toDate '' (unfiltered) or 'Market' 'Position' 'Limit' 'Stop'
 #' @export
-ttTrades <- function(fromDate, toDate){
+ttTradeRecords <- function(fromDate, toDate){
   symInfo = GetTradeRecords(tradeSide, tradeType)
   
   AgentCommission = GetTradeAgentCommission(symInfo)
