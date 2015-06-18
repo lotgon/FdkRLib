@@ -4,7 +4,7 @@
 #' @param toDate End time (fromDate has to be before toDate)
 #' @export
 ttTradeRecords <- function(fromDate, toDate){
-  symInfo = GetTradeTransactionReport(fromDate, toDate)
+  symInfo = GetTradeReportTransactionReport(fromDate, toDate)
   GetTradeReportDataFrame(symInfo)
 }
 
