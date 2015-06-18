@@ -6,7 +6,7 @@ If you see this error: "You are probably missing the Visual C++ Redistributable 
 https://www.microsoft.com/en-us/download/details.aspx?id=40784
 
 # How to install it?
-Look inside install.r file (you can copy/paste the content into your R environment).
+Look inside [install.r](https://github.com/SoftFx/FdkRLib/blob/master/install.r)  file (you can copy/paste the content into your R environment).
 
 For later sessions of R environment will require just to reload the library with this command:
 library(FdkRLib)
