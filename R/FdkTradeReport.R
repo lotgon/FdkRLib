@@ -5,7 +5,31 @@
 #' @export
 ttTradeRecords <- function(fromDate, toDate){
   symInfo = GetTradeTransactionReport(fromDate, toDate)
-  
+  GetTradeReportDataFrame(symInfo)
+}
+
+#' Gets the account trades
+#' 
+#' @export
+ttTradeRecordAll <- function() {
+  symInfo = GetTradeTransactionReportAll()
+  GetTradeReportDataFrame(symInfo)
+}
+
+#' Get symbol field
+GetTradeReportTransactionReport <- function(tradeSide, tradeType) {
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportTransactionReport', tradeSide, tradeType)
+}
+
+#' Get symbol field
+GetTradeTransactionReportAll <- function(tradeSide, tradeType) {
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionReportAll', tradeSide, tradeType)
+}
+
+
+
+GetTradeReportDataFrame <- function(varName)
+{
   AgentCommission = GetTradeReportAgentCommission(symInfo)
   ClientId = GetTradeReportClientId(symInfo)
   CloseConversionRate = GetTradeReportCloseConversionRate(symInfo)
@@ -52,11 +76,6 @@ ttTradeRecords <- function(fromDate, toDate){
 	Price, Quantity, StopLoss, Swap, Symbol, TakeProfit, TradeRecordSide, TradeRecordType, 
 	TradeTransactionReason, TradeTransactionReportType, TransactionAmount, TransactionCurrency, TransactionTime
 	)
-}
-
-#' Get symbol field
-GetTradeReportTransactionReport <- function(tradeSide, tradeType) {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportTransactionReport', tradeSide, tradeType)
 }
 
 GetTradeReportAccountBalance <- function(varName)
