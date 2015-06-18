@@ -31,6 +31,8 @@
 		</exec>
 	</target>
 	<target name="build_package">
+		<call target="Defaults" />
+		
 		<exec program="${R_Exe}" >
 			<arg value="CMD" />
 			<arg value="BATCH" />		
