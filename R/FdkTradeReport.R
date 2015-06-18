@@ -23,7 +23,7 @@ GetTradeReportTransactionReport <- function(tradeSide, tradeType) {
 
 #' Get symbol field
 GetTradeTransactionReportAll <- function(tradeSide, tradeType) {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionReportAll', tradeSide, tradeType)
+  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionReportAll')
 }
 
 
