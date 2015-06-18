@@ -13,9 +13,20 @@ namespace TestRClrHost
             //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
             var time = DateTime.Now;
-            var prevTime = time.AddHours(-12);
+            var prevTime = time.AddHours(-1);
             var bars = FdkTradeReports.GetTradeTransactionReport(prevTime, time);
-            //var comission = FdkTrade.GetTradeAgentCommission(bars);
+            var comission = FdkTradeReports.GetTradeAgentCommission(bars);
+            FdkVars.Unregister(bars);
+        }
+        [Test]
+        public void TestGetTradeRecordsAll()
+        {
+            //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
+            var time = DateTime.Now;
+            var prevTime = time.AddHours(-1);
+            var bars = FdkTradeReports.GetTradeTransactionReportAll();
+            var comission = FdkTradeReports.GetTradeAgentCommission(bars);
             FdkVars.Unregister(bars);
         }
     }

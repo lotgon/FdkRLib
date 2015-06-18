@@ -22,6 +22,15 @@ namespace RHost
             var varName = FdkVars.RegisterVariable(tradeRecordList, "trades");
             return varName;
         }
+        public static string GetTradeTransactionReportAll()
+        {
+            List<TradeTransactionReport> tradeRecordsStream = Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, null, null)
+                .ToArray().ToList();
+            var tradeRecordList = tradeRecordsStream.ToArray();
+
+            var varName = FdkVars.RegisterVariable(tradeRecordList, "trades");
+            return varName;
+        }
 
 
         public static double[] GetTradeAccountBalance(string varName)

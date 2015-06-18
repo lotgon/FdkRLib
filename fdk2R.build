@@ -53,8 +53,8 @@
     <property name="MSBuild.Platform" value="x86" />
     <property name="MSBuild.Target" value="Rebuild"/>
     
-    <property name="MSBuild.SourcesDir" value="${SrcDir}..\..\..\..\Fdk\" />
-    <property name="MSBuild.SolutionFile" value="${SrcDir}..\..\..\..\Fdk\Fdk.sln"/>
+    <property name="MSBuild.SourcesDir" value="${SrcDir}..\..\..\Fdk\" />
+    <property name="MSBuild.SolutionFile" value="${SrcDir}..\..\..\Fdk\Fdk.sln"/>
     
     <echo message="${MSBuild.SourcesDir}" />
     <echo message="${MSBuild.SolutionFile}" />
@@ -73,7 +73,7 @@
     <delete 
 		file="${SrcDir}\Lib\Fdk\SoftFX.Extended.Net.dll" />
     <copy 
-		file="${SrcDir}..\..\..\..\FRE\SoftFX.Extended.Net.dll" 
+		file="${SrcDir}..\..\..\FRE\SoftFX.Extended.Net.dll" 
 		todir="${SrcDir}\Lib\Fdk" 
 		overwrite="true"
 		/>
