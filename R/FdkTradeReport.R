@@ -28,7 +28,7 @@ GetTradeTransactionReportAll <- function(tradeSide, tradeType) {
 
 
 
-GetTradeReportDataFrame <- function(varName)
+GetTradeReportDataFrame <- function(symInfo)
 {
   AgentCommission = GetTradeReportAgentCommission(symInfo)
   ClientId = GetTradeReportClientId(symInfo)
