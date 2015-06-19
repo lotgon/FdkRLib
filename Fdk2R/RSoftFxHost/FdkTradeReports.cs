@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using SoftFX.Extended;
 using SoftFX.Extended.Reports;
@@ -19,7 +20,7 @@ namespace RHost
                 .ToArray().ToList();
             var tradeRecordList = tradeRecordsStream.ToArray();
 
-            var varName = FdkVars.RegisterVariable(tradeRecordList, "trades");
+            var varName = FdkVars.RegisterVariable(tradeRecordList, "tradeReports");
             return varName;
         }
         public static string GetTradeTransactionReportAll()
@@ -28,7 +29,7 @@ namespace RHost
                 .ToArray().ToList();
             var tradeRecordList = tradeRecordsStream.ToArray();
 
-            var varName = FdkVars.RegisterVariable(tradeRecordList, "trades");
+            var varName = FdkVars.RegisterVariable(tradeRecordList, "tradeReports");
             return varName;
         }
 

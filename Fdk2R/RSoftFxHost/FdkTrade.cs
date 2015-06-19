@@ -16,7 +16,7 @@ namespace RHost
 
         public static string GetTradeRecords(string tradeSideStr, string tradeTypeStr)
         {
-            var tradeRecords = Trade.Server.GetTradeRecords();
+            TradeRecord[] tradeRecords = Trade.Server.GetTradeRecords();
             if (!string.IsNullOrEmpty(tradeSideStr))
             {
                 var tradeSide = FdkHelper.ParseEnumStr<TradeRecordSide>(tradeSideStr);

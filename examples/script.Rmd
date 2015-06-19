@@ -49,17 +49,15 @@ head(ttBarPairs("EURUSD"))
 
 Get quotes
 ```{r}
-head(ttQuotes("EURUSD", startTime= as.POSIXct(x = "2015-06-10", tz="UTC")))
-```
 
-Get trades of current account
-```{r}
-head(ttTrades())
+now <-as.POSIXct(Sys.time())
+prevNow <-as.POSIXct(Sys.time()-(300))
+
+head(ttQuotes("EURUSD", , startTime = prevNow, endTime=now))
 ```
 
 Get quotes L2
 ```{r}
-ttConnect("tp.st.soft-fx.eu", "100000", "123qwe!")
 head(ttTrades())
 
 now <-as.POSIXct(Sys.time())
@@ -72,21 +70,16 @@ head(qt2)
 #4. Trades/Trade Reports
 
 
-
-More functionality tested:
-
+Get trades of current account
 ```{r}
-ttConnect("tp.st.soft-fx.eu", "100000", "123qwe!")
-trades = ttTrades()
+now <-as.POSIXct(Sys.time())
+prevNow <-as.POSIXct(Sys.time()-(120*3600))
 
+ttConnect("tp.st.soft-fx.eu", "100000", "123321")
 
-bars = ttBars("EURUSD", barCount = 1000000)
-barPairs = ttBarPairs('EURUSD')
+head(ttTradeRecords(prevNow, now))
 
+head(ttTrades())
 
-qt = ttQuotes('EURUSD', startTime = prevNow, endTime=now)
-quotesHistory <- ComputeQuoteHistory('EURUSD', startTime = prevNow, endTime=now, 1)
-
-qt2= ttQuotesLevel2('EURUSD', prevNow, now)
+head(ttTradeRecordAll())
 ```
-
