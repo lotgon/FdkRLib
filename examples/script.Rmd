@@ -59,6 +59,7 @@ head(ttTrades())
 
 Get quotes L2
 ```{r}
+ttConnect("tp.st.soft-fx.eu", "100000", "123qwe!")
 head(ttTrades())
 
 now <-as.POSIXct(Sys.time())
@@ -75,6 +76,7 @@ head(qt2)
 More functionality tested:
 
 ```{r}
+ttConnect("tp.st.soft-fx.eu", "100000", "123qwe!")
 trades = ttTrades()
 
 

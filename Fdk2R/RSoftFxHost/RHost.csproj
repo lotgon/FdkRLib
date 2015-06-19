@@ -86,6 +86,7 @@
     <Compile Include="FdkHelper.cs" />
     <Compile Include="FdkLevel2.cs" />
     <Compile Include="FdkQuotes.cs" />
+    <Compile Include="FdkSessionInfo.cs" />
     <Compile Include="FdkSymbolInfo.cs" />
     <Compile Include="FdkTrade.cs" />
     <Compile Include="FdkTradeReports.cs" />

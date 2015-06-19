@@ -21,6 +21,15 @@ namespace TestRClrHost
             var comission = FdkTrade.GetTradeAgentCommission(bars);
             FdkVars.Unregister(bars);
         }
+        [Test]
+        public void TestGetTradeRecordsFromStaging()
+        {
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.st.soft-fx.eu", "100000", "123qwe!", ""));
+            //Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
+            var bars = FdkTrade.GetTradeRecords("", "");
+            var comission = FdkTrade.GetTradeAgentCommission(bars);
+            FdkVars.Unregister(bars);
+        }
 
         [Test]
         public void TestDataTradeIsolation()

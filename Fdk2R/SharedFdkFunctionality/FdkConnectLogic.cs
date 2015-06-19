@@ -116,6 +116,7 @@ namespace SharedFdkFunctionality
             SetupTradeConnection(Builder.FixLogDirectory);
 
             Feed.Initialize(connectionString);
+                
 
             var timeoutInMilliseconds = Feed.SynchOperationTimeout;
             return Feed.Start(timeoutInMilliseconds);

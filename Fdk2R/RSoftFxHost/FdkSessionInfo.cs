@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SoftFX.Extended;
 
 namespace RHost
@@ -35,15 +31,41 @@ namespace RHost
             var session = FdkVars.GetValue<SessionInfo>(varName);
             return session.TradingSessionId;
         }
-        public static string PlatformCompany(string varName)
+        public static DateTime CloseTime(string varName)
         {
             var session = FdkVars.GetValue<SessionInfo>(varName);
-            return session.PlatformCompany;
+            return session.CloseTime;
         }
-        public static string PlatformCompany(string varName)
+        public static DateTime EndTime(string varName)
         {
             var session = FdkVars.GetValue<SessionInfo>(varName);
-            return session.PlatformCompany;
+            return session.EndTime;
         }
+        public static DateTime OpenTime(string varName)
+        {
+            var session = FdkVars.GetValue<SessionInfo>(varName);
+            return session.OpenTime;
+        }
+        public static DateTime StartTime(string varName)
+        {
+            var session = FdkVars.GetValue<SessionInfo>(varName);
+            return session.StartTime;
+        }
+        public static bool IsClosed(string varName)
+        {
+            var session = FdkVars.GetValue<SessionInfo>(varName);
+            return session.IsClosed;
+        }
+        public static int ServerTimeZoneOffset(string varName)
+        {
+            var session = FdkVars.GetValue<SessionInfo>(varName);
+            return session.ServerTimeZoneOffset;
+        }
+        public static string Status(string varName)
+        {
+            var session = FdkVars.GetValue<SessionInfo>(varName);
+            return session.Status.ToString();
+        }
+        
     }
 }
