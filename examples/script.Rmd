@@ -1,11 +1,18 @@
 ---
-title: "Sa"
+title: "Sample Fdk2R"
 output:
   html_document:
     toc: true
     theme: united
 ---
 
+Sections
+* 1. Connection
+* 2. Configuration (symbols, currencies, accounts)
+* 3. Feed history  (bars and quotes)
+* 4. Trades/Trade Reports
+
+#1. Connection
 Connect to TT Demo server:
 ttConnect()
 
@@ -16,8 +23,15 @@ require(FdkRLib)
 ttConnect()
 ```
 
+#2. Configuration
+Get symbol and currency data
+```{r}
+head(ttGetSymbolData())
 
+head(ttGetCurrencyData())
+```
 
+#3. Feed history
 <p>Get 10000 bars of EURUSD symbol:</p>
 head(ttBars("EURUSD"))
 
@@ -54,12 +68,8 @@ qt2= ttQuotesLevel2('EURUSD', prevNow, now)
 head(qt2)
 ```
 
-Get symbol and currency data
-```{r}
-head(ttGetSymbolData())
+#4. Trades/Trade Reports
 
-head(ttGetCurrencyData())
-```
 
 
 More functionality tested:
