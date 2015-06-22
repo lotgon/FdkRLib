@@ -1,8 +1,8 @@
 Package: FdkRLib
 Type: Package
 Title: Soft FX integration of R with FDK
-Version: 1.0.20150615
-Date: 2015-06-15
+Version: 1.0.20150622
+Date: 2015-06-22
 Author: Ciprian Khlud (of SoftFX)
 Maintainer: Ciprian Khlud <ciprian.khlud@soft-fx.lv>
 Description: It exposes TickTrader's FDK API to 
