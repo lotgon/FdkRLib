@@ -33,4 +33,4 @@ quotesHistory <- ComputeQuoteHistory('EURUSD', startTime = prevNow, endTime=now,
 qt2= ttQuotesLevel2('EURUSD', prevNow, now)
 
 Follow this link with expanded example and output:
-http://rpubs.com/ciplogic/86806
+http://rpubs.com/ciplogic/89507
