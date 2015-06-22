@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using SoftFX.Extended;
 using SoftFX.Extended.Reports;
@@ -16,7 +14,7 @@ namespace RHost
 
         public static string GetTradeTransactionReport(DateTime from, DateTime to)
         {
-            List<TradeTransactionReport> tradeRecordsStream = Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, from, to)
+            var tradeRecordsStream = Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, from, to)
                 .ToArray().ToList();
             var tradeRecordList = tradeRecordsStream.ToArray();
 
@@ -25,7 +23,7 @@ namespace RHost
         }
         public static string GetTradeTransactionReportAll()
         {
-            List<TradeTransactionReport> tradeRecordsStream = Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, null, null)
+            var tradeRecordsStream = Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, null, null)
                 .ToArray().ToList();
             var tradeRecordList = tradeRecordsStream.ToArray();
 

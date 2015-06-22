@@ -15,7 +15,6 @@ namespace RHost
             SplitIntervals = 10;
         }
 
-      
         #region Bars 
 
 #region Fdk direct wrapper
@@ -104,7 +103,6 @@ namespace RHost
         }
 
         #endregion
-
 
         #region Bar fields
         public static double[] BarHighs(string bars)

@@ -15,6 +15,14 @@ namespace RHost
     }
     public class FdkLevel2
     {
+        /// <summary>
+        /// Get quote packed 
+        /// </summary>
+        /// <param name="symbol">Symbol to get quotes on</param>
+        /// <param name="startTime"></param>
+        /// <param name="endTime"></param>
+        /// <param name="levelDbl"></param>
+        /// <returns></returns>
         public static string GetQuotePacked(string symbol, DateTime startTime, DateTime endTime, double levelDbl = 2)
         {
             var level = (int) levelDbl;
@@ -35,7 +43,7 @@ namespace RHost
                 }
                 var timeSpan = quote.CreatingTime.Subtract(prevTime).Milliseconds;
                 
-                for (int index = 0; index < quote.Asks.Length; index++)
+                for (var index = 0; index < quote.Asks.Length; index++)
                 {
                     var quoteEntryAsk = quote.Asks[index];
                     var quoteEntryBid = quote.Bids[index];
@@ -53,7 +61,7 @@ namespace RHost
                 }
             }
 
-            QuoteLevel2Data[] quoteLevel2Data = itemsToAdd.ToArray();
+            var quoteLevel2Data = itemsToAdd.ToArray();
 
             var quoteHistory = FdkVars.RegisterVariable(quoteLevel2Data, "quotesL2");
             return quoteHistory;

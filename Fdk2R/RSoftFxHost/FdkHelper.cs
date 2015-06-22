@@ -38,7 +38,7 @@ namespace RHost
                 Wrapper = wrapper;
             }
 
-            string localPath = String.Empty;
+            var localPath = String.Empty;
 
             if (!String.IsNullOrEmpty(path))
             {
@@ -61,8 +61,8 @@ namespace RHost
 
         public static Double GetCreatedEpoch(DateTime created)
         {
-            DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime();
-            TimeSpan span = (created.ToLocalTime() - epoch);
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime();
+            var span = (created.ToLocalTime() - epoch);
             return span.TotalSeconds;
         }
 
@@ -80,7 +80,7 @@ namespace RHost
 
         public static DateTime GetCreatedEpoch(Double value)
         {
-            DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime();
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime();
             var created = epoch.AddSeconds(value);
             return created;
         }

@@ -4,7 +4,7 @@ namespace RHost
 {
     public static class FdkVars
     {
-        public static Dictionary<string, object> Vars = new Dictionary<string, object>();
+        private static readonly Dictionary<string, object> Vars = new Dictionary<string, object>();
         public static string RegisterVariable(object data, string prefix)
         {
             var pos = 0;

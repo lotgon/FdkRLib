@@ -8,7 +8,7 @@ namespace RHost
     {
         public static string ComputeQuoteHistory(string symbol, DateTime startTime, DateTime endTime, double depthDbl)
         {   
-            int depth = (int)depthDbl;
+            var depth = (int)depthDbl;
             var quotesData = CalculateHistoryForSymbolArray(symbol, startTime, endTime, depth);
             var quoteHistory = FdkVars.RegisterVariable(quotesData, "quotes");
             return quoteHistory;

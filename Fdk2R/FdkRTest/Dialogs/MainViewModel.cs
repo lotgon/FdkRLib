@@ -7,7 +7,6 @@ namespace FdkRTest.Dialogs
     {
         private string _resultScript;
         private string _scriptToRun;
-        private string _lineOfScript;
         public FdkWrapper Wrapper { get; set; }
 
         public MainViewModel()
@@ -29,11 +28,7 @@ namespace FdkRTest.Dialogs
             }
         }
 
-        public string LineOfScript
-        {
-            get { return _lineOfScript; }
-            set { _lineOfScript = value; }
-        }
+        public string LineOfScript { get; set; }
 
         public string ResultScript
         {

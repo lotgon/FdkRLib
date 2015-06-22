@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using SoftFX.Extended;
-using SoftFX.Extended.Reports;
 
 namespace RHost
 {
@@ -16,7 +14,7 @@ namespace RHost
 
         public static string GetTradeRecords(string tradeSideStr, string tradeTypeStr)
         {
-            TradeRecord[] tradeRecords = Trade.Server.GetTradeRecords();
+            var tradeRecords = Trade.Server.GetTradeRecords();
             if (!string.IsNullOrEmpty(tradeSideStr))
             {
                 var tradeSide = FdkHelper.ParseEnumStr<TradeRecordSide>(tradeSideStr);
@@ -163,15 +161,7 @@ namespace RHost
             return val ? "True" : "False";
         }
 
-        public static string ToEpochDouble(this DateTime val)
-        {
-            return val.ToString(CultureInfo.InvariantCulture);
-        }
-        public static string[] ExposeDates(this IEnumerable<DateTime> values)
-        {
-            return values.Select(val=>val.ToEpochDouble()).ToArray();
-        }
-        public static DateTime[] ExposeDatesNull(this IEnumerable<DateTime?> values)
+        private static DateTime[] ExposeDatesNull(this IEnumerable<DateTime?> values)
         {
             return values.Select(val => (val??new DateTime(1970,1,1))).ToArray();
         }

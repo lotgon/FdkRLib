@@ -16,7 +16,7 @@ namespace FdkRTest.Dialogs
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
-        public void Changed([CallerMemberName] string name = null)
+        protected void Changed([CallerMemberName] string name = null)
         {
             ChangedName(name);
         }

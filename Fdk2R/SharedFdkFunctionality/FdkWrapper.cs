@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -12,9 +11,9 @@ namespace SharedFdkFunctionality
 {
     public class FdkTradeWrapper
     {
-        public void Connect(string address, string username, string password, string LogPath)
+        public void Connect(string address, string username, string password, string logPath)
         {
-            EnsureDirectoriesCreated(LogPath);
+            EnsureDirectoriesCreated(logPath);
 
             // Create builder
             var builder = new FixConnectionStringBuilder
@@ -30,7 +29,7 @@ namespace SharedFdkFunctionality
                 Username = username,
                 Password = password,
 
-                FixLogDirectory = LogPath,
+                FixLogDirectory = logPath,
                 FixEventsFileName = string.Format("{0}.trade.events.log", username),
                 FixMessagesFileName = string.Format("{0}.trade.messages.log", username)
             };
@@ -43,7 +42,7 @@ namespace SharedFdkFunctionality
             Trade.Logon += OnLogon;
             Trade.Start();
             var timeoutInMilliseconds = Trade.SynchOperationTimeout;
-            if (!syncEvent.WaitOne(timeoutInMilliseconds))
+            if (!_syncEvent.WaitOne(timeoutInMilliseconds))
             {
                 throw new TimeoutException("Timeout of logon waiting has been reached");
             }
@@ -52,11 +51,11 @@ namespace SharedFdkFunctionality
 
         public DataTrade Trade { get; set; }
 
-        readonly AutoResetEvent syncEvent = new AutoResetEvent(false);
+        readonly AutoResetEvent _syncEvent = new AutoResetEvent(false);
 
         private void OnLogon(object sender, LogonEventArgs e)
         {
-            syncEvent.Set();
+            _syncEvent.Set();
         }
 
         static void EnsureDirectoriesCreated(string logPath)
@@ -87,7 +86,7 @@ namespace SharedFdkFunctionality
             var connectionSuccessful = ConnectLogic.DoConnect();
             if (!connectionSuccessful)
             {
-                _logger.Warn("");
+                Logger.Warn("");
                 return false;
             }
             var start = DateTime.Now;
@@ -115,7 +114,7 @@ namespace SharedFdkFunctionality
         private void OnSymbolInfo(object sender, SymbolInfoEventArgs e)
         {
             _symbols = e.Information.ToList();
-            _logger.DebugFormat("Symbols information is received. Symbols count = {0}", _symbols.Count);
+            Logger.DebugFormat("Symbols information is received. Symbols count = {0}", _symbols.Count);
 
             // to us means also that symbols are already availiable
             IsConnected = true;
@@ -123,11 +122,11 @@ namespace SharedFdkFunctionality
 
         private void OnSessionInfo(object sender, SessionInfoEventArgs e)
         {
-            _logger.Debug(e.Information);
+            Logger.Debug(e.Information);
         }
         private void OnLogon(object sender, LogonEventArgs e)
         {
-            _logger.DebugFormat("OnLogon(): {0}", e);
+            Logger.DebugFormat("OnLogon(): {0}", e);
             ConnectLogic.Feed.Server.SubscribeToQuotes(new[] { "EURUSD" }, 1);
         }
         private void OnLogout(Object sender, LogoutEventArgs e)
@@ -144,7 +143,7 @@ namespace SharedFdkFunctionality
         public string Password { get; set; }
         public FdkConnectLogic ConnectLogic { get; private set; }
 
-        private static readonly ILog _logger = LogManager.GetLogger(typeof(FdkConnector));
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(FdkConnector));
         public bool IsConnected { get; set; }
 
         public List<SymbolInfo> Symbols

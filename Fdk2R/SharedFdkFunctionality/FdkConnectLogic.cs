@@ -17,7 +17,7 @@ namespace SharedFdkFunctionality
         public string Address { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        private readonly AutoResetEvent syncEvent = new AutoResetEvent(false);
+        private readonly AutoResetEvent _syncEvent = new AutoResetEvent(false);
 
         public FdkConnectLogic(string address, string username, string password)
         {
@@ -58,11 +58,9 @@ namespace SharedFdkFunctionality
                 Feed = null;
             }
 
-            if (null != Storage)
-            {
-                Storage.Dispose();
-                Storage = null;
-            }
+            if (null == Storage) return;
+            Storage.Dispose();
+            Storage = null;
         }
 
         public void SetupPathsAndConnect(string rootPath)
@@ -102,10 +100,10 @@ namespace SharedFdkFunctionality
         }
 
 
-        static void EnsureDirectoriesCreated(string LogPath)
+        static void EnsureDirectoriesCreated(string logPath)
         {
-            if (!Directory.Exists(LogPath))
-                Directory.CreateDirectory(LogPath);
+            if (!Directory.Exists(logPath))
+                Directory.CreateDirectory(logPath);
         }
 
         public bool DoConnect()
@@ -159,7 +157,7 @@ namespace SharedFdkFunctionality
 
         private void OnLogon(object sender, LogonEventArgs e)
         {
-            syncEvent.Set();
+            _syncEvent.Set();
         }
 
         public void Disconnect()

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RHost
@@ -38,7 +36,7 @@ namespace RHost
         public static List<TResult> ParititionProcess<TValue, TResult>(this IList<TValue> source, Func<TValue, TResult> func,
             int partitionCount = 4)
         {
-            List<TaskPartition<TValue, TResult>> partitions = new List<TaskPartition<TValue, TResult>>();
+            var partitions = new List<TaskPartition<TValue, TResult>>();
 
             var pos = 0;
             var stride = source.Count/partitionCount + 1;

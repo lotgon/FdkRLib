@@ -11,7 +11,7 @@ namespace RHost
         }
         public static string GetSessionInfo()
         {
-            SessionInfo sessionInfo = Feed.Server.GetSessionInfo();
+            var sessionInfo = Feed.Server.GetSessionInfo();
             var result = FdkVars.RegisterVariable(sessionInfo, "SessionInfo");
             return result;
         }

@@ -10,7 +10,7 @@ namespace SharedFdkFunctionality
 {
     public class FdkConnector
     {
-        private static readonly ILog _logger = LogManager.GetLogger(typeof (FdkConnector));
+        private static readonly ILog Logger = LogManager.GetLogger(typeof (FdkConnector));
         public string Address { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
@@ -30,7 +30,7 @@ namespace SharedFdkFunctionality
             var connectionSuccessful = ConnectLogic.DoConnect();
             if (!connectionSuccessful)
 	        {
-                _logger.Warn("");
+                Logger.Warn("");
 		        return false;
 	        }
             var start = DateTime.Now;
@@ -54,7 +54,7 @@ namespace SharedFdkFunctionality
         void OnSymbolInfo(object sender, SymbolInfoEventArgs e)
         {
             _symbols = e.Information.ToList();
-            _logger.DebugFormat("Symbols information is received. Symbols count = {0}", _symbols.Count);
+            Logger.DebugFormat("Symbols information is received. Symbols count = {0}", _symbols.Count);
 			
 			// to us means also that symbols are already availiable
 			IsConnected = true;
@@ -62,11 +62,11 @@ namespace SharedFdkFunctionality
 
 		private void OnSessionInfo(object sender, SessionInfoEventArgs e)
 		{
-            _logger.Debug(e.Information);
+            Logger.Debug(e.Information);
 		}
 		private void OnLogon(object sender, LogonEventArgs e)
 		{
-            _logger.DebugFormat("OnLogon(): {0}", e);
+            Logger.DebugFormat("OnLogon(): {0}", e);
 		}
 		private void OnLogout(Object sender, LogoutEventArgs e)
 		{

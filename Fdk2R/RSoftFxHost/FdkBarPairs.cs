@@ -6,7 +6,15 @@ namespace RHost
 {
     public class FdkBarPairs
     {
-       
+       /// <summary>
+       /// Get the bar data as pairs
+       /// </summary>
+       /// <param name="symbol"></param>
+       /// <param name="barPeriodStr"></param>
+       /// <param name="startTime"></param>
+       /// <param name="endTime"></param>
+       /// <param name="barCountDbl"></param>
+       /// <returns></returns>
         public static string ComputeGetPairBars(string symbol, string barPeriodStr, DateTime startTime, DateTime endTime, double barCountDbl)
         {
             var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
@@ -15,7 +23,7 @@ namespace RHost
             PairBar[] barsData;
             if (FdkHelper.IsTimeZero(startTime))
             {
-                int barCount = (int)barCountDbl;
+                var barCount = (int)barCountDbl;
                 barsData = GetPairBarsSymbolArray(symbol, barPeriod, endTime, -barCount);
             }
             else

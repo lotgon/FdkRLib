@@ -44,9 +44,9 @@ namespace TestRClrHost
         [Test]
         public void TestDataTradeIsolation()
         {
-            string address = "tpdemo.fxopen.com";
-            string username = "59932";
-            string password = "8mEx7zZ2";
+            const string address = "tpdemo.fxopen.com";
+            const string username = "59932";
+            const string password = "8mEx7zZ2";
 
             EnsureDirectoriesCreated();
 
@@ -68,23 +68,23 @@ namespace TestRClrHost
                 FixEventsFileName = string.Format("{0}.trade.events.log", username),
                 FixMessagesFileName = string.Format("{0}.trade.messages.log", username)
             };
-            var Trade = new DataTrade
+            var trade = new DataTrade
             {
                 SynchOperationTimeout = 30000
             };
             var connectionString = builder.ToString();
-            Trade.Initialize(connectionString);
-            Trade.Logon += OnLogon;
-            Trade.Start();
-            var timeoutInMilliseconds = Trade.SynchOperationTimeout;
-            if (!syncEvent.WaitOne(timeoutInMilliseconds))
+            trade.Initialize(connectionString);
+            trade.Logon += OnLogon;
+            trade.Start();
+            var timeoutInMilliseconds = trade.SynchOperationTimeout;
+            if (!_syncEvent.WaitOne(timeoutInMilliseconds))
             {
                 throw new TimeoutException("Timeout of logon waiting has been reached");
             }
-            RunExample(Trade);
+            RunExample(trade);
         }
 
-        private void RunExample(DataTrade trade)
+        private static void RunExample(DataTrade trade)
         {
             var records = trade.Server.GetTradeRecords();
         }
@@ -95,10 +95,10 @@ namespace TestRClrHost
                 Directory.CreateDirectory(LogPath);
         }
 
-        readonly AutoResetEvent syncEvent = new AutoResetEvent(false);
+        readonly AutoResetEvent _syncEvent = new AutoResetEvent(false);
         private void OnLogon(object sender, LogonEventArgs e)
         {
-            this.syncEvent.Set();
+            _syncEvent.Set();
         }
 
         static string CommonPath
