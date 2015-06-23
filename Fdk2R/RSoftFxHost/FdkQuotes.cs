@@ -22,25 +22,47 @@ namespace RHost
         public static double[] QuotesAsk(string bars)
         {
             var quotes = FdkVars.GetValue<Quote[]>(bars);
-            return quotes.Select(b => b.HasAsk? b.Ask : -1).ToArray();
+            return QuoteArrayAsk(quotes);
         }
+
         public static double[] QuotesBid(string bars)
         {
             var quotes = FdkVars.GetValue<Quote[]>(bars);
-            return quotes.Select(b => b.HasBid? b.Bid:-1).ToArray();
+            return QuoteArrayBid(quotes);
         }
         public static DateTime[] QuotesCreatingTime(string bars)
         {
             var quotes = FdkVars.GetValue<Quote[]>(bars);
 
-            var timesAsEpoch = quotes.Select(b =>b.CreatingTime).ToArray();
-            return timesAsEpoch;
+            return QuoteArrayCreateTime(quotes);
         }
+
         public static double[] QuotesSpread(string bars)
         {
             var quotes = FdkVars.GetValue<Quote[]>(bars);
-            return quotes.Select(b => b.Spread).ToArray();
+            return QuoteArraySpread(quotes);
         }
 
+        internal static double[] QuoteArrayBid(Quote[] quotes)
+        {
+            return quotes.Select(b => b.HasBid ? b.Bid : -1).ToArray();
+        }
+
+
+        internal static double[] QuoteArrayAsk(Quote[] quotes)
+        {
+            return quotes.Select(b => b.HasAsk ? b.Ask : -1).ToArray();
+        }
+
+        internal static DateTime[] QuoteArrayCreateTime(Quote[] quotes)
+        {
+            var timesAsEpoch = quotes.Select(b => b.CreatingTime).ToArray();
+            return timesAsEpoch;
+        }
+
+        internal static double[] QuoteArraySpread(Quote[] quotes)
+        {
+            return quotes.Select(b => b.Spread).ToArray();
+        }
     }
 }

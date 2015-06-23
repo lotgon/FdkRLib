@@ -52,12 +52,6 @@ QuotesSpread <- function(quotesVar) {
   clrCallStatic('RHost.FdkQuotes', 'QuotesSpread', quotesVar)
 }
 
-#' Gets the bar count used in calls
-#' 
-#' @export
-ttGetBarCount <- function() {
-  clrCallStatic('RHost.FdkBars', 'GetBarCount')
-}
 #' Gets the bars' volume as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array

@@ -37,7 +37,7 @@ namespace TestRClrHost
             //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", @"c:\FdkCaches\Cache1"));
             var time = DateTime.Now;
-            var prevHour = time.AddDays(-1);
+            var prevHour = time.AddMinutes(-5);
 
             var quotes = FdkQuotes.ComputeQuoteHistory("EURUSD", prevHour, time, 3);
             var asks = FdkQuotes.QuotesAsk(quotes);

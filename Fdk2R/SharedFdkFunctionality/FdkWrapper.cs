@@ -128,6 +128,7 @@ namespace SharedFdkFunctionality
         {
             Logger.DebugFormat("OnLogon(): {0}", e);
             ConnectLogic.Feed.Server.SubscribeToQuotes(new[] { "EURUSD" }, 1);
+            
         }
         private void OnLogout(Object sender, LogoutEventArgs e)
         {

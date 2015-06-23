@@ -44,26 +44,26 @@ GetTradeAgentCommission <- function(symInfo) {
   clrCallStatic('RHost.FdkTrade', 'GetTradeAgentCommission', symInfo)
 }
 
-#' Get trade comission
+#' Get trade trade client order id
 GetTradeClientOrderId <- function(symInfo) {
   clrCallStatic('RHost.FdkTrade', 'GetTradeClientOrderId', symInfo)
 }
 
-#' Get trade comission
+#' Get trade comment
 GetTradeComment <- function(symInfo) {
   clrCallStatic('RHost.FdkTrade', 'GetTradeComment', symInfo)
 }
 
-#' Get trade comission
+#' Get trade create time
 GetTradeCreated <- function(symInfo) {
   clrCallStatic('RHost.FdkTrade', 'GetTradeCreated', symInfo)
 }
 
-#' Get trade comission
+#' Get trade expiratiobn date
 GetTradeExpiration <- function(symInfo) {
   clrCallStatic('RHost.FdkTrade', 'GetTradeExpiration', symInfo)
 }
-#' Get trade comission
+#' Get trade initial volume
 GetTradeInitialVolume <- function(symInfo) {
   clrCallStatic('RHost.FdkTrade', 'GetTradeInitialVolume', symInfo)
 }
