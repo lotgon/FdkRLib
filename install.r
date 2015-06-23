@@ -8,6 +8,8 @@ installBinary <- function(fdkRLibPackage){
   install.packages(localTempFile, repos = NULL, type = "source")
   file.remove(localTempFile)
 }
+# Sets for R environment the command to allow downloading https files
+setInternet2(TRUE)
 
 installBinary("rClr_0.7-4.zip")
 library(rClr)
