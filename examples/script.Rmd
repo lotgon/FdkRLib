@@ -52,6 +52,7 @@ Get quotes
 ```{r}
 
 now <-as.POSIXct(Sys.time())
+# 300 seconds from present
 prevNow <-as.POSIXct(Sys.time()-(300))
 
 head(ttQuotes("EURUSD", , startTime = prevNow, endTime=now))
@@ -62,6 +63,7 @@ Get quotes L2
 head(ttTrades())
 
 now <-as.POSIXct(Sys.time())
+# 1000 seconds from present
 prevNow <-as.POSIXct(Sys.time()-1000)
 
 qt2= ttQuotesLevel2('EURUSD', prevNow, now)
@@ -75,6 +77,7 @@ Get trades of current account
 
 ```{r}
 now <-as.POSIXct(Sys.time())
+#120 hours = 120 x 3600 seconds before now
 prevNow <-as.POSIXct(Sys.time()-(120*3600))
 
 
