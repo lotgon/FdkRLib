@@ -6,7 +6,7 @@
 #' @param endTime Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
 #' @param depth Quotes depth
 #' @export
-ttQuotes <- function(symbol,startTime= ttTimeZero() , endTime, depth=1){
+ttQuotes <- function(symbol){
   quotesHistory <- ComputeQuoteHistory(symbol,startTime, endTime, depth)
   
   ask <- RealTimeQuotesAsk(quotesHistory)
@@ -42,19 +42,12 @@ RealTimeQuotesBid <- function(quotesVar) {
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
-RealTimeQuotesCreatingTime <- function(quotesVar) {
+RealTimeQuotesCreatingTime <- function(id) {
   clrCallStatic('RHost.FdkQuotes', 'QuotesCreatingTime', quotesVar)
 }
 #' Gets the quotes' spread as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
-RealTimeQuotesSpread <- function(quotesVar) {
+RealTimeQuotesSpread <- function(id) {
   clrCallStatic('RHost.FdkQuotes', 'QuotesSpread', quotesVar)
-}
-
-#' Gets the bars' volume as requested
-#' 
-#' @param quotesVar RHost variable that stores quotes array
-QuotesVolume <- function(quotesVar) {
-  clrCallStatic('RHost.FdkQuotes', 'QuotesVolume', quotesVar)
 }

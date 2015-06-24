@@ -2,8 +2,8 @@
 #' Gets the bars as requested
 #' 
 #' @param symbol Symbol looked
-#' @param priceTypeStr Ask
-#' @param barPeriodStr Values like: M1, H1
+#' @param priceTypeStr Bid or Ask
+#' @param barPeriodStr Values like: S1, S10, M1, M5, M15, M30, H1, H4, D1, W1, MN1 (default 'M1') 
 #' @param endTimeEpoch Epoch time
 #' @export
 ttBars <- function(symbol, 

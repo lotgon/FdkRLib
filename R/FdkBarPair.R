@@ -2,11 +2,11 @@
 #' Gets the bars' low as requested
 #' 
 #' @param symbol Symbol looked
-#' @param barPeriodStr Values like: M1, H1
+#' @param barPeriodStr (default 'M1') values like: S1, S10, M1, M5, M15, M30, H1, H4, D1, W1, MN1
 #' @param startTimeEpoch Epoch time
 #' @param barCount Bar count
 #' @export
-ttBarPairs <- function(symbol, barPeriodStr = "M1",
+ttBarsQuotes <- function(symbol, barPeriodStr = "M1",
      startTime = ttTimeZero(),  endTime = ttNow(),
      barCountDbl = 10000){
   bars = ComputeGetPairBars(symbol, barPeriodStr, startTime, endTime, barCountDbl)
