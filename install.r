@@ -29,7 +29,7 @@ installAllPackages <- function(){
   setInternet2(TRUE)
   
   installBinary("rClr_0.7-4.zip")
-  installBinary("FdkRLib_1.0.20150622.zip")  
+  installBinary("FdkRLib_1.0.20150629.zip")  
 }
 
 #Use this function if you have issues with default 
@@ -37,7 +37,7 @@ installAllPackages <- function(){
 installAllPackagesHttr <- function () {
   install.packages("httr", repos='http://cran.us.r-project.org')
   installBinaryHttr("rClr_0.7-4.zip")
-  installBinaryHttr("FdkRLib_1.0.20150622.zip")
+  installBinaryHttr("FdkRLib_1.0.20150629.zip")
 }
 
 # Sets for R environment the command to allow downloading https files
