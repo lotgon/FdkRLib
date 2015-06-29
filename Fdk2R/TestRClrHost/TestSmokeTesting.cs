@@ -31,6 +31,24 @@ namespace TestRClrHost
             FdkVars.Unregister(quotes);
         }
 
+
+        [Test]
+        public void TestQuotesLevel2WideSpread()
+        {
+            //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", @"c:\FdkCaches\Cache1"));
+            var time = new DateTime(2015,06, 26, 15, 51, 0);
+            var prevHour = time.AddMinutes(-1);
+            var quotes = FdkLevel2.GetQuotePacked("AUDUSD", prevHour, time);
+
+            var volumesAsk = FdkLevel2.QuotesVolumeBid(quotes);
+            var volumesBid = FdkLevel2.QuotesVolumeAsk(quotes);
+            Assert.AreNotEqual(0, volumesAsk.Length);
+            Assert.AreNotEqual(0, volumesBid.Length);
+            FdkVars.Unregister(quotes);
+        }
+
+
         [Test]
         public void TestDuplicateConnectError()
         {
