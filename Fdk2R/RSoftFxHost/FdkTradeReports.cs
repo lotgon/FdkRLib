@@ -270,5 +270,7 @@ namespace RHost
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
             return tradeData.Select(it => it.TransactionTime).ToArray();
         }
+
+
     }
 }
