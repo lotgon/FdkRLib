@@ -34,10 +34,12 @@ namespace QuoteL2Tester
             try
             {
                 FdkHelper.ConnectToFdk(settings.Address, settings.Login, settings.Password, settings.CachesPath);
+                MessageBox.Show("Connection successful!");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(String.Format("Exception: {0}", ex));
+                
             }
         }
 
