@@ -41,7 +41,7 @@ namespace RHost
                 {
                     indexOrder = 0;
                 }
-                var timeSpan = quote.CreatingTime.Subtract(prevTime).Milliseconds;
+                var timeSpan = quote.CreatingTime.Subtract(prevTime).TotalMilliseconds;
                 
                 for (var index = 0; index < quote.Asks.Length; index++)
                 {
@@ -59,7 +59,6 @@ namespace RHost
                     };
                     itemsToAdd.Add(newQuoteL2Data);
                 }
-                prevTime = quote.CreatingTime;
             }
 
             var quoteLevel2Data = itemsToAdd.ToArray();
