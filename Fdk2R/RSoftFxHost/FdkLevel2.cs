@@ -59,6 +59,7 @@ namespace RHost
                     };
                     itemsToAdd.Add(newQuoteL2Data);
                 }
+                prevTime = quote.CreatingTime;
             }
 
             var quoteLevel2Data = itemsToAdd.ToArray();
