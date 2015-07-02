@@ -3,8 +3,10 @@
 #' 
 #' @param symbol Symbol looked
 #' @param priceTypeStr Bid or Ask
-#' @param barPeriodStr Values like: S1, S10, M1, M5, M15, M30, H1, H4, D1, W1, MN1 (default 'M1') 
-#' @param endTimeEpoch Epoch time
+#' @param barPeriodStr Values like: S1, S10, M1, M5, M15, M30, H1, H4, D1, W1, MN1 (default 'M1')
+#' @param startTime Start of the time intervals  
+#' @param endTime End of time interval. If startTime is not set, the bar count is taken from barCount variable
+#' @param barCount Number of items of startTime is not set 
 #' @export
 ttBars <- function(symbol, 
      priceTypeStr="Bid", barPeriodStr = "M1", 
@@ -42,52 +44,52 @@ getBarsFrame <- function(symbolBars){
 #' @param barCount Items used
 ComputeBarsRange <- function(symbol, 
       priceTypeStr, barPeriodStr, startTime, endTime, barCount) {
-  clrCallStatic('RHost.FdkBars', 'ComputeBarsRangeTime', symbol, priceTypeStr, barPeriodStr, startTime, endTime, barCount)
+  rClr::clrCallStatic('RHost.FdkBars', 'ComputeBarsRangeTime', symbol, priceTypeStr, barPeriodStr, startTime, endTime, barCount)
 }
 
 #' Gets the bars' high  as requested
 #' 
 #' @param barsVar RHost variable that stores bar array
 BarHighs <- function(barsVar) {
-  clrCallStatic('RHost.FdkBars', 'BarHighs', barsVar)
+  rClr::clrCallStatic('RHost.FdkBars', 'BarHighs', barsVar)
 }
 #' Gets the bars' low as requested
 #' 
 #' @param barsVar RHost variable that stores bar array
 BarLows <- function(barsVar) {
-  clrCallStatic('RHost.FdkBars', 'BarLows', barsVar)
+  rClr::clrCallStatic('RHost.FdkBars', 'BarLows', barsVar)
 }
 #' Gets the bars' open as requested
 #' 
 #' @param barsVar RHost variable that stores bar array
 BarOpens <- function(barsVar) {
-  clrCallStatic('RHost.FdkBars', 'BarOpens', barsVar)
+  rClr::clrCallStatic('RHost.FdkBars', 'BarOpens', barsVar)
 }
 
 #' Gets the bars' closed as requested
 #' 
 #' @param barsVar RHost variable that stores bar array
 BarCloses <- function(barsVar) {
-  clrCallStatic('RHost.FdkBars', 'BarCloses', barsVar)
+  rClr::clrCallStatic('RHost.FdkBars', 'BarCloses', barsVar)
 }
 
 #' Gets the bars' volume as requested
 #' 
 #' @param barsVar RHost variable that stores bar array
 BarVolumes <- function(barsVar) {
-  clrCallStatic('RHost.FdkBars', 'BarVolumes', barsVar)
+  rClr::clrCallStatic('RHost.FdkBars', 'BarVolumes', barsVar)
 }
 
 #' Gets the bars' volume as requested
 #' 
 #' @param barsVar RHost variable that stores bar array
 BarFroms <- function(barsVar) {
-  clrCallStatic('RHost.FdkBars', 'BarFroms', barsVar)
+  rClr::clrCallStatic('RHost.FdkBars', 'BarFroms', barsVar)
 }
 
 #' Gets the bars' volume as requested
 #' 
 #' @param barsVar RHost variable that stores bar array
 BarTos <- function(barsVar) {
-  clrCallStatic('RHost.FdkBars', 'BarTos', barsVar)
+  rClr::clrCallStatic('RHost.FdkBars', 'BarTos', barsVar)
 }

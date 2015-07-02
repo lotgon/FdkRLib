@@ -26,53 +26,65 @@ ttGetSymbolData <- function(symbol,barPeriodStr, startTimeEpoch){
 }
 #' Get symbol field
 GetSymbolInfos <- function() {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolInfos')
+  rClr::clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolInfos')
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetSymbolComission <- function(symInfo) {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolComission', symInfo)
+  rClr::clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolComission', symInfo)
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetSymbolContractMultiplier <- function(symInfo) {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolContractMultiplier', symInfo)
+  rClr::clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolContractMultiplier', symInfo)
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetSymbolCurrency <- function(symInfo) {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolCurrency', symInfo)
+  rClr::clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolCurrency', symInfo)
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetSymbolLimitsCommission <- function(symInfo) {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolLimitsCommission', symInfo)
+  rClr::clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolLimitsCommission', symInfo)
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetSymbolMaxTradeVolume <- function(symInfo) {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolMaxTradeVolume', symInfo)
+  rClr::clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolMaxTradeVolume', symInfo)
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetSymbolMinTradeVolume <- function(symInfo) {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolMinTradeVolume', symInfo)
+  rClr::clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolMinTradeVolume', symInfo)
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetSymbolName <- function(symInfo) {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolName', symInfo)
+  rClr::clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolName', symInfo)
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetSymbolPrecision <- function(symInfo) {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolPrecision', symInfo)
+  rClr::clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolPrecision', symInfo)
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetRoundLot <- function(symInfo) {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetRoundLot', symInfo)
+  rClr::clrCallStatic('RHost.FdkSymbolInfo', 'GetRoundLot', symInfo)
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetSymbolSettlementCurrency <- function(symInfo) {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolSettlementCurrency', symInfo)
+  rClr::clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolSettlementCurrency', symInfo)
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetSymbolSwapSizeLong <- function(symInfo) {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolSwapSizeLong', symInfo)
+  rClr::clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolSwapSizeLong', symInfo)
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetSymbolSwapSizeShort <- function(symInfo) {
-  clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolSwapSizeShort', symInfo)
+  rClr::clrCallStatic('RHost.FdkSymbolInfo', 'GetSymbolSwapSizeShort', symInfo)
 }

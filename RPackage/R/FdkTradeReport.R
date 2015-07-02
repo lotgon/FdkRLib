@@ -18,12 +18,12 @@ ttTradeRecordAll <- function() {
 
 #' Get symbol field
 GetTradeReportTransactionReport <- function(tradeSide, tradeType) {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionReport', tradeSide, tradeType)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionReport', tradeSide, tradeType)
 }
 
 #' Get symbol field
 GetTradeTransactionReportAll <- function(tradeSide, tradeType) {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionReportAll')
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionReportAll')
 }
 
 
@@ -77,193 +77,268 @@ GetTradeReportDataFrame <- function(symInfo)
 	TradeTransactionReason, TradeTransactionReportType, TransactionAmount, TransactionCurrency, TransactionTime
 	)
 }
-
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportAccountBalance <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportAccountBalance', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeReportAccountBalance', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportAgentCommission <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeAgentCommission', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeAgentCommission', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportClientId <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeClientId', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeClientId', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportCloseConversionRate <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeCloseConversionRate', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeCloseConversionRate', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportInitialVolume <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeInitialVolume', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeInitialVolume', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportComment <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeComment', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeComment', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportCommission <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeCommission', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeCommission', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportId <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeId', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeId', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportLeavesQuantity <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeLeavesQuantity', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeLeavesQuantity', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportOpenConversionRate <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeOpenConversionRate', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeOpenConversionRate', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportOrderCreated <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeOrderCreated', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeOrderCreated', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportOrderFillPrice <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeOrderFillPrice', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeOrderFillPrice', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportOrderLastFillAmount <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeOrderLastFillAmount', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeOrderLastFillAmount', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportOrderModified <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeOrderModified', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeOrderModified', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportPosOpenPrice <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePosOpenPrice', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePosOpenPrice', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportPositionClosePrice <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionClosePrice', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionClosePrice', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportPositionCloseRequestedPrice <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionCloseRequestedPrice', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionCloseRequestedPrice', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportPositionClosed <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionClosed', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionClosed', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportPositionId <- function(varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionId', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionId', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportPositionLastQuantity <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionLastQuantity', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionLastQuantity', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportPositionLeavesQuantity <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionLeavesQuantity', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionLeavesQuantity', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportPositionModified <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionModified', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionModified', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportPositionOpened <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionOpened', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionOpened', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportPositionQuantity <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionQuantity', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionQuantity', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportPrice <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradePrice', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePrice', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportQuantity <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeQuantity', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeQuantity', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportStopLoss <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeStopLoss', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeStopLoss', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportStopPrice <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeStopPrice', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeStopPrice', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportSwap <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeSwap', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeSwap', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportSymbol <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeSymbol', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeSymbol', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportTakeProfit <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTakeProfit', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTakeProfit', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportTradeRecordSide <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeRecordSide', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeRecordSide', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportTradeRecordType <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeRecordType', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeRecordType', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportTradeTransactionReason <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeTransactionReason', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeTransactionReason', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportTradeTransactionReportType <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeTransactionReportType', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeTransactionReportType', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportTransactionAmount <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionAmount', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionAmount', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportTransactionCurrency <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionCurrency', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionCurrency', varName)
 }
 
+#' Get trade report field
+#' @param varName RHost variable that stores the array
 GetTradeReportTransactionTime <- function (varName)
 {
-  clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionTime', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionTime', varName)
 }

@@ -31,7 +31,7 @@ ttQuotesLevel2 <- function(symbol,startTime, endTime, depth = 2){
 #' @param endTimeEpoch Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
 #' @param depth Quotes depth
 GetQuotePacked <- function(symbol, startTime, endTime, depth) {
-  clrCallStatic('RHost.FdkLevel2', 'GetQuotePacked', symbol, startTime, endTime, depth)
+  rClr::clrCallStatic('RHost.FdkLevel2', 'GetQuotePacked', symbol, startTime, endTime, depth)
 }
 
 #' Gets the bars' time
@@ -39,39 +39,39 @@ GetQuotePacked <- function(symbol, startTime, endTime, depth) {
 #' @param quotesVar RHost variable that stores quotes array
 #' 
 QuotesL2CreatingTime <- function(quotesVar) {
-  clrCallStatic('RHost.FdkLevel2', 'QuotesCreateTime', quotesVar)
+  rClr::clrCallStatic('RHost.FdkLevel2', 'QuotesCreateTime', quotesVar)
 }
 
 #' Gets the quote's bid as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesVolumeBid <- function(quotesVar) {
-  clrCallStatic('RHost.FdkLevel2', 'QuotesVolumeBid', quotesVar)
+  rClr::clrCallStatic('RHost.FdkLevel2', 'QuotesVolumeBid', quotesVar)
 }
 
 #' Gets the quote's ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesVolumeAsk <- function(quotesVar) {
-  clrCallStatic('RHost.FdkLevel2', 'QuotesVolumeAsk', quotesVar)
+  rClr::clrCallStatic('RHost.FdkLevel2', 'QuotesVolumeAsk', quotesVar)
 }
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesPriceBid <- function(quotesVar) {
-  clrCallStatic('RHost.FdkLevel2', 'QuotesPriceBid', quotesVar)
+  rClr::clrCallStatic('RHost.FdkLevel2', 'QuotesPriceBid', quotesVar)
 }
 
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesPriceAsk <- function(quotesVar) {
-  clrCallStatic('RHost.FdkLevel2', 'QuotesPriceAsk', quotesVar)
+  rClr::clrCallStatic('RHost.FdkLevel2', 'QuotesPriceAsk', quotesVar)
 }
 
 #' Gets the quote's index
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesIndex <- function(quotesVar) {
-  clrCallStatic('RHost.FdkLevel2', 'QuotesIndex', quotesVar)
+  rClr::clrCallStatic('RHost.FdkLevel2', 'QuotesIndex', quotesVar)
 }

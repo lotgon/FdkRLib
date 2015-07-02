@@ -36,102 +36,124 @@ ttTrades <- function(tradeSide = '', tradeType = ''){
 }
 #' Get symbol field
 GetTradeRecords <- function(tradeSide, tradeType) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeRecords', tradeSide, tradeType)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeRecords', tradeSide, tradeType)
 }
 
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeAgentCommission <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeAgentCommission', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeAgentCommission', symInfo)
 }
 
 #' Get trade trade client order id
+#' @param symInfo RHost variable that stores the array
 GetTradeClientOrderId <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeClientOrderId', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeClientOrderId', symInfo)
 }
 
 #' Get trade comment
+#' @param symInfo RHost variable that stores the array
 GetTradeComment <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeComment', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeComment', symInfo)
 }
 
 #' Get trade create time
+#' @param symInfo RHost variable that stores the array
 GetTradeCreated <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeCreated', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeCreated', symInfo)
 }
 
-#' Get trade expiratiobn date
+#' Get trade expiration date
+#' @param symInfo RHost variable that stores the array
 GetTradeExpiration <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeExpiration', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeExpiration', symInfo)
 }
 #' Get trade initial volume
+#' @param symInfo RHost variable that stores the array
 GetTradeInitialVolume <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeInitialVolume', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeInitialVolume', symInfo)
 }
-#' Get trade comission
+#' Get trade commission
+#' @param symInfo RHost variable that stores the array
 GetTradeIsLimitOrder <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeIsLimitOrder', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeIsLimitOrder', symInfo)
 }
 
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeIsPendingOrder <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeIsPendingOrder', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeIsPendingOrder', symInfo)
 }
 
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeIsPosition <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeIsPosition', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeIsPosition', symInfo)
 }
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeIsStopOrder <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeIsStopOrder', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeIsStopOrder', symInfo)
 }
 
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeModified <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeModified', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeModified', symInfo)
 }
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeOrderId <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeOrderId', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeOrderId', symInfo)
 }
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradePrice <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradePrice', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradePrice', symInfo)
 }
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeProfit <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeProfit', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeProfit', symInfo)
 }
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeSide <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeSide', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeSide', symInfo)
 }
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeStopLoss <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeStopLoss', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeStopLoss', symInfo)
 }
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeSwap <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeSwap', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeSwap', symInfo)
 }
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeAgentCommission <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeAgentCommission', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeAgentCommission', symInfo)
 }
 
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeTakeProfit <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeTakeProfit', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeTakeProfit', symInfo)
 }
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeType <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeType', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeType', symInfo)
 }
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeVolume <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeVolume', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeVolume', symInfo)
 }
 #' Get trade comission
+#' @param symInfo RHost variable that stores the array
 GetTradeAgentCommission <- function(symInfo) {
-  clrCallStatic('RHost.FdkTrade', 'GetTradeAgentCommission', symInfo)
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeAgentCommission', symInfo)
 }

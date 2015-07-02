@@ -25,37 +25,37 @@ ttQuotes <- function(symbol,startTime= ttTimeZero() , endTime, depth=1){
 #' @param endTimeEpoch Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
 #' @param depth Quotes depth
 ComputeQuoteHistory <- function(symbol, startTime, endTime, depth) {
-  clrCallStatic('RHost.FdkQuotes', 'ComputeQuoteHistory', symbol, startTime, endTime, depth)
+  rClr::clrCallStatic('RHost.FdkQuotes', 'ComputeQuoteHistory', symbol, startTime, endTime, depth)
 }
 
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesAsk <- function(quotesVar) {
-  clrCallStatic('RHost.FdkQuotes', 'QuotesAsk', quotesVar)
+  rClr::clrCallStatic('RHost.FdkQuotes', 'QuotesAsk', quotesVar)
 }
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesBid <- function(quotesVar) {
-  clrCallStatic('RHost.FdkQuotes', 'QuotesBid', quotesVar)
+  rClr::clrCallStatic('RHost.FdkQuotes', 'QuotesBid', quotesVar)
 }
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesCreatingTime <- function(quotesVar) {
-  clrCallStatic('RHost.FdkQuotes', 'QuotesCreatingTime', quotesVar)
+  rClr::clrCallStatic('RHost.FdkQuotes', 'QuotesCreatingTime', quotesVar)
 }
 #' Gets the quotes' spread as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesSpread <- function(quotesVar) {
-  clrCallStatic('RHost.FdkQuotes', 'QuotesSpread', quotesVar)
+  rClr::clrCallStatic('RHost.FdkQuotes', 'QuotesSpread', quotesVar)
 }
 
 #' Gets the bars' volume as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesVolume <- function(quotesVar) {
-  clrCallStatic('RHost.FdkQuotes', 'QuotesVolume', quotesVar)
+  rClr::clrCallStatic('RHost.FdkQuotes', 'QuotesVolume', quotesVar)
 }

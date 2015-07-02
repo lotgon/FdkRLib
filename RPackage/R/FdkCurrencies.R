@@ -15,22 +15,26 @@ ttGetCurrencyData <- function(){
 }
 #' Get symbol field
 GetCurrencyInfos <- function() {
-  clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyInfos')
+  rClr::clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyInfos')
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetCurrencyName <- function(symInfo) {
-  clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyName', symInfo)
+  rClr::clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyName', symInfo)
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetCurrencyDescription <- function(symInfo) {
-  clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyDescription', symInfo)
+  rClr::clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyDescription', symInfo)
 }
 
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetCurrencyPrecision <- function(symInfo) {
-  clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyPrecision', symInfo)
+  rClr::clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencyPrecision', symInfo)
 }
 #' Get symbol field
+#' @param symInfo RHost variable that stores the array
 GetCurrencySortOrder <- function(symInfo) {
-  clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencySortOrder', symInfo)
+  rClr::clrCallStatic('RHost.FdkCurrencyInfo', 'GetCurrencySortOrder', symInfo)
 }

@@ -4,10 +4,6 @@
 ttInit <- function() {
   library(rClr)
   
-  if (!require("jsonlite")) 
-    install.packages("jsonlite", repos="http://cran.rstudio.com/")
-  library(jsonlite)
-  
   fileName <-system.file("data","RHost.dll", package="FdkRLib")
   clrLoadAssembly(fileName)
 }
@@ -20,7 +16,7 @@ ttInit <- function() {
 #' @export
 ttConnect <- function(address = "", login= "", password= "", fdkPath = "") {
   ttInit()
-  clrCallStatic('RHost.FdkHelper', 'ConnectToFdk', address, login, password, fdkPath)
+  rClr::clrCallStatic('RHost.FdkHelper', 'ConnectToFdk', address, login, password, fdkPath)
 }
 
 #' Disconnect from a TT server
@@ -30,7 +26,7 @@ ttConnect <- function(address = "", login= "", password= "", fdkPath = "") {
 #' @param password Password for the account you login
 #' @export
 ttDisconnect <- function() {
-  clrCallStatic('RHost.FdkHelper', 'Disconnect')
+  rClr::clrCallStatic('RHost.FdkHelper', 'Disconnect')
 }
 
 #' Displays a DateTime
@@ -38,5 +34,5 @@ ttDisconnect <- function() {
 #' @param dateToShow An R datetime
 #' @export
 ttDisplayDate <- function(dateToShow) {
-  clrCallStatic('RHost.FdkHelper', 'DisplayDate', dateToShow)
+  rClr::clrCallStatic('RHost.FdkHelper', 'DisplayDate', dateToShow)
 }
