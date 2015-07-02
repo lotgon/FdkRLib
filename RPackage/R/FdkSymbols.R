@@ -1,7 +1,7 @@
 #' Gets the symbol info
 #' 
 #' @export
-ttGetSymbolData <- function(symbol,barPeriodStr, startTimeEpoch){
+ttGetSymbolData <- function(){
   symInfo = GetSymbolInfos()
   comission = GetSymbolComission(symInfo)
   contractMultiplier = GetSymbolContractMultiplier(symInfo)

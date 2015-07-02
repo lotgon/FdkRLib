@@ -17,11 +17,15 @@ ttTradeRecordAll <- function() {
 }
 
 #' Get symbol field
+#' @param tradeSide Trade side
+#' @param tradeType Trade type
 GetTradeReportTransactionReport <- function(tradeSide, tradeType) {
   rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionReport', tradeSide, tradeType)
 }
 
 #' Get symbol field
+#' @param tradeSide Trade side
+#' @param tradeType Trade type
 GetTradeTransactionReportAll <- function(tradeSide, tradeType) {
   rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTransactionReportAll')
 }

@@ -3,8 +3,9 @@
 #' 
 #' @param symbol Symbol looked
 #' @param barPeriodStr (default 'M1') values like: S1, S10, M1, M5, M15, M30, H1, H4, D1, W1, MN1
-#' @param startTimeEpoch Epoch time
-#' @param barCount Bar count
+#' @param startTime R time as start of interval
+#' @param endTime R time as end of interval
+#' @param barCountDbl Bar count
 #' @export
 ttBarsQuotes <- function(symbol, barPeriodStr = "M1",
      startTime = ttTimeZero(),  endTime = ttNow(),
@@ -43,9 +44,9 @@ getBarPairFrame <- function (bars){
 #' Gets the bars pairs as requested
 #' 
 #' @param symbol Symbol looked
-#' @param barPeriodStr Values like: M1, H1
-#' @param startTime Epoch time
-#' @param endTime Epoch time
+#' @param barPeriodStr (default 'M1') values like: S1, S10, M1, M5, M15, M30, H1, H4, D1, W1, MN1
+#' @param startTime R time as start of interval
+#' @param endTime R time as end of interval
 #' @param barCount Bar count
 ComputeGetPairBars <- function(symbol, barPeriodStr, startTime, endTime, barCount) {
   rClr::clrCallStatic('RHost.FdkBarPairs', 'ComputeGetPairBars', symbol, barPeriodStr, startTime, endTime, barCount)

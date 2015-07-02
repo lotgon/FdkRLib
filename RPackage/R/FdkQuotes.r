@@ -21,8 +21,8 @@ ttQuotes <- function(symbol,startTime= ttTimeZero() , endTime, depth=1){
 #' Gets the bars as requested
 #' 
 #' @param symbol Symbol looked
-#' @param startTimeEpoch Starting time. Use ttGetEpochFromText if you want to take from text a valid date.
-#' @param endTimeEpoch Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
+#' @param startTime Starting time. Use ttGetEpochFromText if you want to take from text a valid date.
+#' @param endTime Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
 #' @param depth Quotes depth
 ComputeQuoteHistory <- function(symbol, startTime, endTime, depth) {
   rClr::clrCallStatic('RHost.FdkQuotes', 'ComputeQuoteHistory', symbol, startTime, endTime, depth)

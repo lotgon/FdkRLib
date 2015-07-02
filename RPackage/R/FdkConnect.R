@@ -13,6 +13,7 @@ ttInit <- function() {
 #' @param address Url of the running server
 #' @param login Account number you login
 #' @param password Password for the account you login
+#' @param fdkPath Path with connection related cache data
 #' @export
 ttConnect <- function(address = "", login= "", password= "", fdkPath = "") {
   ttInit()
@@ -21,9 +22,6 @@ ttConnect <- function(address = "", login= "", password= "", fdkPath = "") {
 
 #' Disconnect from a TT server
 #' 
-#' @param address Url of the running server
-#' @param login Account number you login
-#' @param password Password for the account you login
 #' @export
 ttDisconnect <- function() {
   rClr::clrCallStatic('RHost.FdkHelper', 'Disconnect')

@@ -27,8 +27,8 @@ ttQuotesLevel2 <- function(symbol,startTime, endTime, depth = 2){
 #' Gets the bars as requested
 #' 
 #' @param symbol Symbol looked
-#' @param startTimeEpoch Starting time. Use ttGetEpochFromText if you want to take from text a valid date.
-#' @param endTimeEpoch Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
+#' @param startTime Starting time. Use ttGetEpochFromText if you want to take from text a valid date.
+#' @param endTime Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
 #' @param depth Quotes depth
 GetQuotePacked <- function(symbol, startTime, endTime, depth) {
   rClr::clrCallStatic('RHost.FdkLevel2', 'GetQuotePacked', symbol, startTime, endTime, depth)

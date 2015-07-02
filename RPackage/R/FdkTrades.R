@@ -35,6 +35,8 @@ ttTrades <- function(tradeSide = '', tradeType = ''){
    side, stopLoss, swap, takeProfit, type, volume)
 }
 #' Get symbol field
+#' @param tradeSide '' (unfiltered) or 'Buy' or 'Sell'
+#' @param tradeType '' (unfiltered) or 'Market' 'Position' 'Limit' 'Stop'
 GetTradeRecords <- function(tradeSide, tradeType) {
   rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeRecords', tradeSide, tradeType)
 }

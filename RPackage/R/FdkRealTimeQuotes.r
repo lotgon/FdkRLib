@@ -2,12 +2,9 @@
 #' Gets the quotes history
 #' 
 #' @param symbol Symbol looked
-#' @param startTime Starting time. Use ttGetEpochFromText if you want to take from text a valid date.
-#' @param endTime Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
-#' @param depth Quotes depth
 #' @export
 ttQuotesRealTime <- function(symbol){
-  quotesHistory <- ComputeQuoteHistory(symbol,startTime, endTime, depth)
+  quotesHistory <- RealTimeComputeQuoteHistory(symbol)
   
   ask <- RealTimeQuotesAsk(quotesHistory)
   bid <- RealTimeQuotesBid(quotesHistory)
@@ -17,14 +14,11 @@ ttQuotesRealTime <- function(symbol){
 }
 
 # ****
-#' Gets the bars as requested
+#' Gets the quotes as requested
 #' 
 #' @param symbol Symbol looked
-#' @param startTimeEpoch Starting time. Use ttGetEpochFromText if you want to take from text a valid date.
-#' @param endTimeEpoch Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
-#' @param depth Quotes depth
-ComputeQuoteHistory <- function(symbol, startTime, endTime, depth) {
-  rClr::clrCallStatic('RHost.FdkQuotes', 'ComputeQuoteHistory', symbol, startTime, endTime, depth)
+RealTimeComputeQuoteHistory <- function(symbol) {
+  rClr::clrCallStatic('RHost.FdkQuotesRealTime', 'ComputeQuoteHistory', symbol)
 }
 
 #' Gets the bars' ask as requested
@@ -42,12 +36,12 @@ RealTimeQuotesBid <- function(quotesVar) {
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
-RealTimeQuotesCreatingTime <- function(id) {
+RealTimeQuotesCreatingTime <- function(quotesVar) {
   rClr::clrCallStatic('RHost.FdkQuotes', 'QuotesCreatingTime', quotesVar)
 }
 #' Gets the quotes' spread as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
-RealTimeQuotesSpread <- function(id) {
+RealTimeQuotesSpread <- function(quotesVar) {
   rClr::clrCallStatic('RHost.FdkQuotes', 'QuotesSpread', quotesVar)
 }

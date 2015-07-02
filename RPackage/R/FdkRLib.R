@@ -3,8 +3,7 @@
 #' Gets the bars pairs as requested
 #' 
 #' @param symbol Symbol looked
-#' @param barPeriodStr Values like: M1, H1
-#' @param startTimeEpoch Epoch time
+#' @param depth Depths of quotes info
 #' @export
 ttGetQuotesInfo <- function(symbol, depth) {
   rClr::clrCallStatic('RHost.FdkBars', 'ComputeGetQuotesInfo', symbol, depth)
