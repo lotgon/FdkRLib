@@ -11,7 +11,8 @@ namespace TestRClrHost
         public void ConnectToFdk()
         {
             //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123",  @"c:\FdkCaches\Cache1"));
-            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
+            //Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("ttlive.fxopen.com", "123318", "rCrT9e4t73HF",  @"c:\FdkCaches\Cache1"));
             FdkHelper.Disconnect();
         }
 

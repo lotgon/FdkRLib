@@ -1,4 +1,6 @@
 @echo off
 
-"d:\Work\nant-0.92\bin\NAnt.exe" 
-rem "d:\Work\nant-0.92\bin\NAnt.exe" build_package
+@rem Put nant.exe in your path
+
+NAnt
+rem NAnt.exe build_package

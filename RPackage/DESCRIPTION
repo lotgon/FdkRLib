@@ -5,7 +5,7 @@ Version: 1.0.20150629
 Date: 2015-06-29
 Author: Ciprian Khlud (of SoftFX)
 Maintainer: Ciprian Khlud <ciprian.khlud@soft-fx.lv>
-Description: It exposes TickTrader's FDK API to 
+Description: It exposes TickTrader's FDK API to R
 Depends:
     R (>= 3.0)
 License: MIT

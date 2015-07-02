@@ -20,3 +20,4 @@ Fdk2R/QuoteL2Tester/QuoteL2Tester/bin/*
 *.Rd
 man
 NAMESPACE
+*.suo
