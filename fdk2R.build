@@ -9,7 +9,7 @@
 		<property name="SourcesDir"				value=".\"													unless="${property::exists('SourcesDir')}" />
 		<property name="SolutionFile"				value="BuildMachineFtpClient.sln"	unless="${property::exists('SolutionFile')}" />
 		<property name="VS2012Dir"				value="C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE" />
-		<property name="R_Exe" value="c:\R\R-3.1.3\bin\R.exe" />
+		<property name="R_Exe" value="C:\Program Files\R\R-3.2.1\bin\R.exe" />
 		
 	</target>
 	<target name="ProjectDefaults" >
@@ -108,7 +108,7 @@
     <call target="build_package" />
 		
 		<move file="../FdkRLib_${Fdk2RVersion}.zip" todir="./dist"/>
-		<delete file="build_r.r.Rout" />
+		<!-- delete file="build_r.r.Rout" / -->
 
 	</target>
 </project>

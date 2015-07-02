@@ -17,3 +17,5 @@ Fdk2R/RSoftFxHost/bin/*
 man/*
 Storage/*
 Fdk2R/QuoteL2Tester/QuoteL2Tester/bin/*
+*.Rd
+man
