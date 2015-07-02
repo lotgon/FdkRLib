@@ -107,8 +107,8 @@
     
     <call target="build_package" />
 		
-		<move file="../FdkRLib_${Fdk2RVersion}.zip" todir="./dist"/>
-		<!-- delete file="build_r.r.Rout" / -->
+		<move file="FdkRLib_${Fdk2RVersion}.zip" todir="./dist"/>
+		<delete file="build_r.r.Rout" />
 
 	</target>
 </project>

@@ -6,7 +6,7 @@
 #' @param endTime Ending time. Use ttGetEpochFromText if you want to take from text a valid date.
 #' @param depth Quotes depth
 #' @export
-ttQuotes <- function(symbol){
+ttQuotesRealTime <- function(symbol){
   quotesHistory <- ComputeQuoteHistory(symbol,startTime, endTime, depth)
   
   ask <- RealTimeQuotesAsk(quotesHistory)
