@@ -14,9 +14,9 @@ startTime <- strptime("20/3/2 11:16:16.683", "%d/%m/%y %H:%M:%OS")
 st1 <- as.POSIXct(startTime)
 et1 <- as.POSIXct(endTime)
 
-quotes <- ttGetQuotes("EURUSD", st1, et1, 1)
+quotes <- ttQuotes("EURUSD", st1, et1, 1)
 plot(quotes$ask, type="o")
 
-bars = ttGetBars(symbol = "EURUSD", barPeriodStr = "M1", priceTypeStr = "Ask")
+bars = ttBars(symbol = "EURUSD", barPeriodStr = "M1", priceTypeStr = "Ask")
 
-barRange = ttGetBarRange(symbol = "EURUSD", barPeriodStr = "M1", , priceTypeStr = "Ask", startTimeEpoch = startTime)
+barRange = ttBars(symbol = "EURUSD", barPeriodStr = "M1", priceTypeStr = "Ask", startTime = startTime)
