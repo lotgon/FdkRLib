@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SoftFX.Extended;
 
 namespace RHost
 {
@@ -32,7 +33,7 @@ namespace RHost
         public static string GetQuotePacked(string symbol, DateTime startTime, DateTime endTime, double levelDbl = 2)
         {
             var level = (int) levelDbl;
-            var quotesData = FdkQuotes.CalculateHistoryForSymbolArray(symbol, startTime, endTime, level);
+            Quote[] quotesData = FdkQuotes.CalculateHistoryForSymbolArray(symbol, startTime, endTime, level);
             var itemsToAdd = new List<QuoteLevel2Data>();
             var prevTime = new DateTime(1970, 1, 1);
             var indexOrder = 0;
