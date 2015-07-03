@@ -18,7 +18,7 @@ namespace RHost
         #region Bars 
 
 #region Fdk direct wrapper
-        private static Bar[] CalculateBarsForSymbolArray(
+        static Bar[] CalculateBarsForSymbolArray(
             string symbol, PriceType priceType, DateTime startTime, BarPeriod barPeriod, int barCount)
         { 
             return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, -barCount).ToArray();

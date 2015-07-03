@@ -12,6 +12,12 @@ namespace RHost
         public double BidVolume { get; set; }
         public DateTime CreateTime { get; set; }
         public double IndexOrder { get; set; }
+        
+		public override string ToString()
+		{
+			return string.Format("[QuoteLevel2Data AsksPrice={0}, BidPrice={1}]", AsksPrice, BidPrice);
+		}
+
     }
     public class FdkLevel2
     {
