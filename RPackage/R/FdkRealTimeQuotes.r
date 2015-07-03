@@ -18,7 +18,7 @@ ttQuotesRealTimeSnapshot <- function(idMonitoring){
   createTime <- RealTimeQuotesCreatingTime(snapshot)
   spread <- QuotesCreatingTime(snapshot)
   
-  UnregisterVar(quotesHistory)
+  UnregisterVar(snapshot)
   
   df = data.frame(ask=ask, bid=bid, createTime=createTime, spread = spread)
 }
