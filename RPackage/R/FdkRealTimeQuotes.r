@@ -36,7 +36,7 @@ ttQuotesRealTimeStopMonitoring <- function(idMonitoring){
 #' 
 #' @param symbol Symbol looked
 RealTimeComputeQuoteHistory <- function(symbol) {
-  rClr::clrCallStatic('RHost.FdkQuotesRealTime', 'MonitorSymbol', symbol)
+  rClr::clrCallStatic('RHost.FdkRealTime', 'MonitorSymbol', symbol)
 }
 
 # ****
@@ -44,7 +44,7 @@ RealTimeComputeQuoteHistory <- function(symbol) {
 #' 
 #' @param idMonitoring Id of monitoring session
 SnapshotMonitoredSymbol <- function(idMonitoring) {
-  rClr::clrCallStatic('RHost.FdkQuotesRealTime', 'SnapshotMonitoredSymbol', idMonitoring)
+  rClr::clrCallStatic('RHost.FdkRealTime', 'SnapshotMonitoredSymbol', idMonitoring)
 }
 
 
@@ -53,7 +53,7 @@ SnapshotMonitoredSymbol <- function(idMonitoring) {
 #' 
 #' @param idMonitoring Id of monitoring session
 RealTimeRemoveEvent <- function(idMonitoring) {
-  rClr::clrCallStatic('RHost.FdkQuotesRealTime', 'RemoveEvent', idMonitoring)
+  rClr::clrCallStatic('RHost.FdkRealTime', 'RemoveEvent', idMonitoring)
 }
 
 #' Gets the bars' ask as requested

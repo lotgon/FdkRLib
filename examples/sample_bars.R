@@ -17,6 +17,6 @@ et1 <- as.POSIXct(endTime)
 quotes <- ttQuotes("EURUSD", st1, et1, 1)
 plot(quotes$ask, type="o")
 
-bars = ttBars(symbol = "EURUSD", barPeriodStr = "M1", priceTypeStr = "Ask")
+bars = ttBars(symbol = "EURUSD", barPeriodStr = "M15", priceTypeStr = "Ask", barCount = 100000000)
 
 barRange = ttBars(symbol = "EURUSD", barPeriodStr = "M1", priceTypeStr = "Ask", startTime = startTime)
