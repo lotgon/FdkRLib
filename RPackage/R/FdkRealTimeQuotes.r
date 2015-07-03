@@ -16,7 +16,7 @@ ttQuotesRealTimeSnapshot <- function(idMonitoring){
   ask <- RealTimeQuotesAsk(snapshot)
   bid <- RealTimeQuotesBid(snapshot)
   createTime <- RealTimeQuotesCreatingTime(snapshot)
-  spread <- QuotesCreatingTime(snapshot)
+  spread <- RealTimeQuotesSpread(snapshot)
   
   UnregisterVar(snapshot)
   
