@@ -19,6 +19,12 @@ ttGetBarsInfo <- function(symbol, priceTypeStr, barPeriodStr) {
   rClr::clrCallStatic('RHost.FdkBars', 'ComputeGetBarsInfo', symbol, priceTypeStr, barPeriodStr)
 }
 
+#' Get the list of referenced variables
+#' 
+#' @export
+ttVarList <- function() {
+  rClr::clrCallStatic('RHost.FdkVars', 'GetVarNames')
+}
 
 #' unregister a variable
 #' 

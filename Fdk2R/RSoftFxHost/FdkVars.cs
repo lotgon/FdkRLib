@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RHost
 {
@@ -17,6 +18,11 @@ namespace RHost
             var varName = string.Format("{0}_{1}", prefix, pos);
             Vars[varName] = data;
             return varName;
+        }
+        
+        public static string[] GetVarNames()
+        {
+			return Vars.Keys.ToArray();
         }
 
         public static void Unregister(string varName)

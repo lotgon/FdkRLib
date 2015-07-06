@@ -45,19 +45,19 @@ namespace RHost
         public static double[] GetTradeAgentCommission(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.AgentCommission).ToArray();
+            return tradeData.SelectToArray(it => it.AgentCommission);
         }
 
         public static string[] GetTradeClientOrderId(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.ClientOrderId).ToArray();
+            return tradeData.SelectToArray(it => it.ClientOrderId);
         }
         
         public static string[] GetTradeComment(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.Comment).ToArray();
+            return tradeData.SelectToArray(it => it.Comment);
         }
 
         public static DateTime[] GetTradeCreated(string varName)
@@ -76,84 +76,84 @@ namespace RHost
         public static double[] GetTradeInitialVolume(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.InitialVolume).ToArray();
+            return tradeData.SelectToArray(it => it.InitialVolume);
         }
 
         public static string[] GetTradeIsLimitOrder(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.IsLimitOrder.ToText()).ToArray();
+            return tradeData.SelectToArray(it => it.IsLimitOrder.ToText());
         }
 
         public static string[] GetTradeIsPendingOrder(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.IsPendingOrder.ToText()).ToArray();
+            return tradeData.SelectToArray(it => it.IsPendingOrder.ToText());
         }
 
 
         public static string[] GetTradeIsPosition(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.IsPosition.ToText()).ToArray();
+            return tradeData.SelectToArray(it => it.IsPosition.ToText());
         }
         public static string[] GetTradeIsStopOrder(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.IsStopOrder.ToText()).ToArray();
+            return tradeData.SelectToArray(it => it.IsStopOrder.ToText());
         }
 
         public static DateTime[] GetTradeModified(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.Modified ?? new DateTime()).ToArray();
+            return tradeData.SelectToArray(it => it.Modified ?? new DateTime());
         }
         public static string[] GetTradeOrderId(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.OrderId).ToArray();
+            return tradeData.SelectToArray(it => it.OrderId);
         }
 
         public static double[] GetTradePrice(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.Price).ToArray();
+            return tradeData.SelectToArray(it => it.Price);
         }
         public static double[] GetTradeProfit(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.Profit??0.0).ToArray();
+            return tradeData.SelectToArray(it => it.Profit??0.0);
         }
         public static string[] GetTradeSide(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.Side.ToString()).ToArray();
+            return tradeData.SelectToArray(it => it.Side.ToString());
         }
         public static double[] GetTradeStopLoss(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.StopLoss??0).ToArray();
+            return tradeData.SelectToArray(it => it.StopLoss??0);
         }
         public static double[] GetTradeSwap(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.Swap).ToArray();
+            return tradeData.SelectToArray(it => it.Swap);
         }
         public static double[] GetTradeTakeProfit(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.TakeProfit ?? 0.0).ToArray();
+            return tradeData.SelectToArray(it => it.TakeProfit ?? 0.0);
         }
         public static string[] GetTradeType(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.Type.ToString()).ToArray();
+            return tradeData.SelectToArray(it => it.Type.ToString());
         }
 
         public static double[] GetTradeVolume(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.Select(it => it.Volume).ToArray();
+            return tradeData.SelectToArray(it => it.Volume);
         }
 
         public static string ToText(this bool val)
@@ -161,7 +161,7 @@ namespace RHost
             return val ? "True" : "False";
         }
 
-        private static DateTime[] ExposeDatesNull(this IEnumerable<DateTime?> values)
+        static DateTime[] ExposeDatesNull(this IEnumerable<DateTime?> values)
         {
             return values.Select(val => (val??new DateTime(1970,1,1))).ToArray();
         }

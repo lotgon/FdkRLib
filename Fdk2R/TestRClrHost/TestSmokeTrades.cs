@@ -1,5 +1,7 @@
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 using NUnit.Framework;
@@ -21,7 +23,32 @@ namespace TestRClrHost
             var comission = FdkTrade.GetTradeAgentCommission(bars);
             FdkVars.Unregister(bars);
         }
-
+ 	
+        [Test]
+        public void TestSelectSpeed()
+        {
+        	var sz = 10000000;
+			var randData = new int[sz];
+			var random = new Random();
+			for(var i = 0; i<sz; i++)
+			{
+				randData[i] = random.Next(1, 10);
+			}
+			var sw = Stopwatch.StartNew();
+			for(int t = 0; t<5;t++){
+				var arr = randData.SelectToArray(i => i);
+			}
+			var time1 = sw.ElapsedMilliseconds;
+			sw.Stop();
+			sw.Restart();
+			for(int t = 0; t<5;t++){
+				var arr = randData.Select(i => i).ToArray();
+			}
+			var time2 = sw.ElapsedMilliseconds;
+			Console.WriteLine("Time 1: {0}", time1);
+			Console.WriteLine("Time 2: {0}", time2);
+			Assert.IsTrue(time1 < time2, "Time " + time1 + "should be smaller than: " + time2);
+        }
         [Test]
         public void TestGetTradeRecordsFromStaging()
         {

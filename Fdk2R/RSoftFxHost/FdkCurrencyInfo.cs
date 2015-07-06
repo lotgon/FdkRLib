@@ -15,24 +15,24 @@ namespace RHost
         public static string[] GetCurrencyDescription(string currencyInfo)
         {
             var currencyInfos = FdkVars.GetValue<CurrencyInfo[]>(currencyInfo);
-            return currencyInfos.Select(b => b.Description).ToArray();
+            return currencyInfos.SelectToArray(b => b.Description);
         }
 
         public static string[] GetCurrencyName(string currencyInfo)
         {
             var currencyInfos = FdkVars.GetValue<CurrencyInfo[]>(currencyInfo);
-            return currencyInfos.Select(b => b.Name).ToArray();
+            return currencyInfos.SelectToArray(b => b.Name);
         }
 
         public static double[] GetCurrencyPrecision(string currencyInfo)
         {
             var currencyInfos = FdkVars.GetValue<CurrencyInfo[]>(currencyInfo);
-            return currencyInfos.Select(b => (double)b.Precision).ToArray();
+            return currencyInfos.SelectToArray(b => (double)b.Precision);
         }
         public static double[] GetCurrencySortOrder(string currencyInfo)
         {
             var currencyInfos = FdkVars.GetValue<CurrencyInfo[]>(currencyInfo);
-            return currencyInfos.Select(b => (double)b.SortOrder).ToArray();
+            return currencyInfos.SelectToArray(b => (double)b.SortOrder);
         }
     }
 }

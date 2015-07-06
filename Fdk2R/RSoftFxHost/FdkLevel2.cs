@@ -77,38 +77,38 @@ namespace RHost
         public static DateTime[] QuotesCreateTime(string bars)
         {
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
-            return quotes.Select(ql2=>ql2.CreateTime).ToArray();
+            return quotes.SelectToArray(ql2=>ql2.CreateTime);
         }
 
         public static double[] QuotesVolumeAsk(string bars)
         {
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
-            return quotes.Select(q => q.AskVolume).ToArray();
+            return quotes.SelectToArray(q => q.AskVolume);
         }
         public static double[] QuotesVolumeBid(string bars)
         {
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
-            return quotes.Select(q=>q.BidVolume).ToArray();
+            return quotes.SelectToArray(q=>q.BidVolume);
         }
 
         public static double[] QuotesPriceAsk(string bars)
         {
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars); 
-            return quotes.Select(q => q.AsksPrice).ToArray();
+            return quotes.SelectToArray(q => q.AsksPrice);
         }
 
         public static double[] QuotesPriceBid(string bars)
         {
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
 
-            return quotes.Select(q => q.BidPrice).ToArray();
+            return quotes.SelectToArray(q => q.BidPrice);
         }
 
         public static double[] QuotesIndex(string bars)
         {
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
 
-            return quotes.Select(q => q.IndexOrder).ToArray();
+            return quotes.SelectToArray(q => q.IndexOrder);
         }
     }
 }

@@ -62,6 +62,7 @@ namespace RHost
             var bars = FdkVars.RegisterVariable(barsData, "bars");
             return bars;
         }
+        
         public static DateTime[] ComputeGetQuotesInfo(string symbol, int depth)
         {
             var barsData = GetQuotesInfo(symbol, depth);
@@ -184,14 +185,12 @@ namespace RHost
 
         internal static DateTime[] GetBarsFrom(Bar[] barData)
         {
-            return barData.ParititionProcess(b => b.From).ToArray();
-            //return barData.Select(b => b.From).ToArray();
+            return barData.SelectToArray(b => b.From);
         }
 
         internal static DateTime[] GetBarsTo(Bar[] barData)
         {
-            return barData.ParititionProcess(b => b.To).ToArray();
-            //return barData.Select(b => b.To).ToArray();
+            return barData.SelectToArray(b => b.To);
         }
         #endregion
     }

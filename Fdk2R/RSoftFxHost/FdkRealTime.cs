@@ -55,7 +55,7 @@ namespace RHost
 			return resultVarName;
         }
 
-        private static void StartMonitoringOfSymbolIfNotEnabled()
+        static void StartMonitoringOfSymbolIfNotEnabled()
         {
             if (IsMonitoringStarted)
                 return;
@@ -63,7 +63,7 @@ namespace RHost
             Feed.Tick += OnTick;
         }
 
-        private static void OnTick(object sender, TickEventArgs e)
+        static void OnTick(object sender, TickEventArgs e)
         {
             var tickSymbol = e.Tick.Symbol;
             foreach (var evnt in Events)
@@ -85,7 +85,7 @@ namespace RHost
             }
         }
 
-        private static DataFeed Feed
+        static DataFeed Feed
         {
             get { return FdkHelper.Wrapper.ConnectLogic.Feed; }
         }
@@ -94,7 +94,7 @@ namespace RHost
 
         public static string[] SymbolsMonitored()
         {
-            return Events.Select(evItem => evItem.Symbol).ToArray();
+            return Events.SelectToArray(evItem => evItem.Symbol);
         }
 
         public static FdkRealTimeItem GetEventById(double eventIndex)
@@ -105,12 +105,13 @@ namespace RHost
 
         public static double[] EventIds()
         {
-            return Events.Select(evItem => (double)evItem.Id).ToArray();
+            return Events.SelectToArray(evItem => (double)evItem.Id);
         }
-        private static Quote[] GetQuotesById(double id)
+        
+        static Quote[] GetQuotesById(double id)
         {
             var eventData = GetEventById(id);
-            var quotes = eventData.Events.Select(evnt => evnt.Tick).ToArray();
+            var quotes = eventData.Events.SelectToArray(evnt => evnt.Tick);
             return quotes;
         }
 

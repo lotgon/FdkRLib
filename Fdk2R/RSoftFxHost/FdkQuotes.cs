@@ -45,24 +45,24 @@ namespace RHost
 
         internal static double[] QuoteArrayBid(Quote[] quotes)
         {
-            return quotes.Select(b => b.HasBid ? b.Bid : -1).ToArray();
+            return quotes.SelectToArray(b => b.HasBid ? b.Bid : -1);
         }
 
 
         internal static double[] QuoteArrayAsk(Quote[] quotes)
         {
-            return quotes.Select(b => b.HasAsk ? b.Ask : -1).ToArray();
+            return quotes.SelectToArray(b => b.HasAsk ? b.Ask : -1);
         }
 
         internal static DateTime[] QuoteArrayCreateTime(Quote[] quotes)
         {
-            var timesAsEpoch = quotes.Select(b => b.CreatingTime).ToArray();
+            var timesAsEpoch = quotes.SelectToArray(b => b.CreatingTime);
             return timesAsEpoch;
         }
 
         internal static double[] QuoteArraySpread(Quote[] quotes)
         {
-            return quotes.Select(b => b.Spread).ToArray();
+            return quotes.SelectToArray(b => b.Spread);
         }
     }
 }

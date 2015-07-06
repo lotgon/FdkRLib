@@ -35,56 +35,55 @@ namespace RHost
         public static double[] GetTradeAccountBalance(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.AccountBalance).ToArray();
+            return tradeData.SelectToArray(it => it.AccountBalance);
         }
 
         public static double[] GetTradeAgentCommission(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.AgentCommission).ToArray();
+            return tradeData.SelectToArray(it => it.AgentCommission);
         }
 
         public static string[] GetTradeClientId(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.ClientId).ToArray();
+            return tradeData.SelectToArray(it => it.ClientId);
         }
-
 
         public static double[] GetTradeCloseConversionRate(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.CloseConversionRate ?? -1.0).ToArray();
+            return tradeData.SelectToArray(it => it.CloseConversionRate ?? -1.0);
         }
 
         public static string[] GetTradeInitialVolume(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.CommCurrency).ToArray();
+            return tradeData.SelectToArray(it => it.CommCurrency);
         }
 
         public static string[] GetTradeComment(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.Comment).ToArray();
+            return tradeData.SelectToArray(it => it.Comment);
         }
 
         public static double[] GetTradeCommission(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.Commission).ToArray();
+            return tradeData.SelectToArray(it => it.Commission);
         }
 
         public static string[] GetTradeId(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.Id).ToArray();
+            return tradeData.SelectToArray(it => it.Id);
         }
 
         public static double[] GetTradeLeavesQuantity(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.LeavesQuantity).ToArray();
+            return tradeData.SelectToArray(it => it.LeavesQuantity);
         }
 
 
