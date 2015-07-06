@@ -7,15 +7,9 @@ namespace RHost
 {
     public static class PartitionerUtils
     {
-        public static TResult[] SelectToArray<TValue, TResult>(this IList<TValue> items, Func<TValue, TResult> func)
+    	public static TResult[] SelectToArray<TValue, TResult>(this TValue[] items, Func<TValue, TResult> func)
         {
-            var count = items.Count;
-            var result = new TResult[count];
-            for (var i = 0; i < result.Length; i++)
-            {
-                result[i] = func(items[i]);
-            }
-            return result;
+			return Array.ConvertAll(items, it => func(it));
         }
     }
 }

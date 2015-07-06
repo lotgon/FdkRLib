@@ -94,7 +94,7 @@ namespace RHost
 
         public static string[] SymbolsMonitored()
         {
-            return Events.SelectToArray(evItem => evItem.Symbol);
+        	return Events.Select(evItem => evItem.Symbol).ToArray();
         }
 
         public static FdkRealTimeItem GetEventById(double eventIndex)
@@ -105,13 +105,13 @@ namespace RHost
 
         public static double[] EventIds()
         {
-            return Events.SelectToArray(evItem => (double)evItem.Id);
+        	return Events.Select(evItem => (double)evItem.Id).ToArray();
         }
         
         static Quote[] GetQuotesById(double id)
         {
             var eventData = GetEventById(id);
-            var quotes = eventData.Events.SelectToArray(evnt => evnt.Tick);
+            var quotes = eventData.Events.Select(evnt => evnt.Tick).ToArray();
             return quotes;
         }
 

@@ -157,27 +157,27 @@ namespace RHost
         }
 
 
-        public static double[] GetBarsHigh(IList<Bar> barData)
+        public static double[] GetBarsHigh(Bar[] barData)
         {
             return barData.SelectToArray(b => b == null ? 0.0 : b.High);
         }
 
-        public static double[] GetBarsLow(IList<Bar> barData)
+        public static double[] GetBarsLow(Bar[] barData)
         {
             return barData.SelectToArray(b => b == null ? 0.0 : b.Low);
         }
 
-        public static double[] GetBarsVolume(IList<Bar> barData)
+        public static double[] GetBarsVolume(Bar[] barData)
         {
             return barData.SelectToArray(b => b == null ? 0.0 : b.Volume);
         }
 
-        public static double[] GetBarsOpen(IList<Bar> barData)
+        public static double[] GetBarsOpen(Bar[] barData)
         {
             return barData.SelectToArray(b => b == null ? 0.0 : b.Open);
         }
 
-        public static double[] GetBarsClose(IList<Bar> barData)
+        public static double[] GetBarsClose(Bar[] barData)
         {
             return barData.SelectToArray(b => b == null ? 0.0 : b.Close);
         }
