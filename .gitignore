@@ -24,3 +24,4 @@ NAMESPACE
 *.suo
 RPackage/NAMESPACE
 *.userprefs
+*.suo

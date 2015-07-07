@@ -29,6 +29,25 @@ namespace TestRClrHost
             var comission = FdkTradeReports.GetTradeAgentCommission(bars);
             FdkVars.Unregister(bars);
         }
+
+        [Test]
+        public void TestDualConnect()
+        {
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.st.soft-fx.eu", "100033", "123qwe!", ""));
+            //Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
+            var time = DateTime.Now;
+            var prevTime = time.AddHours(-1);
+            var bars = FdkTradeReports.GetTradeTransactionReportAll();
+            var comission = FdkTradeReports.GetTradeAgentCommission(bars);
+            FdkVars.Unregister(bars);
+
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.st.soft-fx.eu", "100055", "123qwe!", ""));
+            var bars2 = FdkTradeReports.GetTradeTransactionReportAll();
+            var comission2 = FdkTradeReports.GetTradeAgentCommission(bars2);
+            FdkVars.Unregister(bars2);
+
+        }
+        
     }
 
     

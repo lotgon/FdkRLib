@@ -28,15 +28,11 @@ namespace RHost
                 : password;
             if (Wrapper == null)
             {
-                var wrapper = new FdkWrapper()
-                {
-                    Address = addr,
-                    Login = loginStr,
-                    Password = passwordString,
-
-                };
-                Wrapper = wrapper;
+				Wrapper = new FdkWrapper();
             }
+			Wrapper.Address = addr;
+			Wrapper.Login = loginStr;
+			Wrapper.Password = passwordString;
 
             var localPath = String.Empty;
 
