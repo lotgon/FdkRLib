@@ -5,7 +5,7 @@ using SoftFX.Extended;
 
 namespace RHost
 {
-    struct QuoteLevel2Data
+    class QuoteLevel2Data
     {
         public double AsksPrice { get; set; }
         public double AskVolume { get; set; }
@@ -13,6 +13,7 @@ namespace RHost
         public double BidVolume { get; set; }
         public DateTime CreateTime { get; set; }
         public double IndexOrder { get; set; }
+        public int Level { get; set; }
         
 		public override string ToString()
 		{
@@ -34,46 +35,60 @@ namespace RHost
         {
             var level = (int) levelDbl;
             Quote[] quotesData = FdkQuotes.CalculateHistoryForSymbolArray(symbol, startTime, endTime, level);
-            var itemsToAdd = new List<QuoteLevel2Data>();
-            var prevTime = new DateTime(1970, 1, 1);
-            var indexOrder = 0;
+            var quoteLevel2Data = BuildQuoteMultiLevelData(quotesData, level);
 
-            foreach (var quote in quotesData)
-            {
-                if (prevTime == quote.CreatingTime)
-                {
-                    indexOrder++;
-                }
-                else
-                {
-                    indexOrder = 0;
-                }
-                var timeSpan = quote.CreatingTime.Subtract(prevTime).TotalMilliseconds;
-                
-                for (var index = 0; index < quote.Asks.Length; index++)
-                {
-                    var quoteEntryAsk = quote.Asks[index];
-                    var quoteEntryBid = quote.Bids[index];
-                    
-                    var newQuoteL2Data = new QuoteLevel2Data()
-                    {
-                        AskVolume = quoteEntryAsk.Volume,
-                        AsksPrice = quoteEntryAsk.Price,
-                        BidVolume = quoteEntryBid.Volume,
-                        BidPrice = quoteEntryBid.Price,
-                        CreateTime = quote.CreatingTime,
-                        IndexOrder = timeSpan + indexOrder/100.0
-                    };
-                    itemsToAdd.Add(newQuoteL2Data);
-                }
-            }
 
-            var quoteLevel2Data = itemsToAdd.ToArray();
 
             var quoteHistory = FdkVars.RegisterVariable(quoteLevel2Data, "quotesL2");
             return quoteHistory;
         }
 
+		static QuoteLevel2Data[] BuildQuoteMultiLevelData(Quote[] quotesData, int depth)
+		{
+			var itemsToAdd = new List<QuoteLevel2Data>(capacity: quotesData.Length);
+			var prevTime = new DateTime(1970, 1, 1);
+			var indexOrder = 0;
+			foreach (var quote in quotesData) {
+				if (prevTime == quote.CreatingTime) {
+					indexOrder++;
+				} else {
+					indexOrder = 0;
+				}
+				var timeSpan = quote.CreatingTime.Subtract(prevTime).TotalMilliseconds;
+				if(depth != quote.Asks.Length)
+				{
+					throw new InvalidOperationException(
+						string.Format(
+							"Invalid number of quotes. Expected: {0}, but actual: {1}",
+							depth, 
+							quote.Asks.Length));
+				}	
+				if(depth != quote.Bids.Length)
+				{
+					throw new InvalidOperationException(
+						string.Format(
+							"Invalid number of quotes. Expected: {0}, but actual: {1}",
+							depth, 
+							quote.Asks.Length));
+				}
+				for (var index = 0; index < depth; index++) {
+					var quoteEntryAsk = quote.Asks[index];
+					var quoteEntryBid = quote.Bids[index];
+					var newQuoteL2Data = new QuoteLevel2Data() {
+						AskVolume = quoteEntryAsk.Volume,
+						AsksPrice = quoteEntryAsk.Price,
+						BidVolume = quoteEntryBid.Volume,
+						BidPrice = quoteEntryBid.Price,
+						CreateTime = quote.CreatingTime,
+						IndexOrder = timeSpan + indexOrder / 100.0,
+						Level = depth - index
+					};
+					itemsToAdd.Add(newQuoteL2Data);
+				}
+			}
+			QuoteLevel2Data[] quoteLevel2Data = itemsToAdd.ToArray();
+			return quoteLevel2Data;
+		}
         public static DateTime[] QuotesCreateTime(string bars)
         {
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
