@@ -45,7 +45,7 @@ namespace RHost
 
 		static QuoteLevel2Data[] BuildQuoteMultiLevelData(Quote[] quotesData, int depth)
 		{
-			var itemsToAdd = new List<QuoteLevel2Data>(capacity: quotesData.Length);
+			var itemsToAdd = new List<QuoteLevel2Data>(capacity: quotesData.Length*depth);
 			var prevTime = new DateTime(1970, 1, 1);
 			var indexOrder = 0;
 			foreach (var quote in quotesData) {
@@ -81,7 +81,7 @@ namespace RHost
 						BidPrice = quoteEntryBid.Price,
 						CreateTime = quote.CreatingTime,
 						IndexOrder = timeSpan + indexOrder / 100.0,
-						Level = depth - index
+						Level = index+1
 					};
 					itemsToAdd.Add(newQuoteL2Data);
 				}
@@ -124,6 +124,13 @@ namespace RHost
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
 
             return quotes.SelectToArray(q => q.IndexOrder);
+        }
+
+        public static double[] QuotesLevel(string bars)
+        {
+            var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
+
+            return quotes.SelectToArray(q => (double)q.Level);
         }
     }
 }

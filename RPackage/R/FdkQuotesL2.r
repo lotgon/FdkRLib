@@ -15,11 +15,12 @@ ttQuotesLevel2 <- function(symbol,startTime, endTime, depth = 2){
   priceBid <- QuotesPriceBid(quotesHistory)
   priceAsk <- QuotesPriceAsk(quotesHistory)
   index <- QuotesIndex(quotesHistory)
+  level <- QuotesLevel(quotesHistory)
   
   UnregisterVar(quotesHistory)
   df = data.frame(volumeBid=volumeBid, volumeAsk=volumeAsk, 
          priceBid=priceBid, priceAsk=priceAsk, createTime=createTime,
-         quoteIndex=index)
+         quoteIndex=index, level=level)
 }
 
 
@@ -55,7 +56,7 @@ QuotesVolumeBid <- function(quotesVar) {
 QuotesVolumeAsk <- function(quotesVar) {
   rClr::clrCallStatic('RHost.FdkLevel2', 'QuotesVolumeAsk', quotesVar)
 }
-#' Gets the bars' ask as requested
+#' Gets the quote's bid as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
 QuotesPriceBid <- function(quotesVar) {
@@ -75,3 +76,12 @@ QuotesPriceAsk <- function(quotesVar) {
 QuotesIndex <- function(quotesVar) {
   rClr::clrCallStatic('RHost.FdkLevel2', 'QuotesIndex', quotesVar)
 }
+
+#' Gets the quote's ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+QuotesLevel <- function(quotesVar) {
+  rClr::clrCallStatic('RHost.FdkLevel2', 'QuotesLevel', quotesVar)
+}
+
+
