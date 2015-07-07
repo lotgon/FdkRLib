@@ -89,6 +89,11 @@ namespace TestRClrHost
 
             FdkVars.Unregister(quotes);
         }
+        [Test]
+        public void TestConnectionToCleanAccount(){
+        	Assert.AreEqual(0, 
+        	                FdkHelper.ConnectToFdk("tp.st.soft-fx.eu", "100057", "123qwe!", @"c:\FdkCaches\Cache1"));
+        }
     }
 
 
