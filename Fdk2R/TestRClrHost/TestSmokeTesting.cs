@@ -94,6 +94,23 @@ namespace TestRClrHost
         	Assert.AreEqual(0, 
         	                FdkHelper.ConnectToFdk("tp.st.soft-fx.eu", "100057", "123qwe!", @"c:\FdkCaches\Cache1"));
         }
+
+        [Test]
+        public void TestErrorQuotes55Account100Milli()
+        {
+            //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.st.soft-fx.eu", "100055", "123qwe!", @"c:\FdkCaches\Cache1"));
+            var time = DateTime.Now;
+            var prevHour = time.AddMilliseconds(-100);
+
+            var quotes = FdkQuotes.ComputeQuoteHistory("EURUSD_Rl", prevHour, time, 3);
+            var asks = FdkQuotes.QuotesAsk(quotes);
+            var bids = FdkQuotes.QuotesBid(quotes);
+            var opens = FdkQuotes.QuotesCreatingTime(quotes);
+            var spread = FdkQuotes.QuotesSpread(quotes);
+            FdkVars.Unregister(quotes);
+        }
+
     }
 
 
