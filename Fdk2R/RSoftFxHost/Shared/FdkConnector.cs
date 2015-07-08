@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using RHost.Shared;
 using log4net;
 using SoftFX.Extended;
 using SoftFX.Extended.Events;
 
-namespace SharedFdkFunctionality
+namespace RHost.Shared
 {
     public class FdkConnector
     {

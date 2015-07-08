@@ -1,5 +1,5 @@
 using RDotNet;
-using SharedFdkFunctionality;
+using RHost.Shared;
 
 namespace FdkRTest.Dialogs
 {

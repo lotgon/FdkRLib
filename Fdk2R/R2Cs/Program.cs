@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using RDotNet;
-using SharedFdkFunctionality;
+using RHost.Shared;
 using SoftFX.Extended;
 
 namespace R2Cs

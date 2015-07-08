@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
-using SharedFdkFunctionality;
+using RHost.Shared;
 
 namespace RHost
 {

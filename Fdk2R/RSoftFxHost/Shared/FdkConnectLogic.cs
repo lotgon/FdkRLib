@@ -7,17 +7,19 @@ using System.Threading;
 using SoftFX.Extended;
 using SoftFX.Extended.Events;
 using SoftFX.Extended.Storage;
+using log4net;
+using log4net.Core;
 
 #endregion
 
-namespace SharedFdkFunctionality
+namespace RHost.Shared
 {
     public class FdkConnectLogic : IDisposable
     {
+        static readonly ILog Log = LogManager.GetLogger(typeof(FdkConnectLogic));
         public string Address { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        private readonly AutoResetEvent _syncEvent = new AutoResetEvent(false);
 
         public FdkConnectLogic(string address, string username, string password)
         {
@@ -114,10 +116,17 @@ namespace SharedFdkFunctionality
             SetupTradeConnection(Builder.FixLogDirectory);
 
             Feed.Initialize(connectionString);
-                
 
-            var timeoutInMilliseconds = Feed.SynchOperationTimeout;
-            return Feed.Start(timeoutInMilliseconds);
+            try
+            {
+                Feed.Start();
+            }
+            catch (Exception ex)
+            {
+                Log.Warn(ex);
+                throw;
+            }
+            return true;
         }
 
         private void SetupTradeConnection(string logPath)
@@ -125,39 +134,6 @@ namespace SharedFdkFunctionality
             TradeWrapper = new FdkTradeWrapper();
             TradeWrapper.Connect(Address, Username, Password, logPath);
 
-        }
-
-        private void OnBalanceOperaiton(object sender, NotificationEventArgs<BalanceOperation> e)
-        {
-        }
-
-        private void OnNofity(object sender, NotificationEventArgs e)
-        {
-        }
-
-        private void OnAccountInfo(object sender, AccountInfoEventArgs e)
-        {
-        }
-
-        private void OnSessionInfo(object sender, SessionInfoEventArgs e)
-        {
-        }
-
-        private void OnPositionReport(object sender, PositionReportEventArgs e)
-        {
-        }
-
-        private void OnExecutionReport(object sender, ExecutionReportEventArgs e)
-        {
-        }
-
-        private void OnLogout(object sender, LogoutEventArgs e)
-        {
-        }
-
-        private void OnLogon(object sender, LogonEventArgs e)
-        {
-            _syncEvent.Set();
         }
 
         public void Disconnect()

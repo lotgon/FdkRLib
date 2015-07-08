@@ -1,5 +1,5 @@
 using System.Globalization;
-using SharedFdkFunctionality;
+using RHost.Shared;
 
 namespace FdkRTest.Dialogs
 {
