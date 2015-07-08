@@ -90,7 +90,7 @@ namespace SharedFdkFunctionality
                 return false;
             }
             var start = DateTime.Now;
-            while (!IsConnected && (DateTime.Now - start).Seconds < 35)
+            while (!IsConnected && (DateTime.Now - start).Seconds < 180)
             {
                 Thread.Sleep(100);
             }

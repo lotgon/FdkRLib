@@ -98,8 +98,7 @@ namespace TestRClrHost
         [Test]
         public void TestErrorQuotes55Account100Milli()
         {
-            //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
-            Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.st.soft-fx.eu", "100055", "123qwe!", @"c:\FdkCaches\Cache1"));
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.st.soft-fx.eu", "100055", "123qwe!", @"c:\FdkCaches\Cache2"));
             var time = DateTime.Now;
             var prevHour = time.AddMilliseconds(-100);
             var symbols = FdkSymbolInfo.GetSymbolInfos();
@@ -110,8 +109,26 @@ namespace TestRClrHost
             var opens = FdkQuotes.QuotesCreatingTime(quotes);
             var spread = FdkQuotes.QuotesSpread(quotes);
             FdkVars.Unregister(quotes);
+            FdkHelper.Disconnect();
         }
 
+
+        [Test]
+        public void TestErrorQuotesDefaultAccount100Milli()
+        {
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", @""));
+            var time = DateTime.Now;
+            var prevHour = time.AddMilliseconds(-100);
+            var symbols = FdkSymbolInfo.GetSymbolInfos();
+
+            var quotes = FdkQuotes.ComputeQuoteHistory("EURUSD", prevHour, time, 3);
+            var asks = FdkQuotes.QuotesAsk(quotes);
+            var bids = FdkQuotes.QuotesBid(quotes);
+            var opens = FdkQuotes.QuotesCreatingTime(quotes);
+            var spread = FdkQuotes.QuotesSpread(quotes);
+            FdkVars.Unregister(quotes);
+            FdkHelper.Disconnect();
+        }
     }
 
 
