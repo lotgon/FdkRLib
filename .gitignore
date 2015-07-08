@@ -26,3 +26,5 @@ RPackage/NAMESPACE
 *.userprefs
 *.suo
 Fdk2R/packages/*/lib/
+Fdk2R/packages/log4net.*
+Fdk2R/packages/NUnit.*
