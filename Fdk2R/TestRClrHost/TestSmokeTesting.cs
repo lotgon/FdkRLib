@@ -47,6 +47,7 @@ namespace TestRClrHost
             Assert.AreNotEqual(0, volumesAsk.Length);
             Assert.AreNotEqual(0, volumesBid.Length);
             FdkVars.Unregister(quotes);
+            FdkHelper.Disconnect();
         }
 
 
@@ -68,6 +69,7 @@ namespace TestRClrHost
             quotes = FdkQuotes.ComputeQuoteHistory("EURUSD", prevHour, time, 3);
 
             FdkVars.Unregister(quotes);
+            FdkHelper.Disconnect();
         }
 
         [Test]
@@ -93,6 +95,8 @@ namespace TestRClrHost
         public void TestConnectionToCleanAccount(){
         	Assert.AreEqual(0, 
         	                FdkHelper.ConnectToFdk("tp.st.soft-fx.eu", "100057", "123qwe!", @"c:\FdkCaches\Cache1"));
+
+            FdkHelper.Disconnect();
         }
 
         [Test]

@@ -24,6 +24,8 @@ namespace TestRClrHost
             FdkSymbolInfo.GetSymbolSwapSizeLong(symbolInfos);
             FdkSymbolInfo.GetSymbolSwapSizeShort(symbolInfos);
             FdkVars.Unregister(symbolInfos);
+
+            FdkHelper.Disconnect();
         } 
         [Test]
         public void TestSymbolsStaging()
@@ -43,6 +45,8 @@ namespace TestRClrHost
             FdkSymbolInfo.GetSymbolSwapSizeLong(symbolInfos);
             FdkSymbolInfo.GetSymbolSwapSizeShort(symbolInfos);
             FdkVars.Unregister(symbolInfos);
+            
+            FdkHelper.Disconnect();
         }
 
         [Test]
@@ -57,6 +61,8 @@ namespace TestRClrHost
             FdkCurrencyInfo.GetCurrencySortOrder(symbolInfos);
 
             FdkVars.Unregister(symbolInfos);
+
+            FdkHelper.Disconnect();
         }
     }
 }

@@ -109,6 +109,8 @@ namespace TestRClrHost
                 throw new TimeoutException("Timeout of logon waiting has been reached");
             }
             RunExample(trade);
+
+            trade.Dispose();
         }
 
         private static void RunExample(DataTrade trade)

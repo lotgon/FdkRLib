@@ -31,6 +31,7 @@ namespace TestRClrHost
             var bidVolume = FdkBarPairs.GetBarsBidVolume(bars);
             
             FdkVars.Unregister(bars);
+            FdkHelper.Disconnect();
         }
 
         [Test]
@@ -48,6 +49,8 @@ namespace TestRClrHost
             var lows = FdkBarPairs.GetBarsAskLow(bars);
 
             FdkVars.Unregister(bars);
+
+            FdkHelper.Disconnect();
         }
 
     }

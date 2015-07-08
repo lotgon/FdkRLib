@@ -20,7 +20,7 @@ ttConnect()
 options(warn=-1)
 require(rClr)
 require(FdkRLib)
-ttConnect("tp.st.soft-fx.eu", "100000", "123321")
+ttConnect("tp.st.soft-fx.eu", "100033", "123qwe!")
 ```
 
 #2. Configuration
@@ -41,10 +41,10 @@ head(ttBars("EURUSD"))
 ```
 
 <p>Get 10000 bar pairs of EURUSD symbol:</p>
-bars = ttBarPairs("EURUSD")
+bars = ttBarsQuotes("EURUSD")
 
 ```{r}
-head(ttBarPairs("EURUSD"))
+head(ttBarsQuotes("EURUSD"))
 ```
 
 
@@ -53,9 +53,9 @@ Get quotes
 
 now <-as.POSIXct(Sys.time())
 # 300 seconds from present
-prevNow <-as.POSIXct(Sys.time()-(300))
+prevNow <-as.POSIXct(now-(300))
 
-head(ttQuotes("EURUSD", , startTime = prevNow, endTime=now))
+head(ttQuotes("EURUSD", startTime = prevNow, endTime=now))
 ```
 
 Get quotes L2
@@ -64,7 +64,7 @@ head(ttTrades())
 
 now <-as.POSIXct(Sys.time())
 # 1000 seconds from present
-prevNow <-as.POSIXct(Sys.time()-1000)
+prevNow <-as.POSIXct(now-1000)
 
 qt2= ttQuotesLevel2('EURUSD', prevNow, now)
 head(qt2)
@@ -77,8 +77,8 @@ Get trades of current account
 
 ```{r}
 now <-as.POSIXct(Sys.time())
-#120 hours = 120 x 3600 seconds before now
-prevNow <-as.POSIXct(Sys.time()-(120*3600))
+#120 hours = 5 x 24 x 3600 seconds before now
+prevNow <-as.POSIXct(now-(120*3600))
 
 
 head(ttTradeRecords(prevNow, now))

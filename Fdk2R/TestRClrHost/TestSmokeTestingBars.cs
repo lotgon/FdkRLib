@@ -24,6 +24,8 @@ namespace TestRClrHost
             var froms = FdkBars.BarFroms(bars);
             var tos = FdkBars.BarTos(bars);
             FdkVars.Unregister(bars);
+
+            FdkHelper.Disconnect();
         }
 
     }
