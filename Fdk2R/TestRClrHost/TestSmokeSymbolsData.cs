@@ -27,6 +27,7 @@ namespace TestRClrHost
 
             FdkHelper.Disconnect();
         } 
+
         [Test]
         public void TestSymbolsStaging()
         {

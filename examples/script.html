@@ -80,52 +80,49 @@ img {
 require(rClr)</code></pre>
 <pre><code>## Loading required package: rClr
 ## Loading the dynamic library for Microsoft .NET runtime...
-## Loaded Common Language Runtime version 4.0.30319.0</code></pre>
+## Loaded Common Language Runtime version 4.0.30319.34209</code></pre>
 <pre class="r"><code>require(FdkRLib)</code></pre>
 <pre><code>## Loading required package: FdkRLib</code></pre>
-<pre class="r"><code>ttConnect(&quot;tp.st.soft-fx.eu&quot;, &quot;100000&quot;, &quot;123321&quot;)</code></pre>
-<pre><code>## Loading required package: jsonlite
-## 
-## Attaching package: 'jsonlite'
-## 
-## The following object is masked from 'package:utils':
-## 
-##     View</code></pre>
+<pre class="r"><code>ttConnect(&quot;&quot;, &quot;&quot;, &quot;&quot;)</code></pre>
 <pre><code>## [1] 0</code></pre>
 </div>
 <div id="configuration" class="section level1">
 <h1>2. Configuration</h1>
 <p>Get symbol and currency data</p>
+<pre class="r"><code>ttDisconnect()</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>ttConnect(&quot;&quot;, &quot;&quot;, &quot;&quot;)</code></pre>
+<pre><code>## [1] 0</code></pre>
 <pre class="r"><code>head(ttGetSymbolData())</code></pre>
 <pre><code>##   comission contractMultiplier currency limitsComission maxTradeVolume
-## 1     1e+02              1e+05      EUR           1e+02          1e+07
-## 2     5e-03              1e+03      XAG           5e-03          5e+05
-## 3     5e-03              1e+01      ASX           5e-03          1e+03
-## 4     5e-03              1e+03      XNG           5e-03          1e+07
-## 5     5e-03              1e+02      XBR           5e-03          1e+06
-## 6     1e+02              1e+05      EUR           1e+02          1e+07
-##   minTradeVolume    name precision roundLog settlementCurrency
-## 1           1000  EURUSD         5    1e+05                USD
-## 2             50  XAGUSD         3    5e+03                USD
-## 3              1 #AUS200         1    1e+01                AUD
-## 4           1000  XNGUSD         3    1e+04                USD
-## 5             10  XBRUSD         2    1e+03                USD
-## 6           1000  EURAUD         5    1e+05                AUD
-##   swapSizeLong swapSizeShort
-## 1         2.32          2.23
-## 2         0.00          0.00
-## 3        88.28       -156.00
-## 4         0.28          0.09
-## 5         6.80          5.40
-## 6         0.00          0.00</code></pre>
+## 1     0.005              1e+05      EUR           0.005          1e+08
+## 2     0.005              1e+05      EUR           0.005          1e+08
+## 3     0.005              1e+05      USD           0.005          1e+08
+## 4     0.005              1e+05      USD           0.005          1e+08
+## 5     0.005              1e+05      EUR           0.005          1e+08
+## 6     0.005              1e+03      CAD           0.005          1e+08
+##   minTradeVolume   name precision roundLog settlementCurrency swapSizeLong
+## 1           1000 EURUSD         5    1e+05                USD     -1.96000
+## 2           1000 EURAUD         5    1e+05                AUD    -13.84416
+## 3           1000 USDCAD         5    1e+05                CAD     -3.81481
+## 4           1000 USDCHF         5    1e+05                CHF      0.98148
+## 5           1000 EURCAD         5    1e+05                CAD     -6.02469
+## 6           1000 CADJPY         3    1e+05                JPY      0.79012
+##   swapSizeShort
+## 1       0.27000
+## 2       3.97403
+## 3       0.83951
+## 4      -3.88889
+## 5       1.53086
+## 6      -3.43210</code></pre>
 <pre class="r"><code>head(ttGetCurrencyData())</code></pre>
-<pre><code>##   currency          description precision sortOrder
-## 1      USD United States Dollar         6         1
-## 2      EUR                 Euro         2         2
-## 3      CAD      Canadian Dollar         2         3
-## 4      GBP  Great Britain Pound         2         4
-## 5      AUD    Australian Dollar         2         5
-## 6      CHF          Swiss Franc         2         6</code></pre>
+<pre><code>##   currency description precision sortOrder
+## 1      ASX                     5        25
+## 2      AUD                     5         1
+## 3      CAC                     5        26
+## 4      CAD                     5         2
+## 5      CHF                     5         3
+## 6      CNH                     5         4</code></pre>
 </div>
 <div id="feed-history" class="section level1">
 <h1>3. Feed history</h1>
@@ -135,151 +132,115 @@ Get 10000 bars of EURUSD symbol:
 <p>head(ttBars(“EURUSD”))</p>
 <pre class="r"><code>head(ttBars(&quot;EURUSD&quot;))</code></pre>
 <pre><code>##      high     low    open   close volume                from
-## 1 1.35718 1.35679 1.35718 1.35683     80 2011-10-10 05:55:00
-## 2 1.35709 1.35677 1.35681 1.35703     78 2011-10-10 05:56:00
-## 3 1.35730 1.35701 1.35701 1.35712     79 2011-10-10 05:57:00
-## 4 1.35713 1.35692 1.35703 1.35702     73 2011-10-10 05:58:00
-## 5 1.35713 1.35661 1.35702 1.35673     78 2011-10-10 05:59:00
-## 6 1.35677 1.35649 1.35672 1.35660     83 2011-10-10 06:00:00
+## 1 1.30601 1.30568 1.30591 1.30597    936 2012-05-07 21:00:00
+## 2 1.30600 1.30560 1.30596 1.30570    560 2012-05-07 21:01:00
+## 3 1.30573 1.30534 1.30570 1.30554    583 2012-05-07 21:02:00
+## 4 1.30560 1.30546 1.30554 1.30546    204 2012-05-07 21:03:00
+## 5 1.30551 1.30546 1.30546 1.30550    124 2012-05-07 21:04:00
+## 6 1.30572 1.30548 1.30550 1.30563    338 2012-05-07 21:05:00
 ##                    to
-## 1 2011-10-10 05:56:00
-## 2 2011-10-10 05:57:00
-## 3 2011-10-10 05:58:00
-## 4 2011-10-10 05:59:00
-## 5 2011-10-10 06:00:00
-## 6 2011-10-10 06:01:00</code></pre>
+## 1 2012-05-07 21:01:00
+## 2 2012-05-07 21:02:00
+## 3 2012-05-07 21:03:00
+## 4 2012-05-07 21:04:00
+## 5 2012-05-07 21:05:00
+## 6 2012-05-07 21:06:00</code></pre>
 <p>
 Get 10000 bar pairs of EURUSD symbol:
 </p>
-<p>bars = ttBarPairs(“EURUSD”)</p>
-<pre class="r"><code>head(ttBarPairs(&quot;EURUSD&quot;))</code></pre>
+<p>bars = ttBarsQuotes(“EURUSD”)</p>
+<pre class="r"><code>head(ttBarsQuotes(&quot;EURUSD&quot;))</code></pre>
 <pre><code>##   askHigh  askLow askopen askClose askVolume bidHigh  bidLow bidOpen
-## 1 1.35731 1.35679 1.35731  1.35683        80 1.35718 1.35679 1.35718
-## 2 1.35709 1.35677 1.35681  1.35703        78 1.35709 1.35677 1.35681
-## 3 1.35730 1.35701 1.35701  1.35712        79 1.35730 1.35701 1.35701
-## 4 1.35713 1.35692 1.35703  1.35702        73 1.35713 1.35692 1.35703
-## 5 1.35713 1.35661 1.35702  1.35673        78 1.35713 1.35661 1.35702
-## 6 1.35677 1.35649 1.35672  1.35660        83 1.35677 1.35649 1.35672
+## 1 1.30602 1.30573 1.30593  1.30599       936 1.30601 1.30568 1.30591
+## 2 1.30603 1.30566 1.30598  1.30575       560 1.30600 1.30560 1.30596
+## 3 1.30578 1.30540 1.30575  1.30558       583 1.30573 1.30534 1.30570
+## 4 1.30565 1.30550 1.30558  1.30550       204 1.30560 1.30546 1.30554
+## 5 1.30556 1.30550 1.30550  1.30555       124 1.30551 1.30546 1.30546
+## 6 1.30574 1.30554 1.30555  1.30567       338 1.30572 1.30548 1.30550
 ##   bidClose bidVolume                from                  to
-## 1  1.35683        80 2011-10-10 05:56:00 2011-10-10 05:56:00
-## 2  1.35703        78 2011-10-10 05:57:00 2011-10-10 05:57:00
-## 3  1.35712        79 2011-10-10 05:58:00 2011-10-10 05:58:00
-## 4  1.35702        73 2011-10-10 05:59:00 2011-10-10 05:59:00
-## 5  1.35673        78 2011-10-10 06:00:00 2011-10-10 06:00:00
-## 6  1.35660        83 2011-10-10 06:01:00 2011-10-10 06:01:00</code></pre>
+## 1  1.30597       936 2012-05-07 21:01:00 2012-05-07 21:01:00
+## 2  1.30570       560 2012-05-07 21:02:00 2012-05-07 21:02:00
+## 3  1.30554       583 2012-05-07 21:03:00 2012-05-07 21:03:00
+## 4  1.30546       204 2012-05-07 21:04:00 2012-05-07 21:04:00
+## 5  1.30550       124 2012-05-07 21:05:00 2012-05-07 21:05:00
+## 6  1.30563       338 2012-05-07 21:06:00 2012-05-07 21:06:00</code></pre>
 <p>Get quotes</p>
 <pre class="r"><code>now &lt;-as.POSIXct(Sys.time())
-prevNow &lt;-as.POSIXct(Sys.time()-(300))
+# 300 seconds from present
+prevNow &lt;-as.POSIXct(now-(300))
 
-head(ttQuotes(&quot;EURUSD&quot;, , startTime = prevNow, endTime=now))</code></pre>
+head(ttQuotes(&quot;EURUSD&quot;, startTime = prevNow, endTime=now))</code></pre>
 <pre><code>##       ask     bid          createTime
-## 1 1.13954 1.13951 2015-06-22 11:45:17
-## 2 1.13954 1.13950 2015-06-22 11:45:17
-## 3 1.13954 1.13951 2015-06-22 11:45:17
-## 4 1.13954 1.13951 2015-06-22 11:45:18
-## 5 1.13954 1.13951 2015-06-22 11:45:18
-## 6 1.13954 1.13951 2015-06-22 11:45:18</code></pre>
+## 1 1.10560 1.10555 2015-07-08 10:43:36
+## 2 1.10559 1.10555 2015-07-08 10:43:36
+## 3 1.10560 1.10556 2015-07-08 10:43:36
+## 4 1.10560 1.10556 2015-07-08 10:43:36
+## 5 1.10560 1.10556 2015-07-08 10:43:36
+## 6 1.10560 1.10556 2015-07-08 10:43:36</code></pre>
 <p>Get quotes L2</p>
 <pre class="r"><code>head(ttTrades())</code></pre>
-<pre><code>##   agentComission                                tradeClientOrderId
-## 1              0 ManagerOrder-a0b70568-9bdd-4538-8d41-1554b9cca9c7
-## 2              0 ManagerOrder-2f28f9b4-d138-4c1c-9893-0349bcb478aa
-## 3              0 ManagerOrder-f15a4d6d-afdf-4914-94e8-a8c5076853d7
-## 4              0              a6eda539-d50a-4214-98a5-4a5e3d772fb9
-## 5              0              a857dd1d-3879-453d-bd8c-86295a11c256
-## 6              0 ManagerOrder-07d7cf8d-8aab-4065-a71a-2d8cb2ffa706
-##   tradeComment             created          expiration initialVolume
-## 1              2015-06-17 09:27:15 1969-12-31 22:00:00         1e+05
-## 2              2015-06-17 13:41:55 1969-12-31 22:00:00         1e+05
-## 3              2015-06-17 13:41:58 1969-12-31 22:00:00         1e+05
-## 4              2015-06-17 13:47:24 1969-12-31 22:00:00         3e+00
-## 5              2015-06-17 13:47:26 1969-12-31 22:00:00         3e+00
-## 6              2015-06-17 13:52:30 1969-12-31 22:00:00         1e+05
-##   isLimitOrder isPendingOrder isPosition isStopOrder            modified
-## 1        False          False       True       False 2015-06-17 12:41:55
-## 2        False          False       True       False 2015-06-17 13:41:55
-## 3        False          False       True       False 2015-06-17 13:41:58
-## 4        False          False       True       False 2015-06-17 13:47:24
-## 5        False          False       True       False 2015-06-17 13:47:26
-## 6        False          False       True       False 2015-06-17 13:52:31
-##   orderId      price profit side stopLoss      swap takeProfit     type
-## 1  388007    1.12690      0  Buy        0   11.6000          0 Position
-## 2  396002    1.12665      0 Sell        0   11.1500          0 Position
-## 3  396003    1.12669      0  Buy        0   11.6000          0 Position
-## 4  396004 5587.20000      0 Sell        0 -181.2906          0 Position
-## 5  396005 5593.20000      0  Buy        0  102.5823          0 Position
-## 6  396006    1.12676      0 Sell        0   11.1500          0 Position
-##   volume
-## 1  1e+05
-## 2  1e+05
-## 3  1e+05
-## 4  3e+00
-## 5  3e+00
-## 6  1e+05</code></pre>
+<pre><code>##  [1] agentComission     tradeClientOrderId tradeComment      
+##  [4] created            expiration         initialVolume     
+##  [7] isLimitOrder       isPendingOrder     isPosition        
+## [10] isStopOrder        modified           orderId           
+## [13] price              profit             side              
+## [16] stopLoss           swap               takeProfit        
+## [19] type               volume            
+## &lt;0 rows&gt; (or 0-length row.names)</code></pre>
 <pre class="r"><code>now &lt;-as.POSIXct(Sys.time())
-prevNow &lt;-as.POSIXct(Sys.time()-1000)
+# 1000 seconds from present
+prevNow &lt;-as.POSIXct(now-1000)
 
 qt2= ttQuotesLevel2('EURUSD', prevNow, now)
 head(qt2)</code></pre>
-<pre><code>##   volumeBid volumeAsk priceBid priceAsk          createTime quoteIndex
-## 1      5000     4e+03  1.13906  1.13968 2015-06-22 11:44:47        359
-## 2      2000     2e+06  1.13886  1.13969 2015-06-22 11:44:47        359
-## 3      5000     4e+03  1.13906  1.13968 2015-06-22 11:44:47        714
-## 4      2000     2e+06  1.13886  1.13969 2015-06-22 11:44:47        714
-## 5      5000     4e+03  1.13906  1.13968 2015-06-22 11:44:48        308
-## 6      2000     1e+06  1.13886  1.13969 2015-06-22 11:44:48        308</code></pre>
+<pre><code>##   volumeBid volumeAsk priceBid priceAsk          createTime   quoteIndex
+## 1   1000000   1000000  1.10584  1.10586 2015-07-08 10:31:59 1.436362e+12
+## 2    500000   5750000  1.10583  1.10587 2015-07-08 10:31:59 1.436362e+12
+## 3   1500000   1650000  1.10582  1.10586 2015-07-08 10:31:59 1.436362e+12
+## 4   7000000   7900000  1.10581  1.10587 2015-07-08 10:31:59 1.436362e+12
+## 5   1000000    250000  1.10580  1.10582 2015-07-08 10:31:59 1.436362e+12
+## 6   5900000   6500000  1.10579  1.10584 2015-07-08 10:31:59 1.436362e+12
+##   level
+## 1     1
+## 2     2
+## 3     1
+## 4     2
+## 5     1
+## 6     2</code></pre>
 </div>
 <div id="tradestrade-reports" class="section level1">
 <h1>4. Trades/Trade Reports</h1>
 <p>Get trades of current account</p>
 <pre class="r"><code>now &lt;-as.POSIXct(Sys.time())
-prevNow &lt;-as.POSIXct(Sys.time()-(120*3600))
+#120 hours = 5 x 24 x 3600 seconds before now
+prevNow &lt;-as.POSIXct(now-(5 * 24*3600))
 
 
 head(ttTradeRecords(prevNow, now))</code></pre>
-<pre><code>##   AgentCommission                                          ClientId
-## 1               0              e9d0f3a2-7b02-47f9-b5ff-a9b4ad878c5c
-## 2               0              e9d0f3a2-7b02-47f9-b5ff-a9b4ad878c5c
-## 3               0 ManagerOrder-f34ab632-0e00-4ae7-ae9e-5ba43a2adb3e
-##   CloseConversionRate InitialVolume Comment Commission     Id
-## 1          -1.0000000                                0 396017
-## 2           0.8211799                                0 396017
-## 3          -1.0000000                                0 404053
-##   LeavesQuantity OpenConversionRate        OrderCreated OrderFillPrice
-## 1          1e+05                  1 2015-06-18 08:57:20             -1
-## 2          0e+00                  1 2015-06-18 08:57:20             -1
-## 3          1e+01                 -1 2015-06-19 11:51:52             -1
-##   OrderLastFillAmount       OrderModified PosOpenPrice PositionClosePrice
-## 1                  -1 2015-06-18 08:57:20      0.00000            0.00000
-## 2                  -1 2015-06-18 08:57:36      1.21786            1.21776
-## 3                  -1 2015-06-19 11:51:53      0.00000            0.00000
-##   PositionCloseRequestedPrice      PositionClosed PositionLastQuantity
-## 1                           0 1970-01-01 00:00:00                    0
-## 2                           0 2015-06-18 08:57:36                    0
-## 3                           0 1970-01-01 00:00:00                    0
-##   PositionLeavesQuantity PositionModified      PositionOpened
-## 1                      0       1970-01-01 1970-01-01 00:00:00
-## 2                      0       1970-01-01 2015-06-18 08:57:20
-## 3                      0       1970-01-01 1970-01-01 00:00:00
-##   PositionQuantity      Price Quantity StopLoss Swap  Symbol TakeProfit
-## 1                0    1.21786    1e+05        0    0  USDCAD          0
-## 2                0    1.21786    1e+05        0    0  USDCAD          0
-## 3                0 5612.60000    1e+01        0    0 #AUS200          0
-##   TradeRecordSide TradeRecordType TradeTransactionReason
-## 1             Buy        Position PendingOrderActivation
-## 2             Buy        Position          ClientRequest
-## 3            Sell           Limit         DealerDecision
-##   TradeTransactionReportType TransactionAmount TransactionCurrency
-## 1             PositionOpened                 0                    
-## 2             PositionClosed                 0                    
-## 3                OrderOpened                 0                    
-##       TransactionTime
-## 1 2015-06-18 08:57:20
-## 2 2015-06-18 08:57:36
-## 3 2015-06-19 11:51:53</code></pre>
+<pre><code>##  [1] AgentCommission             ClientId                   
+##  [3] CloseConversionRate         InitialVolume              
+##  [5] Comment                     Commission                 
+##  [7] Id                          LeavesQuantity             
+##  [9] OpenConversionRate          OrderCreated               
+## [11] OrderFillPrice              OrderLastFillAmount        
+## [13] OrderModified               PosOpenPrice               
+## [15] PositionClosePrice          PositionCloseRequestedPrice
+## [17] PositionClosed              PositionLastQuantity       
+## [19] PositionLeavesQuantity      PositionModified           
+## [21] PositionOpened              PositionQuantity           
+## [23] Price                       Quantity                   
+## [25] StopLoss                    Swap                       
+## [27] Symbol                      TakeProfit                 
+## [29] TradeRecordSide             TradeRecordType            
+## [31] TradeTransactionReason      TradeTransactionReportType 
+## [33] TransactionAmount           TransactionCurrency        
+## [35] TransactionTime            
+## &lt;0 rows&gt; (or 0-length row.names)</code></pre>
 <p>Trades in account:</p>
 <pre class="r"><code># head(ttTrades())</code></pre>
 <p>All trades</p>
+<pre class="r"><code>ttConnect(&quot;tp.st.soft-fx.eu&quot;, &quot;100000&quot;, &quot;123321&quot;)</code></pre>
+<pre><code>## [1] 0</code></pre>
 <pre class="r"><code>head(ttTradeRecordAll())</code></pre>
 <pre><code>##   AgentCommission                                          ClientId
 ## 1               0                                                  
@@ -338,12 +299,12 @@ head(ttTradeRecords(prevNow, now))</code></pre>
 ## 5            Sell        Position         DealerDecision
 ## 6             Buy        Position         DealerDecision
 ##   TradeTransactionReportType TransactionAmount TransactionCurrency
-## 1         BalanceTransaction        1000000.00                 USD
-## 2             PositionClosed            -10.64                 USD
-## 3             PositionClosed              0.00                 USD
-## 4             PositionClosed            -27.54                 USD
-## 5             PositionClosed              0.00                 USD
-## 6              OrderCanceled              0.00                 USD
+## 1         BalanceTransaction                 0                 USD
+## 2             PositionClosed                -5                 USD
+## 3             PositionClosed                 0                 USD
+## 4             PositionClosed                -5                 USD
+## 5             PositionClosed                 0                 USD
+## 6              OrderCanceled                 0                 USD
 ##       TransactionTime
 ## 1 2015-06-10 11:20:45
 ## 2 2015-06-10 11:25:23

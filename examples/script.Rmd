@@ -20,13 +20,17 @@ ttConnect()
 options(warn=-1)
 require(rClr)
 require(FdkRLib)
-ttConnect("tp.st.soft-fx.eu", "100033", "123qwe!")
+
+ttConnect("", "", "")
+
 ```
 
 #2. Configuration
 
 Get symbol and currency data
 ```{r}
+ttDisconnect()
+ttConnect("", "", "")
 head(ttGetSymbolData())
 
 head(ttGetCurrencyData())
@@ -78,7 +82,7 @@ Get trades of current account
 ```{r}
 now <-as.POSIXct(Sys.time())
 #120 hours = 5 x 24 x 3600 seconds before now
-prevNow <-as.POSIXct(now-(120*3600))
+prevNow <-as.POSIXct(now-(5 * 24*3600))
 
 
 head(ttTradeRecords(prevNow, now))
@@ -90,5 +94,6 @@ Trades in account:
 ```
 All trades
 ```{r}
+ttConnect("tp.st.soft-fx.eu", "100000", "123321")
 head(ttTradeRecordAll())
 ```

@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading;
-using RHost.Shared;
 using log4net;
 using SoftFX.Extended;
 using SoftFX.Extended.Events;

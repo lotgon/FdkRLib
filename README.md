@@ -16,14 +16,25 @@ You have sample code inside examples/sample_bars.r with various snippets of code
 
 A simple code sample code is the following:
 ```
-trades = ttTrades()
-bars = ttBars("EURUSD", barCount = 1000000)
-barPairs = ttBarPairs('EURUSD')
+
+ttConnect("", "", "")
+
+#Get configuration information of your account
+head(ttGetSymbolData())
+head(ttGetCurrencyData())
+
+#Quotes in the last 5 minutes
 now <-as.POSIXct(Sys.time())
-prevNow <-as.POSIXct(Sys.time()-1000)
-qt = ttQuotes('EURUSD', startTime = prevNow, endTime=now)
-quotesHistory <- ComputeQuoteHistory('EURUSD', startTime = prevNow, endTime=now, 1)
+# 300 seconds from present
+prevNow <-as.POSIXct(now-(5*60))
+head(ttQuotes("EURUSD", startTime = prevNow, endTime=now))
+
+# Get quotes level 2
+# 1000 seconds from present
+now <-as.POSIXct(Sys.time())
+prevNow <-as.POSIXct(now-1000)
 qt2= ttQuotesLevel2('EURUSD', prevNow, now)
+head(qt2)
 ```
 Follow this link with expanded example and output:
 http://rpubs.com/ciplogic/89507

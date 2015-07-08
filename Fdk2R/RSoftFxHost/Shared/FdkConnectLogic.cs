@@ -3,12 +3,9 @@
 using System;
 using System.IO;
 using System.Reflection;
-using System.Threading;
 using SoftFX.Extended;
-using SoftFX.Extended.Events;
 using SoftFX.Extended.Storage;
 using log4net;
-using log4net.Core;
 
 #endregion
 
