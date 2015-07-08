@@ -37,4 +37,4 @@ qt2= ttQuotesLevel2('EURUSD', prevNow, now)
 head(qt2)
 ```
 Follow this link with expanded example and output:
-http://rpubs.com/ciplogic/89507
+http://rpubs.com/ciplogic/91577
