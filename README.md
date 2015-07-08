@@ -18,7 +18,7 @@ A simple code sample code is the following:
 ```
 trades = ttTrades()
 bars = ttBars("EURUSD", barCount = 1000000)
-barPairs = ttBarPairs('EURUSD')
+barPairs = ttBarsQuotes('EURUSD')
 now <-as.POSIXct(Sys.time())
 prevNow <-as.POSIXct(Sys.time()-1000)
 qt = ttQuotes('EURUSD', startTime = prevNow, endTime=now)
@@ -26,4 +26,4 @@ quotesHistory <- ComputeQuoteHistory('EURUSD', startTime = prevNow, endTime=now,
 qt2= ttQuotesLevel2('EURUSD', prevNow, now)
 ```
 Follow this link with expanded example and output:
-http://rpubs.com/ciplogic/89507
+http://rpubs.com/ciplogic/91577
