@@ -25,3 +25,4 @@ NAMESPACE
 RPackage/NAMESPACE
 *.userprefs
 *.suo
+Fdk2R/packages/*/lib/

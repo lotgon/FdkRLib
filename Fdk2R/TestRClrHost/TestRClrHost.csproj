@@ -82,7 +82,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
-      <HintPath>..\..\Lib\NUnit\nunit.framework.dll</HintPath>
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="SoftFX.Extended.Net, Version=1.0.0.1, Culture=neutral, PublicKeyToken=4233fb54369c191f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -117,13 +117,12 @@
       <Project>{6B485272-EF8E-47F3-AEE5-F3418B39DE80}</Project>
       <Name>RHost</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SharedFdkFunctionality\SharedFdkFunctionality.csproj">
-      <Project>{6F92C144-E375-4531-AFBD-F09F13AACB1B}</Project>
-      <Name>SharedFdkFunctionality</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
