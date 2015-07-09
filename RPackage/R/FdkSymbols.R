@@ -5,23 +5,25 @@ ttGetSymbolData <- function(){
   symInfo = GetSymbolInfos()
   comission = GetSymbolComission(symInfo)
   contractMultiplier = GetSymbolContractMultiplier(symInfo)
-  currency = GetSymbolCurrency(symInfo)
+  marginCurrency = GetSymbolCurrency(symInfo)
   limitsComission = GetSymbolLimitsCommission(symInfo)
   maxTradeVolume = GetSymbolMaxTradeVolume(symInfo)
   minTradeVolume = GetSymbolMinTradeVolume(symInfo)
   name = GetSymbolName(symInfo)
   precision = GetSymbolPrecision(symInfo)
-  roundLog = GetRoundLot(symInfo)
-  settlementCurrency = GetSymbolSettlementCurrency(symInfo)
-  swapSizeLong = GetSymbolSwapSizeLong(symInfo)
-  swapSizeShort = GetSymbolSwapSizeShort(symInfo)
+  contractSize = GetRoundLot(symInfo)
+  profitCurrency = GetSymbolSettlementCurrency(symInfo)
+  swapLong = GetSymbolSwapSizeLong(symInfo)
+  swapShort = GetSymbolSwapSizeShort(symInfo)
   
   UnregisterVar(symInfo)
   
   data.frame(
-    comission, contractMultiplier, currency, limitsComission,
-    maxTradeVolume, minTradeVolume, name, precision,
-    roundLog, settlementCurrency, swapSizeLong, swapSizeShort
+    name, precision, contractSize, contractMultiplier,
+    comission, marginCurrency, profitCurrency,
+    limitsComission,
+    minTradeVolume, maxTradeVolume, 
+    swapLong, swapShort
              )
 }
 #' Get symbol field

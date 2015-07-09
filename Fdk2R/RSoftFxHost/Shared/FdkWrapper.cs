@@ -45,7 +45,7 @@ namespace RHost.Shared
             }
             var start = DateTime.Now;
             
-            while (!IsConnected && (DateTime.Now - start).Seconds < 5)
+            while (!IsConnected && (DateTime.Now - start).Seconds < 15)
             {
                 Thread.Sleep(100);
             }

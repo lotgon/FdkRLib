@@ -52,6 +52,8 @@ namespace RHost
         }
         static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
+        static QuoteEntry NullQuote = new QuoteEntry();
+
 		static QuoteLevel2Data[] BuildQuoteMultiLevelData(Quote[] quotesData, int depth)
 		{
 			var itemsToAdd = new List<QuoteLevel2Data>(capacity: quotesData.Length*depth);
@@ -64,25 +66,11 @@ namespace RHost
 					indexOrder = 0;
 				}
 				var timeSpan = quote.CreatingTime.Subtract(prevTime).TotalMilliseconds;
-				if(depth != quote.Asks.Length)
-				{
-					throw new InvalidOperationException(
-						string.Format(
-							"Invalid number of quotes. Expected: {0}, but actual: {1}",
-							depth, 
-							quote.Asks.Length));
-				}	
-				if(depth != quote.Bids.Length)
-				{
-					throw new InvalidOperationException(
-						string.Format(
-							"Invalid number of quotes. Expected: {0}, but actual: {1}",
-							depth, 
-							quote.Asks.Length));
-				}
+                var maxLength = Math.Max(quote.Asks.Length, quote.Bids.Length);
+				
 				for (var index = 0; index < depth; index++) {
-					var quoteEntryAsk = quote.Asks[index];
-					var quoteEntryBid = quote.Bids[index];
+                    var quoteEntryAsk = index <= maxLength ? quote.Asks[index] : NullQuote;
+                    var quoteEntryBid = index <= maxLength ? quote.Bids[index] : NullQuote;
 					var newQuoteL2Data = new QuoteLevel2Data() {
 						AskVolume = quoteEntryAsk.Volume,
 						AsksPrice = quoteEntryAsk.Price,
