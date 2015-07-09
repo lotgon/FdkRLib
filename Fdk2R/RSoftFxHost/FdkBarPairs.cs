@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using NLog;
 using SoftFX.Extended;
 
 namespace RHost
@@ -37,11 +38,14 @@ namespace RHost
 			}
 			catch(Exception ex)
 			{
-				Console.WriteLine(ex.Message);
+                Log.Error(ex);
 				throw;
 			}
             
         }
+
+
+        static readonly Logger Log = LogManager.GetCurrentClassLogger();
         private static PairBar[] GetPairBarsSymbolArray(string symbol, BarPeriod period, DateTime startTime, int barsNumber)
         {
             return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetPairBars(symbol, period, startTime, barsNumber).ToArray();

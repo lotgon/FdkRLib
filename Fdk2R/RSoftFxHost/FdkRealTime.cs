@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NLog;
 using SoftFX.Extended;
 using SoftFX.Extended.Events;
 
@@ -49,10 +50,11 @@ namespace RHost
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);
+				Log.Error(ex);
 				throw;
 			}
 		}
+        static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
 		public static string SnapshotMonitoredSymbol(double id)
 		{
@@ -64,12 +66,12 @@ namespace RHost
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);
+				Log.Error(ex);
 				throw;
 			}
 		}
 
-		static void StartMonitoringOfSymbolIfNotEnabled()
+        static void StartMonitoringOfSymbolIfNotEnabled()
 		{
 			if (IsMonitoringStarted)
 				return;
@@ -102,11 +104,11 @@ namespace RHost
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);
+				Log.Error(ex);
 				throw;
 			}     
         }
-
+        
         static DataFeed Feed
         {
             get { return FdkHelper.Wrapper.ConnectLogic.Feed; }

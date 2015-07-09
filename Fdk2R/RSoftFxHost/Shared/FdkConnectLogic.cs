@@ -3,9 +3,9 @@
 using System;
 using System.IO;
 using System.Reflection;
+using NLog;
 using SoftFX.Extended;
 using SoftFX.Extended.Storage;
-using log4net;
 
 #endregion
 
@@ -14,7 +14,7 @@ namespace RHost.Shared
 {
     public class FdkConnectLogic : IDisposable
     {
-        static readonly ILog Log = LogManager.GetLogger(typeof(FdkConnectLogic));
+        static readonly Logger Log = LogManager.GetCurrentClassLogger();
         public string Address { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }

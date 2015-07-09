@@ -28,3 +28,4 @@ RPackage/NAMESPACE
 Fdk2R/packages/*/lib/
 Fdk2R/packages/log4net.*
 Fdk2R/packages/NUnit.*
+Fdk2R/packages/NLog*

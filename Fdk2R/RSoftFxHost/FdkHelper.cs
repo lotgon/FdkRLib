@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using NLog;
 using RHost.Shared;
 
 namespace RHost
@@ -48,10 +49,11 @@ namespace RHost
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);
+				Log.Error(ex);
 				throw;
 			}
         }
+        static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public static FdkWrapper Wrapper { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using NLog;
 using SoftFX.Extended;
 
 namespace RHost
@@ -20,10 +21,11 @@ namespace RHost
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);
+				Log.Error(ex);
 				throw;
 			}     
         }
+        static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public static string PlatformCompany(string varName)
         {

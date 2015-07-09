@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using NLog;
 using SoftFX.Extended;
 using SoftFX.Extended.Reports;
 
@@ -25,10 +26,11 @@ namespace RHost
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);
+				Log.Error(ex);
 				throw;
 			}     
         }
+        static readonly Logger Log = LogManager.GetCurrentClassLogger();
         public static string GetTradeTransactionReportAll()
         {
             var tradeRecordsStream = Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, null, null)

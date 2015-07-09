@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NLog;
 using SoftFX.Extended;
 
 namespace RHost
@@ -34,10 +35,11 @@ namespace RHost
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);
+				Log.Error(ex);
 				throw;
 			}     
         }
+        static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public static AccountInfo GetAccountInfo()
         {

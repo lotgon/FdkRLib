@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using NLog;
 using SoftFX.Extended;
 using SoftFX.Extended.Storage;
 
@@ -62,10 +63,11 @@ namespace RHost
 			}
 			catch(Exception ex)
 			{
-				Console.WriteLine(ex.Message);
+				Log.Error(ex);
 				throw;
 			}
         }
+        static readonly Logger Log = LogManager.GetCurrentClassLogger();
         
         public static DateTime[] ComputeGetQuotesInfo(string symbol, int depth)
         {
