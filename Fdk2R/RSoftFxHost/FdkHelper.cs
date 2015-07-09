@@ -47,7 +47,11 @@ namespace RHost
 					localPath = localPathInfo.FullName;
 				}
 
-				return Wrapper.Connect(localPath) ? 0 : -1;
+                Wrapper.Path = localPath;
+
+                Wrapper.SetupBuilder();
+
+				return Wrapper.Connect() ? 0 : -1;
 			}
 			catch (Exception ex)
 			{

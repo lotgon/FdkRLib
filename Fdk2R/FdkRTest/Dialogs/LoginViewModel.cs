@@ -54,7 +54,7 @@ namespace FdkRTest.Dialogs
             Wrapper.Address = Address;
             Wrapper.Login = Login.ToString(CultureInfo.InvariantCulture);
             Wrapper.Password = Password;
-            return Wrapper.Connect("");
+            return Wrapper.Connect();
 
         }
     }

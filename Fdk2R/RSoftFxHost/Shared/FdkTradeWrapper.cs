@@ -13,6 +13,25 @@ namespace RHost.Shared
             EnsureDirectoriesCreated(logPath);
 
             // Create builder
+            SetupBuilder(address, username, password, logPath);
+            Trade = new DataTrade
+            {
+                SynchOperationTimeout = 300000
+            };
+            var connectionString = Builder.ToString();
+            Trade.Initialize(connectionString);
+            Trade.Logon += OnLogon;
+            Trade.Start();
+            var timeoutInMilliseconds = Trade.SynchOperationTimeout;
+            if (!_syncEvent.WaitOne(timeoutInMilliseconds))
+            {
+                throw new TimeoutException("Timeout of logon waiting has been reached");
+            }
+        }
+ 
+        internal void SetupBuilder(string address, string username, string password, string logPath)
+        {
+            // Create builder
             var builder = new FixConnectionStringBuilder
             {
                 TargetCompId = "EXECUTOR",
@@ -28,20 +47,7 @@ namespace RHost.Shared
                 FixEventsFileName = string.Format("{0}.trade.events.log", username),
                 FixMessagesFileName = string.Format("{0}.trade.messages.log", username)
             };
-			Builder = builder;
-            Trade = new DataTrade
-            {
-                SynchOperationTimeout = 300000
-            };
-            var connectionString = builder.ToString();
-            Trade.Initialize(connectionString);
-            Trade.Logon += OnLogon;
-            Trade.Start();
-            var timeoutInMilliseconds = Trade.SynchOperationTimeout;
-            if (!_syncEvent.WaitOne(timeoutInMilliseconds))
-            {
-                throw new TimeoutException("Timeout of logon waiting has been reached");
-            }
+            Builder = builder;
         }
 
         public DataTrade Trade { get; set; }

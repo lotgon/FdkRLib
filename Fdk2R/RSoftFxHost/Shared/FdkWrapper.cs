@@ -10,17 +10,30 @@ namespace RHost.Shared
 {
     public class FdkWrapper
     {
-        public bool Connect(string rootPath)
+        public FdkWrapper()
+        {
+            this.Address = string.Empty;
+            this.Login= string.Empty;
+            this.Password= string.Empty;
+            this.Path= string.Empty;
+        }
+        public void SetupBuilder()
         {
             if (IsConnected)
             {
                 ConnectLogic.Disconnect();
+                IsConnected = false;
             }
             ConnectLogic = new FdkConnectLogic(Address, Login, Password)
             {
-                RootPath = rootPath
+                RootPath = Path
             };
-            ConnectLogic.SetupPathsAndConnect(rootPath);
+            ConnectLogic.TradeWrapper.SetupBuilder(Address, Login, Password, this.Path);
+        }
+
+        public bool Connect()
+        {
+            ConnectLogic.SetupPathsAndConnect(Path);
             ConnectLogic.Feed.CacheInitialized += OnCacheInitialize;
             ConnectLogic.Feed.SessionInfo += OnSessionInfo;
             ConnectLogic.Feed.SymbolInfo += OnSymbolInfo;
@@ -84,6 +97,9 @@ namespace RHost.Shared
         public string Address { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public string Path { get; set; }
+
+
         public FdkConnectLogic ConnectLogic { get; private set; }
 
         private static readonly ILog Logger = LogManager.GetLogger(typeof(FdkConnector));
