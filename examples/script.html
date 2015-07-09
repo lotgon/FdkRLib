@@ -72,7 +72,21 @@ img {
 </ul>
 </div>
 
-<p>Sections * 1. Connection * 2. Configuration (symbols, currencies, accounts) * 3. Feed history (bars and quotes) * 4. Trades/Trade Reports</p>
+<p>Sections:</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>Connection</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>Configuration (symbols, currencies, accounts)</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>Feed history (bars and quotes)</li>
+</ol></li>
+<li><ol start="4" style="list-style-type: decimal">
+<li>Trades/Trade Reports</li>
+</ol></li>
+</ul>
 <div id="connection" class="section level1">
 <h1>1. Connection</h1>
 <p>Connect to TT Demo server: ttConnect()</p>
@@ -171,12 +185,12 @@ prevNow &lt;-as.POSIXct(now-(300))
 
 head(ttQuotes(&quot;EURUSD&quot;, startTime = prevNow, endTime=now))</code></pre>
 <pre><code>##       ask     bid          createTime
-## 1 1.10560 1.10555 2015-07-08 10:43:36
-## 2 1.10559 1.10555 2015-07-08 10:43:36
-## 3 1.10560 1.10556 2015-07-08 10:43:36
-## 4 1.10560 1.10556 2015-07-08 10:43:36
-## 5 1.10560 1.10556 2015-07-08 10:43:36
-## 6 1.10560 1.10556 2015-07-08 10:43:36</code></pre>
+## 1 1.10887 1.10883 2015-07-09 04:08:23
+## 2 1.10886 1.10883 2015-07-09 04:08:23
+## 3 1.10884 1.10882 2015-07-09 04:08:23
+## 4 1.10884 1.10882 2015-07-09 04:08:23
+## 5 1.10884 1.10881 2015-07-09 04:08:23
+## 6 1.10883 1.10880 2015-07-09 04:08:23</code></pre>
 <p>Get quotes L2</p>
 <pre class="r"><code>head(ttTrades())</code></pre>
 <pre><code>##  [1] agentComission     tradeClientOrderId tradeComment      
@@ -194,12 +208,12 @@ prevNow &lt;-as.POSIXct(now-1000)
 qt2= ttQuotesLevel2('EURUSD', prevNow, now)
 head(qt2)</code></pre>
 <pre><code>##   volumeBid volumeAsk priceBid priceAsk          createTime   quoteIndex
-## 1   1000000   1000000  1.10584  1.10586 2015-07-08 10:31:59 1.436362e+12
-## 2    500000   5750000  1.10583  1.10587 2015-07-08 10:31:59 1.436362e+12
-## 3   1500000   1650000  1.10582  1.10586 2015-07-08 10:31:59 1.436362e+12
-## 4   7000000   7900000  1.10581  1.10587 2015-07-08 10:31:59 1.436362e+12
-## 5   1000000    250000  1.10580  1.10582 2015-07-08 10:31:59 1.436362e+12
-## 6   5900000   6500000  1.10579  1.10584 2015-07-08 10:31:59 1.436362e+12
+## 1   1000000     1e+06  1.11011  1.11016 2015-07-09 03:56:46 1.436425e+12
+## 2   5410000     2e+06  1.11010  1.11017 2015-07-09 03:56:46 1.436425e+12
+## 3   1000000     1e+06  1.11011  1.11016 2015-07-09 03:56:47 1.436425e+12
+## 4   6410000     2e+06  1.11010  1.11017 2015-07-09 03:56:47 1.436425e+12
+## 5   1000000     1e+06  1.11011  1.11016 2015-07-09 03:56:47 1.436425e+12
+## 6   6410000     2e+06  1.11010  1.11017 2015-07-09 03:56:47 1.436425e+12
 ##   level
 ## 1     1
 ## 2     2

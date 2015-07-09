@@ -6,11 +6,16 @@ output:
     theme: united
 ---
 
-Sections
+Sections:
+
 * 1. Connection
+
 * 2. Configuration (symbols, currencies, accounts)
+
 * 3. Feed history  (bars and quotes)
+
 * 4. Trades/Trade Reports
+
 
 #1. Connection
 Connect to TT Demo server:
@@ -75,7 +80,6 @@ head(qt2)
 ```
 
 #4. Trades/Trade Reports
-
 
 Get trades of current account
 
