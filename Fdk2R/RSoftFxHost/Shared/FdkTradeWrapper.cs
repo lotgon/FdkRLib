@@ -28,6 +28,7 @@ namespace RHost.Shared
                 FixEventsFileName = string.Format("{0}.trade.events.log", username),
                 FixMessagesFileName = string.Format("{0}.trade.messages.log", username)
             };
+			Builder = builder;
             Trade = new DataTrade
             {
                 SynchOperationTimeout = 300000
@@ -45,6 +46,7 @@ namespace RHost.Shared
 
         public DataTrade Trade { get; set; }
 
+        internal FixConnectionStringBuilder Builder { get; private set; }
         readonly AutoResetEvent _syncEvent = new AutoResetEvent(false);
 
         private void OnLogon(object sender, LogonEventArgs e)

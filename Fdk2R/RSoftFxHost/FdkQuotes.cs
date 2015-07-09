@@ -4,14 +4,22 @@ using SoftFX.Extended;
 
 namespace RHost
 {
-    public class FdkQuotes
-    {
-        public static string ComputeQuoteHistory(string symbol, DateTime startTime, DateTime endTime, double depthDbl)
-        {   
-            var depth = (int)depthDbl;
-            var quotesData = CalculateHistoryForSymbolArray(symbol, startTime, endTime, depth);
-            var quoteHistory = FdkVars.RegisterVariable(quotesData, "quotes");
-            return quoteHistory;
+	public class FdkQuotes
+	{
+		public static string ComputeQuoteHistory(string symbol, DateTime startTime, DateTime endTime, double depthDbl)
+		{
+			try
+			{
+				var depth = (int)depthDbl;
+				var quotesData = CalculateHistoryForSymbolArray(symbol, startTime, endTime, depth);
+				var quoteHistory = FdkVars.RegisterVariable(quotesData, "quotes");
+            	return quoteHistory;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				throw;
+			}
         }
 
         internal static Quote[] CalculateHistoryForSymbolArray(string symbol, DateTime startTime, DateTime endTime, int depth)

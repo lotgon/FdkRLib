@@ -23,7 +23,7 @@ namespace RHost
         public static string[] GetVarNames()
         {
 			return Vars.Keys.ToArray();
-        }
+		}
 
         public static void Unregister(string varName)
         {

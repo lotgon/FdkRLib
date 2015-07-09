@@ -4,34 +4,43 @@ using SoftFX.Extended;
 
 namespace RHost
 {
-    public class FdkBarPairs
-    {
-       /// <summary>
-       /// Get the bar data as pairs
-       /// </summary>
-       /// <param name="symbol"></param>
-       /// <param name="barPeriodStr"></param>
-       /// <param name="startTime"></param>
-       /// <param name="endTime"></param>
-       /// <param name="barCountDbl"></param>
-       /// <returns></returns>
+	public class FdkBarPairs
+	{
+		/// <summary>
+		/// Get the bar data as pairs
+		/// </summary>
+		/// <param name="symbol"></param>
+		/// <param name="barPeriodStr"></param>
+		/// <param name="startTime"></param>
+		/// <param name="endTime"></param>
+		/// <param name="barCountDbl"></param>
+		/// <returns></returns>
         public static string ComputeGetPairBars(string symbol, string barPeriodStr, DateTime startTime, DateTime endTime, double barCountDbl)
-        {
-            var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
-            if (barPeriod == null)
-                return String.Empty;
-            PairBar[] barsData;
-            if (FdkHelper.IsTimeZero(startTime))
-            {
-                var barCount = (int)barCountDbl;
-                barsData = GetPairBarsSymbolArray(symbol, barPeriod, endTime, -barCount);
-            }
-            else
-            {
-                barsData = GetPairBarsSymbolArrayRangeTime(symbol, barPeriod, startTime, endTime);
-            }
-            var bars = FdkVars.RegisterVariable(barsData, "barPairs");
-            return bars;
+		{
+			try {
+				var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
+				if (barPeriod == null)
+					return String.Empty;
+				PairBar[] barsData;
+				if (FdkHelper.IsTimeZero(startTime))
+				{
+					var barCount = (int)barCountDbl;
+					barsData = GetPairBarsSymbolArray(symbol, barPeriod, endTime, -barCount);
+				}
+				else
+				{
+					barsData = GetPairBarsSymbolArrayRangeTime(symbol, barPeriod, startTime, endTime);
+				}
+
+				var bars = FdkVars.RegisterVariable(barsData, "barPairs");
+				return bars;
+			}
+			catch(Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				throw;
+			}
+            
         }
         private static PairBar[] GetPairBarsSymbolArray(string symbol, BarPeriod period, DateTime startTime, int barsNumber)
         {

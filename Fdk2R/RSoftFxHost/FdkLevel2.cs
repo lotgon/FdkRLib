@@ -5,42 +5,49 @@ using SoftFX.Extended;
 
 namespace RHost
 {
-    class QuoteLevel2Data
-    {
-        public double AsksPrice { get; set; }
-        public double AskVolume { get; set; }
-        public double BidPrice { get; set; }
-        public double BidVolume { get; set; }
-        public DateTime CreateTime { get; set; }
-        public double IndexOrder { get; set; }
-        public int Level { get; set; }
-        
+	class QuoteLevel2Data
+	{
+		public double AsksPrice { get; set; }
+		public double AskVolume { get; set; }
+		public double BidPrice { get; set; }
+		public double BidVolume { get; set; }
+		public DateTime CreateTime { get; set; }
+		public double IndexOrder { get; set; }
+		public int Level { get; set; }
+
 		public override string ToString()
 		{
 			return string.Format("[QuoteLevel2Data AsksPrice={0}, BidPrice={1}]", AsksPrice, BidPrice);
 		}
+	}
 
-    }
-    public class FdkLevel2
-    {
-        /// <summary>
-        /// Get quote packed 
-        /// </summary>
-        /// <param name="symbol">Symbol to get quotes on</param>
-        /// <param name="startTime"></param>
-        /// <param name="endTime"></param>
-        /// <param name="levelDbl"></param>
-        /// <returns></returns>
+	public class FdkLevel2
+	{
+		/// <summary>
+		/// Get quote packed 
+		/// </summary>
+		/// <param name="symbol">Symbol to get quotes on</param>
+		/// <param name="startTime"></param>
+		/// <param name="endTime"></param>
+		/// <param name="levelDbl"></param>
+		/// <returns></returns>
         public static string GetQuotePacked(string symbol, DateTime startTime, DateTime endTime, double levelDbl = 2)
-        {
-            var level = (int) levelDbl;
-            Quote[] quotesData = FdkQuotes.CalculateHistoryForSymbolArray(symbol, startTime, endTime, level);
-            var quoteLevel2Data = BuildQuoteMultiLevelData(quotesData, level);
+		{
+			try
+			{
+				var level = (int) levelDbl;
 
+				Quote[] quotesData = FdkQuotes.CalculateHistoryForSymbolArray(symbol, startTime, endTime, level);
+				var quoteLevel2Data = BuildQuoteMultiLevelData(quotesData, level);
 
-
-            var quoteHistory = FdkVars.RegisterVariable(quoteLevel2Data, "quotesL2");
-            return quoteHistory;
+				var quoteHistory = FdkVars.RegisterVariable(quoteLevel2Data, "quotesL2");
+            	return quoteHistory;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				throw;
+			}
         }
 
 		static QuoteLevel2Data[] BuildQuoteMultiLevelData(Quote[] quotesData, int depth)

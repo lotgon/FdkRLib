@@ -6,80 +6,105 @@ using SoftFX.Extended.Events;
 
 namespace RHost
 {
-    public class FdkRealTimeItem
-    {
-        public int Id { get; private set; }
+	public class FdkRealTimeItem
+	{
+		public int Id { get; private set; }
 
-        public FdkRealTimeItem(string symbol, DateTime utcNow, int id)
-        {
-            Id = id;
-            Symbol = symbol;
-            TimeToMonitor = utcNow;
-            Events = new List<TickEventArgs>();
-        }
+		public FdkRealTimeItem(string symbol, DateTime utcNow, int id)
+		{
+			Id = id;
+			Symbol = symbol;
+			TimeToMonitor = utcNow;
+			Events = new List<TickEventArgs>();
+		}
 
-        public string Symbol { get; set; }
-        public DateTime TimeToMonitor { get; set; }
-        public List<TickEventArgs> Events { get; set; }
-        
-        public FdkRealTimeItem Clone(){
-        	FdkRealTimeItem result = new FdkRealTimeItem(Symbol, TimeToMonitor, Id);
-        	result.Events.AddRange(Events);
-        	return result;
-        }
-    }
-    public static class FdkRealTime
-    {
-        static readonly
+		public string Symbol { get; set; }
+		public DateTime TimeToMonitor { get; set; }
+		public List<TickEventArgs> Events { get; set; }
+
+		public FdkRealTimeItem Clone() {
+			FdkRealTimeItem result = new FdkRealTimeItem(Symbol, TimeToMonitor, Id);
+			result.Events.AddRange(Events);
+			return result;
+		}
+	}
+
+	public static class FdkRealTime
+	{
+		static readonly
             List<FdkRealTimeItem> Events
                 = new List<FdkRealTimeItem>();
 
-        private static int _eventCount;
-        public static double MonitorSymbol(string symbol)
-        {
-            Events.Add(new FdkRealTimeItem(symbol, DateTime.UtcNow, _eventCount));
-            double result = _eventCount;
-            _eventCount++;
-            StartMonitoringOfSymbolIfNotEnabled();
+		private static int _eventCount;
+		public static double MonitorSymbol(string symbol)
+		{
+			try
+			{
+				Events.Add(new FdkRealTimeItem(symbol, DateTime.UtcNow, _eventCount));
+				double result = _eventCount;
+				_eventCount++;
+				StartMonitoringOfSymbolIfNotEnabled();
 
-            return result;
-        }
-        
-        public static string SnapshotMonitoredSymbol(double id)
-        {
-            var quotes = GetQuotesById(id);
-			var resultVarName = FdkVars.RegisterVariable(quotes, "rt_quotes_snapshot");
-			return resultVarName;
-        }
+				return result;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				throw;
+			}
+		}
 
-        static void StartMonitoringOfSymbolIfNotEnabled()
-        {
-            if (IsMonitoringStarted)
-                return;
-            IsMonitoringStarted = true;
-            Feed.Tick += OnTick;
-        }
+		public static string SnapshotMonitoredSymbol(double id)
+		{
+			try
+			{
+				var quotes = GetQuotesById(id);
+				var resultVarName = FdkVars.RegisterVariable(quotes, "rt_quotes_snapshot");
+				return resultVarName;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				throw;
+			}
+		}
 
-        static void OnTick(object sender, TickEventArgs e)
-        {
-            var tickSymbol = e.Tick.Symbol;
-            foreach (var evnt in Events)
-            {
-                if (evnt.Symbol != tickSymbol)
-                    continue;
-                evnt.Events.Add(e);
-            }
-        }
+		static void StartMonitoringOfSymbolIfNotEnabled()
+		{
+			if (IsMonitoringStarted)
+				return;
+			IsMonitoringStarted = true;
+			Feed.Tick += OnTick;
+		}
 
-        public static void RemoveEvent(double eventIndex)
-        {
-            var intIndex = (int)eventIndex;
-            Events.RemoveAll(ev => ev.Id == intIndex);
-            if(Events.Count==0)
-            {
-            	Feed.Tick -= OnTick;
-				IsMonitoringStarted = false;
-            }
+		static void OnTick(object sender, TickEventArgs e)
+		{
+			var tickSymbol = e.Tick.Symbol;
+			foreach (var evnt in Events)
+			{
+				if (evnt.Symbol != tickSymbol)
+					continue;
+				evnt.Events.Add(e);
+			}
+		}
+
+		public static void RemoveEvent(double eventIndex)
+		{
+			try
+			{
+				var intIndex = (int)eventIndex;
+				Events.RemoveAll(ev => ev.Id == intIndex);
+				if(Events.Count == 0)
+				{
+					Feed.Tick -= OnTick;
+					IsMonitoringStarted = false;
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				throw;
+			}     
         }
 
         static DataFeed Feed

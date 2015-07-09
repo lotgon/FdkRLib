@@ -1,15 +1,24 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using SoftFX.Extended;
 
 namespace RHost
 {
-    public class FdkSymbolInfo
-    {
-        public static string GetSymbolInfos()
-        {
-            var symbolInfos = FdkHelper.Wrapper.ConnectLogic.Feed.Cache.Symbols;
-            var varName = FdkVars.RegisterVariable(symbolInfos, "symbolsInfo");
-            return varName;
+	public class FdkSymbolInfo
+	{
+		public static string GetSymbolInfos()
+		{
+			try
+			{
+				var symbolInfos = FdkHelper.Wrapper.ConnectLogic.Feed.Cache.Symbols;
+				var varName = FdkVars.RegisterVariable(symbolInfos, "symbolsInfo");
+				return varName;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				throw;
+			}     
         }
 
         public static double[] GetSymbolComission(string symbolsInfo)
@@ -18,7 +27,7 @@ namespace RHost
             return symbolInfos.SelectToArray(b => b.Commission);
         }
 
-        public static double[] GetSymbolContractMultiplier(string symbolsInfo)
+		public static double[] GetSymbolContractMultiplier(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
             return symbolInfos.SelectToArray(b => b.ContractMultiplier);

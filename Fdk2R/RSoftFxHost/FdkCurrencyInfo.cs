@@ -1,15 +1,25 @@
+using System;
 using System.Linq;
 using SoftFX.Extended;
 
 namespace RHost
 {
-    public class FdkCurrencyInfo
-    {
-        public static string GetCurrencyInfos()
-        {
-            var symbolInfos = FdkHelper.Wrapper.ConnectLogic.Feed.Cache.Currencies;
-            var varName = FdkVars.RegisterVariable(symbolInfos, "currencyInfo");
-            return varName;
+	public class FdkCurrencyInfo
+	{
+		public static string GetCurrencyInfos()
+		{
+			try
+			{
+				var symbolInfos = FdkHelper.Wrapper.ConnectLogic.Feed.Cache.Currencies;
+				var varName = FdkVars.RegisterVariable(symbolInfos, "currencyInfo");
+				return varName;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				throw;
+			}
+            
         }
 
         public static string[] GetCurrencyDescription(string currencyInfo)

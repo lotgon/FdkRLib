@@ -5,21 +5,29 @@ using SoftFX.Extended.Reports;
 
 namespace RHost
 {
-    public static class FdkTradeReports
-    {
-        private static DataTrade Trade
-        {
-            get { return FdkHelper.Wrapper.ConnectLogic.TradeWrapper.Trade; }
-        }
+	public static class FdkTradeReports
+	{
+		private static DataTrade Trade
+		{
+			get { return FdkHelper.Wrapper.ConnectLogic.TradeWrapper.Trade; }
+		}
 
-        public static string GetTradeTransactionReport(DateTime from, DateTime to)
-        {
-            var tradeRecordsStream = Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, from, to)
+		public static string GetTradeTransactionReport(DateTime from, DateTime to)
+		{
+			try
+			{
+				var tradeRecordsStream = Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, from, to)
                 .ToArray().ToList();
-            var tradeRecordList = tradeRecordsStream.ToArray();
+				var tradeRecordList = tradeRecordsStream.ToArray();
 
-            var varName = FdkVars.RegisterVariable(tradeRecordList, "tradeReports");
-            return varName;
+				var varName = FdkVars.RegisterVariable(tradeRecordList, "tradeReports");
+				return varName;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				throw;
+			}     
         }
         public static string GetTradeTransactionReportAll()
         {

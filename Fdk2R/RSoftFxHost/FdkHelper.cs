@@ -6,46 +6,54 @@ using RHost.Shared;
 
 namespace RHost
 {
-    public class FdkHelper
-    {
-        public  static void TestInvoke()
-        {
-            MessageBox.Show("SoftFX integration is working");
-        }
-        public static int ConnectToFdk(string address, string login, string password, string path)
-        {
-#if DEBUG
-            //Library.Path = @"C:\Users\ciprian.khlud\Documents\R\win-library\3.2\FdkRLib\data";
-#endif
+	public class FdkHelper
+	{
+		public static void TestInvoke()
+		{
+			MessageBox.Show("SoftFX integration is working");
+		}
+
+		public static int ConnectToFdk(string address, string login, string password, string path)
+		{
+			#if DEBUG
+			//Library.Path = @"C:\Users\ciprian.khlud\Documents\R\win-library\3.2\FdkRLib\data";
+			#endif
             var addr = String.IsNullOrEmpty(address)
-                ? "tpdemo.fxopen.com"
+			? "tpdemo.fxopen.com"
                 : address;
-            var loginStr = String.IsNullOrEmpty(login)
-                ? "59932"
+			var loginStr = String.IsNullOrEmpty(login)
+			? "59932"
                 : login;
-            var passwordString = String.IsNullOrEmpty(login)
-                ? "8mEx7zZ2"
+			var passwordString = String.IsNullOrEmpty(login)
+			? "8mEx7zZ2"
                 : password;
-            if (Wrapper == null)
-            {
-				Wrapper = new FdkWrapper();
-            }
-			Wrapper.Address = addr;
-			Wrapper.Login = loginStr;
-			Wrapper.Password = passwordString;
 
-            var localPath = String.Empty;
+			try
+			{
+				if (Wrapper == null)
+				{
+					Wrapper = new FdkWrapper();
+				}
 
-            if (!String.IsNullOrEmpty(path))
-            {
-                var localPathInfo = new DirectoryInfo(path);
-                localPath = localPathInfo.FullName;
-            }
-            if (Wrapper.Connect(localPath))
-            {
-                return 0;
-            }
-            return -1;
+				Wrapper.Address = addr;
+				Wrapper.Login = loginStr;
+				Wrapper.Password = passwordString;
+
+				var localPath = String.Empty;
+
+				if (!String.IsNullOrEmpty(path))
+				{
+					var localPathInfo = new DirectoryInfo(path);
+					localPath = localPathInfo.FullName;
+				}
+
+				return Wrapper.Connect(localPath) ? 0 : -1;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				throw;
+			}
         }
 
         public static FdkWrapper Wrapper { get; set; }
@@ -53,6 +61,11 @@ namespace RHost
         public static void Disconnect()
         {
             Wrapper.Disconnect();
+        }
+        
+        public static void WriteMessage(string message)
+        {
+			Console.WriteLine("FdkRLib: {0}", message);
         }
 
         public static Double GetCreatedEpoch(DateTime created)
@@ -92,9 +105,10 @@ namespace RHost
         public static T? ParseEnumStr<T>(string text) where T : struct
         {
             T result;
-            if (!Enum.TryParse(text, out result))
-                return null;
-            return result;
+			if (Enum.TryParse(text, out result))
+				return result;
+			else 
+				return null;
         }
 
         public static T GetFieldByName<T>(string fieldName)

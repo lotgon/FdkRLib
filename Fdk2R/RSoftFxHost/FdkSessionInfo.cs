@@ -3,17 +3,26 @@ using SoftFX.Extended;
 
 namespace RHost
 {
-    public static class FdkSessionInfo
-    {
-        private static DataFeed Feed
-        {
-            get { return FdkHelper.Wrapper.ConnectLogic.Feed; }
-        }
-        public static string GetSessionInfo()
-        {
-            var sessionInfo = Feed.Server.GetSessionInfo();
-            var result = FdkVars.RegisterVariable(sessionInfo, "SessionInfo");
-            return result;
+	public static class FdkSessionInfo
+	{
+		private static DataFeed Feed
+		{
+			get { return FdkHelper.Wrapper.ConnectLogic.Feed; }
+		}
+
+		public static string GetSessionInfo()
+		{
+			try
+			{
+				var sessionInfo = Feed.Server.GetSessionInfo();
+				var result = FdkVars.RegisterVariable(sessionInfo, "SessionInfo");
+				return result;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				throw;
+			}     
         }
 
         public static string PlatformCompany(string varName)

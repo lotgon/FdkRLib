@@ -5,61 +5,66 @@ using SoftFX.Extended.Storage;
 
 namespace RHost
 {
-    public static class FdkBars
-    {
-        public static int SplitIntervals { get; set; }
-
-        static FdkBars()
-        {
-            SplitIntervals = 10;
-        }
-
-        #region Bars 
+	public static class FdkBars
+	{
+		#region Bars
 
 #region Fdk direct wrapper
         static Bar[] CalculateBarsForSymbolArray(
             string symbol, PriceType priceType, DateTime startTime, BarPeriod barPeriod, int barCount)
-        { 
-            return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, -barCount).ToArray();
-        }
-        private static Bar[] CalculateBarsForSymbolArrayRangeTime(
+		{
+			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, -barCount).ToArray();
+		}
+
+		private static Bar[] CalculateBarsForSymbolArrayRangeTime(
          string symbol, PriceType priceType, DateTime startTime, DateTime endTime, BarPeriod barPeriod)
-        {
-            return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, endTime).ToArray();
-        }
-        private static HistoryInfo GetQuotesInfo(string symbol, int depth)
-        {
-            return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetQuotesInfo(symbol, depth);
-        }
-        private static HistoryInfo GetBarsInfo(string symbol, PriceType priceType, BarPeriod period)
-        {
-            return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBarsInfo(symbol, priceType, period);
-        }
-#endregion
+		{
+			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, endTime).ToArray();
+		}
+
+		private static HistoryInfo GetQuotesInfo(string symbol, int depth)
+		{
+			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetQuotesInfo(symbol, depth);
+		}
+
+		private static HistoryInfo GetBarsInfo(string symbol, PriceType priceType, BarPeriod period)
+		{
+			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBarsInfo(symbol, priceType, period);
+		}
+
+		#endregion
 
         public static string ComputeBarsRangeTime(string symbol, string priceTypeStr, string barPeriodStr,
             DateTime startTime, DateTime endTime, double barCountDbl)
-        {
-            var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
-            if (barPeriod == null)
-                return string.Empty;
+		{
+			try
+			{
+				var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
+				if (barPeriod == null)
+					return string.Empty;
 
-            var priceType = FdkHelper.ParseEnumStr<PriceType>(priceTypeStr);
-            if (priceType == null)
-                return string.Empty;
+				var priceType = FdkHelper.ParseEnumStr<PriceType>(priceTypeStr);
+				if (priceType == null)
+					return string.Empty;
 
-            Bar[] barsData;
-            if (FdkHelper.IsTimeZero(startTime))
-            {
-                var barCount = (int) barCountDbl;
-                barsData = CalculateBarsForSymbolArray(symbol, priceType.Value, endTime, barPeriod, barCount);
-                
-            }else
-            {
-                barsData = CalculateBarsForSymbolArrayRangeTime(symbol, priceType.Value, startTime, endTime, barPeriod);
-            }
-            var bars = FdkVars.RegisterVariable(barsData, "bars");
-            return bars;
+				Bar[] barsData;
+				if (FdkHelper.IsTimeZero(startTime))
+				{
+					var barCount = (int) barCountDbl;
+					barsData = CalculateBarsForSymbolArray(symbol, priceType.Value, endTime, barPeriod, barCount);
+				}else
+				{
+					barsData = CalculateBarsForSymbolArrayRangeTime(symbol, priceType.Value, startTime, endTime, barPeriod);
+				}
+
+				var bars = FdkVars.RegisterVariable(barsData, "bars");
+				return bars;
+			}
+			catch(Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				throw;
+			}
         }
         
         public static DateTime[] ComputeGetQuotesInfo(string symbol, int depth)
