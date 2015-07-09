@@ -13,6 +13,7 @@ installBinaryHttr <- function(fdkRLibPackage){
 updatePackage <- function (packageVersion) {
   installBinaryHttr(packageVersion)
 }
+require(httr)
 # Run code to package
 updatePackage("FdkRLib_1.0.20150629.zip")
 
