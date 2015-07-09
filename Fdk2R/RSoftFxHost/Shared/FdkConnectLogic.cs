@@ -9,6 +9,7 @@ using log4net;
 
 #endregion
 
+
 namespace RHost.Shared
 {
     public class FdkConnectLogic : IDisposable
@@ -23,11 +24,25 @@ namespace RHost.Shared
             Address = address;
             Username = username;
             Password = password;
-            
+            // create and initialize fix connection string builder
+            Builder = new FixConnectionStringBuilder
+            {
+                TargetCompId = "EXECUTOR",
+                ProtocolVersion = FixProtocolVersion.TheLatestVersion.ToString(),
+                SecureConnection = false,
+                Port = 5001,
+                DecodeLogFixMessages = true,
+                Address = address,
+                Username = username,
+                Password = password,
+                FixEventsFileName = string.Format("{0}.trade.events.log", username),
+                FixMessagesFileName = string.Format("{0}.trade.messages.log", username)
+            };
             TradeWrapper = new FdkTradeWrapper();
-            
+            //this.Builder.ExcludeMessagesFromLogs = "W";
         }
 
+        internal FixConnectionStringBuilder Builder { get; private set; }
         public DataFeed Feed { get; private set; }
         public DataFeedStorage Storage { get; set; }
         public FdkTradeWrapper TradeWrapper { get; set; }
@@ -74,9 +89,9 @@ namespace RHost.Shared
             var logsPath = Path.Combine(root, "Logs\\Fix");
             Directory.CreateDirectory(logsPath);
 
-            TradeWrapper.Builder.FixLogDirectory = logsPath;
+            Builder.FixLogDirectory = logsPath;
 
-            Feed = new DataFeed(TradeWrapper.Builder.ToString()) {SynchOperationTimeout = 60000};
+            Feed = new DataFeed(Builder.ToString()) { SynchOperationTimeout = 60000 };
 
             var storagePath = Path.Combine(root, "Storage");
             Directory.CreateDirectory(storagePath);
@@ -93,10 +108,10 @@ namespace RHost.Shared
 
         public bool DoConnect()
         {
-            EnsureDirectoriesCreated(TradeWrapper.Builder.FixLogDirectory);
-            var connectionString = TradeWrapper.Builder.ToString();
+            EnsureDirectoriesCreated(Builder.FixLogDirectory);
+            var connectionString = Builder.ToString();
 
-            SetupTradeConnection(TradeWrapper.Builder.FixLogDirectory);
+            SetupTradeConnection(Builder.FixLogDirectory);
 
             Feed.Initialize(connectionString);
 

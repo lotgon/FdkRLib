@@ -20,9 +20,12 @@ namespace RHost.Shared
         
 		private List<SymbolInfo> _symbols = new List<SymbolInfo>();
 
+		public FdkConnector()
+		{
+		}
+
         public bool Connect()
         {
-            ConnectLogic = new FdkConnectLogic(Address, Login, Password);
             ConnectLogic.Feed.SessionInfo += OnSessionInfo;
             ConnectLogic.Feed.SymbolInfo += OnSymbolInfo;
             ConnectLogic.Feed.Logon += OnLogon;

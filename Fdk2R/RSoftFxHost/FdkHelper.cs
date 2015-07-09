@@ -8,11 +8,10 @@ namespace RHost
 {
 	public class FdkHelper
 	{
-		public static void TestInvoke()
-		{
-			MessageBox.Show("SoftFX integration is working");
-		}
-
+        static FdkHelper()
+        {
+            Wrapper = new FdkWrapper();
+        }
 		public static int ConnectToFdk(string address, string login, string password, string path)
 		{
 			#if DEBUG
@@ -30,15 +29,9 @@ namespace RHost
 
 			try
 			{
-				if (Wrapper == null)
-				{
-					Wrapper = new FdkWrapper();
-				}
-
 				Wrapper.Address = addr;
 				Wrapper.Login = loginStr;
 				Wrapper.Password = passwordString;
-
 				var localPath = String.Empty;
 
 				if (!String.IsNullOrEmpty(path))

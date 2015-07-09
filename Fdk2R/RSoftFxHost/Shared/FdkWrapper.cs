@@ -12,10 +12,6 @@ namespace RHost.Shared
     {
         public FdkWrapper()
         {
-            this.Address = string.Empty;
-            this.Login= string.Empty;
-            this.Password= string.Empty;
-            this.Path= string.Empty;
         }
         public void SetupBuilder()
         {
@@ -28,6 +24,7 @@ namespace RHost.Shared
             {
                 RootPath = Path
             };
+
             ConnectLogic.TradeWrapper.SetupBuilder(Address, Login, Password, this.Path);
         }
 
@@ -39,6 +36,7 @@ namespace RHost.Shared
             ConnectLogic.Feed.SymbolInfo += OnSymbolInfo;
             ConnectLogic.Feed.Logon += OnLogon;
             ConnectLogic.Feed.Logout += OnLogout;
+            
             var connectionSuccessful = ConnectLogic.DoConnect();
             if (!connectionSuccessful)
             {
@@ -46,7 +44,8 @@ namespace RHost.Shared
                 return false;
             }
             var start = DateTime.Now;
-            while (!IsConnected && (DateTime.Now - start).Seconds < 10)
+            
+            while (!IsConnected && (DateTime.Now - start).Seconds < 5)
             {
                 Thread.Sleep(100);
             }
@@ -94,10 +93,25 @@ namespace RHost.Shared
         private List<SymbolInfo> _symbols = new List<SymbolInfo>();
 
 
-        public string Address { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Path { get; set; }
+        public string Address
+        {
+            get;
+            set;
+        }
+        public string Login
+        {
+            get;
+            set;
+        }
+		public string Password
+		{
+            get;
+            set;
+        }
+		public string Path {
+            get;
+            set;
+        }
 
 
         public FdkConnectLogic ConnectLogic { get; private set; }
