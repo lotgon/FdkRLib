@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,6 +29,8 @@ namespace RHost
         public static void Unregister(string varName)
         {
             Vars.Remove(varName);
+            //Pushes full GC
+            GC.Collect(2);
         }
 
         public static void ClearAll()

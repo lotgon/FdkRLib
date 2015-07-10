@@ -51,9 +51,7 @@ namespace RHost
 
         static void StartMonitoringOfSymbolIfNotEnabled(string symbol, int level)
         {
-			if (IsMonitoringStarted)
-				return;
-			IsMonitoringStarted = true;
+            IsMonitoringStarted = true;
             Feed.Server.SubscribeToQuotes(new[] { symbol }, level);
 			Feed.Tick += OnTick;
 		}
@@ -74,7 +72,15 @@ namespace RHost
 			try
 			{
 				var intIndex = (int)eventIndex;
+                var firstMonitor = Monitors.FirstOrDefault(mon => mon.Id == intIndex);
+                var symbol = firstMonitor == null ? string.Empty : firstMonitor.Symbol;
+
 				Monitors.RemoveAll(ev => ev.Id == intIndex);
+                var firstMonitorBySymbol = Monitors.FirstOrDefault(monS => monS.Symbol == symbol);
+                if(firstMonitorBySymbol==null)
+                {
+                    Feed.Server.UnsubscribeQuotes(new[] { symbol });
+                }
 				if(Monitors.Count == 0)
 				{
 					Feed.Tick -= OnTick;
