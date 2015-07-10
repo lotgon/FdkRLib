@@ -34,6 +34,10 @@ namespace RHost
 
         public FdkRealTimeQuote[] BuildSnapshot()
         {
+			if (LastEventData == null) 
+			{
+				return new FdkRealTimeQuote[0];
+			}
             Quote lastTick = LastEventData.Tick;
             var maxBidAsks = Math.Max(lastTick.Bids.Length, lastTick.Asks.Length);
             var resultList = new List<FdkRealTimeQuote>();
