@@ -1,9 +1,10 @@
 #' Monitor a symbol
 #' 
 #' @param symbol Symbol looked
+#' @param level Quote level
 #' @export
-ttQuotesRealTimeMonitor<- function(symbol){
-  quotesHistory <- RealTimeComputeQuoteHistory(symbol)
+ttQuotesRealTimeMonitor<- function(symbol, level){
+  quotesHistory <- RealTimeComputeQuoteHistory(symbol, level)
 }
 
 #' Get a snapshot of current monitoring status
@@ -13,14 +14,17 @@ ttQuotesRealTimeMonitor<- function(symbol){
 ttQuotesRealTimeSnapshot <- function(idMonitoring){
   snapshot <- SnapshotMonitoredSymbol(idMonitoring)
   
-  ask <- RealTimeQuotesAsk(snapshot)
-  bid <- RealTimeQuotesBid(snapshot)
-  createTime <- RealTimeQuotesCreatingTime(snapshot)
-  spread <- RealTimeQuotesSpread(snapshot)
-  
+  bidPrice <- RealTimeQuotesBidPrice(snapshot)
+  bidVolume <- RealTimeQuotesBidVolume(snapshot)
+  askPrice <- RealTimeQuotesAskPrice(snapshot)
+  askVolume <- RealTimeQuotesAskVolume(snapshot)
+  createTime <- RealTimeQuotesReceivingTime(snapshot)
+
   UnregisterVar(snapshot)
   
-  df = data.frame(ask=ask, bid=bid, createTime=createTime, spread = spread)
+  df = data.frame(bidPrice=bidPrice, bidVolume=bidVolume, 
+                  askPrice=askPrice, askVolume=askVolume, 
+                  createTime = createTime)
 }
 
 #' Monitor a symbol
@@ -35,8 +39,9 @@ ttQuotesRealTimeStopMonitoring <- function(idMonitoring){
 #' Gets the quotes as requested
 #' 
 #' @param symbol Symbol looked
-RealTimeComputeQuoteHistory <- function(symbol) {
-  rClr::clrCallStatic('RHost.FdkRealTime', 'MonitorSymbol', symbol)
+#' @param level Level of the quote
+RealTimeComputeQuoteHistory <- function(symbol, level) {
+  rClr::clrCallStatic('RHost.FdkRealTime', 'MonitorSymbol', symbol, level)
 }
 
 # ****
@@ -65,18 +70,31 @@ RealTimeQuotesAsk <- function(quotesVar) {
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
-RealTimeQuotesBid <- function(quotesVar) {
-  rClr::clrCallStatic('RHost.FdkRealTime', 'QuoteArrayBid', quotesVar)
+RealTimeQuotesBidPrice <- function(quotesVar) {
+  rClr::clrCallStatic('RHost.FdkRealTime', 'QuoteRealTimeBidPrice', quotesVar)
 }
 #' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
-RealTimeQuotesCreatingTime <- function(quotesVar) {
-  rClr::clrCallStatic('RHost.FdkRealTime', 'QuoteArrayCreateTime', quotesVar)
+RealTimeQuotesBidVolume <- function(quotesVar) {
+  rClr::clrCallStatic('RHost.FdkRealTime', 'QuoteRealTimeBidVolume', quotesVar)
 }
-#' Gets the quotes' spread as requested
+#' Gets the bars' ask as requested
 #' 
 #' @param quotesVar RHost variable that stores quotes array
-RealTimeQuotesSpread <- function(quotesVar) {
-  rClr::clrCallStatic('RHost.FdkRealTime', 'QuoteArraySpread', quotesVar)
+RealTimeQuotesAskPrice <- function(quotesVar) {
+  rClr::clrCallStatic('RHost.FdkRealTime', 'QuoteRealTimeAskPrice', quotesVar)
+}
+
+#' Gets the bars' ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+RealTimeQuotesAskVolume <- function(quotesVar) {
+  rClr::clrCallStatic('RHost.FdkRealTime', 'QuoteRealTimeAskVolume', quotesVar)
+}
+#' Gets the bars' ask as requested
+#' 
+#' @param quotesVar RHost variable that stores quotes array
+RealTimeQuotesReceivingTime <- function(quotesVar) {
+  rClr::clrCallStatic('RHost.FdkRealTime', 'QuoteRealTimeReceivingTime', quotesVar)
 }

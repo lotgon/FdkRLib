@@ -7,44 +7,22 @@ using SoftFX.Extended.Events;
 
 namespace RHost
 {
-	public class FdkRealTimeItem
-	{
-		public int Id { get; private set; }
-
-		public FdkRealTimeItem(string symbol, DateTime utcNow, int id)
-		{
-			Id = id;
-			Symbol = symbol;
-			TimeToMonitor = utcNow;
-			Events = new List<TickEventArgs>();
-		}
-
-		public string Symbol { get; set; }
-		public DateTime TimeToMonitor { get; set; }
-		public List<TickEventArgs> Events { get; set; }
-
-		public FdkRealTimeItem Clone() {
-			FdkRealTimeItem result = new FdkRealTimeItem(Symbol, TimeToMonitor, Id);
-			result.Events.AddRange(Events);
-			return result;
-		}
-	}
-
-	public static class FdkRealTime
+    public static class FdkRealTime
 	{
 		static readonly
-            List<FdkRealTimeItem> Events
-                = new List<FdkRealTimeItem>();
+            List<FdkRealTimeMonitor> Monitors
+                = new List<FdkRealTimeMonitor>();
 
 		private static int _eventCount;
-		public static double MonitorSymbol(string symbol)
+		public static double MonitorSymbol(string symbol, double levelDbl)
 		{
 			try
 			{
-				Events.Add(new FdkRealTimeItem(symbol, DateTime.UtcNow, _eventCount));
+                var level = (int)levelDbl;
+				Monitors.Add(new FdkRealTimeMonitor(symbol, level, DateTime.UtcNow, _eventCount));
 				double result = _eventCount;
 				_eventCount++;
-				StartMonitoringOfSymbolIfNotEnabled(symbol);
+				StartMonitoringOfSymbolIfNotEnabled(symbol, level);
 
 				return result;
 			}
@@ -60,7 +38,7 @@ namespace RHost
 		{
 			try
 			{
-				var quotes = GetQuotesById(id);
+				var quotes = BuildSnapshotFromMonitor(id);
 				var resultVarName = FdkVars.RegisterVariable(quotes, "rt_quotes_snapshot");
 				return resultVarName;
 			}
@@ -71,23 +49,23 @@ namespace RHost
 			}
 		}
 
-        static void StartMonitoringOfSymbolIfNotEnabled(string symbol)
+        static void StartMonitoringOfSymbolIfNotEnabled(string symbol, int level)
         {
 			if (IsMonitoringStarted)
 				return;
 			IsMonitoringStarted = true;
-            Feed.Server.SubscribeToQuotes(new[] { symbol }, 1);
+            Feed.Server.SubscribeToQuotes(new[] { symbol }, level);
 			Feed.Tick += OnTick;
 		}
 
 		static void OnTick(object sender, TickEventArgs e)
 		{
 			var tickSymbol = e.Tick.Symbol;
-			foreach (var evnt in Events)
+			foreach (var evnt in Monitors)
 			{
 				if (evnt.Symbol != tickSymbol)
 					continue;
-				evnt.Events.Add(e);
+				evnt.LastEventData = (e);
 			}
 		}
 
@@ -96,8 +74,8 @@ namespace RHost
 			try
 			{
 				var intIndex = (int)eventIndex;
-				Events.RemoveAll(ev => ev.Id == intIndex);
-				if(Events.Count == 0)
+				Monitors.RemoveAll(ev => ev.Id == intIndex);
+				if(Monitors.Count == 0)
 				{
 					Feed.Tick -= OnTick;
 					IsMonitoringStarted = false;
@@ -119,59 +97,62 @@ namespace RHost
 
         public static string[] SymbolsMonitored()
         {
-        	return Events.Select(evItem => evItem.Symbol).ToArray();
+        	return Monitors.Select(evItem => evItem.Symbol).ToArray();
         }
 
-        public static FdkRealTimeItem GetEventById(double eventIndex)
+        public static FdkRealTimeMonitor GetEventById(double eventIndex)
         {
             var intIndex = (int)eventIndex;
-            return Events.FirstOrDefault(ev => ev.Id == intIndex);
+            return Monitors.FirstOrDefault(ev => ev.Id == intIndex);
         }
 
         public static double[] EventIds()
         {
-        	return Events.Select(evItem => (double)evItem.Id).ToArray();
+        	return Monitors.Select(evItem => (double)evItem.Id).ToArray();
         }
         
-        static Quote[] GetQuotesById(double id)
+        static FdkRealTimeQuote[] BuildSnapshotFromMonitor(double id)
         {
             var eventData = GetEventById(id);
-            var quotes = eventData.Events.Select(evnt => evnt.Tick).ToArray();
+            var quotes = eventData.BuildSnapshot();
             return quotes;
         }
 
         public static string GetLocalQuoteSnapshot(double id)
         {
-            var quotes = GetQuotesById(id);
+            var quotes = BuildSnapshotFromMonitor(id);
            
             string result = FdkVars.RegisterVariable(quotes, "localSnapshot");
 
             return result;
         }
 
-        public static double[] QuoteArrayBid(string snapshotName)
+        public static double[] QuoteRealTimeBidPrice(string snapshotName)
         {
-            var quotes = FdkVars.GetValue<Quote[]>(snapshotName);
-            return FdkQuotes.QuoteArrayBid(quotes);
+			var quotes = FdkVars.GetValue<FdkRealTimeQuote[]>(snapshotName);
+			return quotes.SelectToArray(bid=>bid.BidPrice);
+        }
+		public static double[] QuoteRealTimeBidVolume(string snapshotName)
+		{
+			var quotes = FdkVars.GetValue<FdkRealTimeQuote[]>(snapshotName);
+			return quotes.SelectToArray(bid=>bid.BidVolume);
+		}
+		public static double[] QuoteRealTimeAskPrice(string snapshotName)
+		{
+			var quotes = FdkVars.GetValue<FdkRealTimeQuote[]>(snapshotName);
+			return quotes.SelectToArray(bid=>bid.AskPrice);
+		}
+		public static double[] QuoteRealTimeAskVolume(string snapshotName)
+		{
+			var quotes = FdkVars.GetValue<FdkRealTimeQuote[]>(snapshotName);
+			return quotes.SelectToArray(bid=>bid.AskVolume);
+		}
+        public static DateTime[] QuoteRealTimeReceivingTime(string snapshotName)
+        {
+            var quotes = FdkVars.GetValue<FdkRealTimeQuote[]>(snapshotName);
+            return quotes.SelectToArray(bid => bid.ReceivingTime);
         }
 
-        public static double[] QuoteArrayAsk(string snapshotName)
-        {
-            var quotes = FdkVars.GetValue<Quote[]>(snapshotName);
-            return FdkQuotes.QuoteArrayAsk(quotes);
-        }
-
-        public static DateTime[] QuoteArrayCreateTime(string snapshotName)
-        {
-            var quotes = FdkVars.GetValue<Quote[]>(snapshotName);
-            return FdkQuotes.QuoteArrayCreateTime(quotes);
-        }
-
-        public static double[] QuoteArraySpread(string snapshotName)
-        {
-            var quotes = FdkVars.GetValue<Quote[]>(snapshotName);
-            return FdkQuotes.QuoteArraySpread(quotes);
-        }
 
     }
 }

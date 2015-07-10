@@ -12,20 +12,20 @@ namespace TestRClrHost
         public void TestRealTimeQuotes()
         {
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
-            var eventId = FdkRealTime.MonitorSymbol("EURUSD");
+            var eventId = FdkRealTime.MonitorSymbol("EURUSD", 3);
 
 
             //5 seconds
             Thread.Sleep(new TimeSpan(0,0,15));
             var eventData = FdkRealTime.GetEventById(eventId);
 
-            Assert.AreNotEqual(0, eventData.Events.Count, "Some feed events should work");
+            Assert.AreNotEqual(0, eventData.LastEventData.Tick.Bids.Length, "Some feed events should work");
 
             var snapshot = FdkRealTime.SnapshotMonitoredSymbol(eventId);
-			var bid = FdkRealTime.QuoteArrayBid(snapshot);
-			var ask = FdkRealTime.QuoteArrayAsk(snapshot);
-			var createTime = FdkRealTime.QuoteArrayCreateTime(snapshot);
-			var spread = FdkRealTime.QuoteArraySpread(snapshot);
+			var bid = FdkRealTime.QuoteRealTimeAskPrice(snapshot);
+			var ask = FdkRealTime.QuoteRealTimeAskVolume(snapshot);
+            var createTime = FdkRealTime.QuoteRealTimeBidPrice(snapshot);
+            var spread = FdkRealTime.QuoteRealTimeBidVolume(snapshot);
             
 			FdkVars.Unregister (snapshot);
 

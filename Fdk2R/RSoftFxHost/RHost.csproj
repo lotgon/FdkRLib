@@ -91,6 +91,8 @@
     <Compile Include="FdkLevel2.cs" />
     <Compile Include="FdkQuotes.cs" />
     <Compile Include="FdkRealTime.cs" />
+    <Compile Include="RealTime\FdkRealTimeQuote.cs" />
+    <Compile Include="RealTime\FdkRealTimeMonitor.cs" />
     <Compile Include="FdkSessionInfo.cs" />
     <Compile Include="FdkSymbolInfo.cs" />
     <Compile Include="FdkTrade.cs" />
