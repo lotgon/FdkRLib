@@ -116,6 +116,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InternalBugs\TtJiraSteps.cs" />
     <Compile Include="TestAccountTradeRecords.cs" />
     <Compile Include="TestRealTimeData.cs" />
     <Compile Include="TestSymbolsData.cs" />

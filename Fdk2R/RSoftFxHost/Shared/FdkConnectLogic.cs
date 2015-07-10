@@ -36,7 +36,7 @@ namespace RHost.Shared
                 Username = username,
                 Password = password,
                 FixEventsFileName = string.Format("{0}.trade.events.log", username),
-                FixMessagesFileName = string.Format("{0}.trade.messages.log", username)
+                FixMessagesFileName = string.Format("{0}.trade.messages.log", username),
             };
             TradeWrapper = new FdkTradeWrapper();
             //this.Builder.ExcludeMessagesFromLogs = "W";
@@ -117,14 +117,14 @@ namespace RHost.Shared
 
             try
             {
-                Feed.Start();
+                var result = Feed.Start(Feed.SynchOperationTimeout);
+                return result;
             }
             catch (Exception ex)
             {
                 Log.Warn(ex);
                 throw;
             }
-            return true;
         }
 
         private void SetupTradeConnection(string logPath)

@@ -9,19 +9,19 @@ namespace TestRClrHost
     public class TestRealTimeData
     {
         [Test]
-        public void TestGetTradeRecords()
+        public void TestRealTimeQuotes()
         {
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
             var eventId = FdkRealTime.MonitorSymbol("EURUSD");
 
-			var snapshot = FdkRealTime.SnapshotMonitoredSymbol (eventId);
 
             //5 seconds
             Thread.Sleep(new TimeSpan(0,0,15));
             var eventData = FdkRealTime.GetEventById(eventId);
 
             Assert.AreNotEqual(0, eventData.Events.Count, "Some feed events should work");
-            
+
+            var snapshot = FdkRealTime.SnapshotMonitoredSymbol(eventId);
 			var bid = FdkRealTime.QuoteArrayBid(snapshot);
 			var ask = FdkRealTime.QuoteArrayAsk(snapshot);
 			var createTime = FdkRealTime.QuoteArrayCreateTime(snapshot);
@@ -31,10 +31,10 @@ namespace TestRClrHost
 
 			FdkRealTime.RemoveEvent (eventId);
 
-            Assert.AreEqual(eventData.Events.Count, bid.Length);
-            Assert.AreEqual(eventData.Events.Count, ask.Length);
-            Assert.AreEqual(eventData.Events.Count, createTime.Length);
-            Assert.AreEqual(eventData.Events.Count, spread.Length);
+            var bidLength = bid.Length;
+            Assert.AreEqual(bidLength, ask.Length);
+            Assert.AreEqual(bidLength, createTime.Length);
+            Assert.AreEqual(bidLength, spread.Length);
 
 			FdkHelper.Disconnect();
         }

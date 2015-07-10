@@ -53,17 +53,5 @@ namespace TestRClrHost
             FdkHelper.Disconnect();
         }
 
-		[Test]
-		public void TestRangeWithInvalidInput()
-		{
-			Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.st.soft-fx.eu", "100064", "123qwe!", ""));
-
-            var prevNow = new DateTime(2015, 7, 7, 18, 30, 00);
-            var now = new DateTime(2015, 7, 7, 19, 00, 00);
-			FdkBarPairs.ComputeGetPairBars ("#SPX", "M30", prevNow, now, 10000);
-
-			//RHost.FdkBarPairs
-				
-		}
     }
 }

@@ -44,7 +44,7 @@ namespace RHost
 				Events.Add(new FdkRealTimeItem(symbol, DateTime.UtcNow, _eventCount));
 				double result = _eventCount;
 				_eventCount++;
-				StartMonitoringOfSymbolIfNotEnabled();
+				StartMonitoringOfSymbolIfNotEnabled(symbol);
 
 				return result;
 			}
@@ -71,11 +71,12 @@ namespace RHost
 			}
 		}
 
-        static void StartMonitoringOfSymbolIfNotEnabled()
-		{
+        static void StartMonitoringOfSymbolIfNotEnabled(string symbol)
+        {
 			if (IsMonitoringStarted)
 				return;
 			IsMonitoringStarted = true;
+            Feed.Server.SubscribeToQuotes(new[] { symbol }, 1);
 			Feed.Tick += OnTick;
 		}
 

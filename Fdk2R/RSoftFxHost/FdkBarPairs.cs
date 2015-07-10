@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using NLog;
 using SoftFX.Extended;
+using System.Diagnostics;
 
 namespace RHost
 {
@@ -18,7 +19,8 @@ namespace RHost
 		/// <returns></returns>
         public static string ComputeGetPairBars(string symbol, string barPeriodStr, DateTime startTime, DateTime endTime, double barCountDbl)
 		{
-			try {
+			try 
+			{
 				var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
 				if (barPeriod == null)
 					return String.Empty;
@@ -41,12 +43,10 @@ namespace RHost
                 Log.Error(ex);
 				throw;
 			}
-            
         }
 
-
         static readonly Logger Log = LogManager.GetCurrentClassLogger();
-        private static PairBar[] GetPairBarsSymbolArray(string symbol, BarPeriod period, DateTime startTime, int barsNumber)
+        static PairBar[] GetPairBarsSymbolArray(string symbol, BarPeriod period, DateTime startTime, int barsNumber)
         {
             return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetPairBars(symbol, period, startTime, barsNumber).ToArray();
         }
