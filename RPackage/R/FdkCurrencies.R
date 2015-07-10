@@ -11,7 +11,7 @@ ttGetCurrencyData <- function(){
   
   UnregisterVar(symInfo)
   
-  data.frame(currency, description, precision, sortOrder)
+  data.table(currency, description, precision, sortOrder)
 }
 #' Get symbol field
 GetCurrencyInfos <- function() {

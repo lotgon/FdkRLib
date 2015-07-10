@@ -84,7 +84,7 @@ namespace TestRClrHost
         public void TestLevel2()
         {
             //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
-            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", @"c:\FdkCaches\Cache1"));
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", @"c:\FdkCaches\Cache3"));
             var time = DateTime.Now;
             var prevHour = time.AddDays(-1);
 

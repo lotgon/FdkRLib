@@ -15,8 +15,8 @@ ttSessionInfo <- function(){
   status = Status(varName)
   
   UnregisterVar(varName)
-  df = data.frame(platformCompany, platformName, tradingSessionId, 
-	closeTime, endTime, openTime, startTime,
+  df = data.table(platformCompany, platformName, tradingSessionId, 
+	startTime, endTime, openTime, closeTime, 
 	serverTimeZoneOffset, status)      
 }
 

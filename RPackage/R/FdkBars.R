@@ -30,7 +30,7 @@ getBarsFrame <- function(symbolBars){
   from <- BarFroms(symbolBars)
   to <- BarTos(symbolBars)
   UnregisterVar(symbolBars)
-  data.frame(high, low, open, close, volume, from, to)
+  data.table(high, low, open, close, volume, from, to)
 }
 
 

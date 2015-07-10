@@ -2,7 +2,7 @@
 # Connect to server before running the sample
 # ttConnect()
 ttConnect()
-bars = ttGetBars("EURUSD", "Bid", "H1")
+bars = ttBarsHistory("EURUSD", "Bid", "H1")
 
 boxplot(bars$highs)
 
@@ -17,6 +17,6 @@ et1 <- as.POSIXct(endTime)
 quotes <- ttQuotes("EURUSD", st1, et1, 1)
 plot(quotes$ask, type="o")
 
-bars = ttBars(symbol = "EURUSD", barPeriodStr = "M15", priceTypeStr = "Ask", barCount = 100000000)
+bars = ttBarsHistory(symbol = "EURUSD", barPeriodStr = "M15", priceTypeStr = "Ask", barCount = 100000000)
 
-barRange = ttBars(symbol = "EURUSD", barPeriodStr = "M1", priceTypeStr = "Ask", startTime = startTime)
+barRange = ttBarsHistory(symbol = "EURUSD", barPeriodStr = "M1", priceTypeStr = "Ask", startTime = startTime)

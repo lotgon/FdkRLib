@@ -73,7 +73,7 @@ GetTradeReportDataFrame <- function(symInfo)
   
   UnregisterVar(symInfo)
   
-  data.frame(AgentCommission, ClientId, CloseConversionRate, InitialVolume, Comment, Commission,
+  data.table(AgentCommission, ClientId, CloseConversionRate, InitialVolume, Comment, Commission,
 	Id, LeavesQuantity, OpenConversionRate, OrderCreated, OrderFillPrice, OrderLastFillAmount, OrderModified,
 	PosOpenPrice, PositionClosePrice, PositionCloseRequestedPrice, PositionClosed,
 	PositionLastQuantity, PositionLeavesQuantity, PositionModified, PositionOpened, PositionQuantity,

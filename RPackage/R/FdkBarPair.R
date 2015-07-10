@@ -36,7 +36,7 @@ getBarPairFrame <- function (bars){
   to = GetBarsAskTo(bars)
   
   UnregisterVar(bars)
-  data.frame(askHigh, askLow, askopen, askClose, askVolume, 
+  data.table(askHigh, askLow, askopen, askClose, askVolume, 
              bidHigh, bidLow, bidOpen, bidClose, bidVolume, 
              from, to)
 }

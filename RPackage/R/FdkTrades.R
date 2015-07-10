@@ -29,7 +29,7 @@ ttTrades <- function(tradeSide = '', tradeType = ''){
   
   UnregisterVar(symInfo)
   
-  data.frame(agentComission, tradeClientOrderId, tradeComment, created,
+  data.table(agentComission, tradeClientOrderId, tradeComment, created,
 	 expiration, initialVolume, isLimitOrder, isPendingOrder,
    isPosition, isStopOrder, modified, orderId, price, profit, 
    side, stopLoss, swap, takeProfit, type, volume)

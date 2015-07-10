@@ -18,7 +18,7 @@ ttQuotesLevel2History <- function(symbol,startTime, endTime, depth = 2){
   level <- QuotesLevel(quotesHistory)
   
   UnregisterVar(quotesHistory)
-  df = data.frame(volumeBid=volumeBid, volumeAsk=volumeAsk, 
+  df = data.table(volumeBid=volumeBid, volumeAsk=volumeAsk, 
          priceBid=priceBid, priceAsk=priceAsk, createTime=createTime,
          quoteIndex=index, level=level)
 }
