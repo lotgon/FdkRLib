@@ -2,7 +2,8 @@
 #' 
 #' @export 
 ttInit <- function() {
-  library(rClr)
+  require(rClr)
+  require(data.table)
   
   fileName <-system.file("data","RHost.dll", package="FdkRLib")
   clrLoadAssembly(fileName)
