@@ -98,6 +98,7 @@ require(rClr)</code></pre>
 <pre class="r"><code>require(FdkRLib)</code></pre>
 <pre><code>## Loading required package: FdkRLib</code></pre>
 <pre class="r"><code>ttConnect(&quot;&quot;, &quot;&quot;, &quot;&quot;)</code></pre>
+<pre><code>## Loading required package: data.table</code></pre>
 <pre><code>## [1] 0</code></pre>
 </div>
 <div id="configuration" class="section level1">
@@ -107,120 +108,341 @@ require(rClr)</code></pre>
 <pre><code>## NULL</code></pre>
 <pre class="r"><code>ttConnect(&quot;&quot;, &quot;&quot;, &quot;&quot;)</code></pre>
 <pre><code>## [1] 0</code></pre>
-<pre class="r"><code>head(ttGetSymbolData())</code></pre>
-<pre><code>##   comission contractMultiplier currency limitsComission maxTradeVolume
-## 1     0.005              1e+05      EUR           0.005          1e+08
-## 2     0.005              1e+05      EUR           0.005          1e+08
-## 3     0.005              1e+05      USD           0.005          1e+08
-## 4     0.005              1e+05      USD           0.005          1e+08
-## 5     0.005              1e+05      EUR           0.005          1e+08
-## 6     0.005              1e+03      CAD           0.005          1e+08
-##   minTradeVolume   name precision roundLog settlementCurrency swapSizeLong
-## 1           1000 EURUSD         5    1e+05                USD     -1.96000
-## 2           1000 EURAUD         5    1e+05                AUD    -13.84416
-## 3           1000 USDCAD         5    1e+05                CAD     -3.81481
-## 4           1000 USDCHF         5    1e+05                CHF      0.98148
-## 5           1000 EURCAD         5    1e+05                CAD     -6.02469
-## 6           1000 CADJPY         3    1e+05                JPY      0.79012
-##   swapSizeShort
-## 1       0.27000
-## 2       3.97403
-## 3       0.83951
-## 4      -3.88889
-## 5       1.53086
-## 6      -3.43210</code></pre>
-<pre class="r"><code>head(ttGetCurrencyData())</code></pre>
-<pre><code>##   currency description precision sortOrder
-## 1      ASX                     5        25
-## 2      AUD                     5         1
-## 3      CAC                     5        26
-## 4      CAD                     5         2
-## 5      CHF                     5         3
-## 6      CNH                     5         4</code></pre>
+<pre class="r"><code>ttGetSymbolData()</code></pre>
+<pre><code>##        name precision contractSize contractMultiplier comission
+##  1:  EURUSD         5       100000              1e+05     0.005
+##  2:  EURAUD         5       100000              1e+05     0.005
+##  3:  USDCAD         5       100000              1e+05     0.005
+##  4:  USDCHF         5       100000              1e+05     0.005
+##  5:  EURCAD         5       100000              1e+05     0.005
+##  6:  CADJPY         3       100000              1e+03     0.005
+##  7:  EURJPY         3       100000              1e+03     0.005
+##  8:  GBPJPY         3       100000              1e+03     0.005
+##  9:  USDSEK         5       100000              1e+05     0.005
+## 10:  USDNOK         5       100000              1e+05     0.005
+## 11:  AUDUSD         5       100000              1e+05     0.005
+## 12:  CHFJPY         3       100000              1e+03     0.005
+## 13:  GBPCHF         5       100000              1e+05     0.005
+## 14:  NZDUSD         5       100000              1e+05     0.005
+## 15:  AUDNZD         5       100000              1e+05     0.005
+## 16:  EURCHF         5       100000              1e+05     0.005
+## 17:  GBPUSD         5       100000              1e+05     0.005
+## 18:  USDJPY         3       100000              1e+03     0.005
+## 19:  AUDJPY         3       100000              1e+03     0.005
+## 20:  EURGBP         5       100000              1e+05     0.005
+## 21:  EURNOK         5       100000              1e+05     0.005
+## 22:  EURSEK         5       100000              1e+05     0.005
+## 23:  AUDCHF         5       100000              1e+05     0.005
+## 24:  CADCHF         5       100000              1e+05     0.005
+## 25:  GBPAUD         5       100000              1e+05     0.005
+## 26:  GBPCAD         5       100000              1e+05     0.005
+## 27:  GBPNZD         5       100000              1e+05     0.005
+## 28:  NZDCAD         5       100000              1e+05     0.005
+## 29:  NZDCHF         5       100000              1e+05     0.005
+## 30:  NZDJPY         3       100000              1e+03     0.005
+## 31:  EURNZD         5       100000              1e+05     0.005
+## 32:  AUDCAD         5       100000              1e+05     0.005
+## 33:  USDRUB         4       100000              1e+04     0.005
+## 34:  SGDJPY         3       100000              1e+03     0.005
+## 35:  EURDKK         5       100000              1e+05     0.005
+## 36:  USDTRY         5       100000              1e+05     0.005
+## 37:  USDHKD         5       100000              1e+05     0.005
+## 38:  EURTRY         5       100000              1e+05     0.005
+## 39:  USDSGD         5       100000              1e+05     0.005
+## 40:  USDPLN         5       100000              1e+05     0.005
+## 41:  HKDJPY         3       100000              1e+03     0.005
+## 42:  GBPSGD         5       100000              1e+05     0.005
+## 43:  NOKJPY         3       100000              1e+03     0.005
+## 44:  EURPLN         5       100000              1e+05     0.005
+## 45:  NZDSGD         5       100000              1e+05     0.005
+## 46:  NOKSEK         5       100000              1e+05     0.005
+## 47:  EURHKD         5       100000              1e+05     0.005
+## 48:  USDMXN         5       100000              1e+05     0.005
+## 49:  USDDKK         5       100000              1e+05     0.005
+## 50:  USDCNH         4       100000              1e+04     0.005
+## 51: #AUS200         1           10              1e+01     0.005
+## 52:   #FCHI         1           10              1e+01     0.005
+## 53:  #GDAXI         1           25              1e+01     0.005
+## 54: #GDAXIm         1           10              1e+01     0.005
+## 55:  #UK100         1           10              1e+01     0.005
+## 56:   #J225         0         1000              1e+00     0.005
+## 57:    #NDX         1          100              1e+01     0.005
+## 58:    #SPX         1          250              1e+01     0.005
+## 59:   #SPXm         1          100              1e+01     0.005
+## 60:   #WS30         0           10              1e+00     0.005
+## 61:  XBRUSD         2         1000              1e+02     0.005
+## 62:  XTIUSD         2         1000              1e+02     0.005
+## 63:  XNGUSD         3        10000              1e+03     0.005
+## 64:  #ESX50         1           10              1e+01     0.005
+## 65:  XAUUSD         2          100              1e+02     0.005
+## 66:  XAGUSD         3         5000              1e+03     0.005
+## 67:   #NDXm         1           10              1e+01     0.005
+## 68:  #WS30m         0            1              1e+00     0.005
+##        name precision contractSize contractMultiplier comission
+##     marginCurrency profitCurrency limitsComission minTradeVolume
+##  1:            EUR            USD           0.005         1000.0
+##  2:            EUR            AUD           0.005         1000.0
+##  3:            USD            CAD           0.005         1000.0
+##  4:            USD            CHF           0.005         1000.0
+##  5:            EUR            CAD           0.005         1000.0
+##  6:            CAD            JPY           0.005         1000.0
+##  7:            EUR            JPY           0.005         1000.0
+##  8:            GBP            JPY           0.005         1000.0
+##  9:            USD            SEK           0.005         1000.0
+## 10:            USD            NOK           0.005         1000.0
+## 11:            AUD            USD           0.005         1000.0
+## 12:            CHF            JPY           0.005         1000.0
+## 13:            GBP            CHF           0.005         1000.0
+## 14:            NZD            USD           0.005         1000.0
+## 15:            AUD            NZD           0.005         1000.0
+## 16:            EUR            CHF           0.005         1000.0
+## 17:            GBP            USD           0.005         1000.0
+## 18:            USD            JPY           0.005         1000.0
+## 19:            AUD            JPY           0.005         1000.0
+## 20:            EUR            GBP           0.005         1000.0
+## 21:            EUR            NOK           0.005         1000.0
+## 22:            EUR            SEK           0.005         1000.0
+## 23:            AUD            CHF           0.005         1000.0
+## 24:            CAD            CHF           0.005         1000.0
+## 25:            GBP            AUD           0.005         1000.0
+## 26:            GBP            CAD           0.005         1000.0
+## 27:            GBP            NZD           0.005         1000.0
+## 28:            NZD            CAD           0.005         1000.0
+## 29:            NZD            CHF           0.005         1000.0
+## 30:            NZD            JPY           0.005         1000.0
+## 31:            EUR            NZD           0.005         1000.0
+## 32:            AUD            CAD           0.005         1000.0
+## 33:            USD            RUB           0.005         1000.0
+## 34:            SGD            JPY           0.005         1000.0
+## 35:            EUR            DKK           0.005         1000.0
+## 36:            USD            TRY           0.005         1000.0
+## 37:            USD            HKD           0.005         1000.0
+## 38:            EUR            TRY           0.005         1000.0
+## 39:            USD            SGD           0.005         1000.0
+## 40:            USD            PLN           0.005         1000.0
+## 41:            HKD            JPY           0.005         1000.0
+## 42:            GBP            SGD           0.005         1000.0
+## 43:            NOK            JPY           0.005         1000.0
+## 44:            EUR            PLN           0.005         1000.0
+## 45:            NZD            SGD           0.005         1000.0
+## 46:            NOK            SEK           0.005         1000.0
+## 47:            EUR            HKD           0.005         1000.0
+## 48:            USD            MXN           0.005         1000.0
+## 49:            USD            DKK           0.005         1000.0
+## 50:            USD            CNH           0.005         1000.0
+## 51:            ASX            AUD           0.005            1.0
+## 52:            CAC            EUR           0.005            1.0
+## 53:            DAX            EUR           0.005            2.5
+## 54:            DA1            EUR           0.005            1.0
+## 55:            UKX            GBP           0.005            1.0
+## 56:            NKY            JPY           0.005          100.0
+## 57:            NDX            USD           0.005           10.0
+## 58:            SPX            USD           0.005           25.0
+## 59:            SP1            USD           0.005           10.0
+## 60:            DJI            USD           0.005            1.0
+## 61:            XBR            USD           0.005           10.0
+## 62:            XTI            USD           0.005           10.0
+## 63:            XNG            USD           0.005         1000.0
+## 64:            ESX            EUR           0.005            1.0
+## 65:            XAU            USD           0.005            1.0
+## 66:            XAG            USD           0.005           50.0
+## 67:            ND1            USD           0.005            1.0
+## 68:            DJ1            USD           0.005            0.1
+##     marginCurrency profitCurrency limitsComission minTradeVolume
+##     maxTradeVolume   swapLong swapShort
+##  1:        1.0e+08   -1.96000   0.27000
+##  2:        1.0e+08  -13.84416   3.97403
+##  3:        1.0e+08   -3.81481   0.83951
+##  4:        1.0e+08    0.98148  -3.88889
+##  5:        1.0e+08   -6.02469   1.53086
+##  6:        1.0e+08    0.79012  -3.43210
+##  7:        1.0e+08   -1.97531   0.18519
+##  8:        1.0e+08    0.81481  -4.41975
+##  9:        1.0e+08    3.41667 -18.83333
+## 10:        1.0e+08  -45.69231  11.76923
+## 11:        1.0e+08    1.78000  -6.36000
+## 12:        1.0e+08   -5.17284   1.25926
+## 13:        1.0e+08    2.24074  -8.17593
+## 14:        1.0e+08    2.61000  -9.33000
+## 15:        1.0e+08   -6.57143   1.28571
+## 16:        1.0e+08    0.67593  -3.09259
+## 17:        1.0e+08    0.50000  -3.09000
+## 18:        1.0e+08   -0.24691  -1.03704
+## 19:        1.0e+08    2.29630  -8.17284
+## 20:        1.0e+08   -2.32692   0.52564
+## 21:        1.0e+08  -62.07692  16.84615
+## 22:        1.0e+08    0.00000  -9.66667
+## 23:        1.0e+08    2.52780  -8.54630
+## 24:        1.0e+08    1.44444  -5.09259
+## 25:        1.0e+08  -13.67532   3.66234
+## 26:        1.0e+08   -3.11111   0.38272
+## 27:        1.0e+08  -26.48571   7.22857
+## 28:        1.0e+08    2.48148  -9.29630
+## 29:        1.0e+08    3.21296 -11.02778
+## 30:        1.0e+08    3.32099 -11.80247
+## 31:        1.0e+08  -23.50000   6.68571
+## 32:        1.0e+08    1.37040  -5.38270
+## 33:        1.0e+08 -305.33330  93.94444
+## 34:        1.0e+08   -0.40741  -0.54321
+## 35:        1.0e+08    9.66667 -36.66667
+## 36:        1.0e+08 -124.78380  39.16216
+## 37:        1.0e+08   -2.00000  -6.00000
+## 38:        1.0e+08 -144.45950  45.40541
+## 39:        1.0e+08   -0.36486  -1.02703
+## 40:        1.0e+08  -22.88889   5.66667
+## 41:        1.0e+08   -0.07407  -0.09877
+## 42:        1.0e+08    0.83784  -4.67568
+## 43:        1.0e+08    0.25926  -1.00000
+## 44:        1.0e+08  -30.88889   8.11111
+## 45:        1.0e+08    3.60811 -12.85135
+## 46:        1.0e+08    2.33333  -8.25000
+## 47:        1.0e+08  -12.92308   1.38462
+## 48:        1.0e+08 -205.66670  56.50000
+## 49:        1.0e+08   11.33333 -40.80000
+## 50:        1.0e+08   -6.32298   2.27950
+## 51:        1.0e+04   -5.01000   1.63000
+## 52:        1.0e+04   -1.46000   0.00000
+## 53:        2.5e+04   -8.44000   0.00000
+## 54:        1.0e+04   -3.37000   0.00000
+## 55:        1.0e+04   -3.04000   1.00000
+## 56:        1.0e+06   -5.13000   0.32000
+## 57:        1.0e+05  -15.35000   2.25000
+## 58:        2.5e+05  -18.13000   2.65000
+## 59:        1.0e+05   -7.25000   1.06000
+## 60:        1.0e+04   -6.24000   0.91000
+## 61:        1.0e+06   -4.03000   1.27000
+## 62:        1.0e+06   -3.61000   0.20000
+## 63:        1.0e+07   -0.20000   0.07000
+## 64:        1.0e+04   -1.05000   0.00000
+## 65:        1.0e+05   -0.79000  -0.83000
+## 66:        5.0e+06   -0.42400   0.06800
+## 67:        1.0e+04  -15.35000   2.25000
+## 68:        1.0e+03   -6.24000   0.91000
+##     maxTradeVolume   swapLong swapShort</code></pre>
+<pre class="r"><code>ttGetCurrencyData()</code></pre>
+<pre><code>##     currency description precision sortOrder
+##  1:      ASX                     5        25
+##  2:      AUD                     5         5
+##  3:      CAC                     5        26
+##  4:      CAD                     5         6
+##  5:      CHF                     5         7
+##  6:      CNH                     5         8
+##  7:      DA1                     5        28
+##  8:      DAX                     5        27
+##  9:      DJ1                     5        37
+## 10:      DJI                     5        36
+## 11:      DKK                     5         9
+## 12:      ESX                     5        29
+## 13:      EUR                     5         2
+## 14:      GBP                     5         3
+## 15:      HKD                     5        10
+## 16:      JPY                     5         4
+## 17:      MXN                     5        11
+## 18:      ND1                     5        33
+## 19:      NDX                     5        32
+## 20:      NKY                     5        31
+## 21:      NOK                     5        12
+## 22:      NZD                     5        13
+## 23:      PLN                     5        14
+## 24:      RUB                     5        15
+## 25:      SEK                     5        16
+## 26:      SGD                     5        17
+## 27:      SP1                     5        35
+## 28:      SPX                     5        34
+## 29:      TRY                     5        18
+## 30:      UKX                     5        30
+## 31:      USD                     5         1
+## 32:      XAG                     5        19
+## 33:      XAU                     5        20
+## 34:      XBR                     5        38
+## 35:      XNG                     5        40
+## 36:      XTI                     5        39
+##     currency description precision sortOrder</code></pre>
 </div>
 <div id="feed-history" class="section level1">
 <h1>3. Feed history</h1>
 <p>
 Get 10000 bars of EURUSD symbol:
 </p>
-<p>head(ttBars(“EURUSD”))</p>
-<pre class="r"><code>head(ttBars(&quot;EURUSD&quot;))</code></pre>
-<pre><code>##      high     low    open   close volume                from
-## 1 1.30601 1.30568 1.30591 1.30597    936 2012-05-07 21:00:00
-## 2 1.30600 1.30560 1.30596 1.30570    560 2012-05-07 21:01:00
-## 3 1.30573 1.30534 1.30570 1.30554    583 2012-05-07 21:02:00
-## 4 1.30560 1.30546 1.30554 1.30546    204 2012-05-07 21:03:00
-## 5 1.30551 1.30546 1.30546 1.30550    124 2012-05-07 21:04:00
-## 6 1.30572 1.30548 1.30550 1.30563    338 2012-05-07 21:05:00
-##                    to
-## 1 2012-05-07 21:01:00
-## 2 2012-05-07 21:02:00
-## 3 2012-05-07 21:03:00
-## 4 2012-05-07 21:04:00
-## 5 2012-05-07 21:05:00
-## 6 2012-05-07 21:06:00</code></pre>
+<p>head(ttBarsHistory(“EURUSD”))</p>
+<pre class="r"><code>ttBarsHistory(&quot;EURUSD&quot;)</code></pre>
+<pre><code>##             high     low    open   close    volume                from
+##       1: 1.30601 1.30568 1.30591 1.30597       936 2012-05-07 21:00:00
+##       2: 1.30600 1.30560 1.30596 1.30570       560 2012-05-07 21:01:00
+##       3: 1.30573 1.30534 1.30570 1.30554       583 2012-05-07 21:02:00
+##       4: 1.30560 1.30546 1.30554 1.30546       204 2012-05-07 21:03:00
+##       5: 1.30551 1.30546 1.30546 1.30550       124 2012-05-07 21:04:00
+##      ---                                                              
+## 1109294: 1.11726 1.11705 1.11717 1.11724 574500000 2015-07-10 12:05:00
+## 1109295: 1.11724 1.11685 1.11724 1.11692 362000000 2015-07-10 12:06:00
+## 1109296: 1.11693 1.11663 1.11692 1.11665 390900000 2015-07-10 12:07:00
+## 1109297: 1.11676 1.11642 1.11665 1.11644 395900000 2015-07-10 12:08:00
+## 1109298: 1.11658 1.11641 1.11644 1.11645 273400000 2015-07-10 12:09:00
+##                           to
+##       1: 2012-05-07 21:01:00
+##       2: 2012-05-07 21:02:00
+##       3: 2012-05-07 21:03:00
+##       4: 2012-05-07 21:04:00
+##       5: 2012-05-07 21:05:00
+##      ---                    
+## 1109294: 2015-07-10 12:06:00
+## 1109295: 2015-07-10 12:07:00
+## 1109296: 2015-07-10 12:08:00
+## 1109297: 2015-07-10 12:09:00
+## 1109298: 2015-07-10 12:10:00</code></pre>
 <p>
-Get 10000 bar pairs of EURUSD symbol:
+Get 10000 bar quotes of EURUSD symbol:
 </p>
-<p>bars = ttBarsQuotes(“EURUSD”)</p>
-<pre class="r"><code>head(ttBarsQuotes(&quot;EURUSD&quot;))</code></pre>
-<pre><code>##   askHigh  askLow askopen askClose askVolume bidHigh  bidLow bidOpen
-## 1 1.30602 1.30573 1.30593  1.30599       936 1.30601 1.30568 1.30591
-## 2 1.30603 1.30566 1.30598  1.30575       560 1.30600 1.30560 1.30596
-## 3 1.30578 1.30540 1.30575  1.30558       583 1.30573 1.30534 1.30570
-## 4 1.30565 1.30550 1.30558  1.30550       204 1.30560 1.30546 1.30554
-## 5 1.30556 1.30550 1.30550  1.30555       124 1.30551 1.30546 1.30546
-## 6 1.30574 1.30554 1.30555  1.30567       338 1.30572 1.30548 1.30550
-##   bidClose bidVolume                from                  to
-## 1  1.30597       936 2012-05-07 21:01:00 2012-05-07 21:01:00
-## 2  1.30570       560 2012-05-07 21:02:00 2012-05-07 21:02:00
-## 3  1.30554       583 2012-05-07 21:03:00 2012-05-07 21:03:00
-## 4  1.30546       204 2012-05-07 21:04:00 2012-05-07 21:04:00
-## 5  1.30550       124 2012-05-07 21:05:00 2012-05-07 21:05:00
-## 6  1.30563       338 2012-05-07 21:06:00 2012-05-07 21:06:00</code></pre>
+<p>bars = ttBarsQuotesHistory(“EURUSD”)</p>
+<pre class="r"><code>ttBarsQuotesHistory(&quot;EURUSD&quot;)</code></pre>
+<pre><code>##          askHigh  askLow askopen askClose askVolume bidHigh  bidLow
+##       1: 1.30602 1.30573 1.30593  1.30599       936 1.30601 1.30568
+##       2: 1.30603 1.30566 1.30598  1.30575       560 1.30600 1.30560
+##       3: 1.30578 1.30540 1.30575  1.30558       583 1.30573 1.30534
+##       4: 1.30565 1.30550 1.30558  1.30550       204 1.30560 1.30546
+##       5: 1.30556 1.30550 1.30550  1.30555       124 1.30551 1.30546
+##      ---                                                           
+## 1109294: 1.11729 1.11708 1.11721  1.11727 522900000 1.11726 1.11705
+## 1109295: 1.11727 1.11688 1.11727  1.11694 632684000 1.11724 1.11685
+## 1109296: 1.11695 1.11666 1.11694  1.11668 502000000 1.11693 1.11663
+## 1109297: 1.11678 1.11644 1.11668  1.11648 650032000 1.11676 1.11642
+## 1109298: 1.11662 1.11642 1.11648  1.11645 463800000 1.11658 1.11641
+##          bidOpen bidClose bidVolume                from
+##       1: 1.30591  1.30597       936 2012-05-07 21:01:00
+##       2: 1.30596  1.30570       560 2012-05-07 21:02:00
+##       3: 1.30570  1.30554       583 2012-05-07 21:03:00
+##       4: 1.30554  1.30546       204 2012-05-07 21:04:00
+##       5: 1.30546  1.30550       124 2012-05-07 21:05:00
+##      ---                                               
+## 1109294: 1.11717  1.11724 574500000 2015-07-10 12:06:00
+## 1109295: 1.11724  1.11692 362000000 2015-07-10 12:07:00
+## 1109296: 1.11692  1.11665 390900000 2015-07-10 12:08:00
+## 1109297: 1.11665  1.11644 395900000 2015-07-10 12:09:00
+## 1109298: 1.11644  1.11641 352800000 2015-07-10 12:10:00
+##                           to
+##       1: 2012-05-07 21:01:00
+##       2: 2012-05-07 21:02:00
+##       3: 2012-05-07 21:03:00
+##       4: 2012-05-07 21:04:00
+##       5: 2012-05-07 21:05:00
+##      ---                    
+## 1109294: 2015-07-10 12:06:00
+## 1109295: 2015-07-10 12:07:00
+## 1109296: 2015-07-10 12:08:00
+## 1109297: 2015-07-10 12:09:00
+## 1109298: 2015-07-10 12:10:00</code></pre>
 <p>Get quotes</p>
 <pre class="r"><code>now &lt;-as.POSIXct(Sys.time())
 # 300 seconds from present
 prevNow &lt;-as.POSIXct(now-(300))
 
-head(ttQuotes(&quot;EURUSD&quot;, startTime = prevNow, endTime=now))</code></pre>
-<pre><code>##       ask     bid          createTime
-## 1 1.10887 1.10883 2015-07-09 04:08:23
-## 2 1.10886 1.10883 2015-07-09 04:08:23
-## 3 1.10884 1.10882 2015-07-09 04:08:23
-## 4 1.10884 1.10882 2015-07-09 04:08:23
-## 5 1.10884 1.10881 2015-07-09 04:08:23
-## 6 1.10883 1.10880 2015-07-09 04:08:23</code></pre>
+ttQuotesHistory(&quot;EURUSD&quot;, startTime = prevNow, endTime=now)</code></pre>
 <p>Get quotes L2</p>
-<pre class="r"><code>head(ttTrades())</code></pre>
-<pre><code>##  [1] agentComission     tradeClientOrderId tradeComment      
-##  [4] created            expiration         initialVolume     
-##  [7] isLimitOrder       isPendingOrder     isPosition        
-## [10] isStopOrder        modified           orderId           
-## [13] price              profit             side              
-## [16] stopLoss           swap               takeProfit        
-## [19] type               volume            
-## &lt;0 rows&gt; (or 0-length row.names)</code></pre>
 <pre class="r"><code>now &lt;-as.POSIXct(Sys.time())
 # 1000 seconds from present
 prevNow &lt;-as.POSIXct(now-1000)
 
-qt2= ttQuotesLevel2('EURUSD', prevNow, now)
-head(qt2)</code></pre>
-<pre><code>##   volumeBid volumeAsk priceBid priceAsk          createTime   quoteIndex
-## 1   1000000     1e+06  1.11011  1.11016 2015-07-09 03:56:46 1.436425e+12
-## 2   5410000     2e+06  1.11010  1.11017 2015-07-09 03:56:46 1.436425e+12
-## 3   1000000     1e+06  1.11011  1.11016 2015-07-09 03:56:47 1.436425e+12
-## 4   6410000     2e+06  1.11010  1.11017 2015-07-09 03:56:47 1.436425e+12
-## 5   1000000     1e+06  1.11011  1.11016 2015-07-09 03:56:47 1.436425e+12
-## 6   6410000     2e+06  1.11010  1.11017 2015-07-09 03:56:47 1.436425e+12
-##   level
-## 1     1
-## 2     2
-## 3     1
-## 4     2
-## 5     1
-## 6     2</code></pre>
+ttQuotesLevel2History('EURUSD', prevNow, now)</code></pre>
 </div>
 <div id="tradestrade-reports" class="section level1">
 <h1>4. Trades/Trade Reports</h1>
@@ -228,104 +450,15 @@ head(qt2)</code></pre>
 <pre class="r"><code>now &lt;-as.POSIXct(Sys.time())
 #120 hours = 5 x 24 x 3600 seconds before now
 prevNow &lt;-as.POSIXct(now-(5 * 24*3600))
-
-
-head(ttTradeRecords(prevNow, now))</code></pre>
-<pre><code>##  [1] AgentCommission             ClientId                   
-##  [3] CloseConversionRate         InitialVolume              
-##  [5] Comment                     Commission                 
-##  [7] Id                          LeavesQuantity             
-##  [9] OpenConversionRate          OrderCreated               
-## [11] OrderFillPrice              OrderLastFillAmount        
-## [13] OrderModified               PosOpenPrice               
-## [15] PositionClosePrice          PositionCloseRequestedPrice
-## [17] PositionClosed              PositionLastQuantity       
-## [19] PositionLeavesQuantity      PositionModified           
-## [21] PositionOpened              PositionQuantity           
-## [23] Price                       Quantity                   
-## [25] StopLoss                    Swap                       
-## [27] Symbol                      TakeProfit                 
-## [29] TradeRecordSide             TradeRecordType            
-## [31] TradeTransactionReason      TradeTransactionReportType 
-## [33] TransactionAmount           TransactionCurrency        
-## [35] TransactionTime            
-## &lt;0 rows&gt; (or 0-length row.names)</code></pre>
+ttTradeRecords(prevNow, now)</code></pre>
+<pre><code>## Empty data.table (0 rows) of 35 cols: AgentCommission,ClientId,CloseConversionRate,InitialVolume,Comment,Commission...</code></pre>
 <p>Trades in account:</p>
-<pre class="r"><code># head(ttTrades())</code></pre>
+<pre class="r"><code># Commented as it takes to long
+# head(ttTrades())</code></pre>
 <p>All trades</p>
-<pre class="r"><code>ttConnect(&quot;tp.st.soft-fx.eu&quot;, &quot;100000&quot;, &quot;123321&quot;)</code></pre>
-<pre><code>## [1] 0</code></pre>
-<pre class="r"><code>head(ttTradeRecordAll())</code></pre>
-<pre><code>##   AgentCommission                                          ClientId
-## 1               0                                                  
-## 2               0 ManagerOrder-f3e2dfd3-527c-402b-8a6e-fc8f4a1198a0
-## 3               0 ManagerOrder-7e0dca55-c44b-44e2-af86-6c329934fe78
-## 4               0 ManagerOrder-7f5be08e-01a7-40a2-a494-ee64de8a7d3d
-## 5               0 ManagerOrder-6bf551f9-442f-4079-828a-9f05b42236dc
-## 6               0 ManagerOrder-050e0848-d4cb-47cd-a8fe-fee4cd5d1d1e
-##   CloseConversionRate InitialVolume Comment Commission     Id
-## 1                  -1                             0.00 329002
-## 2                   1           USD              -5.64 329003
-## 3                   1                             0.00 329004
-## 4                   1           USD             -22.54 329006
-## 5                   1                             0.00 329005
-## 6                  -1                             0.00 329008
-##   LeavesQuantity OpenConversionRate        OrderCreated OrderFillPrice
-## 1          0e+00           -1.00000 2015-06-10 11:20:45             -1
-## 2          0e+00            1.12689 2015-06-10 11:22:54             -1
-## 3          0e+00            1.12689 2015-06-10 11:22:58             -1
-## 4          0e+00            1.12689 2015-06-10 11:28:16             -1
-## 5          0e+00            1.12689 2015-06-10 11:28:14             -1
-## 6          1e+05            1.12689 2015-06-10 11:34:34             -1
-##   OrderLastFillAmount       OrderModified PosOpenPrice PositionClosePrice
-## 1                  -1 1970-01-01 00:00:00      0.00000            0.00000
-## 2                  -1 1970-01-01 00:00:00      1.12684            1.12689
-## 3                  -1 1970-01-01 00:00:00      1.12689            1.12689
-## 4                  -1 1970-01-01 00:00:00      1.12689            1.12684
-## 5                  -1 1970-01-01 00:00:00      1.12684            1.12684
-## 6                  -1 2015-06-10 11:44:22      0.00000            0.00000
-##   PositionCloseRequestedPrice      PositionClosed PositionLastQuantity
-## 1                           0 1970-01-01 00:00:00                0e+00
-## 2                           0 2015-06-10 11:25:23                1e+05
-## 3                           0 2015-06-10 11:25:23                0e+00
-## 4                           0 2015-06-10 11:28:55                1e+05
-## 5                           0 2015-06-10 11:28:55                0e+00
-## 6                           0 1970-01-01 00:00:00                0e+00
-##   PositionLeavesQuantity PositionModified      PositionOpened
-## 1                      0       1970-01-01 1970-01-01 00:00:00
-## 2                      0       1970-01-01 2015-06-10 11:22:56
-## 3                      0       1970-01-01 2015-06-10 11:22:59
-## 4                      0       1970-01-01 2015-06-10 11:28:17
-## 5                      0       1970-01-01 2015-06-10 11:28:14
-## 6                      0       1970-01-01 1970-01-01 00:00:00
-##   PositionQuantity   Price Quantity StopLoss Swap Symbol TakeProfit
-## 1            0e+00 0.00000    0e+00        0    0                 0
-## 2            1e+05 0.00000    0e+00        0    0 EURUSD          0
-## 3            1e+05 0.00000    0e+00        0    0 EURUSD          0
-## 4            1e+05 0.00000    0e+00        0    0 EURUSD          0
-## 5            1e+05 0.00000    0e+00        0    0 EURUSD          0
-## 6            0e+00 1.12689    1e+05        0    0 EURUSD          0
-##   TradeRecordSide TradeRecordType TradeTransactionReason
-## 1              -1              -1         DealerDecision
-## 2            Sell        Position         DealerDecision
-## 3             Buy        Position         DealerDecision
-## 4             Buy        Position         DealerDecision
-## 5            Sell        Position         DealerDecision
-## 6             Buy        Position         DealerDecision
-##   TradeTransactionReportType TransactionAmount TransactionCurrency
-## 1         BalanceTransaction                 0                 USD
-## 2             PositionClosed                -5                 USD
-## 3             PositionClosed                 0                 USD
-## 4             PositionClosed                -5                 USD
-## 5             PositionClosed                 0                 USD
-## 6              OrderCanceled                 0                 USD
-##       TransactionTime
-## 1 2015-06-10 11:20:45
-## 2 2015-06-10 11:25:23
-## 3 2015-06-10 11:25:23
-## 4 2015-06-10 11:28:55
-## 5 2015-06-10 11:28:55
-## 6 2015-06-10 11:44:22</code></pre>
+<pre class="r"><code># Commented as it takes to long
+# ttConnect(&quot;tp.st.soft-fx.eu&quot;, &quot;100000&quot;, &quot;123321&quot;)
+# ttTradeRecordAll()</code></pre>
 </div>
 
 

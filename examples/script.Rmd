@@ -36,9 +36,9 @@ Get symbol and currency data
 ```{r}
 ttDisconnect()
 ttConnect("", "", "")
-head(ttGetSymbolData())
+ttGetSymbolData()
 
-head(ttGetCurrencyData())
+ttGetCurrencyData()
 ```
 
 #3. Feed history
@@ -64,7 +64,7 @@ now <-as.POSIXct(Sys.time())
 # 300 seconds from present
 prevNow <-as.POSIXct(now-(300))
 
-head(ttQuotesHistory("EURUSD", startTime = prevNow, endTime=now))
+ttQuotesHistory("EURUSD", startTime = prevNow, endTime=now)
 ```
 
 Get quotes L2
@@ -73,8 +73,7 @@ now <-as.POSIXct(Sys.time())
 # 1000 seconds from present
 prevNow <-as.POSIXct(now-1000)
 
-qt2= ttQuotesLevel2History('EURUSD', prevNow, now)
-head(qt2)
+ttQuotesLevel2History('EURUSD', prevNow, now)
 ```
 
 #4. Trades/Trade Reports
@@ -85,17 +84,17 @@ Get trades of current account
 now <-as.POSIXct(Sys.time())
 #120 hours = 5 x 24 x 3600 seconds before now
 prevNow <-as.POSIXct(now-(5 * 24*3600))
-
-
-head(ttTradeRecords(prevNow, now))
+ttTradeRecords(prevNow, now)
 ```
 
 Trades in account:
 ```{r}
+# Commented as it takes to long
 # head(ttTrades())
 ```
 All trades
 ```{r}
-ttConnect("tp.st.soft-fx.eu", "100000", "123321")
-head(ttTradeRecordAll())
+# Commented as it takes to long
+# ttConnect("tp.st.soft-fx.eu", "100000", "123321")
+# ttTradeRecordAll()
 ```
