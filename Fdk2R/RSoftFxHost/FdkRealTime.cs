@@ -120,10 +120,8 @@ namespace RHost
 
         public static string GetLocalQuoteSnapshot(double id)
         {
-            var quotes = BuildSnapshotFromMonitor(id);
-           
+            var quotes = BuildSnapshotFromMonitor(id);           
             string result = FdkVars.RegisterVariable(quotes, "localSnapshot");
-
             return result;
         }
 
@@ -132,21 +130,25 @@ namespace RHost
 			var quotes = FdkVars.GetValue<FdkRealTimeQuote[]>(snapshotName);
 			return quotes.SelectToArray(bid=>bid.BidPrice);
         }
+
 		public static double[] QuoteRealTimeBidVolume(string snapshotName)
 		{
 			var quotes = FdkVars.GetValue<FdkRealTimeQuote[]>(snapshotName);
 			return quotes.SelectToArray(bid=>bid.BidVolume);
 		}
+
 		public static double[] QuoteRealTimeAskPrice(string snapshotName)
 		{
 			var quotes = FdkVars.GetValue<FdkRealTimeQuote[]>(snapshotName);
 			return quotes.SelectToArray(bid=>bid.AskPrice);
 		}
+
 		public static double[] QuoteRealTimeAskVolume(string snapshotName)
 		{
 			var quotes = FdkVars.GetValue<FdkRealTimeQuote[]>(snapshotName);
 			return quotes.SelectToArray(bid=>bid.AskVolume);
 		}
+
         public static DateTime[] QuoteRealTimeReceivingTime(string snapshotName)
         {
             var quotes = FdkVars.GetValue<FdkRealTimeQuote[]>(snapshotName);

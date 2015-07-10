@@ -7,7 +7,7 @@
 #' @param endTime R time as end of interval
 #' @param barCountDbl Bar count
 #' @export
-ttBarsQuotes <- function(symbol, barPeriodStr = "M1",
+ttBarsQuotesHistory <- function(symbol, barPeriodStr = "M1",
      startTime = ttTimeZero(),  endTime = ttNow(),
      barCountDbl = 10000){
   bars = ComputeGetPairBars(symbol, barPeriodStr, startTime, endTime, barCountDbl)

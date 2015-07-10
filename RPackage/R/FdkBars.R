@@ -8,7 +8,7 @@
 #' @param endTime End of time interval. If startTime is not set, the bar count is taken from barCount variable
 #' @param barCount Number of items of startTime is not set 
 #' @export
-ttBars <- function(symbol, 
+ttBarsHistory <- function(symbol, 
      priceTypeStr="Bid", barPeriodStr = "M1", 
      startTime= ttTimeZero() , endTime = ttNow(),
      barCount = 10000

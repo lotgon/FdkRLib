@@ -3,7 +3,7 @@
 #' @param symbol Symbol looked
 #' @param level Quote level
 #' @export
-ttQuotesRealTimeMonitor<- function(symbol, level){
+ttQuotesSubscribe <- function(symbol, level){
   quotesHistory <- RealTimeComputeQuoteHistory(symbol, level)
 }
 
@@ -11,7 +11,7 @@ ttQuotesRealTimeMonitor<- function(symbol, level){
 #' 
 #' @param idMonitoring Id of monitoring session
 #' @export
-ttQuotesRealTimeSnapshot <- function(idMonitoring){
+ttQuotesLevel2 <- function(idMonitoring){
   snapshot <- SnapshotMonitoredSymbol(idMonitoring)
   
   bidPrice <- RealTimeQuotesBidPrice(snapshot)
@@ -22,16 +22,16 @@ ttQuotesRealTimeSnapshot <- function(idMonitoring){
 
   UnregisterVar(snapshot)
   
-  df = data.frame(bidPrice=bidPrice, bidVolume=bidVolume, 
+  df = data.table(bidPrice=bidPrice, bidVolume=bidVolume, 
                   askPrice=askPrice, askVolume=askVolume, 
                   createTime = createTime)
 }
 
-#' Monitor a symbol
+#' Stop monitoring a symbol
 #' 
 #' @param idMonitoring Id of monitoring session
 #' @export
-ttQuotesRealTimeStopMonitoring <- function(idMonitoring){
+ttQuotesUnsubscribe <- function(idMonitoring){
   RealTimeRemoveEvent(idMonitoring)
 }
 
