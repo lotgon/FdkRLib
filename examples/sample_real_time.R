@@ -1,8 +1,8 @@
 ttConnect()
-idMonitor <- ttQuotesRealTimeMonitor('EURUSD')
+idMonitor <- ttQuotesSubscribe('EURUSD', 2)
 # Wait for some time before running this line
 # it can be run multiple times and the snapshot reflects
-snapshot <- ttQuotesRealTimeSnapshot(idMonitor)
+snapshot <- ttQuotesLevel2(idMonitor)
 View(snapshot)
 
-ttQuotesRealTimeStopMonitoring(idMonitor)
+ttQuotesUnsubscribe(idMonitor)
