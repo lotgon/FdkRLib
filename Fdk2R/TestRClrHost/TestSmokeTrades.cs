@@ -61,8 +61,8 @@ namespace TestRClrHost
         [Test]
         public void TestGetTradeReportsAll()
         {
-            Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.st.soft-fx.eu", "100000", "123321", ""));
-            //Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
+            //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.st.soft-fx.eu", "100000", "123321", ""));
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
             var bars = FdkTradeReports.GetTradeTransactionReportAll();
             var comission = FdkTradeReports.GetTradeComment(bars);
             FdkVars.Unregister(bars);

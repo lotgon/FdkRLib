@@ -23,7 +23,7 @@ install.packages("data.table", repos='http://cran.us.r-project.org')
 require(httr)
 
 # Run it before you install packages. Should be run once
-installAllPackages("FdkRLib_1.0.20150629.zip")
+installAllPackages("FdkRLib_1.0.20150714.zip")
 
 library(rClr)
 library(FdkRLib)

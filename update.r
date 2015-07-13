@@ -15,7 +15,7 @@ updatePackage <- function (packageVersion) {
 }
 require(httr)
 # Run code to package
-updatePackage("FdkRLib_1.0.20150629.zip")
+updatePackage("FdkRLib_1.0.20150714.zip")
 
 library(rClr)
 library(FdkRLib)
