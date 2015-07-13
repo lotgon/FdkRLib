@@ -6,7 +6,7 @@ using SoftFX.Extended;
 
 namespace RHost
 {
-	class QuoteLevel2Data
+	struct QuoteLevel2Data
 	{
 		public double AsksPrice { get; set; }
 		public double AskVolume { get; set; }
