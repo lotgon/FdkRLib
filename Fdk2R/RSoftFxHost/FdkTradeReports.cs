@@ -17,6 +17,9 @@ namespace RHost
 		{
 			try
 			{
+				from = from.AddUtc();		
+				to = to.AddUtc();
+
 				var tradeRecordsStream = Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, from, to)
                 .ToArray().ToList();
 				var tradeRecordList = tradeRecordsStream.ToArray();

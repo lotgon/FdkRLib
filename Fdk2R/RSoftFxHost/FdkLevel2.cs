@@ -38,6 +38,8 @@ namespace RHost
 			{
 				var level = (int) levelDbl;
 
+				startTime = startTime.AddUtc();
+				endTime = endTime.AddUtc();
 				Quote[] quotesData = FdkQuotes.CalculateHistoryForSymbolArray(symbol, startTime, endTime, level);
 				var quoteLevel2Data = BuildQuoteMultiLevelData(quotesData, level);
 

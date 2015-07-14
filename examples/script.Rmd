@@ -88,11 +88,11 @@ ttTradeRecords(prevNow, now)
 Trades in account:
 ```{r}
 # Commented as it takes to long
-# head(ttTrades())
+ttConnect("tp.st.soft-fx.eu", "100066", "123qwe!")
+head(ttTrades())
 ```
 All trades
 ```{r}
 # Commented as it takes to long
-# ttConnect("tp.st.soft-fx.eu", "100000", "123321")
-# ttTradeRecordAll()
+ttTradeRecordAll()
 ```

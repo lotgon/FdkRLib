@@ -24,6 +24,10 @@ namespace RHost
 				var barPeriod = FdkHelper.GetFieldByName<BarPeriod>(barPeriodStr);
 				if (barPeriod == null)
 					return String.Empty;
+
+				startTime = startTime.AddUtc();		
+				endTime = endTime.AddUtc();
+
 				PairBar[] barsData;
 				if (FdkHelper.IsTimeZero(startTime))
 				{

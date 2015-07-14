@@ -64,7 +64,6 @@ namespace RHost
         {
             Wrapper.Disconnect();
         }
-        
         public static void WriteMessage(string message)
         {
 			Console.WriteLine("FdkRLib: {0}", message);

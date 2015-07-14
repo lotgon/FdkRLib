@@ -12,6 +12,9 @@ namespace RHost
 			try
 			{
 				var depth = (int)depthDbl;
+				startTime = startTime.AddUtc();		
+				endTime = endTime.AddUtc();
+
 				var quotesData = CalculateHistoryForSymbolArray(symbol, startTime, endTime, depth);
 				var quoteHistory = FdkVars.RegisterVariable(quotesData, "quotes");
             	return quoteHistory;

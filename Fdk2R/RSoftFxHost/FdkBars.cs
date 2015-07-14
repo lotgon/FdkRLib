@@ -17,18 +17,18 @@ namespace RHost
 			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, -barCount).ToArray();
 		}
 
-		private static Bar[] CalculateBarsForSymbolArrayRangeTime(
+		static Bar[] CalculateBarsForSymbolArrayRangeTime(
          string symbol, PriceType priceType, DateTime startTime, DateTime endTime, BarPeriod barPeriod)
 		{
 			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, endTime).ToArray();
 		}
 
-		private static HistoryInfo GetQuotesInfo(string symbol, int depth)
+		static HistoryInfo GetQuotesInfo(string symbol, int depth)
 		{
 			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetQuotesInfo(symbol, depth);
 		}
 
-		private static HistoryInfo GetBarsInfo(string symbol, PriceType priceType, BarPeriod period)
+		static HistoryInfo GetBarsInfo(string symbol, PriceType priceType, BarPeriod period)
 		{
 			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBarsInfo(symbol, priceType, period);
 		}
@@ -47,6 +47,8 @@ namespace RHost
 				var priceType = FdkHelper.ParseEnumStr<PriceType>(priceTypeStr);
 				if (priceType == null)
 					return string.Empty;
+				startTime = startTime.AddUtc();
+				endTime = endTime.AddUtc();
 
 				Bar[] barsData;
 				if (FdkHelper.IsTimeZero(startTime))

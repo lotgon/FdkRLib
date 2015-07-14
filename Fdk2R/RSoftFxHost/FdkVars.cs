@@ -6,7 +6,22 @@ namespace RHost
 {
     public static class FdkVars
     {
+        static FdkVars()
+        {
+
+            DiffFromUtc = DateTime.Now - DateTime.UtcNow;
+        }
+
         private static readonly Dictionary<string, object> Vars = new Dictionary<string, object>();
+
+        static TimeSpan DiffFromUtc;
+
+
+        public static DateTime AddUtc(this DateTime utcTime)
+        {
+            return utcTime.Add(DiffFromUtc);
+        }
+
         public static string RegisterVariable(object data, string prefix)
         {
             var pos = 0;
