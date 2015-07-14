@@ -52,7 +52,7 @@ namespace RHost
         }
         static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        static QuoteEntry NullQuote = new QuoteEntry(double.NaN, double.NaN);
+        static readonly QuoteEntry NullQuote = new QuoteEntry(0,0);
 
 		static QuoteLevel2Data[] BuildQuoteMultiLevelData(Quote[] quotesData, int depth)
 		{
@@ -100,25 +100,30 @@ namespace RHost
         public static double[] QuotesVolumeAsk(string bars)
         {
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
-            return quotes.SelectToArray(q => q.AskVolume);
+            return quotes.SelectToArray(q =>ToNonZeroValue(q.AskVolume));
         }
         public static double[] QuotesVolumeBid(string bars)
         {
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
-            return quotes.SelectToArray(q=>q.BidVolume);
+            return quotes.SelectToArray(q=> ToNonZeroValue(q.BidVolume));
         }
 
         public static double[] QuotesPriceAsk(string bars)
         {
-            var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars); 
-            return quotes.SelectToArray(q => q.AsksPrice);
+            var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
+            return quotes.SelectToArray(q => ToNonZeroValue(q.AsksPrice));
         }
 
         public static double[] QuotesPriceBid(string bars)
         {
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
 
-            return quotes.SelectToArray(q => q.BidPrice);
+            return quotes.SelectToArray(q => ToNonZeroValue(q.BidPrice));
+        }
+ 
+        private static double ToNonZeroValue(double bidPrice)
+        {
+            return bidPrice != 0.0 ? double.NaN : bidPrice;
         }
 
         public static double[] QuotesIndex(string bars)
