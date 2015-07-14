@@ -98,7 +98,7 @@ namespace RHost
 
         public static bool IsTimeZero(DateTime startTime)
         {
-            return startTime.Year == 1970 && startTime.Month == 1 && startTime.Day == 1;
+            return startTime.Year == 1970 && startTime.Month == 1;
         }
 
         #region Accessors
