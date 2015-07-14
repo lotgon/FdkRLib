@@ -74,6 +74,8 @@ namespace RHost
 				for (var index = 0; index < depth; index++) {
                     var quoteEntryAsk = index < maxLength && index<quote.Asks.Length ? quote.Asks[index] : NullQuote;
                     var quoteEntryBid = index < maxLength && index < quote.Bids.Length ? quote.Bids[index] : NullQuote;
+                    if (quoteEntryAsk.Price.Equals(NullQuote.Price) && quoteEntryBid.Price.Equals(NullQuote.Price))
+                        continue;
 					var newQuoteL2Data = new QuoteLevel2Data() {
 						AskVolume = quoteEntryAsk.Volume,
 						AsksPrice = quoteEntryAsk.Price,
