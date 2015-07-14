@@ -123,7 +123,7 @@ namespace RHost
  
         private static double ToNonZeroValue(double bidPrice)
         {
-            return bidPrice != 0.0 ? double.NaN : bidPrice;
+            return bidPrice == 0.0 ? double.NaN : bidPrice;
         }
 
         public static double[] QuotesIndex(string bars)
