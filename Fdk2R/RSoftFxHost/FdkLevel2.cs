@@ -52,7 +52,7 @@ namespace RHost
         }
         static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        static QuoteEntry NullQuote = new QuoteEntry();
+        static QuoteEntry NullQuote = new QuoteEntry(double.NaN, double.NaN);
 
 		static QuoteLevel2Data[] BuildQuoteMultiLevelData(Quote[] quotesData, int depth)
 		{
