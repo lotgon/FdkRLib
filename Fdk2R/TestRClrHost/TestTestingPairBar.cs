@@ -13,7 +13,7 @@ namespace TestRClrHost
             //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
             Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", @"C:\FdkCaches\Cache3"));
             var time = DateTime.Now;
-            var prevHour = time.AddDays(-1);
+            var prevHour = time.AddYears(-10);
 
             var timeDouble = FdkHelper.GetCreatedEpoch(time);
 
@@ -24,6 +24,9 @@ namespace TestRClrHost
             var askClose = FdkBarPairs.GetBarsAskClose(bars);
             var askVolume = FdkBarPairs.GetBarsAskVolume(bars);
 
+            FdkBarPairs.GetBarsAskFrom(bars);
+            
+
             var bidhighs = FdkBarPairs.GetBarsBidHigh(bars);
             var bidlows = FdkBarPairs.GetBarsBidLow(bars);
             var bidOpen = FdkBarPairs.GetBarsBidOpen(bars);
@@ -33,25 +36,5 @@ namespace TestRClrHost
             FdkVars.Unregister(bars);
             FdkHelper.Disconnect();
         }
-
-        [Test]
-        public void TestBarsRange()
-        {
-            //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.dev.soft-fx.eu", "100106", "123qwe123", ""));
-            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
-            var time = DateTime.Now;
-            var prevHour = time.AddDays(-1);
-
-            var timeDouble = FdkHelper.GetCreatedEpoch(time);
-            var prevHourDouble = FdkHelper.GetCreatedEpoch(prevHour);
-            var bars = FdkBars.ComputeGetPairBarsRange("EURUSD", "M1", prevHour, time);
-            var highs = FdkBarPairs.GetBarsAskHigh(bars);
-            var lows = FdkBarPairs.GetBarsAskLow(bars);
-
-            FdkVars.Unregister(bars);
-
-            FdkHelper.Disconnect();
-        }
-
     }
 }

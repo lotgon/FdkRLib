@@ -18,6 +18,9 @@ namespace RHost
 			#if DEBUG
 			//Library.Path = @"C:\Users\ciprian.khlud\Documents\R\win-library\3.2\FdkRLib\data";
 			#endif
+
+            //Debugger.Launch();
+
             var addr = String.IsNullOrEmpty(address)
 			? "tpdemo.fxopen.com"
                 : address;

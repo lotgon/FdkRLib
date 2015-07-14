@@ -59,18 +59,21 @@ namespace RHost
 			var itemsToAdd = new List<QuoteLevel2Data>(capacity: quotesData.Length*depth);
 			var prevTime = new DateTime(1970, 1, 1);
 			var indexOrder = 0;
-			foreach (var quote in quotesData) {
-				if (prevTime == quote.CreatingTime) {
+			foreach (var quote in quotesData) 
+            {
+				if (prevTime == quote.CreatingTime) 
+                {
 					indexOrder++;
-				} else {
+				} else 
+                {
 					indexOrder = 0;
 				}
 				var timeSpan = quote.CreatingTime.Subtract(prevTime).TotalMilliseconds;
                 var maxLength = Math.Max(quote.Asks.Length, quote.Bids.Length);
 				
 				for (var index = 0; index < depth; index++) {
-                    var quoteEntryAsk = index <= maxLength ? quote.Asks[index] : NullQuote;
-                    var quoteEntryBid = index <= maxLength ? quote.Bids[index] : NullQuote;
+                    var quoteEntryAsk = index < maxLength && index<quote.Asks.Length ? quote.Asks[index] : NullQuote;
+                    var quoteEntryBid = index < maxLength && index < quote.Bids.Length ? quote.Bids[index] : NullQuote;
 					var newQuoteL2Data = new QuoteLevel2Data() {
 						AskVolume = quoteEntryAsk.Volume,
 						AsksPrice = quoteEntryAsk.Price,
