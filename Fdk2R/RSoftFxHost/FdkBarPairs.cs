@@ -89,13 +89,21 @@ namespace RHost
                 .Select(barPair => ValidTimeFromTwoTimes(TimeFrom(barPair.Bid), TimeFrom(barPair.Ask)))
                 .ToArray();
         }
-        static DateTime TimeFrom(Bar bar)
+        internal static DateTime TimeFrom(Bar bar)
         {
             if (bar == null)
-                return new DateTime(1970, 1, 1);
+                return EmptyTime;
             return bar.From;
         }
 
+        internal static DateTime TimeTo(Bar bar)
+        {
+            if (bar == null)
+                return EmptyTime;
+            return bar.To;
+        }
+
+        static DateTime EmptyTime = new DateTime(1970, 1, 1, 0, 0,0,0, DateTimeKind.Utc);
         static DateTime ValidTimeFromTwoTimes(DateTime bidTime, DateTime askTime)
         {
             return FdkHelper.IsTimeZero(bidTime) ? askTime : bidTime;
@@ -105,7 +113,7 @@ namespace RHost
         {
             var barData = FdkVars.GetValue<PairBar[]>(pairBars);
             return barData
-                .Select(barPair => ValidTimeFromTwoTimes(barPair.Bid.To, barPair.Ask.To))
+                .Select(barPair => ValidTimeFromTwoTimes(TimeTo(barPair.Bid), TimeTo(barPair.Ask)))
                 .ToArray();
         }
 

@@ -196,7 +196,7 @@ namespace RHost
 
         internal static DateTime[] GetBarsTo(Bar[] barData)
         {
-            return barData.SelectToArray(b => b.To);
+            return barData.SelectToArray(b =>  b.To);
         }
         #endregion
     }
