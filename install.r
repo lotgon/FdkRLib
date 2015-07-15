@@ -10,6 +10,14 @@ installBinaryHttr <- function(fdkRLibPackage){
   file.remove(localTempFile)
 }
 
+installCranPackage<- function(packageName)
+{
+  if(!require(packageName, character.only = TRUE))
+  {
+    install.packages(packageName, repos='http://cran.us.r-project.org', type="win.binary")
+    require(packageName, character.only = TRUE)
+  }
+}
 
 installAllPackages <- function (packageVersion) {
   installBinaryHttr("rClr_0.7-4.zip")
@@ -18,6 +26,9 @@ installAllPackages <- function (packageVersion) {
 
 # Step 1: may require to restart R enviornment. 
 # Run it before you install packages. Should be run once
+installCranPackage("httr")
+installCranPackage("data.table")
+
 if(!require(httr))
 {
 	install.packages("httr", repos='http://cran.us.r-project.org')
