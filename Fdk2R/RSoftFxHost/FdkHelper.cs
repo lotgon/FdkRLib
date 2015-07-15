@@ -9,6 +9,7 @@ namespace RHost
 {
 	public class FdkHelper
 	{
+		static readonly Logger Log = LogManager.GetCurrentClassLogger();
         static FdkHelper()
         {
             Wrapper = new FdkWrapper();
@@ -19,6 +20,8 @@ namespace RHost
 			//Library.Path = @"C:\Users\ciprian.khlud\Documents\R\win-library\3.2\FdkRLib\data";
 			#endif
 
+			Log.Info("FdkHelper.ConnectToFdk( address: {0}, login: {1}, password: {2}, path: {3})",
+				address, login, password, path);
             //Debugger.Launch();
 
             var addr = String.IsNullOrEmpty(address)
@@ -56,7 +59,6 @@ namespace RHost
 				throw;
 			}
         }
-        static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public static FdkWrapper Wrapper { get; set; }
 

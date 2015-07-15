@@ -30,6 +30,9 @@ namespace RHost
 					tradeRecords = tradeRecords.Where(tr => tr.Type == tradeType).ToArray();
 				}
 
+				Log.Info("FdkTrade.GetTradeRecords( Side: {0}, Type: {1}",
+					tradeSideStr, tradeTypeStr);
+				
 				var varName = FdkVars.RegisterVariable(tradeRecords, "trades");
 				return varName;
 			}

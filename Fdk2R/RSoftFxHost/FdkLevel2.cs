@@ -24,6 +24,7 @@ namespace RHost
 
 	public class FdkLevel2
 	{
+		static readonly Logger Log = LogManager.GetCurrentClassLogger();
 		/// <summary>
 		/// Get quote packed 
 		/// </summary>
@@ -40,6 +41,10 @@ namespace RHost
 
 				startTime = startTime.AddUtc();
 				endTime = endTime.AddUtc();
+
+				Log.Info("FdkLevel2.GetQuotePacked( symbol: {0}, startTime: {1}, endTime: {2}, level: {3})",
+					symbol, startTime, endTime, levelDbl);
+
 				Quote[] quotesData = FdkQuotes.CalculateHistoryForSymbolArray(symbol, startTime, endTime, level);
 				var quoteLevel2Data = BuildQuoteMultiLevelData(quotesData, level);
 
@@ -52,7 +57,6 @@ namespace RHost
 				throw;
 			}
         }
-        static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         static readonly QuoteEntry NullQuote = new QuoteEntry(0,0);
 

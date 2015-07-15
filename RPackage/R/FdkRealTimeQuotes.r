@@ -22,7 +22,7 @@ ttQuotesLevel2 <- function(idMonitoring){
 
   UnregisterVar(snapshot)
   
-  df = data.table(bidPrice=bidPrice, bidVolume=bidVolume, 
+  data.table(bidPrice=bidPrice, bidVolume=bidVolume, 
                   askPrice=askPrice, askVolume=askVolume, 
                   createTime = createTime)
 }

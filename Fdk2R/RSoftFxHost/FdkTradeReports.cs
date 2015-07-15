@@ -20,6 +20,10 @@ namespace RHost
 				from = from.AddUtc();		
 				to = to.AddUtc();
 
+				Log.Info("FdkTradeReports.GetTradeTransactionReport( from: {0}, to: {1}",
+					from, to);
+				
+
 				var tradeRecordsStream = Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, from, to)
                 .ToArray().ToList();
 				var tradeRecordList = tradeRecordsStream.ToArray();

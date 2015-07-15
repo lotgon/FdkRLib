@@ -13,7 +13,7 @@ namespace RHost
             List<FdkRealTimeMonitor> Monitors
                 = new List<FdkRealTimeMonitor>();
 
-		private static int _eventCount;
+		static int _eventCount;
 		public static double MonitorSymbol(string symbol, double levelDbl)
 		{
 			try

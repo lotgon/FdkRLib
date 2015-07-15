@@ -8,6 +8,8 @@ namespace RHost
 {
 	public class FdkBarPairs
 	{
+		readonly static Logger Log = LogManager.GetCurrentClassLogger();
+
 		/// <summary>
 		/// Get the bar data as pairs
 		/// </summary>
@@ -27,6 +29,9 @@ namespace RHost
 
 				startTime = startTime.AddUtc();		
 				endTime = endTime.AddUtc();
+
+				Log.Info("FdkBarPairs.ComputeBarPairs( symbol: {0}, barPeriod: {1}, startTime: {2}, endTime: {3}, barCount: {4})",
+					symbol, barPeriodStr, startTime, endTime, barCountDbl);
 
 				PairBar[] barsData;
 				if (FdkHelper.IsTimeZero(startTime))
@@ -48,9 +53,7 @@ namespace RHost
 				throw;
 			}
         }
-
-        static readonly Logger Log = LogManager.GetCurrentClassLogger();
-        static PairBar[] GetPairBarsSymbolArray(string symbol, BarPeriod period, DateTime startTime, int barsNumber)
+		static PairBar[] GetPairBarsSymbolArray(string symbol, BarPeriod period, DateTime startTime, int barsNumber)
         {
             return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetPairBars(symbol, period, startTime, barsNumber).ToArray();
         }

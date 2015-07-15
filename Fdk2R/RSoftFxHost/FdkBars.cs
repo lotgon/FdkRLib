@@ -8,32 +8,9 @@ namespace RHost
 {
 	public static class FdkBars
 	{
+		static readonly Logger Log = LogManager.GetCurrentClassLogger();
 		#region Bars
 
-#region Fdk direct wrapper
-        static Bar[] CalculateBarsForSymbolArray(
-            string symbol, PriceType priceType, DateTime startTime, BarPeriod barPeriod, int barCount)
-		{
-			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, -barCount).ToArray();
-		}
-
-		static Bar[] CalculateBarsForSymbolArrayRangeTime(
-         string symbol, PriceType priceType, DateTime startTime, DateTime endTime, BarPeriod barPeriod)
-		{
-			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, endTime).ToArray();
-		}
-
-		static HistoryInfo GetQuotesInfo(string symbol, int depth)
-		{
-			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetQuotesInfo(symbol, depth);
-		}
-
-		static HistoryInfo GetBarsInfo(string symbol, PriceType priceType, BarPeriod period)
-		{
-			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBarsInfo(symbol, priceType, period);
-		}
-
-		#endregion
 
         public static string ComputeBarsRangeTime(string symbol, string priceTypeStr, string barPeriodStr,
             DateTime startTime, DateTime endTime, double barCountDbl)
@@ -50,6 +27,9 @@ namespace RHost
 				startTime = startTime.AddUtc();
 				endTime = endTime.AddUtc();
 
+				Log.Info("FdkBars.ComputeBarsRangeTime( symbol: {0}, barPeriod: {1}, startTime: {2}, endTime: {3}, barCount: {4})",
+					symbol, barPeriodStr, startTime, endTime, barCountDbl);
+				
 				Bar[] barsData;
 				if (FdkHelper.IsTimeZero(startTime))
 				{
@@ -69,8 +49,32 @@ namespace RHost
 				throw;
 			}
         }
-        static readonly Logger Log = LogManager.GetCurrentClassLogger();
-        
+
+		#region Fdk direct wrapper
+		static Bar[] CalculateBarsForSymbolArray(
+			string symbol, PriceType priceType, DateTime startTime, BarPeriod barPeriod, int barCount)
+		{
+			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, -barCount).ToArray();
+		}
+
+		static Bar[] CalculateBarsForSymbolArrayRangeTime(
+			string symbol, PriceType priceType, DateTime startTime, DateTime endTime, BarPeriod barPeriod)
+		{
+			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBars(symbol, priceType, barPeriod, startTime, endTime).ToArray();
+		}
+
+		static HistoryInfo GetQuotesInfo(string symbol, int depth)
+		{
+			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetQuotesInfo(symbol, depth);
+		}
+
+		static HistoryInfo GetBarsInfo(string symbol, PriceType priceType, BarPeriod period)
+		{
+			return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetBarsInfo(symbol, priceType, period);
+		}
+
+		#endregion
+
         public static DateTime[] ComputeGetQuotesInfo(string symbol, int depth)
         {
             var barsData = GetQuotesInfo(symbol, depth);
