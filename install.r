@@ -18,9 +18,13 @@ installAllPackages <- function (packageVersion) {
 
 # Step 1: may require to restart R enviornment. 
 # Run it before you install packages. Should be run once
-install.packages("httr", repos='http://cran.us.r-project.org')
+if(!require(httr))
+{
+	install.packages("httr", repos='http://cran.us.r-project.org')
+  require(httr)
+}
 install.packages("data.table", repos='http://cran.us.r-project.org')
-require(httr)
+
 
 # Run it before you install packages. Should be run once
 installAllPackages("FdkRLib_1.0.20150714.zip")
