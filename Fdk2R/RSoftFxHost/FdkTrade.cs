@@ -121,7 +121,7 @@ namespace RHost
         public static DateTime[] GetTradeModified(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.SelectToArray(it => it.Modified.ExposeDatesNull());
+			return tradeData.SelectToArray(it => it.Modified).ExposeDatesNull();
         }
         public static string[] GetTradeOrderId(string varName)
         {
@@ -176,9 +176,9 @@ namespace RHost
             return val ? "True" : "False";
         }
 
-        static DateTime[] ExposeDatesNull(this IEnumerable<DateTime?> values)
+		public static DateTime[] ExposeDatesNull(this IEnumerable<DateTime?> values)
         {
-            return values.Select(val => (val.AddUtc() ?? new DateTime(1970, 1, 1))).ToArray();
+			return values.Select(val => (val ?? new DateTime(1970, 1, 1)).AddUtc()).ToArray();
         }
     }
 }
