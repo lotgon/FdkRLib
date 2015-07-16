@@ -19,7 +19,8 @@ namespace RHost
 
         public static DateTime AddUtc(this DateTime utcTime)
         {
-            return utcTime.Add(DiffFromUtc);
+            var result = TimeZoneInfo.ConvertTime(utcTime, TimeZoneInfo.Utc, TimeZoneInfo.Local);
+            return result;
         }
 
         public static string RegisterVariable(object data, string prefix)

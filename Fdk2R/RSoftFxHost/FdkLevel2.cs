@@ -100,7 +100,7 @@ namespace RHost
         public static DateTime[] QuotesCreateTime(string bars)
         {
             var quotes = FdkVars.GetValue<QuoteLevel2Data[]>(bars);
-            return quotes.SelectToArray(ql2=>ql2.CreateTime);
+            return quotes.SelectToArray(ql2 => ql2.CreateTime.AddUtc());
         }
 
         public static double[] QuotesVolumeAsk(string bars)

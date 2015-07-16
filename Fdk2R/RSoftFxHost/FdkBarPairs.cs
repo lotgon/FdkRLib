@@ -100,17 +100,17 @@ namespace RHost
         {
             if (bar == null)
                 return EmptyTime;
-            return bar.From;
+            return bar.From.AddUtc();
         }
 
         internal static DateTime TimeTo(Bar bar)
         {
             if (bar == null)
                 return EmptyTime;
-            return bar.To;
+            return bar.To.AddUtc();
         }
 
-        static DateTime EmptyTime = new DateTime(1970, 1, 1, 0, 0,0,0, DateTimeKind.Utc);
+        static DateTime EmptyTime = new DateTime(1970, 1, 2, 0, 0,0,0, DateTimeKind.Utc);
         static DateTime ValidTimeFromTwoTimes(DateTime bidTime, DateTime askTime)
         {
             return FdkHelper.IsTimeZero(bidTime) ? askTime : bidTime;

@@ -24,8 +24,6 @@ namespace RHost
 				var priceType = FdkHelper.ParseEnumStr<PriceType>(priceTypeStr);
 				if (priceType == null)
 					return string.Empty;
-				startTime = startTime.AddUtc();
-				endTime = endTime.AddUtc();
 
 				Log.Info("FdkBars.ComputeBarsRangeTime( symbol: {0}, barPeriod: {1}, startTime: {2}, endTime: {3}, barCount: {4})",
 					symbol, barPeriodStr, startTime, endTime, barCountDbl);
@@ -197,12 +195,12 @@ namespace RHost
 
         internal static DateTime[] GetBarsFrom(Bar[] barData)
         {
-            return barData.SelectToArray(b => b.From);
+            return barData.SelectToArray(b => b.From.AddUtc());
         }
 
         internal static DateTime[] GetBarsTo(Bar[] barData)
         {
-            return barData.SelectToArray(b =>  b.To);
+            return barData.SelectToArray(b =>  b.To.AddUtc());
         }
         #endregion
     }

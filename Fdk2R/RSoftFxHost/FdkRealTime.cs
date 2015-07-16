@@ -152,13 +152,13 @@ namespace RHost
 		public static double[] QuoteRealTimeAskVolume(string snapshotName)
 		{
 			var quotes = FdkVars.GetValue<FdkRealTimeQuote[]>(snapshotName);
-			return quotes.SelectToArray(bid=>bid.AskVolume);
+            return quotes.SelectToArray(bid => bid.AskVolume.AddUtc());
 		}
 
         public static DateTime[] QuoteRealTimeReceivingTime(string snapshotName)
         {
             var quotes = FdkVars.GetValue<FdkRealTimeQuote[]>(snapshotName);
-            return quotes.SelectToArray(bid => bid.ReceivingTime);
+            return quotes.SelectToArray(bid => bid.ReceivingTime.AddUtc());
         }
 
 
