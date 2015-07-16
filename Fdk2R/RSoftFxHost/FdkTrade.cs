@@ -24,7 +24,7 @@ namespace RHost
 					tradeRecords = tradeRecords.Where(tr => tr.Side == tradeSide).ToArray();
 				}
 
-				if (!string.IsNullOrEmpty(tradeSideStr))
+                if (!string.IsNullOrEmpty(tradeTypeStr))
 				{
 					var tradeType = FdkHelper.ParseEnumStr<TradeRecordType>(tradeTypeStr);
 					tradeRecords = tradeRecords.Where(tr => tr.Type == tradeType).ToArray();
