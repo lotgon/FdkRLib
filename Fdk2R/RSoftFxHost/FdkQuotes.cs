@@ -14,9 +14,6 @@ namespace RHost
 			try
 			{
 				var depth = (int)depthDbl;
-				startTime = startTime.AddUtc();		
-				endTime = endTime.AddUtc();
-
 				Log.Info("FdkQuotes.ComputeQuoteHistory( symbol: {0}, startTime: {1}, endTime: {2}, level: {3})",
 					symbol, startTime, endTime, depthDbl);
 				

@@ -27,9 +27,6 @@ namespace RHost
 				if (barPeriod == null)
 					return String.Empty;
 
-				startTime = startTime.AddUtc();		
-				endTime = endTime.AddUtc();
-
 				Log.Info("FdkBarPairs.ComputeBarPairs( symbol: {0}, barPeriod: {1}, startTime: {2}, endTime: {3}, barCount: {4})",
 					symbol, barPeriodStr, startTime, endTime, barCountDbl);
 

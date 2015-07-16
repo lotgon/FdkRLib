@@ -17,12 +17,8 @@ namespace RHost
 		{
 			try
 			{
-				from = from.AddUtc();		
-				to = to.AddUtc();
-
 				Log.Info("FdkTradeReports.GetTradeTransactionReport( from: {0}, to: {1}",
 					from, to);
-				
 
 				var tradeRecordsStream = Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, from, to)
                 .ToArray().ToList();
@@ -114,7 +110,7 @@ namespace RHost
         public static DateTime[] GetTradeOrderCreated(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.OrderCreated).ToArray();
+            return tradeData.Select(it => it.OrderCreated.AddUtc()).ToArray();
         }
 
         public static double[] GetTradeOrderFillPrice(string varName)
@@ -132,7 +128,7 @@ namespace RHost
         public static DateTime[] GetTradeOrderModified(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.OrderModified).ToArray();
+            return tradeData.Select(it => it.OrderModified.AddUtc()).ToArray();
         }
 
         public static double[] GetTradePosOpenPrice(string varName)
@@ -157,7 +153,7 @@ namespace RHost
         public static DateTime[] GetTradePositionClosed(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.PositionClosed).ToArray();
+            return tradeData.Select(it => it.PositionClosed.AddUtc()).ToArray();
         }
 
         public static string[] GetTradePositionId(string varName)
@@ -184,14 +180,14 @@ namespace RHost
         public static DateTime[] GetTradePositionModified(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.PositionModified).ToArray();
+            return tradeData.Select(it => it.PositionModified.AddUtc()).ToArray();
         }
 
 
         public static DateTime[] GetTradePositionOpened(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.PositionOpened).ToArray();
+            return tradeData.Select(it => it.PositionOpened.AddUtc()).ToArray();
         }
 
 
@@ -284,7 +280,7 @@ namespace RHost
         public static DateTime[] GetTradeTransactionTime(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.TransactionTime).ToArray();
+            return tradeData.Select(it => it.TransactionTime.AddUtc()).ToArray();
         }
 
 

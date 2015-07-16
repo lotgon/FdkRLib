@@ -39,9 +39,6 @@ namespace RHost
 			{
 				var level = (int) levelDbl;
 
-				startTime = startTime.AddUtc();
-				endTime = endTime.AddUtc();
-
 				Log.Info("FdkLevel2.GetQuotePacked( symbol: {0}, startTime: {1}, endTime: {2}, level: {3})",
 					symbol, startTime, endTime, levelDbl);
 
