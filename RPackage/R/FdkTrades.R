@@ -1,9 +1,9 @@
 #' Gets the account trades
 #' 
-#' @param tradeSide '' (unfiltered) or 'Buy' or 'Sell'
-#' @param tradeType '' (unfiltered) or 'Market' 'Position' 'Limit' 'Stop'
+#' @param startTime Start time of trades
+#' @param tradeType End time of orders
 #' @export
-ttTrades <- function(tradeSide = '', tradeType = ''){
+ttTrades <- function(startTime =FdkRLib::ttTimeZero(), endTime = FdkRLib::ttNow()){
   symInfo = GetTradeRecords(tradeSide, tradeType)
   
   agentComission = GetTradeAgentCommission(symInfo)
@@ -35,8 +35,8 @@ ttTrades <- function(tradeSide = '', tradeType = ''){
    side, stopLoss, swap, takeProfit, type, volume)
 }
 #' Get symbol field
-#' @param tradeSide '' (unfiltered) or 'Buy' or 'Sell'
-#' @param tradeType '' (unfiltered) or 'Market' 'Position' 'Limit' 'Stop'
+#' @param startTime Start time of trades
+#' @param tradeType End time of orders
 GetTradeRecords <- function(tradeSide, tradeType) {
   rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeRecords', tradeSide, tradeType)
 }

@@ -13,25 +13,16 @@ namespace RHost
 			get { return FdkHelper.Wrapper.ConnectLogic.TradeWrapper.Trade; }
 		}
 
-		public static string GetTradeRecords(string tradeSideStr, string tradeTypeStr)
+		public static string GetTradeRecords(DateTime startTime, DateTime endTime)
 		{
 			try
 			{
-				var tradeRecords = Trade.Server.GetTradeRecords();
-				if (!string.IsNullOrEmpty(tradeSideStr))
-				{
-					var tradeSide = FdkHelper.ParseEnumStr<TradeRecordSide>(tradeSideStr);
-					tradeRecords = tradeRecords.Where(tr => tr.Side == tradeSide).ToArray();
-				}
-
-                if (!string.IsNullOrEmpty(tradeTypeStr))
-				{
-					var tradeType = FdkHelper.ParseEnumStr<TradeRecordType>(tradeTypeStr);
-					tradeRecords = tradeRecords.Where(tr => tr.Type == tradeType).ToArray();
-				}
-
-				Log.Info("FdkTrade.GetTradeRecords( Side: {0}, Type: {1}",
-					tradeSideStr, tradeTypeStr);
+				var tradeRecords = Trade.Server.GetTradeRecords()
+                    .Where(tr=>tr.Created!= null && (tr.Created >= startTime && tr.Created <= endTime))
+                    .ToArray();
+				
+				Log.Info("FdkTrade.GetTradeRecords( start: {0}, end: {1}",
+					startTime, endTime);
 				
 				var varName = FdkVars.RegisterVariable(tradeRecords, "trades");
 				return varName;
