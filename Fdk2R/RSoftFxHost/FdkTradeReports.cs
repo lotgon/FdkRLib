@@ -3,6 +3,8 @@ using System.Linq;
 using NLog;
 using SoftFX.Extended;
 using SoftFX.Extended.Reports;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace RHost
 {
@@ -34,11 +36,21 @@ namespace RHost
 			}     
         }
         static readonly Logger Log = LogManager.GetCurrentClassLogger();
-        public static string GetTradeTransactionReportAll()
+		public static string GetTradeTransactionReportAll(int maxSize = 1000000)
         {
-            var tradeRecordsStream = Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, null, null)
-                .ToArray().ToList();
-            var tradeRecordList = tradeRecordsStream.ToArray();
+			var sw = Stopwatch.StartNew ();
+			var streamIterator = Trade.Server.GetTradeTransactionReports (TimeDirection.Forward, false, null, null, 1024);
+			var tradeRecordsStream = new List<TradeTransactionReport>();
+			var count = 0;
+			while (!streamIterator.EndOfStream) {
+				tradeRecordsStream.Add (streamIterator.Item);
+				count++;
+				if (count >= maxSize)
+					break;
+				streamIterator.Next ();
+			}
+			var ms = sw.ElapsedMilliseconds;
+			var tradeRecordList = tradeRecordsStream.ToArray();
 
             var varName = FdkVars.RegisterVariable(tradeRecordList, "tradeReports");
             return varName;
