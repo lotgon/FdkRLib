@@ -27,14 +27,14 @@ head(ttGetCurrencyData())
 now <-as.POSIXct(Sys.time())
 # 300 seconds from present
 prevNow <-as.POSIXct(now-(5*60))
-head(ttQuotes("EURUSD", startTime = prevNow, endTime=now))
+head(ttQuotesHistory("EURUSD", startTime = prevNow, endTime=now))
 
 # Get quotes level 2
 # 1000 seconds from present
 now <-as.POSIXct(Sys.time())
 prevNow <-as.POSIXct(now-1000)
-qt2= ttQuotesLevel2('EURUSD', prevNow, now)
+qt2= ttQuotesLevel2History('EURUSD', prevNow, now)
 head(qt2)
 ```
 Follow this link with expanded example and output:
-http://rpubs.com/ciplogic/92325
+http://rpubs.com/ciplogic/92853

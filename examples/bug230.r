@@ -7,5 +7,5 @@ et1 <- as.POSIXct(endTime, tz = "GMT")
 as.double(et1)
 
 ttQuotes("EURUSD", endTime = et1)
-barPairsRange = ttBarsQuotes(symbol = "#SPX", barPeriodStr = "M30", startTime= st1, endTime = st1)
+barPairsRange = ttQuotesHistory(symbol = "#SPX", barPeriodStr = "M30", startTime= st1, endTime = st1)
 View(barPairsRange)
