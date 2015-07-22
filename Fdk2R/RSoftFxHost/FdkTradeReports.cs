@@ -22,8 +22,8 @@ namespace RHost
 				Log.Info("FdkTradeReports.GetTradeTransactionReport( from: {0}, to: {1}",
 					from, to);
 
-				var tradeRecordsStream = Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, from, to)
-                .ToArray().ToList();
+				var tradeRecordsStream = new List<TradeTransactionReport>(1000);
+				tradeRecordsStream.AddRange(Trade.Server.GetTradeTransactionReports(TimeDirection.Forward, false, from, to).ToArray());
 				var tradeRecordList = tradeRecordsStream.ToArray();
 
 				var varName = FdkVars.RegisterVariable(tradeRecordList, "tradeReports");
@@ -51,6 +51,7 @@ namespace RHost
 			}
 			var ms = sw.ElapsedMilliseconds;
 			var tradeRecordList = tradeRecordsStream.ToArray();
+			Console.WriteLine ("Time for response: " + ms);
 
             var varName = FdkVars.RegisterVariable(tradeRecordList, "tradeReports");
             return varName;
@@ -143,7 +144,7 @@ namespace RHost
             return tradeData.Select(it => it.OrderModified.AddUtc()).ToArray();
         }
 
-        public static double[] GetTradePosOpenPrice(string varName)
+        public static double[] GetTradePositionOpenPrice(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
             return tradeData.Select(it => it.PosOpenPrice).ToArray();

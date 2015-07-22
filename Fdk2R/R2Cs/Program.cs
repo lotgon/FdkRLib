@@ -23,7 +23,7 @@ namespace R2Cs
             REngine.SetEnvironmentVariables();
             // There are several options to initialize the engine, but by default the following suffice:
             var engine = REngine.GetInstance();
-            
+			wrapper.SetupBuilder ();
             wrapper.Connect();
             var bars = wrapper.ConnectLogic.Storage.Online.GetBars("EURUSD", PriceType.Ask, BarPeriod.M1, DateTime.Now, -1000000).ToArray();
             WriteCsv(bars, "process.csv");

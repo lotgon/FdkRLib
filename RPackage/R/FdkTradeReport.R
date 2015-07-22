@@ -47,9 +47,9 @@ GetTradeReportDataFrame <- function(symInfo)
   OrderFillPrice = GetTradeReportOrderFillPrice(symInfo)
   OrderLastFillAmount = GetTradeReportOrderLastFillAmount(symInfo)
   OrderModified = GetTradeReportOrderModified(symInfo)
-  PosOpenPrice = GetTradeReportPosOpenPrice(symInfo)
-  PositionClosePrice = GetTradeReportPositionClosePrice(symInfo)
-  PositionCloseRequestedPrice = GetTradeReportPositionCloseRequestedPrice(symInfo)
+  OpenPrice = GetTradeReportPositionOpenPrice(symInfo)
+  ClosePrice = GetTradeReportPositionClosePrice(symInfo)
+  CloseRequestedPrice = GetTradeReportPositionCloseRequestedPrice(symInfo)
   PositionClosed = GetTradeReportPositionClosed(symInfo)
   PositionLastQuantity = GetTradeReportPositionLastQuantity(symInfo)
   PositionLeavesQuantity = GetTradeReportPositionLeavesQuantity(symInfo)
@@ -75,7 +75,7 @@ GetTradeReportDataFrame <- function(symInfo)
   
   data.table(AgentCommission, ClientId, CloseConversionRate, InitialVolume, Comment, Commission,
 	Id, LeavesQuantity, OpenConversionRate, OrderCreated, OrderFillPrice, OrderLastFillAmount, OrderModified,
-	PosOpenPrice, PositionClosePrice, PositionCloseRequestedPrice, PositionClosed,
+	OpenPrice, ClosePrice, CloseRequestedPrice, PositionClosed,
 	PositionLastQuantity, PositionLeavesQuantity, PositionModified, PositionOpened, PositionQuantity,
 	Price, Quantity, StopLoss, Swap, Symbol, TakeProfit, TradeRecordSide, TradeRecordType, 
 	TradeTransactionReason, TradeTransactionReportType, TransactionAmount, TransactionCurrency, TransactionTime
@@ -181,7 +181,7 @@ GetTradeReportOrderModified <- function(varName)
 
 #' Get trade report field
 #' @param varName RHost variable that stores the array
-GetTradeReportPosOpenPrice <- function(varName)
+GetTradeReportPositionOpenPrice <- function(varName)
 {
   rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePosOpenPrice', varName)
 }

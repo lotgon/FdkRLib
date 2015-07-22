@@ -22,7 +22,7 @@ namespace TestRClrHost
         public void TestGetTradeRecordsAll()
         {
             //Assert.AreEqual(0, FdkHelper.ConnectToFdk("tp.st.soft-fx.eu", "100000", "123321", ""));
-            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
+			Assert.AreEqual(0, FdkHelper.ConnectToFdk("localhost", "100001", "123qwe!", ""));
             var time = DateTime.Now;
             var prevTime = time.AddHours(-1);
             var bars = FdkTradeReports.GetTradeTransactionReportAll();

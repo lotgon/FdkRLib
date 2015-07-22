@@ -71,7 +71,7 @@ now <-as.POSIXct(Sys.time())
 # 1000 seconds from present
 prevNow <-as.POSIXct(now-1000)
 
-ttQuotesLevel2History('EURUSD', prevNow, now)
+ttQuotesLevel2History('EURUSD', prevNow, now, depth=1)
 ```
 
 #4. Trades/Trade Reports

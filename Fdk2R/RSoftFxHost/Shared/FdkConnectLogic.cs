@@ -91,7 +91,7 @@ namespace RHost.Shared
 
             Builder.FixLogDirectory = logsPath;
 
-            Feed = new DataFeed(Builder.ToString()) { SynchOperationTimeout = 60000 };
+            Feed = new DataFeed(Builder.ToString()) { SynchOperationTimeout = 18000 };
 
             var storagePath = Path.Combine(root, "Storage");
             Directory.CreateDirectory(storagePath);
