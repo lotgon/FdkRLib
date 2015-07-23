@@ -183,7 +183,7 @@ GetTradeReportOrderModified <- function(varName)
 #' @param varName RHost variable that stores the array
 GetTradeReportPositionOpenPrice <- function(varName)
 {
-  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePosOpenPrice', varName)
+  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradePositionOpenPrice', varName)
 }
 
 #' Get trade report field
@@ -309,7 +309,9 @@ GetTradeReportTradeRecordSide <- function (varName)
 #' @param varName RHost variable that stores the array
 GetTradeReportTradeRecordType <- function (varName)
 {
-  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeRecordType', varName)
+  resultData <- rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeRecordType', varName)
+  result <- factor(resultData, levels = c("Market", "Position", "Limit", "Stop"))
+  result
 }
 
 #' Get trade report field
@@ -323,7 +325,10 @@ GetTradeReportTradeTransactionReason <- function (varName)
 #' @param varName RHost variable that stores the array
 GetTradeReportTradeTransactionReportType <- function (varName)
 {
-  rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeTransactionReportType', varName)
+  resultData <- rClr::clrCallStatic('RHost.FdkTradeReports', 'GetTradeTradeTransactionReportType', varName)
+  result <- factor(resultData, levels = c("None", "OrderOpened", "OrderCanceled", "OrderExpired", "OrderFilled",
+                                          "PositionClosed", "BalanceTransaction", "Credit", "PositionOpened"))
+  result
 }
 
 #' Get trade report field
