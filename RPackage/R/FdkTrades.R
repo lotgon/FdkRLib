@@ -12,6 +12,8 @@ ttTrades <- function(startTime =FdkRLib::ttTimeZero(), endTime = FdkRLib::ttNow(
   created = GetTradeCreated(symInfo)
   expiration = GetTradeExpiration(symInfo)
   initialVolume = GetTradeInitialVolume(symInfo)
+  symbol = GetTradeSymbol(symInfo)
+  
   isLimitOrder = GetTradeIsLimitOrder(symInfo)
   isPendingOrder = GetTradeIsPendingOrder(symInfo)
   isPosition = GetTradeIsPosition(symInfo)
@@ -30,7 +32,7 @@ ttTrades <- function(startTime =FdkRLib::ttTimeZero(), endTime = FdkRLib::ttNow(
   UnregisterVar(symInfo)
   
   data.table(agentComission, tradeClientOrderId, tradeComment, created,
-	 expiration, initialVolume, isLimitOrder, isPendingOrder,
+	 expiration, symbol, initialVolume, isLimitOrder, isPendingOrder,
    isPosition, isStopOrder, modified, orderId, price, profit, 
    side, stopLoss, swap, takeProfit, type, volume)
 }
@@ -153,6 +155,11 @@ GetTradeType <- function(symInfo) {
 #' @param symInfo RHost variable that stores the array
 GetTradeVolume <- function(symInfo) {
   rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeVolume', symInfo)
+}
+#' Get trade comission
+#' @param symInfo RHost variable that stores the array
+GetTradeSymbol <- function(symInfo) {
+  rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeSymbol', symInfo)
 }
 #' Get trade comission
 #' @param symInfo RHost variable that stores the array

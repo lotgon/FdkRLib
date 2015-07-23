@@ -8,7 +8,7 @@ namespace RHost
 {
 	public static class FdkTrade
 	{
-		private static DataTrade Trade
+		static DataTrade Trade
 		{
 			get { return FdkHelper.Wrapper.ConnectLogic.TradeWrapper.Trade; }
 		}
@@ -17,7 +17,7 @@ namespace RHost
 		{
 			try
 			{
-				var tradeRecords = Trade.Server.GetTradeRecords()
+				TradeRecord[] tradeRecords = Trade.Server.GetTradeRecords()
                     .Where(tr=>tr.Created!= null && (tr.Created >= startTime && tr.Created <= endTime))
                     .ToArray();
 				
@@ -85,25 +85,25 @@ namespace RHost
             return tradeData.SelectToArray(it => it.InitialVolume);
         }
 
-        public static string[] GetTradeIsLimitOrder(string varName)
+		public static double[] GetTradeIsLimitOrder(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
             return tradeData.SelectToArray(it => it.IsLimitOrder.ToText());
         }
 
-        public static string[] GetTradeIsPendingOrder(string varName)
+		public static double[] GetTradeIsPendingOrder(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
             return tradeData.SelectToArray(it => it.IsPendingOrder.ToText());
         }
 
 
-        public static string[] GetTradeIsPosition(string varName)
+		public static double[] GetTradeIsPosition(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
             return tradeData.SelectToArray(it => it.IsPosition.ToText());
         }
-        public static string[] GetTradeIsStopOrder(string varName)
+		public static double[] GetTradeIsStopOrder(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
             return tradeData.SelectToArray(it => it.IsStopOrder.ToText());
@@ -128,7 +128,7 @@ namespace RHost
         public static double[] GetTradeProfit(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.SelectToArray(it => it.Profit??0.0);
+			return tradeData.SelectToArray(it => it.Profit?? double.NaN);
         }
         public static string[] GetTradeSide(string varName)
         {
@@ -138,7 +138,7 @@ namespace RHost
         public static double[] GetTradeStopLoss(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.SelectToArray(it => it.StopLoss??0);
+			return tradeData.SelectToArray(it => it.StopLoss?? double.NaN);
         }
         public static double[] GetTradeSwap(string varName)
         {
@@ -148,7 +148,7 @@ namespace RHost
         public static double[] GetTradeTakeProfit(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
-            return tradeData.SelectToArray(it => it.TakeProfit ?? 0.0);
+			return tradeData.SelectToArray(it => it.TakeProfit ?? double.NaN);
         }
         public static string[] GetTradeType(string varName)
         {
@@ -162,9 +162,15 @@ namespace RHost
             return tradeData.SelectToArray(it => it.Volume);
         }
 
-        public static string ToText(this bool val)
+		public static string[] GetTradeSymbol(string varName)
+		{
+			var tradeData = FdkVars.GetValue<TradeRecord[]>(varName);
+			return tradeData.SelectToArray(it => it.Symbol);
+		}
+
+		public static double ToText(this bool val)
         {
-            return val ? "True" : "False";
+            return val ? 1 : 0;
         }
 
 		public static DateTime[] ExposeDatesNull(this IEnumerable<DateTime?> values)
