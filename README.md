@@ -37,4 +37,4 @@ qt2= ttQuotesLevel2History('EURUSD', prevNow, now)
 head(qt2)
 ```
 Follow this link with expanded example and output:
-http://rpubs.com/ciplogic/92853
+http://rpubs.com/ciplogic/94275
