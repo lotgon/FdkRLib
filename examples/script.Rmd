@@ -2,8 +2,8 @@
 title: "Sample Fdk2R"
 output:
   html_document:
-    toc: true
     theme: united
+    toc: yes
 ---
 
 Sections:
