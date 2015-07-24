@@ -78,13 +78,13 @@ namespace RHost
         public static double[] GetSymbolSwapSizeLong(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
-            return symbolInfos.SelectToArray(b => b.SwapSizeLong ?? 0.0);
+            return symbolInfos.SelectToArray(b => b.SwapSizeLong ?? double.NaN);
         }
 
         public static double[] GetSymbolSwapSizeShort(string symbolsInfo)
         {
             var symbolInfos = FdkVars.GetValue<SymbolInfo[]>(symbolsInfo);
-            return symbolInfos.SelectToArray(b => b.SwapSizeShort ?? 0.0);
+            return symbolInfos.SelectToArray(b => b.SwapSizeShort ?? double.NaN);
         }
     }
 }

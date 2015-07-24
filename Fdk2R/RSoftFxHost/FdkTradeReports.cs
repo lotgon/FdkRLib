@@ -79,7 +79,7 @@ namespace RHost
         public static double[] GetTradeCloseConversionRate(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.SelectToArray(it => it.CloseConversionRate ?? -1.0);
+            return tradeData.SelectToArray(it => it.CloseConversionRate ?? double.NaN);
         }
 
         public static string[] GetTradeInitialVolume(string varName)
@@ -116,7 +116,7 @@ namespace RHost
         public static double[] GetTradeOpenConversionRate(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.OpenConversionRate ?? -1).ToArray();
+            return tradeData.Select(it => it.OpenConversionRate ?? double.NaN).ToArray();
         }
 
 
@@ -129,13 +129,13 @@ namespace RHost
         public static double[] GetTradeOrderFillPrice(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.OrderFillPrice ?? -1).ToArray();
+            return tradeData.Select(it => it.OrderFillPrice ?? double.NaN).ToArray();
         }
 
         public static double[] GetTradeOrderLastFillAmount(string varName)
         {
             var tradeData = FdkVars.GetValue<TradeTransactionReport[]>(varName);
-            return tradeData.Select(it => it.OrderLastFillAmount ?? -1).ToArray();
+            return tradeData.Select(it => it.OrderLastFillAmount ?? double.NaN).ToArray();
         }
 
         public static DateTime[] GetTradeOrderModified(string varName)
