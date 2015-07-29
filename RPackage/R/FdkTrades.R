@@ -1,7 +1,7 @@
 #' Gets the account trades
 #' 
 #' @param startTime Start time of trades
-#' @param tradeType End time of orders
+#' @param endTime End time of orders
 #' @export
 ttTrades <- function(startTime =FdkRLib::ttTimeZero(), endTime = FdkRLib::ttNow()){
   symInfo = GetTradeRecords(startTime, endTime)
@@ -18,6 +18,7 @@ ttTrades <- function(startTime =FdkRLib::ttTimeZero(), endTime = FdkRLib::ttNow(
   isPendingOrder = GetTradeIsPendingOrder(symInfo)
   isPosition = GetTradeIsPosition(symInfo)
   isStopOrder = GetTradeIsStopOrder(symInfo)
+  
   modified = GetTradeModified(symInfo)
   orderId = GetTradeOrderId(symInfo)
   price = GetTradePrice(symInfo)
@@ -38,7 +39,7 @@ ttTrades <- function(startTime =FdkRLib::ttTimeZero(), endTime = FdkRLib::ttNow(
 }
 #' Get symbol field
 #' @param startTime Start time of trades
-#' @param tradeType End time of orders
+#' @param endTime End time of orders
 GetTradeRecords <- function(startTime, endTime) {
   rClr::clrCallStatic('RHost.FdkTrade', 'GetTradeRecords', startTime, endTime)
 }

@@ -13,11 +13,18 @@ namespace RHost
 			get { return FdkHelper.Wrapper.ConnectLogic.TradeWrapper.Trade; }
 		}
 
+		static readonly TradeRecordType[] OpenTradeTypes = 
+		{
+			TradeRecordType.Market,
+			TradeRecordType.Position
+		};
+
 		public static string GetTradeRecords(DateTime startTime, DateTime endTime)
 		{
 			try
 			{
 				TradeRecord[] tradeRecords = Trade.Server.GetTradeRecords()
+					.Where(trade=>OpenTradeTypes.Contains(trade.Type))
                     .Where(tr=>tr.Created!= null && (tr.Created >= startTime && tr.Created <= endTime))
                     .ToArray();
 				
@@ -33,6 +40,22 @@ namespace RHost
 				throw;
 			}     
         }
+
+		public static string GetTradeHistory()
+		{	try
+			{
+				TradeRecord[] tradeRecords = Trade.Server.GetTradeRecords()
+					.ToArray();
+
+				var varName = FdkVars.RegisterVariable(tradeRecords, "trades");
+				return varName;
+			}
+			catch (Exception ex)
+			{
+				Log.Error(ex);
+				throw;
+			}     
+		}
         static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
         public static AccountInfo GetAccountInfo()
