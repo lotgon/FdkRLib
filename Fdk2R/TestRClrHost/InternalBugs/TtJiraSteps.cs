@@ -60,5 +60,18 @@ namespace TestRClrHost.InternalBugs
             //RHost.FdkBarPairs
 
         }
+        [Test]
+        public void TtJira244()
+        {
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("", "", "", ""));
+
+            var prevNow = new DateTime(2015, 7, 30, 8, 30, 00);
+            var now = new DateTime(2015, 7, 30, 9, 00, 0);
+            var varName = FdkBarPairs.ComputeGetPairBars("EURUSD", "M30", prevNow, now, 0);
+
+            FdkVars.Unregister(varName);
+            //RHost.FdkBarPairs
+
+        }
     }
 }

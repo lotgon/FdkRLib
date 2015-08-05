@@ -1,6 +1,11 @@
 ﻿using System;
 using NUnit.Framework;
 using RHost;
+using SoftFX.Extended;
+using SoftFX.Extended.Reports;
+using System.Threading;
+
+
 namespace TestRClrHost
 {
 	[TestFixture]
@@ -41,6 +46,39 @@ namespace TestRClrHost
 			Assert.AreNotEqual(0, volumesBid.Length);
 			FdkVars.Unregister(quotes);
 		}
+
+		[Test]
+		public void TestTradeReports()
+		{
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("ttdemo.fxopen.com", "100106", "123qwe123", ""));
+
+			var _trader = FdkTradeReports.Trade;
+			StreamIterator<TradeTransactionReport> tradeTransactions = _trader.Server.GetTradeTransactionReports(TimeDirection.Forward, true, null, null, 5000);
+
+			for (; !tradeTransactions.EndOfStream; tradeTransactions.Next())
+			{ 
+				TradeTransactionReport ttr = tradeTransactions.Item; 
+			}
+
+		}
+        [Test]
+        public void TestTradeReports2()
+        {
+			Library.Path = "<FRE>";
+            Assert.AreEqual(0, FdkHelper.ConnectToFdk("ttdemo.fxopen.com", "50001933", "123123", ""));
+
+            var _trader = FdkTradeReports.Trade;
+            var startTime = new DateTime(2015,05, 1, 0,0, 0);
+            var endTime = new DateTime(2015,07, 30, 0,0, 0);
+            StreamIterator<TradeTransactionReport> tradeTransactions = _trader.Server.GetTradeTransactionReports(TimeDirection.Forward, true, 
+                startTime, endTime, 50);
+
+            for (; !tradeTransactions.EndOfStream; tradeTransactions.Next())
+            {
+                TradeTransactionReport ttr = tradeTransactions.Item;
+            }
+
+        }
 	}
 }
 

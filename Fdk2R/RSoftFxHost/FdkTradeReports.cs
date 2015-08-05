@@ -10,7 +10,7 @@ namespace RHost
 {
 	public static class FdkTradeReports
 	{
-		static DataTrade Trade
+		public static DataTrade Trade
 		{
 			get { return FdkHelper.Wrapper.ConnectLogic.TradeWrapper.Trade; }
 		}

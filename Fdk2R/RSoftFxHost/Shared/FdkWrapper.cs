@@ -30,27 +30,35 @@ namespace RHost.Shared
 
         public bool Connect()
         {
-            ConnectLogic.SetupPathsAndConnect(Path);
-            ConnectLogic.Feed.CacheInitialized += OnCacheInitialize;
-            ConnectLogic.Feed.SessionInfo += OnSessionInfo;
-            ConnectLogic.Feed.SymbolInfo += OnSymbolInfo;
-            ConnectLogic.Feed.Logon += OnLogon;
-            ConnectLogic.Feed.Logout += OnLogout;
-            
-            var connectionSuccessful = ConnectLogic.DoConnect();
-            if (!connectionSuccessful)
+            try
             {
-                Log.Warn("");
+                ConnectLogic.SetupPathsAndConnect(Path);
+                ConnectLogic.Feed.CacheInitialized += OnCacheInitialize;
+                ConnectLogic.Feed.SessionInfo += OnSessionInfo;
+                ConnectLogic.Feed.SymbolInfo += OnSymbolInfo;
+                ConnectLogic.Feed.Logon += OnLogon;
+                ConnectLogic.Feed.Logout += OnLogout;
+
+                var connectionSuccessful = ConnectLogic.DoConnect();
+                if (!connectionSuccessful)
+                {
+                    Log.Warn("");
+                    return false;
+                }
+                var start = DateTime.Now;
+
+                while (!IsConnected && (DateTime.Now - start).Seconds < 15)
+                {
+                    Thread.Sleep(100);
+                }
+
+                return IsConnected;
+            }
+            catch
+            {
+                Log.Warn("Exception on connect");
                 return false;
             }
-            var start = DateTime.Now;
-            
-            while (!IsConnected && (DateTime.Now - start).Seconds < 15)
-            {
-                Thread.Sleep(100);
-            }
-
-            return IsConnected;
         }
 
         private void OnCacheInitialize(object sender, CacheEventArgs e)
