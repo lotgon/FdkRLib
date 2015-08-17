@@ -79,7 +79,8 @@ namespace RHost
                 var firstMonitorBySymbol = Monitors.FirstOrDefault(monS => monS.Symbol == symbol);
                 if(firstMonitorBySymbol==null)
                 {
-                    Feed.Server.UnsubscribeQuotes(new[] { symbol });
+                    var dataFeedServer = (DataFeedServer)Feed.Server;
+                    dataFeedServer.UnsubscribeQuotes(new[] { symbol });
                 }
 				if(Monitors.Count == 0)
 				{
