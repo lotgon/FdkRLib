@@ -1,21 +1,22 @@
-source("R/FdkRLib.R")
 
-library(FdkRLib)
-ttConnect("", "", "")
-
-
-quotes = ttGetQuotes("EURUSD", "2051-05-05", "2015-05-06", 1)
-
-
-bars = ttGetBars("EURUSD", "Bid", "H1")
+# Connect to server before running the sample
+# ttConnect()
+ttConnect()
+bars = ttBarsHistory("EURUSD", "Bid", "H1")
 
 boxplot(bars$highs)
 
 plot(highs, data = bars)
 
+endTime <- as.POSIXlt(Sys.time())
+startTime <- strptime("20/3/2 11:16:16.683", "%d/%m/%y %H:%M:%OS")
 
-if (!require("jsonlite")) 
-  install.packages("jsonlite", repos="http://cran.rstudio.com/")
-library(jsonlite)
+st1 <- as.POSIXct(startTime)
+et1 <- as.POSIXct(endTime)
 
-str(fromJSON("http://tp.dev.soft-fx.eu:5021/api/v1/public/level2/EURUSD"))
+quotes <- ttQuotes("EURUSD", st1, et1, 1)
+plot(quotes$ask, type="o")
+
+bars = ttBarsHistory(symbol = "EURUSD", barPeriodStr = "M15", priceTypeStr = "Ask", barCount = 100000000)
+
+barRange = ttBarsHistory(symbol = "EURUSD", barPeriodStr = "M1", priceTypeStr = "Ask", startTime = startTime)

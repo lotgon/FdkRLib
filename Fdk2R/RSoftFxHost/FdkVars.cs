@@ -1,10 +1,28 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RHost
 {
     public static class FdkVars
     {
-        public static Dictionary<string, object> Vars = new Dictionary<string, object>();
+        static FdkVars()
+        {
+
+            DiffFromUtc = DateTime.Now - DateTime.UtcNow;
+        }
+
+        private static readonly Dictionary<string, object> Vars = new Dictionary<string, object>();
+
+        static TimeSpan DiffFromUtc;
+
+
+        public static DateTime AddUtc(this DateTime utcTime)
+        {
+            var result = TimeZoneInfo.ConvertTime(utcTime, TimeZoneInfo.Utc, TimeZoneInfo.Local);
+            return result;
+        }
+
         public static string RegisterVariable(object data, string prefix)
         {
             var pos = 0;
@@ -18,10 +36,22 @@ namespace RHost
             Vars[varName] = data;
             return varName;
         }
+        
+        public static string[] GetVarNames()
+        {
+			return Vars.Keys.ToArray();
+		}
 
         public static void Unregister(string varName)
         {
             Vars.Remove(varName);
+            //Pushes full GC
+            GC.Collect(2);
+        }
+
+        public static void ClearAll()
+        {
+            Vars.Clear();
         }
 
         public static T GetValue<T>(string varName)

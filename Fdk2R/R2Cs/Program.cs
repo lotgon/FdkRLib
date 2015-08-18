@@ -3,18 +3,17 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using RDotNet;
-using SharedFdkFunctionality;
+using RHost.Shared;
 using SoftFX.Extended;
 
 namespace R2Cs
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var wrapper = new FdkWrapper()
+            var wrapper = new FdkWrapper
             {
                 Address = "tpdemo.fxopen.com",
                 Login = "59932",
@@ -23,36 +22,35 @@ namespace R2Cs
 
             REngine.SetEnvironmentVariables();
             // There are several options to initialize the engine, but by default the following suffice:
-            REngine engine = REngine.GetInstance();
-            
-            wrapper.Connect("");
+            var engine = REngine.GetInstance();
+			wrapper.SetupBuilder ();
+            wrapper.Connect();
             var bars = wrapper.ConnectLogic.Storage.Online.GetBars("EURUSD", PriceType.Ask, BarPeriod.M1, DateTime.Now, -1000000).ToArray();
             WriteCsv(bars, "process.csv");
 
             // .NET Framework array to R vector.
-            NumericVector group1 = engine.CreateNumericVector(new double[] { 30.02, 29.99, 30.11, 29.97, 30.01, 29.99 });
+            var group1 = engine.CreateNumericVector(new double[] { 30.02, 29.99, 30.11, 29.97, 30.01, 29.99 });
             engine.SetSymbol("group1", group1);
             // Direct parsing from R script.
-            CallTimed(() =>
-            {
-                NumericVector lows = engine.CreateNumericVector(bars.Select(b => b.Low).ToArray());
-                engine.SetSymbol("bar_lows", lows);
-                NumericVector high = engine.CreateNumericVector(bars.Select(b => b.High).ToArray());
-                engine.SetSymbol("bar_high", high);
-                NumericVector opens = engine.CreateNumericVector(bars.Select(b => b.Open).ToArray());
-                engine.SetSymbol("bar_opens", opens);
-                NumericVector volumes = engine.CreateNumericVector(bars.Select(b => b.Volume).ToArray());
-                engine.SetSymbol("bar_volumes", volumes);
-            }, "time to set lows");
+       
+            var lows = engine.CreateNumericVector(bars.Select(b => b.Low).ToArray());
+            engine.SetSymbol("bar_lows", lows);
+            var high = engine.CreateNumericVector(bars.Select(b => b.High).ToArray());
+            engine.SetSymbol("bar_high", high);
+            var opens = engine.CreateNumericVector(bars.Select(b => b.Open).ToArray());
+            engine.SetSymbol("bar_opens", opens);
+            var volumes = engine.CreateNumericVector(bars.Select(b => b.Volume).ToArray());
+            engine.SetSymbol("bar_volumes", volumes);
+       
 
 
-            NumericVector group2 = engine.Evaluate("group2 <- c(29.89, 29.93, 29.72, 29.98, 30.02, 29.98)").AsNumeric();
+            var group2 = engine.Evaluate("group2 <- c(29.89, 29.93, 29.72, 29.98, 30.02, 29.98)").AsNumeric();
             var dataR = engine.Evaluate("data <- read.csv('process.csv')");
 
-            NumericVector meanHigh = engine.Evaluate("meanHigh <- mean(data$High)").AsNumeric();
+            var meanHigh = engine.Evaluate("meanHigh <- mean(data$High)").AsNumeric();
             // Test difference of mean and get the P-value.
-            GenericVector testResult = engine.Evaluate("t.test(group1, group2)").AsList();
-            double p = testResult["p.value"].AsNumeric().First();
+            var testResult = engine.Evaluate("t.test(group1, group2)").AsList();
+            var p = testResult["p.value"].AsNumeric().First();
             
 
             Console.WriteLine("Group1: [{0}]", string.Join(", ", group1));

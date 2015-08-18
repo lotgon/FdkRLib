@@ -1,8 +1,12 @@
 # FdkRLib
-Added the SoftFX R wrapper package over FDK
+Added the SoftFX R wrapper package over FDK (Financial Development Kit)
+
+# Prerequisites
+If you see this error: "You are probably missing the Visual C++ Redistributable for Visual Studio 2013", then please download it from here:
+https://www.microsoft.com/en-us/download/details.aspx?id=40784
 
 # How to install it?
-Look inside install.r file (you can copy/paste the content into your R environment).
+Look inside [install.r](https://github.com/SoftFx/FdkRLib/blob/master/install.r)  file (you can copy/paste the content into your R environment).
 
 For later sessions of R environment will require just to reload the library with this command:
 library(FdkRLib)
@@ -11,12 +15,26 @@ library(FdkRLib)
 You have sample code inside examples/sample_bars.r with various snippets of code. 
 
 A simple code sample code is the following:
+```
 
 ttConnect("", "", "")
 
-quotes = ttGetQuotes("EURUSD", "2015-05-05", "2015-05-06", 1)
+#Get configuration information of your account
+head(ttGetSymbolData())
+head(ttGetCurrencyData())
 
-bars = ttGetBars("EURUSD", "Bid", "H1")
+#Quotes in the last 5 minutes
+now <-as.POSIXct(Sys.time())
+# 300 seconds from present
+prevNow <-as.POSIXct(now-(5*60))
+head(ttQuotesHistory("EURUSD", startTime = prevNow, endTime=now))
 
-The data given by ttGetQuotes and ttGetBars is for now Data Frame.
-
+# Get quotes level 2
+# 1000 seconds from present
+now <-as.POSIXct(Sys.time())
+prevNow <-as.POSIXct(now-1000)
+qt2= ttQuotesLevel2History('EURUSD', prevNow, now)
+head(qt2)
+```
+Follow this link with expanded example and output:
+http://rpubs.com/ciplogic/94275

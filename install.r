@@ -1,27 +1,44 @@
-if(!require("devtools") )
-{
-  install.packages("devtools")
-  library(devtools)
+installBinaryHttr <- function(fdkRLibPackage){
+  basicUrl = "https://github.com/SoftFx/FdkRLib/raw/master/dist/"
+  fullUrl = paste(basicUrl, fdkRLibPackage, sep = "")
+  localTempFile <- fdkRLibPackage
+  r <-GET(fullUrl)
+  bin <- content(r, "raw")
+  writeBin(bin, localTempFile)
   
+  install.packages(localTempFile, repos = NULL, type = "source")
+  file.remove(localTempFile)
 }
 
-# Use this command if you want to build package yourself
-install_github("hadley/devtools")
-library(devtools)
-
-
-if( !require("rClr") )
+installCranPackage<- function(packageName)
 {
-  # uncomment this if you want to use installation from source.
-  # install_github("SoftFx/rClr")
-  download.file("https://github.com/SoftFx/FdkRLib/raw/master/Lib/RClr/rClr_0.7-4.zip", "rClr_0.7-4.zip")
-  install.packages("rClr_0.7-4.zip", repos = NULL, type = "source")
-  file.remove("rClr_0.7-4.zip")
+  if(!require(packageName, character.only = TRUE))
+  {
+    install.packages(packageName, repos='http://cran.us.r-project.org', type="win.binary")
+    require(packageName, character.only = TRUE)
+  }
 }
+
+installAllPackages <- function (packageVersion) {
+  installBinaryHttr("rClr_0.7-4.zip")
+  installBinaryHttr(packageVersion)
+}
+
+# Step 1: may require to restart R enviornment. 
+# Run it before you install packages. Should be run once
+installCranPackage("httr")
+installCranPackage("data.table")
+
+if(!require(httr))
+{
+	install.packages("httr", repos='http://cran.us.r-project.org')
+  require(httr)
+}
+install.packages("data.table", repos='http://cran.us.r-project.org')
+
+
+# Run it before you install packages. Should be run once
+installAllPackages("FdkRLib_1.0.20150714.zip")
+
 library(rClr)
-
-install_github("SoftFx/FdkRLib")
 library(FdkRLib)
-
-
-

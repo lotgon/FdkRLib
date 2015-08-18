@@ -1,70 +1,82 @@
 using System;
 using System.Linq;
+using NLog;
 using SoftFX.Extended;
 
 namespace RHost
 {
-    public class FdkQuotes
-    {
-        public static string ComputeQuoteHistory(string symbol, string startTimeStr, string endTimeStr, double depthDbl)
-        {
-            DateTime startTime;
-            if (!DateTime.TryParse(startTimeStr, out startTime))
-            {
-                return String.Empty;
-            }
-            DateTime endTime;
-            if (!DateTime.TryParse(endTimeStr, out endTime))
-            {
-                return String.Empty;
-            }
-            int depth = (int)depthDbl;
+	public class FdkQuotes
+	{
+		static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-            var quotesData = CalculateHistoryForSymbolArray(symbol, startTime, endTime, depth);
-            var quoteHistory = FdkVars.RegisterVariable(quotesData, "quotes");
-            return quoteHistory;
+		public static string ComputeQuoteHistory(string symbol, DateTime startTime, DateTime endTime, double depthDbl)
+		{
+			try
+			{
+				var depth = (int)depthDbl;
+				Log.Info("FdkQuotes.ComputeQuoteHistory( symbol: {0}, startTime: {1}, endTime: {2}, level: {3})",
+					symbol, startTime, endTime, depthDbl);
+				
+				var quotesData = CalculateHistoryForSymbolArray(symbol, startTime, endTime, depth);
+				var quoteHistory = FdkVars.RegisterVariable(quotesData, "quotes");
+            	return quoteHistory;
+			}
+			catch (Exception ex)
+			{
+				Log.Error(ex);
+				throw;
+			}
         }
 
-        private static Quote[] CalculateHistoryForSymbolArray(string symbol, DateTime startTime, DateTime endTime, int depth)
+        public static Quote[] CalculateHistoryForSymbolArray(string symbol, DateTime startTime, DateTime endTime, int depth)
         {
             return FdkHelper.Wrapper.ConnectLogic.Storage.Online.GetQuotes(symbol, startTime, endTime, depth);
         }
 
         public static double[] QuotesAsk(string bars)
         {
-            var barData = FdkVars.GetValue<Quote[]>(bars);
-
-            return barData.Select(b => b.Ask).ToArray();
+            var quotes = FdkVars.GetValue<Quote[]>(bars);
+            return QuoteArrayAsk(quotes);
         }
+
         public static double[] QuotesBid(string bars)
         {
-            var barData = FdkVars.GetValue<Quote[]>(bars);
-
-            return barData.Select(b => b.Bid).ToArray();
+            var quotes = FdkVars.GetValue<Quote[]>(bars);
+            return QuoteArrayBid(quotes);
         }
-        public static string[] QuotesCreatingTime(string bars)
+        public static DateTime[] QuotesCreatingTime(string bars)
         {
-            var barData = FdkVars.GetValue<Quote[]>(bars);
+            var quotes = FdkVars.GetValue<Quote[]>(bars);
 
-            return barData.Select(b => b.CreatingTime.ToString()).ToArray();
+            return QuoteArrayCreateTime(quotes);
         }
+
         public static double[] QuotesSpread(string bars)
         {
-            var barData = FdkVars.GetValue<Quote[]>(bars);
-
-            return barData.Select(b => b.Spread).ToArray();
+            var quotes = FdkVars.GetValue<Quote[]>(bars);
+            return QuoteArraySpread(quotes);
         }
-        public static int[] QuotesHasAsk(string bars)
-        {
-            var barData = FdkVars.GetValue<Quote[]>(bars);
 
-            return barData.Select(b => b.HasAsk?1:0).ToArray();
+        internal static double[] QuoteArrayBid(Quote[] quotes)
+        {
+            return quotes.SelectToArray(b => b.HasBid ? b.Bid : -1);
         }
-        public static int[] QuotesHasBid(string bars)
-        {
-            var barData = FdkVars.GetValue<Quote[]>(bars);
 
-            return barData.Select(b => b.HasBid ? 1 : 0).ToArray();
+
+        internal static double[] QuoteArrayAsk(Quote[] quotes)
+        {
+            return quotes.SelectToArray(b => b.HasAsk ? b.Ask : -1);
+        }
+
+        internal static DateTime[] QuoteArrayCreateTime(Quote[] quotes)
+        {
+            var timesAsEpoch = quotes.SelectToArray(b => b.CreatingTime);
+            return timesAsEpoch;
+        }
+
+        internal static double[] QuoteArraySpread(Quote[] quotes)
+        {
+            return quotes.SelectToArray(b => b.Spread);
         }
     }
 }

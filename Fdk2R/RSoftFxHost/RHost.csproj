@@ -15,12 +15,14 @@
     <SccLocalPath>Svn</SccLocalPath>
     <SccAuxPath>Svn</SccAuxPath>
     <SccProvider>SubversionScc</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Data\</OutputPath>
+    <OutputPath>..\..\RPackage\Data\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -28,7 +30,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\Data\</OutputPath>
+    <OutputPath>..\..\RPackage\Data\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -70,33 +72,60 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SoftFX.Extended.Net, Version=1.0.0.1, Culture=neutral, PublicKeyToken=4233fb54369c191f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.0.1\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="SoftFX.Extended.Net">
       <HintPath>..\..\Lib\FDK\SoftFX.Extended.Net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FdkBarPairs.cs" />
     <Compile Include="FdkBars.cs" />
+    <Compile Include="FdkCurrencyInfo.cs" />
     <Compile Include="FdkHelper.cs" />
+    <Compile Include="FdkLevel2.cs" />
     <Compile Include="FdkQuotes.cs" />
+    <Compile Include="FdkRealTime.cs" />
+    <Compile Include="RealTime\FdkRealTimeQuote.cs" />
+    <Compile Include="RealTime\FdkRealTimeMonitor.cs" />
+    <Compile Include="FdkSessionInfo.cs" />
+    <Compile Include="FdkSymbolInfo.cs" />
+    <Compile Include="FdkTrade.cs" />
+    <Compile Include="FdkTradeReports.cs" />
     <Compile Include="FdkVars.cs" />
+    <Compile Include="PartitionerUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\FdkConnectLogic.cs" />
+    <Compile Include="Shared\FdkConnector.cs" />
+    <Compile Include="Shared\FdkTradeWrapper.cs" />
+    <Compile Include="Shared\FdkWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharedFdkFunctionality\SharedFdkFunctionality.csproj">
-      <Project>{6F92C144-E375-4531-AFBD-F09F13AACB1B}</Project>
-      <Name>SharedFdkFunctionality</Name>
-    </ProjectReference>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>Rem "c:\R\R-3.1.3\bin\R.exe"  CMD BATCH "$(SolutionDir)..\build_r.r"
+</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

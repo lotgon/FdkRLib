@@ -76,9 +76,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net">
-      <HintPath>..\..\Lib\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="RDotNet">
       <HintPath>..\..\Lib\R2Clr\RDotNet.dll</HintPath>
     </Reference>
@@ -107,9 +104,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharedFdkFunctionality\SharedFdkFunctionality.csproj">
-      <Project>{6F92C144-E375-4531-AFBD-F09F13AACB1B}</Project>
-      <Name>SharedFdkFunctionality</Name>
+    <ProjectReference Include="..\RSoftFxHost\RHost.csproj">
+      <Project>{6b485272-ef8e-47f3-aee5-f3418b39de80}</Project>
+      <Name>RHost</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
